@@ -1,0 +1,65 @@
+0000000000000000000000000000000000000000 34e6e06e3109b44032d2a56a62e2885e57a8eee5 chk <kaipro@chkdeMac-mini.local> 1777626490 +0800	commit (initial): 初始：Deep32Q 知識庫架構建立（INDEX/產業洞察/分析模式/市場情緒/供應鏈拆解）
+34e6e06e3109b44032d2a56a62e2885e57a8eee5 fbea18958de439755de3c350cec85d6905ef659c chk <kaipro@chkdeMac-mini.local> 1777629222 +0800	commit: 修正 INDEX.md 審計報告庫標題改為連結到中間頁
+fbea18958de439755de3c350cec85d6905ef659c 7f88eb1b6b218f5c74c5f2f90c6101f702fe3b06 chk <kaipro@chkdeMac-mini.local> 1777629319 +0800	commit: 修正 INDEX.md 審計報告庫連結改為 vault 根目錄路徑
+7f88eb1b6b218f5c74c5f2f90c6101f702fe3b06 8b067471d6cebbbef2ec2114ac14518920cd51c5 chk <kaipro@chkdeMac-mini.local> 1777629346 +0800	commit: 修正 INDEX.md 產業洞察/分析模式/市場情緒等區塊連結到中間節點
+8b067471d6cebbbef2ec2114ac14518920cd51c5 2ceb00efb092e09d3f1bac6401df16631ff3021f chk <kaipro@chkdeMac-mini.local> 1777629660 +0800	commit: 修正 350 份報告連結：改為連到父層中間節點而非 INDEX
+2ceb00efb092e09d3f1bac6401df16631ff3021f b5bdcedccf59533bf1b243c64d7ecc1e5f021f5d chk <kaipro@chkdeMac-mini.local> 1777629829 +0800	commit: 清除報告檔案中的 [[INDEX]] 連結，全部改為連到父層中間節點
+b5bdcedccf59533bf1b243c64d7ecc1e5f021f5d 863b8768a735688481e0f083326b12f5d02c9e3d chk <kaipro@chkdeMac-mini.local> 1777630355 +0800	commit: INDEX.md 只連審計報告庫和 Deep32Q知識庫兩個根節點
+863b8768a735688481e0f083326b12f5d02c9e3d c400624006cefbabc412797a14b524eb93b669d2 chk <kaipro@chkdeMac-mini.local> 1777630380 +0800	commit: INDEX.md 只保留審計報告庫和 Deep32Q知識庫兩個 root 連結
+c400624006cefbabc412797a14b524eb93b669d2 34e6e06e3109b44032d2a56a62e2885e57a8eee5 chk <kaipro@chkdeMac-mini.local> 1777631873 +0800	reset: moving to 34e6e06
+34e6e06e3109b44032d2a56a62e2885e57a8eee5 a16127805adca31b1a312eb015d262868595dce0 chk <kaipro@chkdeMac-mini.local> 1777635281 +0800	commit: 2026-05-01 每日更新：市場情緒/黃豆追蹤/黃金追蹤完成 + LOG.md + .gitignore
+a16127805adca31b1a312eb015d262868595dce0 ddcf96900ad8d58865e536c4aea5e93566ff7714 chk <kaipro@chkdeMac-mini.local> 1777697948 +0800	commit: 8074 鉅橡 財務組 審計完成（15/18）
+ddcf96900ad8d58865e536c4aea5e93566ff7714 441ce7fdaf840d96c729b5c39c6a78bb5c970fb8 chk <kaipro@chkdeMac-mini.local> 1777701213 +0800	commit: 8074 鉅橡 財務組 全數完成（18/18）
+441ce7fdaf840d96c729b5c39c6a78bb5c970fb8 785637580f9a59c38957f3e24b8067bf0a7a2e65 chk <kaipro@chkdeMac-mini.local> 1777707897 +0800	commit: 6903 巨漢 財務組 審計完成（18/18）
+785637580f9a59c38957f3e24b8067bf0a7a2e65 db5f618f69c454f1db2f3ca5cdf2a34de41a22a0 chk <kaipro@chkdeMac-mini.local> 1777737780 +0800	commit: 3163 波若威 財務組審計完成（18/18）
+db5f618f69c454f1db2f3ca5cdf2a34de41a22a0 dbef9bf254aad7795d445f6b8933e78441fb2078 chk <kaipro@chkdeMac-mini.local> 1777748243 +0800	commit: 3163 波若威 經營組審計完成（11/11）
+dbef9bf254aad7795d445f6b8933e78441fb2078 5cf3f7287a9c147935d24f6dfbd8a7d37af1c4ce chk <kaipro@chkdeMac-mini.local> 1777748976 +0800	commit: Gale 更新：INDEX.md 路徑修正為新審計報告庫結構 + 新增3163波若威
+5cf3f7287a9c147935d24f6dfbd8a7d37af1c4ce a9931682e9a3b99f2c9a666fcd5027661ded98fe chk <kaipro@chkdeMac-mini.local> 1777753754 +0800	commit: 3105 穩懋 財務審計完成（18/18）
+a9931682e9a3b99f2c9a666fcd5027661ded98fe d1015c0191a4b0ab7ee79e8820775bac60add6cb chk <kaipro@chkdeMac-mini.local> 1777754714 +0800	commit: 3105 穩懋 財務審計完成（18/18）- 最終確認
+d1015c0191a4b0ab7ee79e8820775bac60add6cb ecdac47c0efcf9e1407069704d422dce91ef8699 chk <kaipro@chkdeMac-mini.local> 1777876188 +0800	commit: Gale 更新：波若威補充報告 - 月營收動態 + 機會分析
+ecdac47c0efcf9e1407069704d422dce91ef8699 f445838e6bca15f50cae85857b47a5d61779f1f0 chk <kaipro@chkdeMac-mini.local> 1777883163 +0800	commit: 2026-05-04 CPO 光通訊六巨頭深度報告 + INDEX/LOG 更新
+f445838e6bca15f50cae85857b47a5d61779f1f0 e0ce674b666cfb91f05edbf44c1652ddbf633c91 chk <kaipro@chkdeMac-mini.local> 1777904111 +0800	commit: 6442 光聖 財務審計完成（18/18）
+e0ce674b666cfb91f05edbf44c1652ddbf633c91 eaa296b224e0706266a8861cdc85c4c26f748347 chk <kaipro@chkdeMac-mini.local> 1777909922 +0800	commit: 6442 光聖 經營+財務 審計完成
+eaa296b224e0706266a8861cdc85c4c26f748347 db5c0ba5776b4d652585ded4c56fd7123ca05d62 chk <kaipro@chkdeMac-mini.local> 1777910911 +0800	commit: 6442 光聖 經營審計完成（11/11），全案結案
+db5c0ba5776b4d652585ded4c56fd7123ca05d62 919ea4d803e75f78ccd58565376cc74bd1e64321 chk <kaipro@chkdeMac-mini.local> 1777928528 +0800	commit: 2026-05-05 每日更新：市場情緒、黃豆追蹤、黃金追蹤、光通訊追蹤
+919ea4d803e75f78ccd58565376cc74bd1e64321 f51598fadf6777f687ec83b811b1daae93e52fca chk <kaipro@chkdeMac-mini.local> 1777945955 +0800	commit: 2026-05-05 每日更新：市場情緒、黃豆追蹤、黃金追蹤、光通訊追蹤
+f51598fadf6777f687ec83b811b1daae93e52fca 4364d9907209fba1c28410b14594be79f1250b08 chk <kaipro@chkdeMac-mini.local> 1777962105 +0800	commit: 2026-05-05 玻璃基板深度研究：產業總覽+台股供應鏈+技術路線圖（3份報告，28.7KB）
+4364d9907209fba1c28410b14594be79f1250b08 b5c101f6f3d993ad1725f7ec71390ed2f50e48ad chk <kaipro@chkdeMac-mini.local> 1778015031 +0800	commit: 2026-05-06 每日更新：市場情緒、黃豆、黃金、光通訊追蹤日誌
+b5c101f6f3d993ad1725f7ec71390ed2f50e48ad 3379732090b19a9f50ebfec4c3d999a57d9c9405 chk <kaipro@chkdeMac-mini.local> 1778015086 +0800	commit: 2026-05-06 LOG.md 更新
+3379732090b19a9f50ebfec4c3d999a57d9c9405 5e12074c84cc9ce7c0ef02653447b385484b3eb6 chk <kaipro@chkdeMac-mini.local> 1778101534 +0800	commit: 2026-05-07 每日更新：市場情緒+黃豆+黃金+光通訊追蹤日誌
+5e12074c84cc9ce7c0ef02653447b385484b3eb6 9ab97eddf7bdd10a9aa2f466cbbde09afead541c chk <kaipro@chkdeMac-mini.local> 1778123389 +0800	commit: Gale 更新：新增黃豆法人目標價與估值分析報告（2026-05-07）
+9ab97eddf7bdd10a9aa2f466cbbde09afead541c bd81f203c78b604292b74a1403c7ffb6cbdeebed chk <kaipro@chkdeMac-mini.local> 1778126551 +0800	commit: Gale 更新：新增低軌衛星台股潛力公司深度整理（2026-05-07）
+bd81f203c78b604292b74a1403c7ffb6cbdeebed 7700e6a153144cc6ccbbf74d0e57cc0b3cb77c6b chk <kaipro@chkdeMac-mini.local> 1778142882 +0800	commit: Gale 更新：新增黃豆台股個股深度整理（福壽/泰山/福懋油/大成/卜蜂分析）
+7700e6a153144cc6ccbbf74d0e57cc0b3cb77c6b ebd878003724779182742e4b02c7297c8e50afe1 chk <kaipro@chkdeMac-mini.local> 1778144985 +0800	commit: Gale 更新：新增記憶體台股個股深度整理（南亞科/華邦電/旺宏/群聯/模組四雄/IC設計分析）
+ebd878003724779182742e4b02c7297c8e50afe1 82ac9ff202ec82c0bafd10498d072fa53f4f1356 chk <kaipro@chkdeMac-mini.local> 1778148884 +0800	commit: Gale 更新：新增散熱台股個股深度整理（三雄/力致/泰碩/高力/建準分析）
+82ac9ff202ec82c0bafd10498d072fa53f4f1356 1f876469bc20cf96ef13c5498d0cfc243ef5f52f chk <kaipro@chkdeMac-mini.local> 1778187808 +0800	commit: 2026-05-08 每日更新：市場情緒(台股42K)、黃豆(.775)、黃金(,685)、光通訊(CPO)
+1f876469bc20cf96ef13c5498d0cfc243ef5f52f 5300373445cdce113c1f1eee79e2404559c428d3 chk <kaipro@chkdeMac-mini.local> 1778318314 +0800	commit: 3680 家登 財務組審計完成（18/18）
+5300373445cdce113c1f1eee79e2404559c428d3 5bd725117cdf55165f45a947e49695a586ce8dbd chk <kaipro@chkdeMac-mini.local> 1778447094 +0800	commit: 2026-05-11 每日更新：市場情緒(伊朗回覆+美股期貨創高)、黃豆(WASDE倒數+巴西豐收)、黃金(XAU ,720多源驗證)、光通訊(CSP+56%+TSMC COUPE量產)
+5bd725117cdf55165f45a947e49695a586ce8dbd 89155079765e07ffe6c158c7a5660f0048aa1e17 chk <kaipro@chkdeMac-mini.local> 1778515318 +0800	commit: 6261 久元 財務組審計完成 (20260511)
+89155079765e07ffe6c158c7a5660f0048aa1e17 286ef13f2ae663b49e37df1a4e6a309417b58a8d chk <kaipro@chkdeMac-mini.local> 1778522704 +0800	commit: 6261 久元 財務審計 18/18 完成 (20260512 v3)
+286ef13f2ae663b49e37df1a4e6a309417b58a8d 946d5caa06b76e2ee755dbe431f261832544467a chk <kaipro@chkdeMac-mini.local> 1778565809 +0800	commit: 6261 久元 財務組 審計完成 (20260512)
+946d5caa06b76e2ee755dbe431f261832544467a 077110beac7e5fbf414094de1d0c672f0a8139c5 chk <kaipro@chkdeMac-mini.local> 1778572912 +0800	commit: [2492] 華新科 經營+財務審計全數完成（G01-G11 + F01-F18）
+077110beac7e5fbf414094de1d0c672f0a8139c5 dd6b9d13e36c5c3b570307a2f14c6263df5c0f56 chk <kaipro@chkdeMac-mini.local> 1778573782 +0800	commit: 2492 華新科 財務組 審計完成 (20260512)
+dd6b9d13e36c5c3b570307a2f14c6263df5c0f56 bd21dad70c580b6f2357da36147dc65d141a17c1 chk <kaipro@chkdeMac-mini.local> 1778575422 +0800	commit: 3036 文曄 財務組 審計完成 (16/18 + 2需人類裁決)
+bd21dad70c580b6f2357da36147dc65d141a17c1 75df1c2daeea6149a4edb2aa62a0d9b91b8babdc chk <kaipro@chkdeMac-mini.local> 1778607629 +0800	commit: 更新 INDEX.md 新增 PCB研究 段落 (2026-05-13)
+75df1c2daeea6149a4edb2aa62a0d9b91b8babdc d0a3264523469f80f4f2916021cbeceef147f8bc chk <kaipro@chkdeMac-mini.local> 1778653633 +0800	commit: Gale 更新：重構三個追蹤模板為敘事驅動結構
+d0a3264523469f80f4f2916021cbeceef147f8bc 3ec2ca7163d49ccf00de5e3a424d8436d2673a01 chk <kaipro@chkdeMac-mini.local> 1778653912 +0800	commit: Gale 維護：修正 drop/ 任務歸檔流程 + PCB 任務歸檔
+3ec2ca7163d49ccf00de5e3a424d8436d2673a01 9f20cd42d1e56705cb18cca1ed13e91b4edf4f63 chk <kaipro@chkdeMac-mini.local> 1778654488 +0800	commit: Gale 維護：移除舊商品追蹤/目錄 + 清理 INDEX.md 壞連結
+9f20cd42d1e56705cb18cca1ed13e91b4edf4f63 a64e5e30d308490162158ee7bb113edcf64c2481 chk <kaipro@chkdeMac-mini.local> 1778657618 +0800	commit: Gale 更新：光通訊四大方向補強 + 追蹤體系重構（分層排程+持倉風險+異常機制+6個追蹤指標.md）
+a64e5e30d308490162158ee7bb113edcf64c2481 e89318524c6c538bd63e33a85ede4f88eaa24324 chk <kaipro@chkdeMac-mini.local> 1778657943 +0800	commit: Gale 維護：移除異常通知機制（已含在每日報告中）+ 重寫 Dr.32 SOUL.md
+e89318524c6c538bd63e33a85ede4f88eaa24324 4e11fe64a811d46e045ec0dc56ecbf79a18ccdf8 chk <kaipro@chkdeMac-mini.local> 1778730076 +0800	commit: 2026-05-14 航運產業 Track A：次產業結構（貨櫃/散裝/油輪/LNG-LPG）
+4e11fe64a811d46e045ec0dc56ecbf79a18ccdf8 11bfcfe17ce920d028ba5107f5b018ae4ebd6b50 chk <kaipro@chkdeMac-mini.local> 1778737398 +0800	commit: Gale 更新：航運產業研究移至產業洞察/航運產業（7大主題，29檔案）
+11bfcfe17ce920d028ba5107f5b018ae4ebd6b50 9cc7c721925387ab20bfc24e8dc50313b15d832f chk <kaipro@chkdeMac-mini.local> 1778878999 +0800	commit: 2026-05-16 每日更新：川習會無實質成果+荷莫茲海峽衝突+通膨飆升
+9cc7c721925387ab20bfc24e8dc50313b15d832f 8e38481c4a56b757438f207f73aabce06fc3aa52 chk <kaipro@chkdeMac-mini.local> 1778965442 +0800	commit: 2026-05-17 每日更新：市場情緒+黃豆+黃金+光通訊追蹤日報
+8e38481c4a56b757438f207f73aabce06fc3aa52 5b41dacdbb01519c29befdbfe52d551396cb2965 chk <kaipro@chkdeMac-mini.local> 1779051928 +0800	commit: 2026-05-18 每日更新：市場情緒/黃豆/黃金/光通訊 + W20週報
+5b41dacdbb01519c29befdbfe52d551396cb2965 bb1e972bc5751481ee338eecc1d3bc3500a16264 chk <kaipro@chkdeMac-mini.local> 1779138176 +0800	commit: 2026-05-19 每日更新：市場情緒/黃豆/黃金/光通訊追蹤日誌
+bb1e972bc5751481ee338eecc1d3bc3500a16264 341fa1aec3226de9ac2cda5ba6a120e27aa41608 chk <kaipro@chkdeMac-mini.local> 1779236384 +0800	commit: 2026-05-20 每日巡檢：市場情緒+黃豆+黃金+光通訊追蹤（08:14 補發報告）
+341fa1aec3226de9ac2cda5ba6a120e27aa41608 2cb5364f6dae78278d7427598fd71cbb4e23e351 chk <kaipro@chkdeMac-mini.local> 1779313906 +0800	commit: 2026-05-21 每日更新：FOMC最鷹派紀要+Nvidia營收.6B超預期+黃金反彈,530
+2cb5364f6dae78278d7427598fd71cbb4e23e351 b4398982804e32a73f01e915f31fec27720290a0 chk <kaipro@chkdeMac-mini.local> 1779397501 +0800	commit: 2026-05-22 每日更新：市場情緒(Warsh就任+伊朗突破+TAIEX+3.37%+PMI分化)、黃豆(~1,194續跌+尿素飆50%)、黃金(,517-,551震盪+TIPS拍賣2.169%)、光通訊(FQ1.62B+鴻海Q3出貨+源傑興櫃)
+b4398982804e32a73f01e915f31fec27720290a0 d2441952addbc846f47f5ffd7858c8240eabee58 chk <kaipro@chkdeMac-mini.local> 1779496428 +0800	commit: 2026-05-23 每日更新：市場情緒+黃豆+黃金+光通訊追蹤（週六）
+d2441952addbc846f47f5ffd7858c8240eabee58 c3c817c2bd8edae506f6b72d6e0d91b95bb292b8 chk <kaipro@chkdeMac-mini.local> 1779501351 +0800	commit: 2026-05-23 每日巡檢：市場情緒/黃豆/黃金/光通訊報告更新
+c3c817c2bd8edae506f6b72d6e0d91b95bb292b8 01d170c6f900965cd07eef36d05f2395cb769a99 chk <kaipro@chkdeMac-mini.local> 1779585963 +0800	commit: 2026-05-24 每日更新：市場情緒+黃豆+黃金+光通訊追蹤日報（美伊和談突破）
+01d170c6f900965cd07eef36d05f2395cb769a99 da15d00ee034c23674c83a4ee03fcfe0719077d9 chk <kaipro@chkdeMac-mini.local> 1779656643 +0800	commit: 2026-05-25 每日追蹤：美伊MoU逼近、金價回調至4500、CBOT Soy July 1199.75
+da15d00ee034c23674c83a4ee03fcfe0719077d9 add04fc558ed22e0d8d697cfb8f0e10f88455c04 chk <kaipro@chkdeMac-mini.local> 1779829472 +0800	commit: 2026-05-27 每日更新：市場情緒+黃豆+黃金+光通訊追蹤日報
+add04fc558ed22e0d8d697cfb8f0e10f88455c04 3d43cf888e8efc3ac970d149698aab47789b9661 chk <kaipro@chkdeMac-mini.local> 1779829591 +0800	commit: 2026-05-27 INDEX.md 更新：新增5/27市場情緒+黃豆+黃金+光通訊追蹤
+3d43cf888e8efc3ac970d149698aab47789b9661 589cf9fc1fc31bca161f9a9199ea32fa7fae1b2d chk <kaipro@chkdeMac-mini.local> 1780002280 +0800	commit: 2026-05-29 每日更新：市場情緒+黃豆+黃金+光通訊追蹤，美伊衝突升級
