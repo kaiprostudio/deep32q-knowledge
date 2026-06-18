@@ -1,0 +1,38 @@
+/* Deep32Q 自訂樣式 — 手機 RWD 優化 */
+
+/* 表格在手機上水平捲動 */
+@media (max-width: 720px) {
+  .VPContent table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 首頁卡片網格改為單欄 */
+  .vp-doc .grid-list,
+  .VPHome .VPFeatures .container .items {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 內容區塊邊距縮小 */
+  .VPContent .content-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* 導覽標題字體縮小避免溢出 */
+  .VPNavBarTitle .title {
+    font-size: 1rem;
+  }
+}
+
+/* 超窄螢幕 (< 400px) */
+@media (max-width: 400px) {
+  .vp-doc h1 {
+    font-size: 1.5rem;
+  }
+  .vp-doc h2 {
+    font-size: 1.2rem;
+  }
+}

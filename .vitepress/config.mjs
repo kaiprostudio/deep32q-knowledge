@@ -83,14 +83,14 @@ export default defineConfig({
           ],
         },
         {
-          text: '經營審計（共 12 檔）',
+          text: '經營審計（共 13 檔）',
           collapsed: false,
           items: [
             { text: '經營審計總覽', link: '/審計報告庫/經營審計/' },
           ],
         },
         {
-          text: '財務審計（共 18 檔）',
+          text: '財務審計（共 19 檔）',
           collapsed: false,
           items: [
             { text: '財務審計總覽', link: '/審計報告庫/財務審計/' },
