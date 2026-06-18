@@ -445,14 +445,14 @@ function displayTitle(report) {
   padding: 12px 0;
   border: none;
   background: transparent;
-  color: #c8d8e8;
+  color: inherit;
   font-size: 1rem;
   cursor: pointer;
   text-align: left;
   transition: color 0.2s;
 }
 .accordion-item:hover .accordion-header {
-  color: #e8f0f8;
+  color: inherit;
 }
 .report-title {
   display: flex;
@@ -463,12 +463,14 @@ function displayTitle(report) {
   font-family: 'SF Mono', 'Fira Code', monospace;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #7eb8da;
+  color: inherit;
+  opacity: 0.7;
   min-width: 44px;
 }
 .chevron {
   font-size: 0.85rem;
-  color: #5a7a9a;
+  color: inherit;
+  opacity: 0.5;
   transition: transform 0.2s;
   margin-left: 8px;
 }
