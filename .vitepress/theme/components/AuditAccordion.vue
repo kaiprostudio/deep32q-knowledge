@@ -47,12 +47,13 @@
       <div
         v-for="(report, idx) in visibleReports"
         :key="idx"
+        ref="accordionRefs"
         class="accordion-item"
         :class="{ expanded: openIdx === idx }"
       >
         <button
           class="accordion-header"
-          @click="toggleReport(idx, report, $event)"
+          @click="toggleReport(idx, report)"
         >
           <span class="report-title">
             <span class="report-id">{{ report.id }}</span>
@@ -86,6 +87,7 @@ const props = defineProps({
 const activeTab = ref(0)
 const activeDateIdx = ref(0)
 const openIdx = ref(null)
+const accordionRefs = ref([])
 const loading = ref(false)
 const error = ref('')
 const renderedContent = ref('')
@@ -127,8 +129,7 @@ function formatDate(d) {
 }
 
 // --- 展開 / 收折邏輯 ---
-async function toggleReport(idx, report, event) {
-  const thisItem = event?.currentTarget
+async function toggleReport(idx, report) {
   if (openIdx.value === idx) {
     openIdx.value = null
     return
@@ -140,7 +141,7 @@ async function toggleReport(idx, report, event) {
 
   // 展開後立即 scroll 到該題最上方
   nextTick(() => {
-    const el = thisItem?.closest('.accordion-item')
+    const el = accordionRefs.value?.[idx]
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
