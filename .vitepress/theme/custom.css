@@ -123,6 +123,19 @@ body:has(.VPNavBar .nav a[href*="審計報告"]),
   margin: 1em 0;
 }
 
+/* ─── 報告內容文字顏色（淺色模式加深） ─── */
+.vp-doc .accordion-body {
+  color: #1a1a2e;
+}
+
+.vp-doc .accordion-body p,
+.vp-doc .accordion-body li,
+.vp-doc .accordion-body td,
+.vp-doc .accordion-body th,
+.vp-doc .accordion-body strong {
+  color: #1a1a2e;
+}
+
 /* ─── 手機響應：滿版 + 移除框線 ─── */
 @media (max-width: 768px) {
   .VPContent table {
