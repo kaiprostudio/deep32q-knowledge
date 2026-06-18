@@ -441,13 +441,11 @@ function displayTitle(report) {
   transform: rotate(90deg);
 }
 
-/* 展開區（報告內容） */
+/* 展開區（報告內容）— 一頁式流入頁面流，不限制高度 */
 .accordion-body {
   border-top: 1px solid #2a3a4a;
   padding: 20px 24px;
   background: #0e1622;
-  max-height: 80vh;
-  overflow-y: auto;
 }
 .loading-text {
   color: #6a8aaa;
@@ -554,7 +552,6 @@ function displayTitle(report) {
   }
   .accordion-body {
     padding: 14px 16px;
-    max-height: 70vh;
   }
 }
 </style>
