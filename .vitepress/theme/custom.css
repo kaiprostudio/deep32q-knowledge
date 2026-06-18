@@ -1,33 +1,98 @@
-/* Deep32Q 自訂樣式 — 手機 RWD 優化 + 字型放大 */
+/* Deep32Q 排版優化 — 長文閱讀設計 */
+/* 參考：Tailwind CSS Docs × Stripe Docs × GitBook */
 
-/* 全域基礎字型放大 */
+/* ─── Inter 字體載入（透過 config.mjs head） ─── */
+/* font-family 定義在 config.mjs head 中的 Google Fonts link */
+
+/* ─── 全域基礎 ─── */
 :root {
-  --vp-font-size-base: 18px;
+  --vp-font-size-base: 16px;
+  --vp-c-sidebar-bg: #0f172a;
+  --vp-c-sidebar-text: #e2e8f0;
+  --vp-c-sidebar-active: #60a5fa;
+  --vp-c-content-max-width: 720px;
+  --vp-c-content-line-height: 1.7;
+  /* 藍色品牌色保持 VitePress 預設不覆蓋 */
 }
 
-/* 內容區塊字型 */
+/* ─── 內文字型 ─── */
 .vp-doc {
-  font-size: 18px;
-  line-height: 1.8;
+  font-size: 16px;
+  line-height: var(--vp-c-content-line-height);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* 標題字型 */
-.vp-doc h1 { font-size: 1.8rem; margin: 1.2em 0 0.6em; }
-.vp-doc h2 { font-size: 1.5rem; margin: 1.1em 0 0.5em; }
-.vp-doc h3 { font-size: 1.3rem; margin: 1em 0 0.4em; }
-.vp-doc h4 { font-size: 1.15rem; margin: 0.9em 0 0.4em; }
+/* ─── 標題層級 ─── */
+.vp-doc h1 { font-size: 1.75rem; margin: 1.4em 0 0.6em; font-weight: 600; }
+.vp-doc h2 { font-size: 1.4rem; margin: 1.2em 0 0.5em; font-weight: 600; }
+.vp-doc h3 { font-size: 1.2rem; margin: 1em 0 0.4em; font-weight: 500; }
+.vp-doc h4 { font-size: 1.05rem; margin: 0.9em 0 0.4em; font-weight: 500; }
 
-/* 側邊欄字型 */
+/* ─── 主內容區限寬 ─── */
+/* VitePress 的 content-container 已經有限寬，這裡確保調整 */
+.content-container {
+  max-width: var(--vp-c-content-max-width) !important;
+}
+
+.VPContent .content-container {
+  max-width: var(--vp-c-content-max-width) !important;
+}
+
+/* ─── 側邊欄：深色背景 ─── */
 .VPSidebar {
-  font-size: 15px;
+  background: var(--vp-c-sidebar-bg) !important;
+  color: var(--vp-c-sidebar-text);
+  font-size: 14px;
 }
 
-/* Nav 字型 */
+/* 側邊欄連結文字 */
+.VPSidebar a {
+  color: var(--vp-c-sidebar-text) !important;
+}
+
+/* 側邊欄群組標題 */
+.VPSidebar .group > .item > .text {
+  color: #94a3b8 !important;
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* 側邊欄 active 項目 */
+.VPSidebar .active a {
+  color: var(--vp-c-sidebar-active) !important;
+  font-weight: 500;
+}
+
+/* 側邊欄 hover */
+.VPSidebar a:hover {
+  color: #cbd5e1 !important;
+}
+
+/* ─── 側邊欄與主區分隔線 ─── */
+/* VitePress 預設已有 border-right，讓它保留即可 */
+
+/* ─── 導覽條：透明無背景，底部細線 ─── */
 .VPNavBar {
-  font-size: 15px;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
-/* 表格在手機上水平捲動 */
+.VPNavBar.has-sidebar {
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+/* ─── 右側 On This Page (aside) ─── */
+/* 保留 VitePress 預設，不做隱藏 */
+
+/* ─── 段落間距 ─── */
+.vp-doc p {
+  margin: 1em 0;
+}
+
+/* ─── 表格：手機水平捲動 ─── */
 @media (max-width: 720px) {
   .VPContent table {
     display: block;
@@ -36,33 +101,12 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  /* 首頁卡片網格改為單欄 */
-  .vp-doc .grid-list,
-  .VPHome .VPFeatures .container .items {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* 內容區塊邊距 */
   .VPContent .content-container {
     padding-left: 1rem;
     padding-right: 1rem;
   }
 
-  /* 導覽標題 */
   .VPNavBarTitle .title {
     font-size: 1rem;
-  }
-}
-
-/* 超窄螢幕 (< 400px) */
-@media (max-width: 400px) {
-  .vp-doc h1 {
-    font-size: 1.4rem;
-  }
-  .vp-doc h2 {
-    font-size: 1.2rem;
-  }
-  .vp-doc h3 {
-    font-size: 1.1rem;
   }
 }
