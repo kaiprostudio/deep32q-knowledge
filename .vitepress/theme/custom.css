@@ -130,6 +130,17 @@ body:has(.VPNavBar .nav a[href*="審計報告"]),
   color: #111827 !important;
 }
 
+/* 報告標題文字跟隨主題（淺色/深色自適應） */
+.accordion-header {
+  color: inherit !important;
+}
+.accordion-header .report-title {
+  color: inherit !important;
+}
+.accordion-header .summary-text {
+  color: inherit !important;
+}
+
 /* ─── 手機響應：滿版 + 移除框線 ─── */
 @media (max-width: 768px) {
   .VPContent table {
