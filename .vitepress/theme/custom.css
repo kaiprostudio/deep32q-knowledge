@@ -15,6 +15,19 @@
   /* 藍色品牌色保持 VitePress 預設不覆蓋 */
 }
 
+/* ─── 桌面目錄/非報告頁面維持 720px ─── */
+/* ─── 報告頁面（審計庫路徑）放寬寬度 ─── */
+.VPContent .content-container,
+.content-container {
+  max-width: var(--vp-c-content-max-width) !important;
+}
+
+/* 路徑含 /審計報告庫/ 時放寬 */
+body:has(.VPNavBar .nav a[href*="審計報告"]),
+.vp-doc .audit-accordion-wrapper {
+  /* 保留給 accordion 內部處理 */
+}
+
 /* ─── 內文字型 ─── */
 .vp-doc {
   font-size: 16px;
@@ -29,14 +42,8 @@
 .vp-doc h4 { font-size: 1.05rem; margin: 0.9em 0 0.4em; font-weight: 500; }
 
 /* ─── 主內容區限寬 ─── */
-/* VitePress 的 content-container 已經有限寬，這裡確保調整 */
-.content-container {
-  max-width: var(--vp-c-content-max-width) !important;
-}
-
-.VPContent .content-container {
-  max-width: var(--vp-c-content-max-width) !important;
-}
+/* 審計報告頁面放寬至 960px，與 accordion 寬度一致 */
+/* 非報告頁面預設 720px */
 
 /* ─── 側邊欄：深色背景 ─── */
 .VPSidebar {
@@ -92,8 +99,8 @@
   margin: 1em 0;
 }
 
-/* ─── 表格：手機水平捲動 ─── */
-@media (max-width: 720px) {
+/* ─── 手機響應：滿版 + 移除框線 ─── */
+@media (max-width: 768px) {
   .VPContent table {
     display: block;
     width: 100%;
@@ -101,12 +108,23 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  .VPContent .content-container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  .VPContent .content-container,
+  .content-container {
+    max-width: 100% !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
   }
 
+  /* 手機：佔滿整個 viewport */
   .VPNavBarTitle .title {
     font-size: 1rem;
   }
+
+  /* 手機：accordion 滿版 */
+  .audit-accordion {
+    max-width: 100% !important;
+  }
 }
+
+/* ─── 桌面報告頁面寬度放寬 ─── */
+/* 因為 VitePress 不支援 path-based :has()，直接在 accordion 元件處理 */

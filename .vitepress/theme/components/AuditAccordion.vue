@@ -260,18 +260,18 @@ function displayTitle(report) {
 
 <style scoped>
 .audit-accordion {
-  max-width: 960px;
+  max-width: 100%;
   margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* 摘要卡片 */
 .summary-card {
-  background: linear-gradient(135deg, #1a2332 0%, #0d1520 100%);
-  border: 1px solid #2a3a4a;
-  border-radius: 12px;
-  padding: 24px 28px;
-  margin-bottom: 20px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 16px 0;
+  margin-bottom: 12px;
 }
 .summary-header {
   display: flex;
@@ -318,18 +318,19 @@ function displayTitle(report) {
   display: flex;
   gap: 6px;
   margin-bottom: 12px;
-  background: #161e2a;
-  border-radius: 10px;
-  padding: 4px;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  border-bottom: 1px solid #2a3a4a;
 }
 .date-tab-btn {
-  flex: 1;
-  padding: 10px 16px;
+  flex: none;
+  padding: 8px 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: 0;
   background: transparent;
   color: #7a8a9a;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
@@ -337,12 +338,11 @@ function displayTitle(report) {
 }
 .date-tab-btn:hover {
   color: #c0d0e0;
-  background: #1e2a3a;
 }
 .date-tab-btn.active {
-  background: #2a3a4a;
   color: #e0e8f0;
   font-weight: 600;
+  border-bottom: 2px solid #60a5fa;
 }
 .date-report-count {
   font-size: 0.8rem;
@@ -355,59 +355,61 @@ function displayTitle(report) {
   display: flex;
   gap: 4px;
   margin-bottom: 16px;
-  background: #161e2a;
-  border-radius: 10px;
-  padding: 4px;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  border-bottom: 1px solid #2a3a4a;
 }
 .tab-btn {
-  flex: 1;
-  padding: 8px 16px;
+  flex: none;
+  padding: 8px 14px;
   border: none;
-  border-radius: 8px;
+  border-radius: 0;
   background: transparent;
   color: #7a8a9a;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
 }
 .tab-btn:hover {
   color: #c0d0e0;
-  background: #1e2a3a;
 }
 .tab-btn.active {
-  background: #2a3a4a;
-  color: #e0e8f0;
+  color: #60a5fa;
   font-weight: 600;
+  border-bottom: 2px solid #60a5fa;
 }
 
 /* 報告清單 */
 .accordion-list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0;
 }
 .accordion-item {
-  border: 1px solid #222a3a;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #141c28;
-  transition: border-color 0.2s, background 0.2s;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+  transition: none;
+  border-bottom: 1px solid #1e2a3a;
+}
+.accordion-item:last-child {
+  border-bottom: none;
 }
 .accordion-item:hover {
-  border-color: #3a5a7a;
-  background: #1a2432;
+  background: transparent;
 }
 .accordion-item.expanded {
-  border-color: #3a6a9a;
-  background: #162030;
+  background: transparent;
 }
 .accordion-header {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 18px;
+  padding: 12px 0;
   border: none;
   background: transparent;
   color: #c8d8e8;
@@ -426,13 +428,13 @@ function displayTitle(report) {
 }
 .report-id {
   font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: #7eb8da;
-  min-width: 48px;
+  min-width: 44px;
 }
 .chevron {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #5a7a9a;
   transition: transform 0.2s;
   margin-left: 8px;
@@ -443,9 +445,9 @@ function displayTitle(report) {
 
 /* 展開區（報告內容）— 一頁式流入頁面流，不限制高度 */
 .accordion-body {
-  border-top: 1px solid #2a3a4a;
-  padding: 20px 24px;
-  background: #0e1622;
+  border: none;
+  padding: 16px 0 24px;
+  background: transparent;
 }
 .loading-text {
   color: #6a8aaa;
@@ -523,15 +525,15 @@ function displayTitle(report) {
 }
 
 /* 手機響應 */
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .summary-card {
-    padding: 16px 18px;
-  }
-  .stock-name {
-    font-size: 1.3rem;
+    padding: 12px 0;
   }
   .stock-code {
     font-size: 1.1rem;
+  }
+  .stock-name {
+    font-size: 1.3rem;
   }
   .audit-date {
     font-size: 0.85rem;
@@ -547,11 +549,19 @@ function displayTitle(report) {
     min-width: 36px;
   }
   .accordion-header {
-    padding: 12px 14px;
+    padding: 10px 0;
     font-size: 0.95rem;
   }
   .accordion-body {
-    padding: 14px 16px;
+    padding: 12px 0 20px;
+  }
+  .date-tab-btn {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+  .tab-btn {
+    padding: 6px 10px;
+    font-size: 0.85rem;
   }
 }
 </style>
