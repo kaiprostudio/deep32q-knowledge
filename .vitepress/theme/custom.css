@@ -124,16 +124,10 @@ body:has(.VPNavBar .nav a[href*="審計報告"]),
 }
 
 /* ─── 報告內容文字顏色（淺色模式加深） ─── */
-.vp-doc .accordion-body {
-  color: #1a1a2e;
-}
-
-.vp-doc .accordion-body p,
-.vp-doc .accordion-body li,
-.vp-doc .accordion-body td,
-.vp-doc .accordion-body th,
-.vp-doc .accordion-body strong {
-  color: #1a1a2e;
+/* 強制所有報告內文字為深色，不受 VitePress 主題影響 */
+.accordion-body,
+.accordion-body * {
+  color: #111827 !important;
 }
 
 /* ─── 手機響應：滿版 + 移除框線 ─── */
