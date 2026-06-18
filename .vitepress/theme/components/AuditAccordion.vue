@@ -73,7 +73,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, nextTick } from 'vue'
 
 const props = defineProps({
   stockCode: { type: String, required: true },
@@ -136,6 +136,14 @@ async function toggleReport(idx, report) {
   loading.value = true
   error.value = ''
   renderedContent.value = ''
+
+  // 展開後立即 scroll 到該題最上方
+  nextTick(() => {
+    const el = document.querySelector(`.accordion-item:nth-child(${idx + 1})`)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  })
 
   try {
     let p = report.path
