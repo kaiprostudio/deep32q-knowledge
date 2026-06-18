@@ -128,15 +128,13 @@ function displayTitle(report) {
 }
 
 function goToReport(report) {
-  // 將相對 path 轉為路由
-  // path 如 "./20260617/G01_公司歷史與創辦人.md"
+  if (typeof window === 'undefined') return
   let p = report.path
-  // 移除開頭的 "./"
   if (p.startsWith('./')) p = p.slice(2)
-  // 移除 .md 副檔名
   if (p.endsWith('.md')) p = p.slice(0, -3)
-  // 構建完整路由（相對於當前目錄）
-  router.go(p)
+  const currentPath = window.location.pathname
+  const dir = currentPath.substring(0, currentPath.lastIndexOf('/') + 1)
+  window.location.href = dir + p
 }
 </script>
 
