@@ -1,0 +1,18 @@
+# 通用分析模式指引 (Generic Analysis Mode)
+
+> 本目錄包含跨產業、跨公司通用的財務審核與投資分析模式。
+
+## 🛠️ 現有分析模式
+1. **[營收因子與定價權分析](file:///Users/kaipro/.openclaw/skills/NEW_Deep32Q/Deep32Q知識庫/分析模式/營收因子與定價權分析.md)**: 評估營收驅動力與毛利率擴張邏輯。
+2. **[估值與決策框架](file:///Users/kaipro/.openclaw/skills/NEW_Deep32Q/Deep32Q知識庫/分析模式/估值與決策框架.md)**: 基於安全邊際與籌碼面的綜合評價體系。
+3. **[現金流品質檢查](file:///Users/kaipro/.openclaw/skills/NEW_Deep32Q/Deep32Q知識庫/分析模式/現金流品質檢查.md)**: 排除盈餘虛胖，診斷核心獲利能力。
+4. **[存貨與營運週期分析](file:///Users/kaipro/.openclaw/skills/NEW_Deep32Q/Deep32Q知識庫/分析模式/存貨與營運週期分析.md)**: 監控存貨水位與去化效率。
+5. **[應收帳款品質分析](file:///Users/kaipro/.openclaw/skills/NEW_Deep32Q/Deep32Q知識庫/分析模式/應收帳款品質分析.md)**: 評估回收風險與客戶信用。
+
+## 🏗️ 使用原則
+1. **去個股化**: 這些模式應視為「空白模板」或「思考框架」。
+2. **數據導向**: 每個模式均配有對應的 FinMind API 採集清單。
+3. **動態更新**: 當發現新的通用風險因子（如：折舊黑洞、匯率敏感度）時，應回寫至對應模式中。
+
+---
+*最後更新：2026-04-30 (清理非通用研究報告)*

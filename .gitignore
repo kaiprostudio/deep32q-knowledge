@@ -1,2 +1,9 @@
 **/.DS_Store
 .tmp.driveupload/
+node_modules/
+.vitepress/cache/
+.vitepress/dist/
+__pycache__/
+*.pyc
+年報資料庫/
+_備份/
