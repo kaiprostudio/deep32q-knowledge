@@ -5,17 +5,31 @@
       <div class="summary-header">
         <span class="stock-code">{{ stockCode }}</span>
         <span class="stock-name">{{ stockName }}</span>
-        <span class="audit-date">{{ auditDate }}</span>
+        <span class="audit-date" v-if="singleDate">{{ singleDate }}</span>
       </div>
       <div v-if="rating" class="rating-bar" :class="ratingClass">
         {{ rating }}
       </div>
       <div class="report-count">
-        共 {{ reports.length }} 份報告
+        {{ allReportsCount }}
       </div>
     </div>
 
-    <!-- 題組 Tabs (經營組 / 財務組) -->
+    <!-- 日期版本 Tabs（多日期時顯示） -->
+    <div v-if="dates.length > 1" class="date-tab-bar">
+      <button
+        v-for="(d, idx) in dates"
+        :key="idx"
+        class="date-tab-btn"
+        :class="{ active: activeDateIdx === idx }"
+        @click="activeDateIdx = idx"
+      >
+        {{ formatDate(d) }}
+        <span class="date-report-count">({{ reportsByDate[d].length }})</span>
+      </button>
+    </div>
+
+    <!-- 題組 Tabs（經營組 / 財務組） -->
     <div v-if="hasTabs" class="tab-bar">
       <button
         v-for="(tab, idx) in tabs"
@@ -47,7 +61,7 @@
           <span class="chevron" :class="{ rotated: openIdx === idx }">▸</span>
         </button>
 
-        <!-- 展開區：顯示 .md 內容 -->
+        <!-- 展開區：顯示報告內容 -->
         <div v-if="openIdx === idx" class="accordion-body">
           <div v-if="loading" class="loading-text">載入中⋯</div>
           <div v-else-if="error" class="error-text">{{ error }}</div>
@@ -70,15 +84,52 @@ const props = defineProps({
 })
 
 const activeTab = ref(0)
+const activeDateIdx = ref(0)
 const openIdx = ref(null)
 const loading = ref(false)
 const error = ref('')
 const renderedContent = ref('')
 
+// --- 日期版本邏輯 ---
+const reportsByDate = computed(() => {
+  const map = {}
+  for (const r of props.reports) {
+    const d = r.date || props.auditDate || 'unknown'
+    if (!map[d]) map[d] = []
+    map[d].push(r)
+  }
+  return map
+})
+
+const dates = computed(() => {
+  return Object.keys(reportsByDate.value).sort().reverse()
+})
+
+const singleDate = computed(() => {
+  return dates.value.length === 1 ? dates.value[0] : null
+})
+
+// 全部統計
+const allReportsCount = computed(() => {
+  const total = props.reports.length
+  const verCount = dates.value.length
+  if (verCount > 1) {
+    return `共 ${total} 份報告（${verCount} 個版本）`
+  }
+  return `共 ${total} 份報告`
+})
+
+function formatDate(d) {
+  if (d.length === 8) {
+    return `${d.slice(0,4)}-${d.slice(4,6)}-${d.slice(6,8)}`
+  }
+  return d
+}
+
 // --- 展開 / 收折邏輯 ---
 async function toggleReport(idx, report) {
   if (openIdx.value === idx) {
-    openIdx.value = null   // 收折
+    openIdx.value = null
     return
   }
   openIdx.value = idx
@@ -87,10 +138,8 @@ async function toggleReport(idx, report) {
   renderedContent.value = ''
 
   try {
-    // 從 path 推算對應的 .html URL
     let p = report.path
     if (p.startsWith('./')) p = p.slice(2)
-    // 將 .md 改為 .html（VitePress build 產出的路徑）
     p = p.replace(/\.md$/, '.html')
     const currentPath = typeof window !== 'undefined' ? window.location.pathname : ''
     const dir = currentPath.substring(0, currentPath.lastIndexOf('/') + 1)
@@ -105,12 +154,10 @@ async function toggleReport(idx, report) {
     const htmlText = await resp.text()
     const div = document.createElement('div')
     div.innerHTML = htmlText
-    // 從 HTML 頁面中提取主要內容區
     const mainEl = div.querySelector('main > div') || div.querySelector('main') || div.querySelector('.vp-doc') || div.querySelector('.content')
     if (mainEl) {
       renderedContent.value = mainEl.innerHTML
     } else {
-      // fallback: 從 body 提取非 nav/sidebar/footer 的內容
       const body = div.querySelector('body')
       if (body) {
         const clones = []
@@ -130,57 +177,6 @@ async function toggleReport(idx, report) {
   } finally {
     loading.value = false
   }
-}
-
-// 簡易 Markdown → HTML 轉換（足夠呈現報告內容）
-function mdToHtml(text) {
-  if (!text) return ''
-  let html = text
-    // 程式碼區塊 (```) 先保護
-    .replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => {
-      const langClass = lang ? ` class="language-${lang}"` : ''
-      return `<pre${langClass}><code>${escapeHtml(code.trim())}</code></pre>`
-    })
-    // 行內程式碼
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-    // 標題 (# ~ ######)
-    .replace(/^###### (.*$)/gm, '<h6>$1</h6>')
-    .replace(/^##### (.*$)/gm, '<h5>$1</h5>')
-    .replace(/^#### (.*$)/gm, '<h4>$1</h4>')
-    .replace(/^### (.*$)/gm, '<h3>$1</h3>')
-    .replace(/^## (.*$)/gm, '<h2>$1</h2>')
-    .replace(/^# (.*$)/gm, '<h1>$1</h1>')
-    // 粗體
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    // 斜體
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    // 清單 (- 或 *)
-    .replace(/^[-*] (.+)$/gm, '<li>$1</li>')
-    // 數字清單
-    .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
-    // 分隔線
-    .replace(/^---$/gm, '<hr>')
-    // 圖片
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">')
-    // 連結
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-    // 合併連續 <li> 成 <ul>
-    .replace(/((?:<li>.*?<\/li>\n?)+)/g, '<ul>$1</ul>')
-    // 段落（雙換行）
-    .replace(/\n\n/g, '</p><p>')
-    .replace(/^(.+)$/gm, (m) => {
-      // 跳過已經被包裝在 HTML tag 裡的行
-      if (m.trim().startsWith('<')) return m
-      return `<p>${m}</p>`
-    })
-
-  return html
-}
-
-function escapeHtml(str) {
-  const div = document.createElement('div')
-  div.textContent = str
-  return div.innerHTML
 }
 
 // 評級 CSS class
@@ -211,7 +207,8 @@ const tabs = computed(() => {
   if (!hasTabs.value) return []
   const result = []
   for (const prefix of ['G', 'F']) {
-    const items = props.reports.filter(r => r.id && r.id.startsWith(prefix))
+    const items = (activeDateIdx.value === 0 ? currentDateReports.value : Object.values(reportsByDate.value)[activeDateIdx.value] || [])
+      .filter(r => r.id && r.id.startsWith(prefix))
     if (items.length) {
       const label = prefix === 'G' ? '🔵 經營組' : '🟢 財務組'
       result.push({ label, reports: items })
@@ -220,15 +217,29 @@ const tabs = computed(() => {
   return result
 })
 
-const visibleReports = computed(() => {
-  if (!hasTabs.value) return props.reports
-  const tab = tabs.value[activeTab.value]
-  return tab ? tab.reports : props.reports
+const currentDateReports = computed(() => {
+  const d = dates.value[activeDateIdx.value]
+  return d ? reportsByDate.value[d] : props.reports
 })
 
-// Tab 切換時關閉展開
+const visibleReports = computed(() => {
+  const raw = currentDateReports.value
+  if (!hasTabs.value) return raw
+  const tab = tabs.value[activeTab.value]
+  return tab ? tab.reports : raw
+})
+
+// Tab / 日期切換時關閉展開
 watch(activeTab, () => {
   openIdx.value = null
+  loading.value = false
+  error.value = ''
+  renderedContent.value = ''
+})
+
+watch(activeDateIdx, () => {
+  openIdx.value = null
+  activeTab.value = 0
   loading.value = false
   error.value = ''
   renderedContent.value = ''
@@ -259,7 +270,7 @@ function displayTitle(report) {
   background: linear-gradient(135deg, #1a2332 0%, #0d1520 100%);
   border: 1px solid #2a3a4a;
   border-radius: 12px;
-  padding: 20px 24px;
+  padding: 24px 28px;
   margin-bottom: 20px;
 }
 .summary-header {
@@ -269,25 +280,25 @@ function displayTitle(report) {
   flex-wrap: wrap;
 }
 .stock-code {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: #7eb8da;
 }
 .stock-name {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: #e0e8f0;
 }
 .audit-date {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: #7a8a9a;
   margin-left: auto;
 }
 .rating-bar {
-  margin-top: 12px;
-  padding: 6px 16px;
+  margin-top: 14px;
+  padding: 8px 18px;
   border-radius: 20px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
   display: inline-block;
 }
@@ -297,12 +308,49 @@ function displayTitle(report) {
 .rating-c { background: #7a5a20; color: #fff9c4; }
 .rating-d { background: #7a2020; color: #ffcdd2; }
 .report-count {
-  margin-top: 8px;
-  font-size: 0.8rem;
+  margin-top: 10px;
+  font-size: 0.9rem;
   color: #6a7a8a;
 }
 
-/* Tabs */
+/* 日期版本 Tabs */
+.date-tab-bar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+  background: #161e2a;
+  border-radius: 10px;
+  padding: 4px;
+}
+.date-tab-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #7a8a9a;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+.date-tab-btn:hover {
+  color: #c0d0e0;
+  background: #1e2a3a;
+}
+.date-tab-btn.active {
+  background: #2a3a4a;
+  color: #e0e8f0;
+  font-weight: 600;
+}
+.date-report-count {
+  font-size: 0.8rem;
+  color: #5a7a9a;
+  margin-left: 4px;
+}
+
+/* 題組 Tabs */
 .tab-bar {
   display: flex;
   gap: 4px;
@@ -318,7 +366,7 @@ function displayTitle(report) {
   border-radius: 8px;
   background: transparent;
   color: #7a8a9a;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
@@ -359,11 +407,11 @@ function displayTitle(report) {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
+  padding: 14px 18px;
   border: none;
   background: transparent;
   color: #c8d8e8;
-  font-size: 0.9rem;
+  font-size: 1rem;
   cursor: pointer;
   text-align: left;
   transition: color 0.2s;
@@ -378,13 +426,13 @@ function displayTitle(report) {
 }
 .report-id {
   font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #7eb8da;
   min-width: 48px;
 }
 .chevron {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: #5a7a9a;
   transition: transform 0.2s;
   margin-left: 8px;
@@ -396,26 +444,26 @@ function displayTitle(report) {
 /* 展開區（報告內容） */
 .accordion-body {
   border-top: 1px solid #2a3a4a;
-  padding: 16px 20px;
+  padding: 20px 24px;
   background: #0e1622;
   max-height: 80vh;
   overflow-y: auto;
 }
 .loading-text {
   color: #6a8aaa;
-  font-size: 0.85rem;
-  padding: 12px 0;
+  font-size: 0.95rem;
+  padding: 14px 0;
 }
 .error-text {
   color: #cc5555;
-  font-size: 0.85rem;
-  padding: 12px 0;
+  font-size: 0.95rem;
+  padding: 14px 0;
 }
 
 /* Markdown 渲染樣式 */
 .markdown-content {
-  font-size: 0.9rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.8;
   color: #c8d8e8;
 }
 .markdown-content :deep(h1),
@@ -424,10 +472,10 @@ function displayTitle(report) {
   color: #e0e8f0;
   margin: 1.2em 0 0.6em;
 }
-.markdown-content :deep(h1) { font-size: 1.3rem; }
-.markdown-content :deep(h2) { font-size: 1.15rem; }
-.markdown-content :deep(h3) { font-size: 1.05rem; }
-.markdown-content :deep(h4) { font-size: 1rem; }
+.markdown-content :deep(h1) { font-size: 1.5rem; }
+.markdown-content :deep(h2) { font-size: 1.3rem; }
+.markdown-content :deep(h3) { font-size: 1.15rem; }
+.markdown-content :deep(h4) { font-size: 1.05rem; }
 .markdown-content :deep(p) {
   margin: 0.6em 0;
 }
@@ -436,16 +484,16 @@ function displayTitle(report) {
 }
 .markdown-content :deep(code) {
   background: #1a2432;
-  padding: 2px 6px;
+  padding: 2px 8px;
   border-radius: 4px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #7eb8da;
 }
 .markdown-content :deep(pre) {
   background: #0c1420;
   border: 1px solid #1e2a3a;
   border-radius: 8px;
-  padding: 12px 16px;
+  padding: 14px 18px;
   overflow-x: auto;
   margin: 0.8em 0;
 }
@@ -455,11 +503,11 @@ function displayTitle(report) {
   color: #b8c8d8;
 }
 .markdown-content :deep(ul) {
-  padding-left: 20px;
+  padding-left: 24px;
   margin: 0.4em 0;
 }
 .markdown-content :deep(li) {
-  margin: 0.3em 0;
+  margin: 0.4em 0;
 }
 .markdown-content :deep(hr) {
   border: none;
@@ -479,32 +527,33 @@ function displayTitle(report) {
 /* 手機響應 */
 @media (max-width: 720px) {
   .summary-card {
-    padding: 14px 16px;
+    padding: 16px 18px;
   }
   .stock-name {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
   .stock-code {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   .audit-date {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     margin-left: 0;
     width: 100%;
     margin-top: 4px;
   }
   .report-title {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     flex-wrap: wrap;
   }
   .report-id {
     min-width: 36px;
   }
   .accordion-header {
-    padding: 10px 12px;
+    padding: 12px 14px;
+    font-size: 0.95rem;
   }
   .accordion-body {
-    padding: 12px 14px;
+    padding: 14px 16px;
     max-height: 70vh;
   }
 }

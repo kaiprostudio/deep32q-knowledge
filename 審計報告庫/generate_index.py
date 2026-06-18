@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deep32Q 審計報告公司 index.md 產生器"""
+"""Deep32Q 審計報告公司 index.md 產生器 — 支援多日期版本"""
 import os, re
 
 BASE = "/Users/kaipro/.openclaw/skills/NEW_Deep32Q/審計報告庫"
@@ -14,6 +14,8 @@ CNAME = {
     "1727_中華化": "中華化",
 }
 
+total_generated = 0
+
 for cat in ["經營審計", "財務審計"]:
     for d in sorted(os.listdir(os.path.join(BASE, cat))):
         cp = os.path.join(BASE, cat, d)
@@ -21,14 +23,18 @@ for cat in ["經營審計", "財務審計"]:
             continue
         code = d.split('_')[0]
         name = CNAME.get(d, d)
-        group = "G" if cat == "經營審計" else "F"
         group_label = "經營組" if cat == "經營審計" else "財務組"
 
-        # 掃描日期目錄 (YYYYMMDD)
+        # 掃描日期子目錄 (YYYYMMDD)
         dates = sorted([x for x in os.listdir(cp) if x.isdigit()], reverse=True)
+        if not dates:
+            continue
+
         items = []
         for dt in dates:
             dp = os.path.join(cp, dt)
+            if not os.path.isdir(dp):
+                continue
             for f in sorted(os.listdir(dp)):
                 if not f.endswith('.md') or f == 'index.md':
                     continue
@@ -63,4 +69,7 @@ for cat in ["經營審計", "財務審計"]:
         ]
         with open(os.path.join(cp, "index.md"), 'w', encoding='utf-8') as f:
             f.write("\n".join(lines) + "\n")
-        print(f"✅ {cat}/{d}")
+        total_generated += 1
+        print(f"✅ {cat}/{d} ({dates[0]} → {dates[-1]})")
+
+print(f"\n總計產生 {total_generated} 家公司 index.md")

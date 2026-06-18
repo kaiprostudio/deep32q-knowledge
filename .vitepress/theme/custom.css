@@ -1,4 +1,31 @@
-/* Deep32Q 自訂樣式 — 手機 RWD 優化 */
+/* Deep32Q 自訂樣式 — 手機 RWD 優化 + 字型放大 */
+
+/* 全域基礎字型放大 */
+:root {
+  --vp-font-size-base: 18px;
+}
+
+/* 內容區塊字型 */
+.vp-doc {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* 標題字型 */
+.vp-doc h1 { font-size: 1.8rem; margin: 1.2em 0 0.6em; }
+.vp-doc h2 { font-size: 1.5rem; margin: 1.1em 0 0.5em; }
+.vp-doc h3 { font-size: 1.3rem; margin: 1em 0 0.4em; }
+.vp-doc h4 { font-size: 1.15rem; margin: 0.9em 0 0.4em; }
+
+/* 側邊欄字型 */
+.VPSidebar {
+  font-size: 15px;
+}
+
+/* Nav 字型 */
+.VPNavBar {
+  font-size: 15px;
+}
 
 /* 表格在手機上水平捲動 */
 @media (max-width: 720px) {
@@ -15,13 +42,13 @@
     grid-template-columns: 1fr !important;
   }
 
-  /* 內容區塊邊距縮小 */
+  /* 內容區塊邊距 */
   .VPContent .content-container {
     padding-left: 1rem;
     padding-right: 1rem;
   }
 
-  /* 導覽標題字體縮小避免溢出 */
+  /* 導覽標題 */
   .VPNavBarTitle .title {
     font-size: 1rem;
   }
@@ -30,9 +57,12 @@
 /* 超窄螢幕 (< 400px) */
 @media (max-width: 400px) {
   .vp-doc h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   .vp-doc h2 {
     font-size: 1.2rem;
+  }
+  .vp-doc h3 {
+    font-size: 1.1rem;
   }
 }
