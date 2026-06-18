@@ -106,12 +106,12 @@ export default defineConfig({
         },
         {
           text: `🔵 經營審計（共 ${經營審計列表.length} 檔）`,
-          collapsed: false,
+          collapsed: true,
           items: 經營審計列表,
         },
         {
           text: `🟢 財務審計（共 ${財務審計列表.length} 檔）`,
-          collapsed: false,
+          collapsed: true,
           items: 財務審計列表,
         },
       ],
