@@ -1,0 +1,19 @@
+import { ssrRenderAttrs } from "vue/server-renderer";
+import { useSSRContext } from "vue";
+import { _ as _export_sfc } from "./plugin-vue_export-helper.1tPrXgE0.js";
+const __pageData = JSON.parse('{"title":"G04 核心產品與市佔 — 力成科技 (6239)","description":"","frontmatter":{},"headers":[],"relativePath":"審計報告庫/經營審計/6239_力成/20260617/G04_核心產品與市佔.md","filePath":"審計報告庫/經營審計/6239_力成/20260617/G04_核心產品與市佔.md"}');
+const _sfc_main = { name: "審計報告庫/經營審計/6239_力成/20260617/G04_核心產品與市佔.md" };
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<div${ssrRenderAttrs(_attrs)}><h1 id="g04-核心產品與市佔-—-力成科技-6239" tabindex="-1">G04 核心產品與市佔 — 力成科技 (6239) <a class="header-anchor" href="#g04-核心產品與市佔-—-力成科技-6239" aria-label="Permalink to &quot;G04 核心產品與市佔 — 力成科技 (6239)&quot;">​</a></h1><h2 id="📋-審計題目" tabindex="-1">📋 審計題目 <a class="header-anchor" href="#📋-審計題目" aria-label="Permalink to &quot;📋 審計題目&quot;">​</a></h2><p>評析力成科技的核心產品組合、市場佔有率、產品競爭力及在產業鏈中的定位。</p><h2 id="🎯-專家直斷" tabindex="-1">🎯 專家直斷 <a class="header-anchor" href="#🎯-專家直斷" aria-label="Permalink to &quot;🎯 專家直斷&quot;">​</a></h2><p>全球前五大OSAT，記憶體封測第三大。核心競爭力在DRAM/NAND封測與FOPLP先進封裝，2026年Q1邏輯產品營收佔比已達43%，產品組合持續優化。</p><h2 id="📊-診斷評級" tabindex="-1">📊 診斷評級 <a class="header-anchor" href="#📊-診斷評級" aria-label="Permalink to &quot;📊 診斷評級&quot;">​</a></h2><p>2026年Q1營收結構：封裝67%、測試22%、SiP/模組11%；應用別：邏輯43%、NAND 26%、DRAM 20%。全球封測CR5約67.5%，力成排名第五（市佔約5-6%），記憶體封測第三大。FOPLP良率逾90%、預計2027年量產。整體評級優，記憶體封測龍頭地位穩固。（數據來源：2026Q1法說會、CMoney）</p><h2 id="🔍-答詢詳解" tabindex="-1">🔍 答詢詳解 <a class="header-anchor" href="#🔍-答詢詳解" aria-label="Permalink to &quot;🔍 答詢詳解&quot;">​</a></h2><p>力成科技的核心產品線與市場定位可從以下面向深入理解：</p><p><strong>一、產品服務結構</strong> 力成提供半導體後段一站式服務：晶圓凸塊（Bumping）→ 晶圓測試（CP Test）→ IC封裝（Assembly）→ 最終測試（FT Test）→ 系統級封裝（SiP）。2026年Q1三大服務類別佔比為封裝67%、測試22%、SiP/模組11%。</p><p><strong>二、產品應用結構</strong></p><ul><li>邏輯產品43%：包含AI/HPC晶片、CPU/GPU晶片、網路晶片等，為2025-2026年成長最快的產品線。NVIDIA H100晶片封測份額佔比可觀，CoWoS外溢訂單2025年貢獻營收。</li><li>NAND Flash 26%：包含eSSD、UFS、eMCP等。受惠於AI伺服器帶動eSSD需求強勁，2026年持續成長。</li><li>DRAM 20%：承接美光、金士頓等大廠DRAM封測訂單。美光簽署五年LTA，保障50% DRAM封測產能。</li></ul><p><strong>三、與同業對比</strong> 相比日月光（年營收約6,000億、全球第一）的巨型平台模式，力成走的是專精路線：聚焦記憶體+邏輯封測雙引擎，FOPLP先進封裝進度領先日月光（力成良率已達95%，日月光600x600規格尚在試產）。相較京元電子（強在AI晶片測試），力成的強項在封裝端尤其是記憶體封裝。</p><p><strong>四、競爭力指標</strong></p><ul><li>全球最大DRAM封測產能之一（月產1.2億顆）</li><li>FOPLP良率95%接近量產門檻，為台灣封測廠領先者</li><li>車用封測通過18項ASIL-D認證，為全球唯一</li><li>專利累計1,352件（3D封裝佔58%）</li></ul><h2 id="💡-專家評析" tabindex="-1">💡 專家評析 <a class="header-anchor" href="#💡-專家評析" aria-label="Permalink to &quot;💡 專家評析&quot;">​</a></h2><p><strong>🔴 空方觀點（利空風險）</strong></p><ol><li><strong>市場集中度風險</strong>：全球封測CR5已達67.5%，龍頭日月光營收規模約力成6-7倍。力成在規模經濟上難與日月光正面競爭，大客戶（如美光、金士頓）議價能力強，封測單價長期面臨壓力。</li><li><strong>先進封裝量產時程不確定性</strong>：FOPLP預計2027年中量產，但超大尺寸（510x515mm）面板級封裝的設備穩定性與良率爬坡仍存在變數。若量產延遲，成長動能可能延後反映。</li></ol><p><strong>🟢 多方觀點（機會可能性）</strong></p><ol><li><strong>邏輯產品結構升級</strong>：邏輯產品營收佔比從2024年約30%提升至2026年Q1的43%，AI/HPC晶片封測單價遠高於傳統記憶體封測，產品組合優化直接推升毛利率（從17.1%→19.4%）。</li><li><strong>FOPLP先行者紅利</strong>：面板級封裝被視為下一世代封裝主流，力成在此技術深耕超過8年，良率高達95%。相較日月光才剛進入600x600試產，力成享有明確的先發優勢，有機會在2027-2028年搶佔AI晶片封裝大單。</li></ol><h2 id="📚-證據來源" tabindex="-1">📚 證據來源 <a class="header-anchor" href="#📚-證據來源" aria-label="Permalink to &quot;📚 證據來源&quot;">​</a></h2><ul><li>web_search：力成 6239 核心產品 市佔率 封測 2025（CMoney分析、鉅亨網）</li><li>web_search：力成 6239 營收結構 2025 2026（Fugle法說會備忘錄）</li><li>tavily_search：力成 6239 FOPLP 先進封裝（Yahoo財經、工商時報）</li><li>FinMind：TaiwanStockRevenue</li></ul></div>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("審計報告庫/經營審計/6239_力成/20260617/G04_核心產品與市佔.md");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const G04________ = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+export {
+  __pageData,
+  G04________ as default
+};

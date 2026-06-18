@@ -1,0 +1,19 @@
+import { ssrRenderAttrs } from "vue/server-renderer";
+import { useSSRContext } from "vue";
+import { _ as _export_sfc } from "./plugin-vue_export-helper.1tPrXgE0.js";
+const __pageData = JSON.parse('{"title":"G04: 核心產品與競爭優勢 - 投資研究員審計報告","description":"","frontmatter":{},"headers":[],"relativePath":"審計報告庫/經營審計/8103_瀚荃/20260425/G04_核心產品與競爭優勢.md","filePath":"審計報告庫/經營審計/8103_瀚荃/20260425/G04_核心產品與競爭優勢.md"}');
+const _sfc_main = { name: "審計報告庫/經營審計/8103_瀚荃/20260425/G04_核心產品與競爭優勢.md" };
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<div${ssrRenderAttrs(_attrs)}><h1 id="g04-核心產品與競爭優勢-投資研究員審計報告" tabindex="-1">G04: 核心產品與競爭優勢 - 投資研究員審計報告 <a class="header-anchor" href="#g04-核心產品與競爭優勢-投資研究員審計報告" aria-label="Permalink to &quot;G04: 核心產品與競爭優勢 - 投資研究員審計報告&quot;">​</a></h1><h2 id="📋-審計題目" tabindex="-1">📋 審計題目 <a class="header-anchor" href="#📋-審計題目" aria-label="Permalink to &quot;📋 審計題目&quot;">​</a></h2><p>公司的核心產品與服務為何？針對的目標客群是誰？對比同業具備何種技術或成本優勢？</p><h2 id="🎯-專家直斷" tabindex="-1">🎯 專家直斷 <a class="header-anchor" href="#🎯-專家直斷" aria-label="Permalink to &quot;🎯 專家直斷&quot;">​</a></h2><p>瀚荃核心營收來源為<strong>連接器(65%-70%)<strong>及</strong>線纜組件(25%-30%)</strong>，主力供應AI伺服器PSU電源大廠（台達電、光寶科）及NB品牌客戶。核心競爭優勢在高瓦數板對板電源連接器量產工藝與全球7廠彈性產能調度能力。護城河歸類<strong>中弱</strong>——AI電源連接器具先發量產優勢，但同業正在追趕且替代路徑存在。</p><h2 id="📊-診斷評級" tabindex="-1">📊 診斷評級 <a class="header-anchor" href="#📊-診斷評級" aria-label="Permalink to &quot;📊 診斷評級&quot;">​</a></h2><p><strong>A- (良，偏中上)</strong>：產品在AI伺服器板端電源連接器領域具先發地位，毛利率從2023年30.8%-36.7%升至2025Q3-Q4的38.3%-39.1%，連接器族群中排前段。但護城河受限：(1)板對板連接器半標準化，同業可模具切入；(2)經電源廠間接供貨CSP，議價權受中間商制肘。</p><h2 id="🔍-答詢詳解" tabindex="-1">🔍 答詢詳解 <a class="header-anchor" href="#🔍-答詢詳解" aria-label="Permalink to &quot;🔍 答詢詳解&quot;">​</a></h2><ol><li><p>營收結構：連接器65%-70%(AI伺服器PSU/BBU/CDU+NB網通)、線纜組件25%-30%(車用/新能源)、電子配件&lt;3%。應用別：伺服器/網通佔比從2024年22%→2026Q1 41%-42%(AI電源5%→21%)，NB/消費電子~40%→~25%。2025全年營收33.35億(YoY+6.9%)，2026Q1 9.10億(YoY+23.3%)。值得關注的是，非AI的NB/消費電子業務持續萎縮，若AI增速放緩將面臨營收結構失衡風險。</p></li><li><p>客群：直供兩大電源供應器大廠(台達電/光寶科)，間接供貨AWS/Google ASIC伺服器及NVIDIA GPU。客戶結構呈「中間商依賴型」——為Tier 2供應商，議價權受制於電源廠。兩大電源廠合計佔營收估15%-20%，集中度中高。若任一電源廠決定自製板端連接器（已有前例），瀚荃將直接失去該客戶全部訂單。</p></li><li><p>毛利階差：瀚荃2025Q3毛利率38.3% vs 嘉澤~30%-32%、宏致~28%-30%、同業均值~30%。溢價來源：(1)高瓦數電源連接器規格升級紅利(機櫃功率3kW→110kW)；(2)伺服器佔比持續拉高；(3)利基型產品定價能力強。風險：2025H1毛利率曾回落37.5%，新產品溢價隨同業追趕可能收窄。</p></li></ol><h2 id="💡-專家評析" tabindex="-1">💡 專家評析 <a class="header-anchor" href="#💡-專家評析" aria-label="Permalink to &quot;💡 專家評析&quot;">​</a></h2><ol><li>客戶集中度致命級：若兩大電源廠任一切換供應商，瀚荃AI營收將結構性崩塌；轉換成本中等(模具驗證6-12月)但非不可替代，尤其當技術規格標準化後切換成本會進一步降低。2. 同業降維風險：嘉澤營收為瀚荃10倍以上，若規模降價搶攻，毛利溢價快速蒸發——嘉澤在研發預算與模具開拓資源上遠超瀚荃，一旦決定進入同一細分市場，瀚荃的利基溢價可能被價格戰擊潰，這是小型連接器廠在AI浪潮中的典型結構性風險。3. 規格降級風險：若AI功率密度提升低於預期（機櫃功率從110kW趨緩回60-80kW），單機連接器用量與價值邏輯同步打折，毛利率將回歸連接器產業均值30%左右，屆時EPS恐回落至3-4元區間。4. 折舊壓力上升：越南新廠投產後折舊費用增加，若產能利用率未達損平點，將額外壓縮獲利空間，AI電源的溢價紅利可能部分被折舊侵蝕。</li></ol><h2 id="📚-證據來源" tabindex="-1">📚 證據來源 <a class="header-anchor" href="#📚-證據來源" aria-label="Permalink to &quot;📚 證據來源&quot;">​</a></h2><ol><li>FinMind finance 8103: 2023Q2-2025Q4季報</li><li>FinMind revenue 8103/3533/3605: 月營收YoY</li><li>經濟日報2026/04/10: 「瀚荃營收／3月3.32億元、年增25.79%」</li><li>自由財經2026/04: 「瀚荃AI比重上看3成」</li><li>Readmo.ai分析: 「瀚荃(8103) EPS挑戰6.5元」</li><li>StockFeel: 營收佔比(連接器67.8%/線纜27.9%/配件3.2%)</li></ol><hr><p><strong>報告寫入路徑</strong>：/Users/kaipro/.openclaw/skills/NEW_Deep32Q/審計報告庫/8103_瀚荃/20260425/經營組/G04_核心產品與競爭優勢.md <strong>審計身分</strong>：投資研究員 (finance-investment-researcher) | Deep32Q L3 <strong>數據時效</strong>：截至2026年4月25日最新公開數據</p></div>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("審計報告庫/經營審計/8103_瀚荃/20260425/G04_核心產品與競爭優勢.md");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const G04__________ = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+export {
+  __pageData,
+  G04__________ as default
+};

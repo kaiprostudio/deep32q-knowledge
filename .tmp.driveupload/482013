@@ -1,0 +1,19 @@
+import { ssrRenderAttrs } from "vue/server-renderer";
+import { useSSRContext } from "vue";
+import { _ as _export_sfc } from "./plugin-vue_export-helper.1tPrXgE0.js";
+const __pageData = JSON.parse('{"title":"被動元件研究","description":"","frontmatter":{},"headers":[],"relativePath":"Deep32Q知識庫/產業洞察/被動元件研究/index.md","filePath":"Deep32Q知識庫/產業洞察/被動元件研究/index.md"}');
+const _sfc_main = { name: "Deep32Q知識庫/產業洞察/被動元件研究/index.md" };
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<div${ssrRenderAttrs(_attrs)}><h1 id="被動元件研究" tabindex="-1">被動元件研究 <a class="header-anchor" href="#被動元件研究" aria-label="Permalink to &quot;被動元件研究&quot;">​</a></h1><ul><li><a href="./MLCC深度研究.html">MLCC 深度研究</a></li><li><a href="./台股標的盤點_2026.html">台股被動元件標的盤點 2026</a></li><li><a href="./晶片電阻深度研究.html">晶片電阻深度研究</a></li><li><a href="./被動元件_產業總覽.html">被動元件產業總覽</a></li><li><a href="./被動元件供應鏈圖譜.html">被動元件供應鏈圖譜</a></li><li><a href="./追蹤指標.html">被動元件產業追蹤指標</a></li><li><a href="./電感深度研究.html">電感深度研究</a></li></ul></div>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Deep32Q知識庫/產業洞察/被動元件研究/index.md");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const index = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+export {
+  __pageData,
+  index as default
+};

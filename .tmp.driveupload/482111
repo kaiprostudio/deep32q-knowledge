@@ -1,0 +1,19 @@
+import { ssrRenderAttrs } from "vue/server-renderer";
+import { useSSRContext } from "vue";
+import { _ as _export_sfc } from "./plugin-vue_export-helper.1tPrXgE0.js";
+const __pageData = JSON.parse('{"title":"CoPoS 全產業鏈深度研究：01 技術本質","description":"","frontmatter":{},"headers":[],"relativePath":"Deep32Q知識庫/產業洞察/CoPoS/01_技術本質.md","filePath":"Deep32Q知識庫/產業洞察/CoPoS/01_技術本質.md"}');
+const _sfc_main = { name: "Deep32Q知識庫/產業洞察/CoPoS/01_技術本質.md" };
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<div${ssrRenderAttrs(_attrs)}><h1 id="copos-全產業鏈深度研究-01-技術本質" tabindex="-1">CoPoS 全產業鏈深度研究：01 技術本質 <a class="header-anchor" href="#copos-全產業鏈深度研究-01-技術本質" aria-label="Permalink to &quot;CoPoS 全產業鏈深度研究：01 技術本質&quot;">​</a></h1><h2 id="摘要" tabindex="-1">摘要 <a class="header-anchor" href="#摘要" aria-label="Permalink to &quot;摘要&quot;">​</a></h2><p>CoPoS（Chip-on-Panel-on-Substrate）並非全新製程節點，而是將先進封裝從「圓形晶圓」推向「方形面板」的架構升級。其核心目的是在 AI 晶片面積持續放大、異質整合密度提高的趨勢下，突破 CoWoS 在光罩尺寸與面積利用率上的物理限制，並提供更大的中介層承載面積、更多 HBM 與 chiplet 整合空間。</p><p>相比 CoWoS，CoPoS 的差異在於把中介層從 300mm 圓形矽載板改為方形玻璃面板或有機載板，並在面板上製作高密度 RDL（重佈線層），最後再封裝到基板。此一「化圓為方」方向，一方面可望把面積利用率從傳統圓形晶圓的明顯邊角浪費拉高，另一方面也讓超大封裝尺寸的製造更具經濟性。</p><p>但這不等於玻璃基板已經全面取代有機載板。玻璃基板（TGV）更像是 CoPoS 路徑中的「延伸選項」，用來解決超大型封裝的翹曲、平整度與高密度互連問題。若導入玻璃核心基板（Glass Core Substrate），將帶來更低熱膨脹係數、更高平整度與更細微線路能力，但同時也引入脆性處理、TGV 成型與金屬化、以及大面積機械可靠度等新挑戰。</p><h2 id="事實與數據" tabindex="-1">事實與數據 <a class="header-anchor" href="#事實與數據" aria-label="Permalink to &quot;事實與數據&quot;">​</a></h2><ul><li>CoPoS 被業界與媒體描述為將中介層從圓形晶圓改為方形面板 RDL 的架構，尺寸方向包括 310×310mm、515×510mm、750×620mm 等，初期多從較小面板規格起步。來源：TechNews 科技新報、商周、經濟日報。</li><li>與 CoWoS 相比，CoPoS 的關鍵差異在於以面板取代傳統 12 吋圓形載板，可望提升面積使用效率，支援更大封裝並整合更多晶片與記憶體。來源：TechNews 科技新報、商周。</li><li>FOPLP（扇出型面板級封裝）與 CoPoS 雖然都屬於「面板化」方向，但定位不同：FOPLP 多用於較成本導向的成熟或邊緣應用；CoPoS 則定位在高端 AI、HPC 與超大異質整合封裝。來源：商周。</li><li>玻璃基板被視為 CoPoS 的重要延伸技術方向，用以改善大型封裝的翹曲與散熱限制，但目前產業討論多強調其將從試產、認證逐步走向量產，並非一蹴可幾。來源：商周、Yole Group 系列公開摘要。</li><li>在 CoWoS 框架下，CoWoS-L、CoWoS-R、CoWoS-S 各有不同中介層與互連密度取捨；CoPoS 則可視為 CoWoS 架構往面板化延伸，用以處理更大封裝尺寸。來源：TechNews 科技新報。</li></ul><h2 id="產業意涵" tabindex="-1">產業意涵 <a class="header-anchor" href="#產業意涵" aria-label="Permalink to &quot;產業意涵&quot;">​</a></h2><p>CoPoS 的技術本質決定它不是單純「更便宜的 CoWoS」，而是「更可擴展的超大封裝平台」。這代表未來 AI GPU、AI ASIC、大型 switch 與 HPC 模組若持續走向多 die、多 HBM、CPO（共封裝光學）整合，面板化封裝的戰略價值將持續提升。</p><p>不過，這也意味著技術風險將從傳統產能瓶頸轉向製程穩定性、翹曲控制、材料可靠度與檢測密度。誰能在良率、對位、清洗、熱處理與量測環節率先建立穩定製程，誰就更有機會拿到下一代先進封裝訂單。</p><h2 id="來源引用" tabindex="-1">來源引用 <a class="header-anchor" href="#來源引用" aria-label="Permalink to &quot;來源引用&quot;">​</a></h2><ul><li>TechNews 科技新報，《CoWoS、CoPoS、CoWoP 傻傻分不清，誰才是下一代最該關注的技術？》</li><li>商業周刊，《CoPoS 是什麼？概念股有哪些？台積電下一代先進封裝技術全解析》</li><li>經濟日報，《台積電先進封裝技術升級 首波 CoPoS 供應鏈出爐》</li><li>Yole Group 公開摘要，《Status of the Advanced Packaging Industry 2025》</li></ul><h2 id="風險與不確定性提醒" tabindex="-1">風險與不確定性提醒 <a class="header-anchor" href="#風險與不確定性提醒" aria-label="Permalink to &quot;風險與不確定性提醒&quot;">​</a></h2><ul><li>玻璃基板在大面板下的脆性、裂紋擴散與機械可靠度仍在驗證階段。</li><li>TGV 製程的成型、金屬化與可靠度是新技術變數，未必會與面板化進度同步成熟。</li><li>CoPoS 與 FOPLP 的邊界在媒體與市場討論中常被混用，實際技術路徑與量產定位仍需以官方與客戶公告為準。</li><li>面板化封裝若良率不穩，可能延後導入時程或改變首波應用場景。</li></ul></div>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Deep32Q知識庫/產業洞察/CoPoS/01_技術本質.md");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const _01_____ = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+export {
+  __pageData,
+  _01_____ as default
+};

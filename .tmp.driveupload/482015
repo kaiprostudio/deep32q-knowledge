@@ -1,0 +1,19 @@
+import { ssrRenderAttrs } from "vue/server-renderer";
+import { useSSRContext } from "vue";
+import { _ as _export_sfc } from "./plugin-vue_export-helper.1tPrXgE0.js";
+const __pageData = JSON.parse('{"title":"PCB研究","description":"","frontmatter":{},"headers":[],"relativePath":"Deep32Q知識庫/產業洞察/PCB研究/index.md","filePath":"Deep32Q知識庫/產業洞察/PCB研究/index.md"}');
+const _sfc_main = { name: "Deep32Q知識庫/產業洞察/PCB研究/index.md" };
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<div${ssrRenderAttrs(_attrs)}><h1 id="pcb研究" tabindex="-1">PCB研究 <a class="header-anchor" href="#pcb研究" aria-label="Permalink to &quot;PCB研究&quot;">​</a></h1><ul><li><a href="./ABF載板深度研究.html">ABF 載板深度研究</a></li><li><a href="./AI伺服器PCB深度研究.html">AI 伺服器 PCB 深度研究</a></li><li><a href="./CCL銅箔基板深度研究.html">CCL 銅箔基板深度研究</a></li><li><a href="./LEO衛星與特殊應用PCB研究.html">LEO 衛星與特殊應用 PCB 研究</a></li><li><a href="./PCB_產業總覽.html">PCB 產業總覽</a></li><li><a href="./PCB供應鏈圖譜與技術路線圖.html">PCB 供應鏈圖譜與技術路線圖</a></li><li><a href="./台股PCB標的盤點_2026.html">台股 PCB 標的盤點 2026</a></li><li><a href="./追蹤指標.html">PCB 產業持續監控指標</a></li></ul></div>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Deep32Q知識庫/產業洞察/PCB研究/index.md");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const index = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+export {
+  __pageData,
+  index as default
+};

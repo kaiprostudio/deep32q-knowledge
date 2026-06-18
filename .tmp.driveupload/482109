@@ -1,0 +1,19 @@
+import { ssrRenderAttrs } from "vue/server-renderer";
+import { useSSRContext } from "vue";
+import { _ as _export_sfc } from "./plugin-vue_export-helper.1tPrXgE0.js";
+const __pageData = JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"審計報告庫/財務審計/6903_巨漢/20260502/F14_負債結構與償債壓力測試_投資研究員.md","filePath":"審計報告庫/財務審計/6903_巨漢/20260502/F14_負債結構與償債壓力測試_投資研究員.md"}');
+const _sfc_main = { name: "審計報告庫/財務審計/6903_巨漢/20260502/F14_負債結構與償債壓力測試_投資研究員.md" };
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<div${ssrRenderAttrs(_attrs)}><h2 id="📋-審計題目" tabindex="-1">📋 審計題目 <a class="header-anchor" href="#📋-審計題目" aria-label="Permalink to &quot;📋 審計題目&quot;">​</a></h2><p>負債結構與償債壓力測試</p><h2 id="🎯-專家直斷" tabindex="-1">🎯 專家直斷 <a class="header-anchor" href="#🎯-專家直斷" aria-label="Permalink to &quot;🎯 專家直斷&quot;">​</a></h2><p>巨漢零負債經營——無任何銀行借款或應付公司債。流動比率 &gt;300%，速動比率 &gt;280%，利息保障倍數 &gt;50 倍。負債幾乎全為營運性（合約負債 6.27 億、應付帳款 3-5 億），償債能力極強，無違約風險。</p><h2 id="📊-診斷評級" tabindex="-1">📊 診斷評級 <a class="header-anchor" href="#📊-診斷評級" aria-label="Permalink to &quot;📊 診斷評級&quot;">​</a></h2><p>A+（極優）。無銀行借款、無公司債、無租賃負債，利息保障倍數 &gt;50 倍。利空：零負債雖安全但 ROE 未能最大化。若能適度借款（負債比 20-30%），ROE 可望從 ~20% 提升至 25%+，管理層財務政策過於保守。</p><h2 id="🔍-答詢詳解" tabindex="-1">🔍 答詢詳解 <a class="header-anchor" href="#🔍-答詢詳解" aria-label="Permalink to &quot;🔍 答詢詳解&quot;">​</a></h2><ol><li><strong>負債結構</strong>：2025 年總負債約 12-15 億，其中合約負債（客戶預付款）6.27 億佔 50%、應付帳款及票據 4-5 億佔 35%、其他流動負債 1-2 億佔 15%。無短期借款、無長期借款、無應付公司債。零銀行借款在工程統包業中相當罕見（同業通常有 20-40% 負債比）。</li><li><strong>償債壓力測試</strong>：利息支出約 300-500 萬/年（主要為銀行手續費），利息保障倍數 &gt;50 倍。模擬利率上升 1%（100bps），對 EPS 影響趨近於零。若營收衰退 30%，公司仍可維持正營業利益且正常償付所有應付款項。</li><li><strong>流動性分析</strong>：流動資產中現金佔約 60%（17-22 億），速動資產（扣除存貨）約 30-33 億。流動負債約 10-12 億，流動比率 &gt;300%，速動比率 &gt;280%。短期償債能力極強。</li></ol><h2 id="💡-專家評析" tabindex="-1">💡 專家評析 <a class="header-anchor" href="#💡-專家評析" aria-label="Permalink to &quot;💡 專家評析&quot;">​</a></h2><ol><li><strong>過度保守的資本結構風險</strong>：零負債是最安全的財務結構，但對於股東而言並非最優。公司可用低成本借款來擴大業務或提高股利，而不需要動用自有資金。每年損失利息稅盾約 1,000-2,000 萬（以借款 10 億、利率 3% 計算），長期股東權益受損。</li><li><strong>併購彈性未被充分利用</strong>：帳上 17-22 億現金若用於策略性併購（如垂直整合或新市場拓展），可加速成長。目前資金完全閒置，機會成本高。管理層應思考更積極的資本配置策略。</li><li><strong>零負債非長期競爭優勢</strong>：在低利率環境下，零負債並非競爭優勢——競爭同業可透過借款擴大營運規模。若同業借款擴張，巨漢可能因成長速度較慢而失去市佔率。</li></ol><h2 id="📚-證據來源" tabindex="-1">📚 證據來源 <a class="header-anchor" href="#📚-證據來源" aria-label="Permalink to &quot;📚 證據來源&quot;">​</a></h2><p>FinMind：TaiwanStockBalanceSheet（2023-2025） 比較同業負債比（聖暉 ~40%、帆宣 ~35%）</p></div>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("審計報告庫/財務審計/6903_巨漢/20260502/F14_負債結構與償債壓力測試_投資研究員.md");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const F14__________________ = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+export {
+  __pageData,
+  F14__________________ as default
+};

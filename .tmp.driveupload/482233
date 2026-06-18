@@ -1,0 +1,19 @@
+import { ssrRenderAttrs } from "vue/server-renderer";
+import { useSSRContext } from "vue";
+import { _ as _export_sfc } from "./plugin-vue_export-helper.1tPrXgE0.js";
+const __pageData = JSON.parse('{"title":"尿素研究索引","description":"","frontmatter":{},"headers":[],"relativePath":"Deep32Q知識庫/產業洞察/黃豆研究/尿素研究索引.md","filePath":"Deep32Q知識庫/產業洞察/黃豆研究/尿素研究索引.md"}');
+const _sfc_main = { name: "Deep32Q知識庫/產業洞察/黃豆研究/尿素研究索引.md" };
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<div${ssrRenderAttrs(_attrs)}><h1 id="尿素研究索引" tabindex="-1">尿素研究索引 <a class="header-anchor" href="#尿素研究索引" aria-label="Permalink to &quot;尿素研究索引&quot;">​</a></h1><blockquote><p>尿素是黃豆的重要因素（肥料成本），合併至黃豆研究目錄。 原始路徑：<code>產業洞察/尿素研究/</code>（已廢除）</p></blockquote><h2 id="相關檔案" tabindex="-1">相關檔案 <a class="header-anchor" href="#相關檔案" aria-label="Permalink to &quot;相關檔案&quot;">​</a></h2><ul><li>尿素_尿素價格趨勢與黃豆影響報告.md</li><li>尿素_尿素研究_中國出口政策.md</li><li>尿素_尿素研究_中東最新局勢.md</li></ul></div>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Deep32Q知識庫/產業洞察/黃豆研究/尿素研究索引.md");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const ______ = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+export {
+  __pageData,
+  ______ as default
+};

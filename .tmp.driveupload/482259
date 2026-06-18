@@ -1,0 +1,19 @@
+import { ssrRenderAttrs } from "vue/server-renderer";
+import { useSSRContext } from "vue";
+import { _ as _export_sfc } from "./plugin-vue_export-helper.1tPrXgE0.js";
+const __pageData = JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"審計報告庫/財務審計/8074_鉅橡/20260501/F17_籌碼分佈與法人動態分析_投資研究員.md","filePath":"審計報告庫/財務審計/8074_鉅橡/20260501/F17_籌碼分佈與法人動態分析_投資研究員.md"}');
+const _sfc_main = { name: "審計報告庫/財務審計/8074_鉅橡/20260501/F17_籌碼分佈與法人動態分析_投資研究員.md" };
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<div${ssrRenderAttrs(_attrs)}><h2 id="📋-審計題目" tabindex="-1">📋 審計題目 <a class="header-anchor" href="#📋-審計題目" aria-label="Permalink to &quot;📋 審計題目&quot;">​</a></h2><p>外資、投信與自營商的近期買賣超動向為何？千張大戶持股比例是否發生結構性變化？</p><h2 id="🎯-專家直斷" tabindex="-1">🎯 專家直斷 <a class="header-anchor" href="#🎯-專家直斷" aria-label="Permalink to &quot;🎯 專家直斷&quot;">​</a></h2><p>鉅橡近半年法人動向偏空：外資累積賣超約 1,200 張，投信無著墨，自營商小幅買超 200 張。千張大戶佔比 52% 維持穩定，無明顯鎖碼或派發特徵。籌碼面中性偏弱，缺乏主流法人認養。</p><h2 id="📊-診斷評級" tabindex="-1">📊 診斷評級 <a class="header-anchor" href="#📊-診斷評級" aria-label="Permalink to &quot;📊 診斷評級&quot;">​</a></h2><p>B（持平）。法人無明顯方向性共識，外資調節但幅度不大，散戶持股比例未見異常增加。利空：無投信鎖碼，股價缺乏法人買盤支撐；融資餘額緩增但未到警戒水位，籌碼面無助力亦無明顯壓力。</p><h2 id="🔍-答詢詳解" tabindex="-1">🔍 答詢詳解 <a class="header-anchor" href="#🔍-答詢詳解" aria-label="Permalink to &quot;🔍 答詢詳解&quot;">​</a></h2><ol><li><p><strong>法人動向</strong>：2025Q4-2026Q1 外資累計賣超約 1,200 張，賣超主要集中於 2026 年 1-2 月（均價約 55 元），3 月後賣壓趨緩。投信近半年完全無進出，顯示該股不在法人雷達中。自營商小幅買超 200 張，無趨勢性意義。三大法人合計持股約 18%，在 PCB 產業中屬偏低水位。</p></li><li><p><strong>大戶持股</strong>：千張大戶佔比約 52%（約 400 人），近半年無明顯變化（區間 50-54%），無鎖碼或派發特徵。400 張以上中實戶佔比約 35%，同樣穩定。散戶（10 張以下）佔比約 13%，無大量湧入警訊。</p></li><li><p><strong>融資融券</strong>：融資餘額約 4,500 張（佔股本 5.5%），近 3 個月增加約 800 張，增幅中等，尚未達警戒水位（8%）。融券餘額極低（&lt;100 張），無軋空題材。</p></li></ol><h2 id="💡-專家評析" tabindex="-1">💡 專家評析 <a class="header-anchor" href="#💡-專家評析" aria-label="Permalink to &quot;💡 專家評析&quot;">​</a></h2><ol><li><strong>法人冷落風險</strong>：無投信鎖碼、外資持續調節，股價缺乏機構買盤支撐。若公司無法提出明確成長故事吸引法人目光，股價將持續受散戶情緒主導，波動加大。</li><li><strong>流動性陷阱</strong>：每日成交量約 200-500 張，流動性偏低。大額進出容易造成股價劇烈波動，法人若要建立部位也需較長時間，降低外資加碼意願。</li><li><strong>融資增溫警訊</strong>：融資餘額近 3 月增 800 張（+21%），若持續增加至 6,000 張（佔比 7.5%）以上，將觸發散戶過度槓桿的風險警訊，屆時股價拉回壓力將加劇。</li></ol><h2 id="📚-證據來源" tabindex="-1">📚 證據來源 <a class="header-anchor" href="#📚-證據來源" aria-label="Permalink to &quot;📚 證據來源&quot;">​</a></h2><ul><li>FinMind：TaiwanStockInstitutionalHoldings（2025Q4-2026Q1）</li><li>數據採集器.py：institutional 8074</li></ul></div>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("審計報告庫/財務審計/8074_鉅橡/20260501/F17_籌碼分佈與法人動態分析_投資研究員.md");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const F17__________________ = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+export {
+  __pageData,
+  F17__________________ as default
+};

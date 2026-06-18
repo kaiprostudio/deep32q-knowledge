@@ -1,0 +1,19 @@
+import { ssrRenderAttrs } from "vue/server-renderer";
+import { useSSRContext } from "vue";
+import { _ as _export_sfc } from "./plugin-vue_export-helper.1tPrXgE0.js";
+const __pageData = JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"審計報告庫/經營審計/6903_巨漢/20260502/G09_客戶供應商與合作夥伴關係_投資研究員.md","filePath":"審計報告庫/經營審計/6903_巨漢/20260502/G09_客戶供應商與合作夥伴關係_投資研究員.md"}');
+const _sfc_main = { name: "審計報告庫/經營審計/6903_巨漢/20260502/G09_客戶供應商與合作夥伴關係_投資研究員.md" };
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<div${ssrRenderAttrs(_attrs)}><h2 id="📋-審計題目" tabindex="-1">📋 審計題目 <a class="header-anchor" href="#📋-審計題目" aria-label="Permalink to &quot;📋 審計題目&quot;">​</a></h2><p>客戶、供應商與合作夥伴關係</p><h2 id="🎯-專家直斷" tabindex="-1">🎯 專家直斷 <a class="header-anchor" href="#🎯-專家直斷" aria-label="Permalink to &quot;🎯 專家直斷&quot;">​</a></h2><p>巨漢主要客戶為半導體大廠（力積電、日月光、京元電子、力成科技、台灣光罩），前五大佔比 &gt;70%，集中度偏高。供應商為專業工程分包商無單一依賴。客戶關係穩定但無長期合約保障，每案需重新投標。</p><h2 id="📊-診斷評級" tabindex="-1">📊 診斷評級 <a class="header-anchor" href="#📊-診斷評級" aria-label="Permalink to &quot;📊 診斷評級&quot;">​</a></h2><p>B+。客戶質量高但集中度高，供應鏈無依賴風險。利空：若單一客戶資本支出縮減或更換統包商，營收將受顯著衝擊。客戶基礎與 3 年前大致相同，客戶來源未明顯擴大，成長受限。</p><h2 id="🔍-答詢詳解" tabindex="-1">🔍 答詢詳解 <a class="header-anchor" href="#🔍-答詢詳解" aria-label="Permalink to &quot;🔍 答詢詳解&quot;">​</a></h2><p>前五大客戶為力積電、日月光、京元電子、力成科技、台灣光罩。無單一客戶佔比 &gt;30%（不構成致命集中度），但前五大合計 &gt;70%，若任一大客戶流失將對營收造成明顯衝擊。供應鏈方面，主要外包水電、空調、消防等專業工程分包，無單一供應商依賴，供應鏈風險低。合作夥伴關係為交易型（非股權投資或策略聯盟），無獨家合作協議。整體而言，客戶集中度高是主要風險，但供應鏈無依賴問題。</p><h2 id="💡-專家評析" tabindex="-1">💡 專家評析 <a class="header-anchor" href="#💡-專家評析" aria-label="Permalink to &quot;💡 專家評析&quot;">​</a></h2><ol><li><strong>客戶基礎未擴大風險</strong>：前五大客戶與 3 年前大致相同，新客戶獲取能力不足是明顯的營運弱勢。工程業最大風險不是既有客戶流失，而是無法持續取得新客戶來填補成長缺口。若未來 2 年無新的大型半導體客戶加入，營收成長將放緩，面臨成長停滯壓力。</li><li><strong>供應鏈穩定但無議價權</strong>：巨漢對分包商無獨佔性，若工程需求暴增，分包商產能可能無法配合。零負債財務體質雖可提供優於同業的付款條件，但若同業跟進則優勢消失，議價權有限的風險不可忽視。</li></ol><h2 id="📚-證據來源" tabindex="-1">📚 證據來源 <a class="header-anchor" href="#📚-證據來源" aria-label="Permalink to &quot;📚 證據來源&quot;">​</a></h2><p>web_search：巨漢客戶概況</p></div>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("審計報告庫/經營審計/6903_巨漢/20260502/G09_客戶供應商與合作夥伴關係_投資研究員.md");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const G09___________________ = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+export {
+  __pageData,
+  G09___________________ as default
+};

@@ -1,0 +1,19 @@
+import { ssrRenderAttrs } from "vue/server-renderer";
+import { useSSRContext } from "vue";
+import { _ as _export_sfc } from "./plugin-vue_export-helper.1tPrXgE0.js";
+const __pageData = JSON.parse('{"title":"G01 公司歷史與創辦人 — 力成科技 (6239)","description":"","frontmatter":{},"headers":[],"relativePath":"審計報告庫/經營審計/6239_力成/20260617/G01_公司歷史與創辦人.md","filePath":"審計報告庫/經營審計/6239_力成/20260617/G01_公司歷史與創辦人.md"}');
+const _sfc_main = { name: "審計報告庫/經營審計/6239_力成/20260617/G01_公司歷史與創辦人.md" };
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<div${ssrRenderAttrs(_attrs)}><h1 id="g01-公司歷史與創辦人-—-力成科技-6239" tabindex="-1">G01 公司歷史與創辦人 — 力成科技 (6239) <a class="header-anchor" href="#g01-公司歷史與創辦人-—-力成科技-6239" aria-label="Permalink to &quot;G01 公司歷史與創辦人 — 力成科技 (6239)&quot;">​</a></h1><h2 id="📋-審計題目" tabindex="-1">📋 審計題目 <a class="header-anchor" href="#📋-審計題目" aria-label="Permalink to &quot;📋 審計題目&quot;">​</a></h2><p>評估力成科技的公司歷史脈絡與創辦人/核心經營團隊的背景、穩定性及對公司的影響力。</p><h2 id="🎯-專家直斷" tabindex="-1">🎯 專家直斷 <a class="header-anchor" href="#🎯-專家直斷" aria-label="Permalink to &quot;🎯 專家直斷&quot;">​</a></h2><p>力成科技由力晶半導體與旺宏電子合資成立，金士頓1999年注資後由蔡篤恭接掌至今逾26年，打造出全球前五大封測廠；團隊穩定性高，技術與國際化視野深厚。</p><h2 id="📊-診斷評級" tabindex="-1">📊 診斷評級 <a class="header-anchor" href="#📊-診斷評級" aria-label="Permalink to &quot;📊 診斷評級&quot;">​</a></h2><p>力成1997年成立，獲金士頓注資12億元，蔡篤恭1999年接任掌舵27年。2026年呂肇祥退休、謝永達接最高經理人。管理層穩定性評級優，擴張至日美產能布局清晰。（數據來源：維基百科、公開資訊）</p><h2 id="🔍-答詢詳解" tabindex="-1">🔍 答詢詳解 <a class="header-anchor" href="#🔍-答詢詳解" aria-label="Permalink to &quot;🔍 答詢詳解&quot;">​</a></h2><p>力成1997年由力晶（黃崇仁）與旺宏旗下鑫成投資合資成立，名稱取「力晶」之「力」與「鑫成」之「成」。初期連續虧損，1999年金士頓溢價每股12元認購全部增資（投入12億元）取得50%股權，指派蔡篤恭接任董事長，開啟國際化轉型。</p><p>蔡篤恭（約75歲）1999年任董座至今27年，2026年5月續任。呂肇祥總經理2026年4月退休，不再設總經理職，最高經理人由執行長謝永達接任。林基正、謝再居入列新董事，顯示有序交替。</p><p>關鍵里程碑：2003年上櫃→2011年收購超豐→2014年合併聚成、收購新加坡Nepes→2017年收購美光日本秋田廠→2018年啟動FOPLP→2025年購置友達廠（68.98億）→2026年資本支出上修至500億、亞利桑那廠Q3投產。從純記憶體封測跨入邏輯IC與先進封裝，營收邁向900-940億元。</p><h2 id="💡-專家評析" tabindex="-1">💡 專家評析 <a class="header-anchor" href="#💡-專家評析" aria-label="Permalink to &quot;💡 專家評析&quot;">​</a></h2><p><strong>🔴 空方觀點（利空風險）</strong></p><ol><li><strong>世代交替挑戰</strong>：2026年4月總經理呂肇祥退休且不再設置總經理職位，改由執行長謝永達掌舵。新管理架構的運作效率與穩定性仍有待時間驗證，高階人事變動短期內可能影響組織執行力。</li><li><strong>創辦人高齡風險</strong>：蔡篤恭已屆75歲，雖續任董事長但接班規劃尚未明朗。若未來發生不可預期的健康或退休情況，公司可能面臨領導真空的壓力。</li></ol><p><strong>🟢 多方觀點（機會可能性）</strong></p><ol><li><strong>戰略延續性優勢</strong>：蔡篤恭27年掌舵期間，力成從小型封測廠躍升為全球前五大OSAT，營收從數十億成長至近千億規模。長期穩定的領導層確保了公司記憶體封測聚焦與國際擴張策略的一致性。</li><li><strong>有序接班布局</strong>：2026年董事改選新增林基正、謝再居，搭配超豐董事長謝永達接任最高經理人，顯示已在進行有計畫的權力過渡。謝永達長期主導超豐（力成子公司）營運，熟悉集團業務，接班風險可控。</li></ol><h2 id="📚-證據來源" tabindex="-1">📚 證據來源 <a class="header-anchor" href="#📚-證據來源" aria-label="Permalink to &quot;📚 證據來源&quot;">​</a></h2><ul><li>web_search：力成 6239 公司簡介 歷史沿革 創辦人（維基百科、UC913）</li><li>web_search：力成 6239 董監事異動 2025 2026（鉅亨網、BigGo、LINE Today）</li><li>tavily_search：力成 6239 商業模式深度解構（YouTube分析）</li><li>月營收數據：FinMind TaiwanStockRevenue（2025/06-2026/05）</li></ul></div>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("審計報告庫/經營審計/6239_力成/20260617/G01_公司歷史與創辦人.md");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const G01_________ = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+export {
+  __pageData,
+  G01_________ as default
+};

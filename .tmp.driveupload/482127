@@ -1,0 +1,19 @@
+import { ssrRenderAttrs } from "vue/server-renderer";
+import { useSSRContext } from "vue";
+import { _ as _export_sfc } from "./plugin-vue_export-helper.1tPrXgE0.js";
+const __pageData = JSON.parse('{"title":"COSCO Shipping 中遠海運","description":"","frontmatter":{},"headers":[],"relativePath":"Deep32Q知識庫/產業洞察/航運產業/03_全球航商競爭格局/03-4_COSCO_中遠.md","filePath":"Deep32Q知識庫/產業洞察/航運產業/03_全球航商競爭格局/03-4_COSCO_中遠.md"}');
+const _sfc_main = { name: "Deep32Q知識庫/產業洞察/航運產業/03_全球航商競爭格局/03-4_COSCO_中遠.md" };
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<div${ssrRenderAttrs(_attrs)}><h1 id="cosco-shipping-中遠海運" tabindex="-1">COSCO Shipping 中遠海運 <a class="header-anchor" href="#cosco-shipping-中遠海運" aria-label="Permalink to &quot;COSCO Shipping 中遠海運&quot;">​</a></h1><h2 id="基本資訊" tabindex="-1">基本資訊 <a class="header-anchor" href="#基本資訊" aria-label="Permalink to &quot;基本資訊&quot;">​</a></h2><ul><li><strong>全球排名</strong>：第4名（2025-2026年維持）</li><li><strong>總部</strong>：中國上海（Shanghai, China）</li><li><strong>性質</strong>：中國國有企業，由國務院國資委和中央政府 entities 控股</li><li><strong>成立</strong>：2016年，由中國远洋（COSCO）與中國 shipping 集團公司合併而成</li><li><strong>船隊運力</strong>：截至2025年12月31日，自有船隊容量達360萬TEU；含子公司OOCL在內約555艘船舶，總運力360萬TEU（2026年4月數據）</li><li><strong>市場佔有率</strong>：約10.5%-10.9%</li></ul><h2 id="集團結構" tabindex="-1">集團結構 <a class="header-anchor" href="#集團結構" aria-label="Permalink to &quot;集團結構&quot;">​</a></h2><ul><li><strong>COSCO SHIPPING Holdings</strong>：母公司，上海證券交易所上市（601919.SH）</li><li><strong>OOCL（東方海外貨櫃）</strong>：全資子公司，增強全球網絡覆蓋</li><li><strong>自有船隊</strong>：2025年上半年557艘船舶，總運力超過340萬TEU</li></ul><h2 id="戰略重點" tabindex="-1">戰略重點 <a class="header-anchor" href="#戰略重點" aria-label="Permalink to &quot;戰略重點&quot;">​</a></h2><ul><li><strong>綠色轉型</strong>：積極投資甲醇雙燃料新造船，推動船隊低碳化</li><li><strong>市場展望</strong>：公司預判2026年貨櫃航運市場將繼續面臨高度複雜性和不確定性，受地緣政治緊張和全球貿易模式演變影響</li><li><strong>運量增長</strong>：2025年上半年貨櫃運輸量同比增長6%</li></ul><h2 id="地緣政治風險" tabindex="-1">地緣政治風險 <a class="header-anchor" href="#地緣政治風險" aria-label="Permalink to &quot;地緣政治風險&quot;">​</a></h2><p>COSCO作為中國國企，在中美貿易摩擦和中東戰事（特別是2026年3月荷姆茲海峽關閉）中面臨特殊挑戰：</p><ul><li>中國是中东石油的主要進口國，荷姆茲海峽關閉直接影響中國的能源供應</li><li>中美貿易關係波動影響跨太平洋航線需求</li><li>公司需要在美國制裁風險和全球市場擴張之間取得平衡</li></ul><h2 id="_2026年展望" tabindex="-1">2026年展望 <a class="header-anchor" href="#_2026年展望" aria-label="Permalink to &quot;2026年展望&quot;">​</a></h2><p>COSCO持續擴大船隊規模，同時應對地緣政治帶來的市場不確定性。公司計劃投資約20億美元服務於貨櫃船舶訂單，顯示其長期擴張意圖。</p><hr><p><strong>資料來源</strong>：World Benchmarking Alliance (2025)、Container News (2025)、Baird Maritime (2026)、COSCO Shipping官方公告、CNSS.com.cn (2026-03)</p></div>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Deep32Q知識庫/產業洞察/航運產業/03_全球航商競爭格局/03-4_COSCO_中遠.md");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const _034_COSCO___ = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+export {
+  __pageData,
+  _034_COSCO___ as default
+};

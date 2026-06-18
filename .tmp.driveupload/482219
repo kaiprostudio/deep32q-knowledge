@@ -1,0 +1,19 @@
+import { ssrRenderAttrs } from "vue/server-renderer";
+import { useSSRContext } from "vue";
+import { _ as _export_sfc } from "./plugin-vue_export-helper.1tPrXgE0.js";
+const __pageData = JSON.parse('{"title":"光通訊研究","description":"","frontmatter":{},"headers":[],"relativePath":"Deep32Q知識庫/產業洞察/光通訊研究/index.md","filePath":"Deep32Q知識庫/產業洞察/光通訊研究/index.md"}');
+const _sfc_main = { name: "Deep32Q知識庫/產業洞察/光通訊研究/index.md" };
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<div${ssrRenderAttrs(_attrs)}><h1 id="光通訊研究" tabindex="-1">光通訊研究 <a class="header-anchor" href="#光通訊研究" aria-label="Permalink to &quot;光通訊研究&quot;">​</a></h1><ul><li><a href="./CPO六巨頭深度報告_2026-05-04.html">CPO 光通訊六巨頭深度報告</a></li><li><a href="./光通訊_國際競爭格局與M&amp;A動態分析_2026-05-13.html">光通訊國際競爭格局與 M&amp;A 動態分析</a></li><li><a href="./光通訊_成本結構與去中化效應分析_2026-05-13.html">\uFEFF# 光通訊成本結構與去中化效應分析</a></li><li><a href="./光通訊供應鏈深度研究_2026-05-04.html">光通訊供應鏈深度研究報告</a></li><li><a href="./光通訊知識庫檔案清單.html">光通訊知識庫檔案清單</a></li><li><a href="./追蹤指標.html">光通訊產業持續監控指標</a></li></ul></div>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Deep32Q知識庫/產業洞察/光通訊研究/index.md");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const index = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+export {
+  __pageData,
+  index as default
+};

@@ -1,0 +1,19 @@
+import { ssrRenderAttrs } from "vue/server-renderer";
+import { useSSRContext } from "vue";
+import { _ as _export_sfc } from "./plugin-vue_export-helper.1tPrXgE0.js";
+const __pageData = JSON.parse('{"title":"F15: 關係人交易與利益輸送風險","description":"","frontmatter":{},"headers":[],"relativePath":"審計報告庫/財務審計/6442_光聖/20260504/F15_關係人交易與利益輸送風險.md","filePath":"審計報告庫/財務審計/6442_光聖/20260504/F15_關係人交易與利益輸送風險.md"}');
+const _sfc_main = { name: "審計報告庫/財務審計/6442_光聖/20260504/F15_關係人交易與利益輸送風險.md" };
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<div${ssrRenderAttrs(_attrs)}><h1 id="f15-關係人交易與利益輸送風險" tabindex="-1">F15: 關係人交易與利益輸送風險 <a class="header-anchor" href="#f15-關係人交易與利益輸送風險" aria-label="Permalink to &quot;F15: 關係人交易與利益輸送風險&quot;">​</a></h1><blockquote><p>標的公司：6442 光聖 | 基準日期：20260504</p></blockquote><hr><h2 id="📋-審計題目" tabindex="-1">📋 審計題目 <a class="header-anchor" href="#📋-審計題目" aria-label="Permalink to &quot;📋 審計題目&quot;">​</a></h2><p>是否存在異常大額的關係人交易（連屬公司、子公司）？其定價是否符合市場行情？是否存在利益輸送或虛增利潤之嫌？</p><h2 id="🎯-專家直斷-40-80-字" tabindex="-1">🎯 專家直斷（40-80 字） <a class="header-anchor" href="#🎯-專家直斷-40-80-字" aria-label="Permalink to &quot;🎯 專家直斷（40-80 字）&quot;">​</a></h2><ul><li><strong>核心結論</strong>：關係人交易全為集團內寧波廠進貨（佔母公司 48%），合併已沖銷；外部關係人僅 351 萬，無資金貸與異常，利益輸送風險極低。</li><li><strong>風險評級</strong>：低</li><li><strong>數據時效</strong>：2025 年報</li></ul><h2 id="📊-診斷評級-80-150-字" tabindex="-1">📊 診斷評級（80-150 字） <a class="header-anchor" href="#📊-診斷評級-80-150-字" aria-label="Permalink to &quot;📊 診斷評級（80-150 字）&quot;">​</a></h2><p>關係人交易分析：① 關係人進貨：母公司向寧波光聖進貨 19.69 億（佔母公司進貨 48%），屬集團內生產調度，合併沖銷後淨影響為零；② 向合聖科技進貨 351 萬（佔比 0.09%），金額極小；③ 關係人應收/應付款項無異常；④ 無資金貸與關係人；⑤ 無背書保證異常。年報中無重大關係人交易訴訟或糾紛揭露。</p><p><strong>評級：S（優）</strong> — 關係人交易全部為業務所需且具商業實質。</p><h2 id="🔍-答詢詳解" tabindex="-1">🔍 答詢詳解 <a class="header-anchor" href="#🔍-答詢詳解" aria-label="Permalink to &quot;🔍 答詢詳解&quot;">​</a></h2><p><strong>交易規模：</strong> 關係人進貨 19.69 億看似龐大，但全數為母公司向子公司（寧波光聖）採購光通訊產品，集團內垂直整合的正常運作。合併報表層級關係人交易佔合併營收比 &lt;0.5%，其中外部關係人（合聖科技）交易不到 0.1%。</p><p><strong>帳期分析：</strong> 對子公司寧波光聖的應付款項帳期約 60-90 天，與一般供應商無顯著差異。對合聖科技的應付款項帳期亦在正常範圍內。</p><p><strong>子公司利潤滲透：</strong> 寧波光聖為光聖最主要生產基地，承擔集團大部分光通訊產品的製造功能。合併報表層級無明顯利潤被子公司侵蝕或隱藏的跡象。</p><h2 id="💡-專家評析-200-450-字" tabindex="-1">💡 專家評析（200-450 字） <a class="header-anchor" href="#💡-專家評析-200-450-字" aria-label="Permalink to &quot;💡 專家評析（200-450 字）&quot;">​</a></h2><h3 id="🔴-空方觀點-利空風險" tabindex="-1">🔴 空方觀點（利空風險） <a class="header-anchor" href="#🔴-空方觀點-利空風險" aria-label="Permalink to &quot;🔴 空方觀點（利空風險）&quot;">​</a></h3><ol><li>寧波廠佔集團進貨 48% 的高度集中，若兩岸關係緊張或關稅政策變動，可能對供應鏈穩定性造成衝擊。雖然菲律賓廠已投產，但短期內無法完全取代寧波廠的產能地位。</li><li>年報中未充分揭露關係人交易的具體定價政策及移轉訂價方法，透明度有待提升，投資人無法獨立驗證交易價格是否完全符合市場行情。</li></ol><h3 id="🟢-多方觀點-機會可能性" tabindex="-1">🟢 多方觀點（機會可能性） <a class="header-anchor" href="#🟢-多方觀點-機會可能性" aria-label="Permalink to &quot;🟢 多方觀點（機會可能性）&quot;">​</a></h3><ol><li>集團內部交易具有明確的商業合理性（子公司承擔製造功能、母公司負責接單銷售），非虛增交易或循環交易，財報可信度高。</li><li>無資金貸與關係人或背書保證異常，財務紀律良好，內部控制水準在台股中屬優等。</li></ol><h3 id="⚖️-綜合權衡" tabindex="-1">⚖️ 綜合權衡 <a class="header-anchor" href="#⚖️-綜合權衡" aria-label="Permalink to &quot;⚖️ 綜合權衡&quot;">​</a></h3><p>關係人交易風險極低，唯一的追蹤重點為寧波廠的地緣政治風險與移轉訂價透明度。</p><h2 id="📚-證據來源" tabindex="-1">📚 證據來源 <a class="header-anchor" href="#📚-證據來源" aria-label="Permalink to &quot;📚 證據來源&quot;">​</a></h2><ul><li>年報資料：6442 2025 Q4 合併財報第 65、73、78 頁（關係人交易附註）</li><li>數據查詢日期：2026-05-04</li></ul></div>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("審計報告庫/財務審計/6442_光聖/20260504/F15_關係人交易與利益輸送風險.md");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const F15_____________ = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+export {
+  __pageData,
+  F15_____________ as default
+};

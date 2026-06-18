@@ -1,0 +1,1 @@
+import{_ as i,o as e,c as a,a2 as t}from"./chunks/framework.DnrXFDHb.js";const _=JSON.parse('{"title":"LOG.md — Deep32Q 巡檢日誌","description":"","frontmatter":{},"headers":[],"relativePath":"LOG.md","filePath":"LOG.md"}'),o={name:"LOG.md"};function r(n,l,s,p,d,u){return e(),a("div",null,[...l[0]||(l[0]=[t("",16)])])}const h=i(o,[["render",r]]);export{_ as __pageData,h as default};

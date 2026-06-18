@@ -1,0 +1,19 @@
+import { ssrRenderAttrs } from "vue/server-renderer";
+import { useSSRContext } from "vue";
+import { _ as _export_sfc } from "./plugin-vue_export-helper.1tPrXgE0.js";
+const __pageData = JSON.parse('{"title":"3135_凌航 經營審計 — 20260430","description":"","frontmatter":{},"headers":[],"relativePath":"審計報告庫/經營審計/3135_凌航/20260430/index.md","filePath":"審計報告庫/經營審計/3135_凌航/20260430/index.md"}');
+const _sfc_main = { name: "審計報告庫/經營審計/3135_凌航/20260430/index.md" };
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<div${ssrRenderAttrs(_attrs)}><h1 id="_3135-凌航-經營審計-—-20260430" tabindex="-1">3135_凌航 經營審計 — 20260430 <a class="header-anchor" href="#_3135-凌航-經營審計-—-20260430" aria-label="Permalink to &quot;3135_凌航 經營審計 — 20260430&quot;">​</a></h1><ul><li><a href="./G01_公司歷史與創辦人研究_投資研究員.html">G01: 公司歷史與創辦人研究 - 投資研究員審計報告</a></li><li><a href="./G02_董事高階經理人異動審計_績效管理專家.html">G02: 董事高階經理人異動審計 - 績效管理專家 (L3-HR) 審計報告</a></li><li><a href="./G03_核心員工流動率審計_績效管理專家.html">我已讀取 03_審計專家_任務執行與技術協議.md，我將以專業職人視角，榨取最高密度的財務洞見。</a></li><li><a href="./G04_核心產品與競爭優勢_投資研究員.html">G04: 核心產品與競爭優勢 - 投資研究員審計報告</a></li><li><a href="./G05_營收模式與收費策略_產品經理.html">G05: 營收模式與收費策略 - 產品經理 (L3-PM) 審計報告</a></li><li><a href="./G06_行銷通路與品牌策略_產品經理.html">G06: 行銷通路與品牌策略 - 產品經理 (L3-PM) 審計報告</a></li><li><a href="./G07_研發成果實質性_產品經理.html">G07: 研發成果實質性 - 產品經理 (L3-PM) 審計報告</a></li><li><a href="./G08_業界地位與市佔率_投資研究員.html">我已讀取 03_審計專家_任務執行與技術協議.md，我將以專業職人視角，榨取最高密度的投資洞見。</a></li><li><a href="./G09_區域銷售分佈與地緣風險_企業風險評估專家.html">G09: 區域銷售分佈與地緣風險 - 企業風險評估專家 審計報告</a></li><li><a href="./G10_關鍵合作夥伴與Tier1客戶_投資研究員.html">G10: 關鍵合作夥伴與Tier1客戶 - 投資研究員審計報告</a></li><li><a href="./G11_前十大客戶與供應商穩定度_投資研究員.html">G11: 前十大客戶與供應商穩定度 - 投資研究員 審計報告</a></li><li><a href="./G12_產業壁壘與護城河深度評估_投資研究員.html">我已讀取 03_審計專家_任務執行與技術協議.md，我將以專業職人視角，榨取最高密度的財務洞見。</a></li><li><a href="./G13_未來發展與戰略規劃_投資研究員.html">G13: 未來發展與戰略規劃 - 投資研究員 審計報告</a></li><li><a href="./G14_新業務展望_產品趨勢研究員.html">G14: 新業務展望 - 產品趨勢研究員 審計報告</a></li></ul></div>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("審計報告庫/經營審計/3135_凌航/20260430/index.md");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const index = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+export {
+  __pageData,
+  index as default
+};
