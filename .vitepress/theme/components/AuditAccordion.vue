@@ -53,7 +53,7 @@
       >
         <button
           class="accordion-header"
-          @click="toggleReport(idx, report)"
+          @click="toggleReport(idx, report, $event)"
         >
           <span class="report-title">
             <span class="report-id">{{ report.id }}</span>
@@ -129,7 +129,7 @@ function formatDate(d) {
 }
 
 // --- 展開 / 收折邏輯 ---
-async function toggleReport(idx, report) {
+async function toggleReport(idx, report, event) {
   if (openIdx.value === idx) {
     openIdx.value = null
     return
@@ -140,11 +140,34 @@ async function toggleReport(idx, report) {
   renderedContent.value = ''
 
   // 展開後立即 scroll 到該題最上方
+  // 同步階段取得目標 DOM 引用，不受 async 後 event 失效影響
+  const targetEl = event?.currentTarget?.closest('.accordion-item') || null
+  if (!targetEl) return
+
+  // nextTick: 等待 Vue DOM 更新
   nextTick(() => {
-    const el = accordionRefs.value?.[idx]
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+    if (!document.contains(targetEl)) return
+    // 用 scrollIntoView 進行初次定位
+    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
+    // requestAnimationFrame: 等瀏覽器 layout 完成後再微調一次
+    // 因為 Vue 更新 DOM 後 browser 可能還沒完成 reflow
+    requestAnimationFrame(() => {
+      if (!document.contains(targetEl)) return
+      const rect = targetEl.getBoundingClientRect()
+      if (rect.top !== 0) {
+        window.scrollBy({ top: rect.top, behavior: 'smooth' })
+      }
+    })
+
+    // 300ms 後再保底一次（content 載入後可能改變 layout）
+    setTimeout(() => {
+      if (!document.contains(targetEl)) return
+      const rect = targetEl.getBoundingClientRect()
+      if (Math.abs(rect.top) > 5) {
+        window.scrollBy({ top: rect.top, behavior: 'smooth' })
+      }
+    }, 300)
   })
 
   try {
