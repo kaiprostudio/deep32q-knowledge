@@ -7,3 +7,4 @@ __pycache__/
 *.pyc
 年報資料庫/
 _備份/
+.vitepress/config.mjs.bak2
