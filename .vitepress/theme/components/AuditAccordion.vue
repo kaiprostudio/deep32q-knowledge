@@ -52,7 +52,7 @@
       >
         <button
           class="accordion-header"
-          @click="toggleReport(idx, report)"
+          @click="toggleReport(idx, report, $event)"
         >
           <span class="report-title">
             <span class="report-id">{{ report.id }}</span>
@@ -127,7 +127,8 @@ function formatDate(d) {
 }
 
 // --- 展開 / 收折邏輯 ---
-async function toggleReport(idx, report) {
+async function toggleReport(idx, report, event) {
+  const thisItem = event?.currentTarget
   if (openIdx.value === idx) {
     openIdx.value = null
     return
@@ -139,7 +140,7 @@ async function toggleReport(idx, report) {
 
   // 展開後立即 scroll 到該題最上方
   nextTick(() => {
-    const el = document.querySelector(`.accordion-item:nth-child(${idx + 1})`)
+    const el = thisItem?.closest('.accordion-item')
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
