@@ -448,10 +448,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   color: var(--text-tertiary);
   transition: transform var(--transition);
 }
-.audit-stock-header.expanded .audit-arrow { transform: rotate(180deg); }
-
-.audit-stock-body { display: none; }
-.audit-stock-header.expanded + .audit-stock-body { display: block; }
+/* .audit-stock-body display rules moved below to the audit-type section */
 
 .audit-report-list {
   list-style: none;
@@ -475,6 +472,78 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .audit-report-dir {
   font-size: 0.75rem;
   color: var(--text-tertiary);
+}
+
+/* ── 審計報告：經營組 / 財務組 accordion ────── */
+.audit-stock-body {
+  display: none;
+  padding: 0;
+}
+.audit-stock-header.expanded + .audit-stock-body {
+  display: block;
+}
+
+.audit-type-section {
+  border-bottom: 1px solid var(--border);
+}
+.audit-type-section:last-child {
+  border-bottom: none;
+}
+
+.audit-type-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px 10px 24px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+.audit-type-header:hover {
+  background: var(--bg-subtle);
+}
+
+.audit-type-arrow {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+  width: 12px;
+  text-align: center;
+}
+.audit-type-header.expanded .audit-type-arrow {
+  transform: rotate(90deg);
+}
+
+.audit-type-label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+.audit-type-count {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  background: var(--bg-subtle);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.audit-type-body {
+  display: none;
+}
+.audit-type-header.expanded + .audit-type-body {
+  display: block;
+}
+
+.audit-report-date {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+.audit-stock-header.expanded .audit-arrow {
+  transform: rotate(180deg);
 }
 
 /* ── Breadcrumb ───────────────────────────── */

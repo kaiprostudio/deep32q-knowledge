@@ -296,7 +296,7 @@ def determine_category(relative_path: str) -> str:
     if '/產業洞察/' in p or p.startswith('產業洞察/'):
         return 'industry'
     if '/供應鏈拆解/' in p or p.startswith('供應鏈拆解/'):
-        return 'industry'  # merge into industry category
+        return 'supply_chain'
     return 'general'
 
 
@@ -307,8 +307,10 @@ def determine_category_by_route(route: str) -> str:
         return 'daily'
     if '審計報告庫' in p:
         return 'audit'
-    if '產業洞察' in p or '供應鏈拆解' in p:
+    if '產業洞察' in p:
         return 'industry'
+    if '供應鏈拆解' in p:
+        return 'supply_chain'
     return 'general'
 
 
@@ -372,37 +374,55 @@ class IndexBuilder:
             self.daily_reports[report_date].append(doc)
 
         elif category == 'industry':
-            # relative_path = Deep32Q知識庫/產業洞察/功率離散元件研究/xxx.md
-            # The subdirectory after '產業洞察' is the industry key
+            # ONLY files under Deep32Q知識庫/產業洞察/SUBDIR/... are valid industry entries
+            # Files directly in 產業洞察/ (e.g. index.md) are skipped
             parts = relative_path.split('/')
-            # Find the index of '產業洞察' in the path
             try:
                 insight_index = parts.index('產業洞察')
-                industry = parts[insight_index + 1] if len(parts) > insight_index + 1 else '其他'
+                # Must have a subdirectory after 產業洞察: parts[insight_index + 1]
+                # The subdirectory name IS the industry key (e.g. '功率離散元件研究')
+                # It must be a directory name, not a filename
+                if len(parts) > insight_index + 1:
+                    sub = parts[insight_index + 1]
+                    # skip if it is a file (ends with .md) → means no subdirectory
+                    if not sub.endswith('.md'):
+                        industry = sub
+                        if industry not in self.industries:
+                            self.industries[industry] = []
+                        self.industries[industry].append(doc)
             except ValueError:
-                industry = '其他'
-            if industry not in self.industries:
-                self.industries[industry] = []
-            self.industries[industry].append(doc)
+                pass  # not under 產業洞察 → skip
 
         elif category == 'audit':
             parts = relative_path.split('/')
             # relative_path = 審計報告庫/經營審計/4967_十銓/20260428/G14_xxx.md
-            # stock_dir should be the stock-specific dir: 4967_十銓
-            # parts: ['審計報告庫', '經營審計', '4967_十銓', ..., 'G14_xxx.md']
+            # parts: ['審計報告庫', '經營審計', '4967_十銓', '20260428', 'G14_xxx.md']
             if len(parts) >= 4:
-                stock_dir = parts[2]  # 4967_十銓 (code + company)
+                audit_type = parts[1]  # '經營審計' or '財務審計'
+                stock_dir = parts[2]   # '4967_十銓'
+                # Extract the date dir (YYYYMMDD)
+                report_date_str = '99999999'  # fallback for sorting
+                for p in parts:
+                    if re.match(r'^\d{8}$', p):
+                        report_date_str = p
+                        break
                 if stock_dir not in self.audit_reports:
-                    self.audit_reports[stock_dir] = {'documents': [], 'reports': []}
-                # Extract stock code from dir name
-                code_match = re.match(r'^(\d+)', stock_dir)
-                stock_code = code_match.group(1) if code_match else stock_dir
-                self.audit_reports[stock_dir]['stock_code'] = stock_code
+                    self.audit_reports[stock_dir] = {
+                        'documents': [],
+                        'stock_code': '',
+                        'reports': []
+                    }
+                # Extract stock code from dir name (first run)
+                if not self.audit_reports[stock_dir]['stock_code']:
+                    code_match = re.match(r'^(\d+)', stock_dir)
+                    self.audit_reports[stock_dir]['stock_code'] = code_match.group(1) if code_match else stock_dir
                 self.audit_reports[stock_dir]['documents'].append(doc)
                 self.audit_reports[stock_dir]['reports'].append({
                     'title': title,
                     'route': route,
                     'file': relative_path,
+                    'audit_type': audit_type,      # 經營審計 or 財務審計
+                    'date': report_date_str,        # YYYYMMDD for sorting
                 })
 
     def build_search_index(self) -> list:
@@ -463,28 +483,41 @@ def build_home_page(index: IndexBuilder) -> str:
 
 
 def build_industries_page(index: IndexBuilder) -> str:
-    """Build the industry insights listing page (collapsible sections)."""
+    """Build the industry insights listing page (collapsible sections).
+    
+    Only subdirectories under 產業洞察/ are valid industries.
+    Files directly in 產業洞察/ (e.g. index.md) are already excluded in add_document.
+    Within each industry, reports are sorted by date (newest first).
+    """
+    import html as html_mod
     parts = ['<div class="page-container industries-page">']
     parts.append('<h1>產業洞察</h1>')
 
-    # 排除供應鏈拆解（問題 1 修復）
-    import html as html_mod
-    sorted_industries = sorted(k for k in index.industries.keys() if k != '供應鏈拆解')
+    # Sort industries by their latest report date (newest first)
+    def _latest_date(industry_name: str) -> str:
+        docs = index.industries[industry_name]
+        dates = [d.get('date', '') for d in docs]
+        return max(dates) if dates else '1970-01-01'
+    
+    sorted_industries = sorted(index.industries.keys(), key=_latest_date, reverse=True)
 
     for industry in sorted_industries:
         docs = index.industries[industry]
+        # Sort reports within industry by date (newest first)
+        sorted_docs = sorted(docs, key=lambda d: d.get('date', ''), reverse=True)
+        
         safe_name = html_mod.escape(industry)
         parts.append(f'<div class="industry-section">')
         parts.append(f'''
         <div class="industry-header" data-toggle="industry">
             <span class="industry-arrow">▼</span>
             <span class="industry-name">{safe_name}</span>
-            <span class="industry-count">{len(docs)} 份報告</span>
+            <span class="industry-count">{len(sorted_docs)} 份報告</span>
         </div>
         ''')
         parts.append('<div class="industry-body"><div class="industry-body-inner">')
         parts.append('<ul class="report-list">')
-        for doc in docs:
+        for doc in sorted_docs:
             safe_title = html_mod.escape(doc['title'])
             parts.append(f'''
             <li class="report-item">
@@ -501,7 +534,17 @@ def build_industries_page(index: IndexBuilder) -> str:
 
 
 def build_audit_page(index: IndexBuilder) -> str:
-    """Build the audit reports stock listing page (clickable accordion + filter)."""
+    """Build the audit reports stock listing page.
+    
+    Structure:
+      stock_code (by latest report date)
+        ├── 經營組 (collapsible)
+        │   ├── report (sorted by date)
+        │   └── ...
+        └── 財務組 (collapsible)
+            ├── report (sorted by date)
+            └── ...
+    """
     import html as html_mod
     
     parts = ['<div class="page-container audit-page">']
@@ -509,15 +552,14 @@ def build_audit_page(index: IndexBuilder) -> str:
     parts.append('<div class="audit-filter-wrap"><input type="text" id="audit-filter" placeholder="搜尋股票代碼或名稱…"></div>')
     parts.append('<div class="audit-list">')
 
-    # Group by stock code (合併經營審計/財務審計)
+    # Build stock groups — each stock has 經營組 and 財務組 reports
     stock_groups = {}
     
-    for stock_dir, info in sorted(index.audit_reports.items()):
+    for stock_dir, info in index.audit_reports.items():
         code = info.get('stock_code', '')
-        # 從目錄名提取公司名（stock_dir = 4967_十銓）
+        # Extract company name from stock_dir (e.g. '4967_十銓')
         company = ''
         if '_' in stock_dir and code:
-            # stock_dir like '4967_十銓', split at first underscore
             company = stock_dir[len(code):].lstrip('_- ')
         elif not company:
             company = stock_dir
@@ -526,18 +568,40 @@ def build_audit_page(index: IndexBuilder) -> str:
             stock_groups[code] = {
                 'code': code,
                 'company': company,
-                'reports': [],
+                'latest_date': '',
+                'management': [],  # 經營審計
+                'financial': [],   # 財務審計
             }
         
         for report_doc in info.get('reports', []):
-            stock_groups[code]['reports'].append(report_doc)
+            audit_type = report_doc.get('audit_type', '')
+            report_date = report_doc.get('date', '99999999')
+            
+            # Track latest date across all reports for this stock
+            if report_date > stock_groups[code]['latest_date']:
+                stock_groups[code]['latest_date'] = report_date
+            
+            if audit_type == '經營審計':
+                stock_groups[code]['management'].append(report_doc)
+            elif audit_type == '財務審計':
+                stock_groups[code]['financial'].append(report_doc)
 
-    # 按 code 排序輸出
-    for code in sorted(stock_groups.keys()):
-        group = stock_groups[code]
+    # Sort stocks by latest report date (newest first)
+    sorted_stocks = sorted(
+        stock_groups.values(),
+        key=lambda g: g['latest_date'],
+        reverse=True
+    )
+
+    for group in sorted_stocks:
+        code = group['code']
         safe_company = html_mod.escape(group['company'] if group['company'] else code)
-        report_count = len(group['reports'])
+        total_count = len(group['management']) + len(group['financial'])
         search_text = f'{code} {group["company"]}'
+        
+        # Sort reports within each type by date (newest first)
+        group['management'].sort(key=lambda r: r.get('date', '99999999'), reverse=True)
+        group['financial'].sort(key=lambda r: r.get('date', '99999999'), reverse=True)
         
         parts.append(f'<div class="audit-stock-item" data-search="{search_text}">')
         parts.append(f'''
@@ -545,22 +609,56 @@ def build_audit_page(index: IndexBuilder) -> str:
             <span class="audit-arrow">▼</span>
             <span class="audit-stock-code">{code}</span>
             <span class="audit-stock-name">{safe_company}</span>
-            <span class="audit-stock-count">{report_count} 題</span>
+            <span class="audit-stock-count">{total_count} 題</span>
         </div>
         ''')
-        parts.append('<div class="audit-stock-body"><ul class="audit-report-list">')
-        for report in group['reports']:
-            safe_r_title = html_mod.escape(report.get('title', '未命名'))
-            # Short file path for display
-            r_file = report.get('file', '')
-            r_short = '/'.join(r_file.split('/')[-2:]) if r_file else ''
+        parts.append('<div class="audit-stock-body">')
+        
+        # 經營組
+        mgmt_count = len(group['management'])
+        if mgmt_count > 0:
+            parts.append(f'<div class="audit-type-section">')
             parts.append(f'''
-            <li class="audit-report-item">
-                <a href="/?p=report&f={report['route']}" class="audit-report-link">{safe_r_title}</a>
-                <span class="audit-report-dir">{r_short}</span>
-            </li>
+            <div class="audit-type-header" data-toggle="audit-type">
+                <span class="audit-type-arrow">▶</span>
+                <span class="audit-type-label">經營組</span>
+                <span class="audit-type-count">{mgmt_count} 份</span>
+            </div>
             ''')
-        parts.append('</ul></div></div>')
+            parts.append('<div class="audit-type-body"><ul class="audit-report-list">')
+            for report in group['management']:
+                safe_r_title = html_mod.escape(report.get('title', '未命名'))
+                parts.append(f'''
+                <li class="audit-report-item">
+                    <a href="/?p=report&f={report['route']}" class="audit-report-link">{safe_r_title}</a>
+                    <span class="audit-report-date">{report.get('date', '')}</span>
+                </li>
+                ''')
+            parts.append('</ul></div></div>')
+        
+        # 財務組
+        fin_count = len(group['financial'])
+        if fin_count > 0:
+            parts.append(f'<div class="audit-type-section">')
+            parts.append(f'''
+            <div class="audit-type-header" data-toggle="audit-type">
+                <span class="audit-type-arrow">▶</span>
+                <span class="audit-type-label">財務組</span>
+                <span class="audit-type-count">{fin_count} 份</span>
+            </div>
+            ''')
+            parts.append('<div class="audit-type-body"><ul class="audit-report-list">')
+            for report in group['financial']:
+                safe_r_title = html_mod.escape(report.get('title', '未命名'))
+                parts.append(f'''
+                <li class="audit-report-item">
+                    <a href="/?p=report&f={report['route']}" class="audit-report-link">{safe_r_title}</a>
+                    <span class="audit-report-date">{report.get('date', '')}</span>
+                </li>
+                ''')
+            parts.append('</ul></div></div>')
+        
+        parts.append('</div></div>')
 
     parts.append('</div></div>')
     return '\n'.join(parts)
