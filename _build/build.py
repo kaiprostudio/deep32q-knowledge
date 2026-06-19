@@ -291,11 +291,11 @@ def extract_summary(content: str, max_chars: int = 200) -> str:
 def determine_category(relative_path: str) -> str:
     """Determine which section of the site a file belongs to."""
     p = relative_path.replace('\\', '/')
-    if p.startswith('每日報告/'):
+    if '/每日報告/' in p or p.startswith('每日報告/'):
         return 'daily'
-    if p.startswith('產業洞察/'):
+    if '/產業洞察/' in p or p.startswith('產業洞察/'):
         return 'industry'
-    if p.startswith('供應鏈拆解/'):
+    if '/供應鏈拆解/' in p or p.startswith('供應鏈拆解/'):
         return 'industry'  # merge into industry category
     return 'general'
 
@@ -361,9 +361,7 @@ class IndexBuilder:
         if category == 'daily':
             date_part = relative_path.split('/')
             # Daily reports are always in 每日報告/YYYY-MM-DD/ format
-            # relative_path includes KB dir prefix (Deep32Q知識庫/每日報告/YYYY-MM-DD/file.md)
-            # or just (每日報告/YYYY-MM-DD/file.md) depending on source
-            # Find the date part: looks for 4digits-2digits-2digits
+            # relative_path includes KB dir prefix - find date pattern
             report_date = 'unknown'
             for part in date_part:
                 if re.match(r'^\d{4}-\d{2}-\d{2}$', part):
@@ -374,13 +372,20 @@ class IndexBuilder:
             self.daily_reports[report_date].append(doc)
 
         elif category == 'industry':
+            # relative_path = Deep32Q知識庫/產業洞察/功率離散元件研究/xxx.md
+            # The subdirectory after '產業洞察' is the industry key
             parts = relative_path.split('/')
-            industry = parts[1] if len(parts) > 1 else '其他'
+            # Find the index of '產業洞察' in the path
+            try:
+                insight_index = parts.index('產業洞察')
+                industry = parts[insight_index + 1] if len(parts) > insight_index + 1 else '其他'
+            except ValueError:
+                industry = '其他'
             if industry not in self.industries:
                 self.industries[industry] = []
             self.industries[industry].append(doc)
 
-        elif relative_path.startswith('審計報告庫/'):
+        elif category == 'audit':
             parts = relative_path.split('/')
             # relative_path = 審計報告庫/經營審計/4967_十銓/20260428/G14_xxx.md
             # stock_dir should be the stock-specific dir: 4967_十銓
