@@ -417,13 +417,15 @@ class IndexBuilder:
                     code_match = re.match(r'^(\d+)', stock_dir)
                     self.audit_reports[stock_dir]['stock_code'] = code_match.group(1) if code_match else stock_dir
                 self.audit_reports[stock_dir]['documents'].append(doc)
-                self.audit_reports[stock_dir]['reports'].append({
-                    'title': title,
-                    'route': route,
-                    'file': relative_path,
-                    'audit_type': audit_type,      # 經營審計 or 財務審計
-                    'date': report_date_str,        # YYYYMMDD for sorting
-                })
+                # Skip index.md (no date dir) — only add reports with a real date
+                if report_date_str != '99999999':
+                    self.audit_reports[stock_dir]['reports'].append({
+                        'title': title,
+                        'route': route,
+                        'file': relative_path,
+                        'audit_type': audit_type,      # 經營審計 or 財務審計
+                        'date': report_date_str,        # YYYYMMDD for sorting
+                    })
 
     def build_search_index(self) -> list:
         """Build searchable index (title and content)."""
