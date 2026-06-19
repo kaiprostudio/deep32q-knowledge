@@ -1,6 +1,6 @@
 /**
- * Deep32Q 內容路由器
- * 處理 SPA 頁面切換（URL query string 路由）
+ * Deep32Q 內容路由器 v2
+ * SPA 路由 + 手風琴式展開（每日報告、產業洞察、審計報告）
  */
 (function() {
     'use strict';
@@ -9,7 +9,6 @@
     let navData = {};
 
     function init() {
-        // Load route map
         Promise.all([
             fetch('/route_map.json').then(r => r.json()),
             fetch('/nav.json').then(r => r.json())
@@ -21,7 +20,6 @@
             console.error('Failed to load navigation data:', err);
         });
 
-        // Handle browser back/forward
         window.addEventListener('popstate', handleRoute);
     }
 
@@ -35,22 +33,21 @@
 
         // Update active nav link
         document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
-        const navMap = { 'home': 'daily', 'industries': 'industries', 'audit': 'audit', 'report': null };
+        const navMap = { 'home': 'daily', 'industries': 'industries', 'audit': 'audit', 'report': 'daily' };
         const activeNav = navMap[page];
         if (activeNav) {
             const navEl = document.querySelector(`[data-nav="${activeNav}"]`);
             if (navEl) navEl.classList.add('active');
         }
 
+        // Fade transition
         mainEl.style.opacity = '0.4';
         mainEl.style.transition = 'opacity 0.15s';
 
         if (page === 'home') {
-            // Home page already loaded from server; just ensure scroll
             window.scrollTo(0, 0);
             mainEl.style.opacity = '1';
-            // Re-bind timeline toggles
-            bindTimelineToggles();
+            bindDailyToggles();
             return;
         }
 
@@ -64,27 +61,59 @@
             return;
         }
 
-        if (page === 'report' && file) {
-            loadReport(mainEl, file);
-            return;
-        }
-
         // Fallback: home
         window.location.href = '/';
     }
 
+    /* ── 每日報告 — 首頁手風琴（問題 4 修復） ── */
+    function bindDailyToggles() {
+        // 日期收折
+        document.querySelectorAll('.timeline-day-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const day = this.closest('.timeline-day');
+                if (day) day.classList.toggle('expanded');
+            });
+        });
+
+        // 報告展開/收合（同頁面，不跳轉）
+        document.querySelectorAll('.report-header').forEach(header => {
+            header.addEventListener('click', function() {
+                // Toggle this report
+                const wasExpanded = this.classList.contains('expanded');
+                // Close all others in the same timeline-day
+                this.closest('.timeline-day').querySelectorAll('.report-header.expanded').forEach(h => {
+                    if (h !== this) h.classList.remove('expanded');
+                });
+                if (wasExpanded) {
+                    this.classList.remove('expanded');
+                } else {
+                    this.classList.add('expanded');
+                }
+            });
+        });
+    }
+
+    /* ── 產業洞察（問題 2 修復 — 收折） ────────── */
     function renderIndustries(container) {
         let html = '<div class="page-container industries-page"><h1>產業洞察</h1>';
 
-        const sortedIndustries = Object.keys(navData.industries || {}).sort();
+        // 過濾掉供應鏈拆解（問題 1 修復）
+        const sortedIndustries = Object.keys(navData.industries || {})
+            .filter(name => name !== '供應鏈拆解')
+            .sort();
+
         if (sortedIndustries.length === 0) {
             html += '<div class="empty-state"><p>尚無產業洞察內容。</p></div>';
         } else {
             for (const industry of sortedIndustries) {
                 const docs = navData.industries[industry];
                 html += `<div class="industry-section">`;
-                html += `<h2 class="industry-name">${industry}</h2>`;
-                html += `<p class="industry-count">${docs.length} 份報告</p>`;
+                html += `<div class="industry-header" data-toggle="industry">`;
+                html += `<span class="industry-arrow">▼</span>`;
+                html += `<span class="industry-name">${industry}</span>`;
+                html += `<span class="industry-count">${docs.length} 份報告</span>`;
+                html += `</div>`;
+                html += `<div class="industry-body"><div class="industry-body-inner">`;
                 html += '<ul class="report-list">';
                 for (const doc of docs) {
                     html += `<li class="report-item">
@@ -92,129 +121,104 @@
                         <span class="report-date">${doc.date}</span>
                     </li>`;
                 }
-                html += '</ul></div>';
+                html += '</ul></div></div></div>';
             }
         }
 
         html += '</div>';
         container.innerHTML = html;
         container.style.opacity = '1';
+
+        // 綁定產業收折（問題 2）
+        container.querySelectorAll('[data-toggle="industry"]').forEach(header => {
+            header.addEventListener('click', function() {
+                const wasExpanded = this.classList.contains('expanded');
+                // Close all others
+                container.querySelectorAll('[data-toggle="industry"].expanded').forEach(h => {
+                    if (h !== this) h.classList.remove('expanded');
+                });
+                if (wasExpanded) {
+                    this.classList.remove('expanded');
+                } else {
+                    this.classList.add('expanded');
+                }
+            });
+        });
+
+        // 預設展開第一個
+        const first = container.querySelector('[data-toggle="industry"]');
+        if (first) first.classList.add('expanded');
     }
 
+    /* ── 審計報告（問題 3 修復 — 可點擊、搜尋） ─── */
     function renderAudit(container) {
         let html = '<div class="page-container audit-page"><h1>審計報告</h1>';
-        html += '<div class="audit-search"><input type="text" id="audit-filter" placeholder="搜尋股票代碼或名稱"></div>';
-        html += '<table class="audit-table" id="audit-table"><thead><tr>';
-        html += '<th>代碼</th><th>公司</th><th>子目錄</th><th>報告數</th>';
-        html += '</tr></thead><tbody>';
+        html += '<div class="audit-filter-wrap"><input type="text" id="audit-filter" placeholder="搜尋股票代碼或名稱…"></div>';
+        html += '<div class="audit-list" id="audit-list">';
 
         const sorted = Object.keys(navData.audit || {}).sort();
         for (const key of sorted) {
             const info = navData.audit[key];
             const code = info.stock_code || '';
             const title = info.title || key;
-            const count = info.documents || 0;
-            html += `<tr class="audit-row" data-stock="${key}">
-                <td class="stock-code">${code}</td>
-                <td class="stock-name">${title}</td>
-                <td class="stock-dir">${key}</td>
-                <td class="stock-count">${count}</td>
-            </tr>`;
+            const reports = info.reports || [];
+            const count = reports.length;
+
+            html += `<div class="audit-stock-item" data-search="${code} ${title}">`;
+            html += `<div class="audit-stock-header" data-toggle="audit">`;
+            html += `<span class="audit-arrow">▼</span>`;
+            html += `<span class="audit-stock-code">${code}</span>`;
+            html += `<span class="audit-stock-name">${title}</span>`;
+            // 用子目錄名稱當顯示
+            const dirName = key.replace(code, '').replace(/^[-_\s]+/, '').trim();
+            html += `<span class="audit-stock-count">${count}</span>`;
+            html += `</div>`;
+            html += `<div class="audit-stock-body"><ul class="audit-report-list">`;
+            // 顯示該股所有報告題目
+            for (const report of reports) {
+                const rPath = report.file || '';
+                const rTitle = report.title || '未命名';
+                html += `<li class="audit-report-item">
+                    <a href="/?p=report&f=${encodeURIComponent(report.route)}" class="audit-report-link">${rTitle}</a>
+                    <span class="audit-report-dir">${rPath.split('/')[2] || ''}</span>
+                </li>`;
+            }
+            html += `</ul></div></div>`;
         }
 
-        html += '</tbody></table></div>';
+        html += '</div></div>';
         container.innerHTML = html;
         container.style.opacity = '1';
 
-        // Bind audit row clicks
-        container.querySelectorAll('.audit-row').forEach(row => {
-            row.addEventListener('click', function() {
-                const stock = this.getAttribute('data-stock');
-                // Audit reports not fully implemented in SPA routing yet;
-                // for now just show a message
-                alert('個股報告頁面待建置 — ' + stock);
+        // 綁定審計收折
+        container.querySelectorAll('[data-toggle="audit"]').forEach(header => {
+            header.addEventListener('click', function() {
+                const wasExpanded = this.classList.contains('expanded');
+                // Close all others
+                container.querySelectorAll('[data-toggle="audit"].expanded').forEach(h => {
+                    if (h !== this) h.classList.remove('expanded');
+                });
+                if (wasExpanded) {
+                    this.classList.remove('expanded');
+                } else {
+                    this.classList.add('expanded');
+                }
             });
         });
 
-        // Bind filter
+        // 搜尋過濾（即時、大小寫不分）
         const filter = document.getElementById('audit-filter');
         if (filter) {
             filter.addEventListener('input', function() {
-                const val = this.value.toLowerCase();
-                container.querySelectorAll('.audit-row').forEach(row => {
-                    const text = row.textContent.toLowerCase();
-                    row.style.display = text.includes(val) ? '' : 'none';
+                const val = this.value.toLowerCase().trim();
+                const list = document.getElementById('audit-list');
+                if (!list) return;
+                list.querySelectorAll('.audit-stock-item').forEach(item => {
+                    const searchText = (item.getAttribute('data-search') || item.textContent).toLowerCase();
+                    item.style.display = val === '' || searchText.includes(val) ? '' : 'none';
                 });
             });
         }
-    }
-
-    function loadReport(container, fileRoute) {
-        const htmlPath = routeMap[fileRoute];
-
-        if (!htmlPath) {
-            container.innerHTML = '<div class="error">找不到此報告</div>';
-            container.style.opacity = '1';
-            return;
-        }
-
-        // Fetch the pre-built HTML page and extract body content
-        fetch(htmlPath)
-            .then(r => {
-                if (!r.ok) throw new Error('Not found');
-                return r.text();
-            })
-            .then(html => {
-                // Extract everything inside #main-content from the report page
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const content = doc.getElementById('main-content');
-                if (content) {
-                    container.innerHTML = content.innerHTML;
-                } else {
-                    container.innerHTML = html;
-                }
-                container.style.opacity = '1';
-                window.scrollTo(0, 0);
-            })
-            .catch(() => {
-                container.innerHTML = '<div class="error">無法載入報告內容</div>';
-                container.style.opacity = '1';
-            });
-    }
-
-    function bindTimelineToggles() {
-        document.querySelectorAll('.timeline-day-toggle').forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                const day = this.closest('.timeline-day');
-                if (day) {
-                    day.classList.toggle('expanded');
-                }
-            });
-        });
-
-        document.querySelectorAll('.read-more-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const route = this.getAttribute('data-route');
-                if (route) {
-                    navigateToReport(route);
-                }
-            });
-        });
-
-        document.querySelectorAll('.report-title').forEach(title => {
-            title.addEventListener('click', function() {
-                const route = this.closest('.report-summary')?.getAttribute('data-route');
-                if (route) {
-                    navigateToReport(route);
-                }
-            });
-        });
-    }
-
-    function navigateToReport(route) {
-        window.location.href = '/?p=report&f=' + encodeURIComponent(route);
     }
 
     // Init
@@ -223,14 +227,4 @@
     } else {
         init();
     }
-
-    // Expose for hash-based navigation compatibility
-    window.routeTo = function(page, file) {
-        const params = new URLSearchParams();
-        if (page) params.set('p', page);
-        if (file) params.set('f', file);
-        const url = '/?' + params.toString();
-        history.pushState({}, '', url);
-        handleRoute();
-    };
 })();
