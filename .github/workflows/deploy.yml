@@ -1,10 +1,10 @@
-# GitHub Pages + Vitepress 自動部署
-name: Deploy Vitepress to Pages
+# Deep32Q Static Site Generator — Build & Deploy
+# Replaces Vitepress entirely. No npm/node dependencies.
+name: Deploy Deep32Q Site
 
 on:
   push:
     branches: [master]
-
   workflow_dispatch:
 
 permissions:
@@ -22,20 +22,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          node-version: 20
-          cache: npm
-          cache-dependency-path: package-lock.json
-      - name: Install dependencies
-        run: npm ci
-      - name: Build with Vitepress
-        run: npm run docs:build
+          python-version: '3.x'
+
+      - name: Build static site
+        run: python3 _build/build.py
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .vitepress/dist
+          path: _site
 
   deploy:
     environment:

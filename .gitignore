@@ -1,10 +1,13 @@
 **/.DS_Store
 .tmp.driveupload/
 node_modules/
-.vitepress/cache/
-.vitepress/dist/
+.vitepress/
 __pycache__/
 *.pyc
 年報資料庫/
 _備份/
-.vitepress/config.mjs.bak2
+_site/
+*.bak
+*.bak2
+package-lock.json
+package.json
