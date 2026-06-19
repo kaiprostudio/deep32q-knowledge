@@ -200,7 +200,14 @@
                 html += `<div class="audit-stock-body">`;
 
                 // 經營組
-                const mgmt = stock.management.sort((a, b) => (b.date || '99999999').localeCompare(a.date || '99999999'));
+                const mgmt = stock.management.sort((a, b) => {
+                    // First by date (newest first), then by G number (G01 < G02)
+                    const dateCmp = (b.date || '99999999').localeCompare(a.date || '99999999');
+                    if (dateCmp !== 0) return dateCmp;
+                    const gA = (a.route || '').match(/G(\d+)/);
+                    const gB = (b.route || '').match(/G(\d+)/);
+                    return (gA ? parseInt(gA[1]) : 0) - (gB ? parseInt(gB[1]) : 0);
+                });
                 if (mgmt.length > 0) {
                     html += `<div class="audit-type-section">`;
                     html += `<div class="audit-type-header" data-toggle="audit-type">`;
@@ -219,7 +226,14 @@
                 }
 
                 // 財務組
-                const fin = stock.financial.sort((a, b) => (b.date || '99999999').localeCompare(a.date || '99999999'));
+                const fin = stock.financial.sort((a, b) => {
+                    // First by date (newest first), then by G number (G01 < G02)
+                    const dateCmp = (b.date || '99999999').localeCompare(a.date || '99999999');
+                    if (dateCmp !== 0) return dateCmp;
+                    const gA = (a.route || '').match(/G(\d+)/);
+                    const gB = (b.route || '').match(/G(\d+)/);
+                    return (gA ? parseInt(gA[1]) : 0) - (gB ? parseInt(gB[1]) : 0);
+                });
                 if (fin.length > 0) {
                     html += `<div class="audit-type-section">`;
                     html += `<div class="audit-type-header" data-toggle="audit-type">`;
