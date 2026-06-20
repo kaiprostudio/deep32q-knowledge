@@ -855,7 +855,7 @@ def build_site():
     )
 
     # Step 10: Copy admin files (whitelist management panel)
-    admin_src = REPO_ROOT / 'admin'
+    admin_src = BUILD_DIR / 'admin'
     if admin_src.is_dir():
         for fname in ['index.html', 'whitelist.js']:
             src = admin_src / fname
