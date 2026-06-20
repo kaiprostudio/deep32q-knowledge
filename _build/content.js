@@ -309,8 +309,8 @@
             return;
         }
         
-        const htmlFile = routeMap[filePath];
-        if (!htmlFile) {
+        const reportHtml = routeMap[filePath];
+        if (!reportHtml) {
             container.innerHTML = '<div class="page-container"><div class="error">無法找到此報告。</div></div>';
             container.style.opacity = '1';
             return;
@@ -327,31 +327,16 @@
             backText = '回產業洞察';
         }
         
-        const reportUrl = htmlFile.split('/').map(seg => encodeURIComponent(seg)).join('/');
-        fetch(reportUrl)
-            .then(r => {
-                if (!r.ok) throw new Error('HTTP ' + r.status);
-                return r.text();
-            })
-            .then(html => {
-                // Extract content inside <body> (skip DOCTYPE/head/full-page wrapper)
-                const bodyMatch = html.match(/<body>([\s\S]*)<\/body>/i);
-                const bodyContent = bodyMatch ? bodyMatch[1] : html;
-                container.innerHTML = `
-                    <div class="page-container report-page">
-                        <div class="report-back">
-                            <a href="${backLink}" class="back-link">← ${backText}</a>
-                        </div>
-                        ${bodyContent}
-                    </div>
-                `;
-                container.style.opacity = '1';
-                window.scrollTo(0, 0);
-            })
-            .catch(err => {
-                container.innerHTML = `<div class="page-container"><div class="error">報告載入失敗：${err.message}</div></div>`;
-                container.style.opacity = '1';
-            });
+        container.innerHTML = `
+            <div class="page-container report-page">
+                <div class="report-back">
+                    <a href="${backLink}" class="back-link">← ${backText}</a>
+                </div>
+                ${reportHtml}
+            </div>
+        `;
+        container.style.opacity = '1';
+        window.scrollTo(0, 0);
     }
 
     if (document.readyState === 'loading') {

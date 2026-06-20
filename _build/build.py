@@ -818,7 +818,7 @@ def build_site():
         # Save name: replace / with _
         safe_name = route.replace('/', '__') + '.html'
         (reports_dir / safe_name).write_text(html, encoding='utf-8')
-        route_map[route] = f'/reports/{safe_name}'
+        route_map[route] = content_html
 
     # Step 7: Write navigation data (for client-side routing)
     nav_data = {
@@ -840,7 +840,7 @@ def build_site():
         json.dumps(search_index, ensure_ascii=False), encoding='utf-8'
     )
 
-    # Step 9: Write route map
+    # Step 9: Write route map (HTML fragments, not paths — GH Pages doesn't serve Chinese filenames)
     (SITE_ROOT / 'route_map.json').write_text(
         json.dumps(route_map, ensure_ascii=False), encoding='utf-8'
     )
