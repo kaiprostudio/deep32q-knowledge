@@ -159,8 +159,37 @@
                 }
             });
         });
-        const first = container.querySelector('[data-toggle="industry"]');
-        if (first) first.classList.add('expanded');
+        // 產業洞察預設全部折疊（2026-06-20 周一要求）
+        // 不再自動展開第一個產業
+
+        // Inline report loading for industry reports
+        container.querySelectorAll('.report-link[data-route]').forEach(link => {
+            link.addEventListener('click', async function(e) {
+                e.preventDefault();
+                const li = this.closest('.report-item');
+                if (!li) return;
+                const existing = li.querySelector('.inline-report-content');
+                if (existing) {
+                    existing.remove();
+                    return;
+                }
+                const route = this.getAttribute('data-route');
+                const htmlPath = routeMap[route];
+                if (!htmlPath) return;
+                try {
+                    const resp = await fetch(htmlPath);
+                    const html = await resp.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const reportContent = doc.querySelector('.report-content');
+                    if (!reportContent) return;
+                    const div = document.createElement('div');
+                    div.className = 'inline-report-content';
+                    div.innerHTML = reportContent.innerHTML;
+                    li.appendChild(div);
+                } catch(e) { /* silent */ }
+            });
+        });
     }
 
     /* ── 審計報告（從 navData 渲染 + 經營/財務兩層 accordion） ── */
@@ -230,7 +259,7 @@
                     html += `<div class="audit-type-body"><ul class="audit-report-list">`;
                     for (const r of mgmt) {
                         html += `<li class="audit-report-item">`;
-                        html += `<a href="/?p=report&f=${encodeURIComponent(r.route)}" class="audit-report-link">${r.title}</a>`;
+                        html += `<a href="/?p=report&f=${encodeURIComponent(r.route)}" class="audit-report-link" data-route="${r.route}">${r.title}</a>`;
                         html += `<span class="audit-report-date">${r.date}</span>`;
                         html += `</li>`;
                     }
@@ -256,7 +285,7 @@
                     html += `<div class="audit-type-body"><ul class="audit-report-list">`;
                     for (const r of fin) {
                         html += `<li class="audit-report-item">`;
-                        html += `<a href="/?p=report&f=${encodeURIComponent(r.route)}" class="audit-report-link">${r.title}</a>`;
+                        html += `<a href="/?p=report&f=${encodeURIComponent(r.route)}" class="audit-report-link" data-route="${r.route}">${r.title}</a>`;
                         html += `<span class="audit-report-date">${r.date}</span>`;
                         html += `</li>`;
                     }
@@ -291,6 +320,65 @@
             header.addEventListener('click', function(e) {
                 e.stopPropagation();
                 this.classList.toggle('expanded');
+            });
+        });
+
+        // Inline report loading for industry reports
+        container.querySelectorAll('.report-link[data-route]').forEach(link => {
+            link.addEventListener('click', async function(e) {
+                e.preventDefault();
+                const li = this.closest('.report-item');
+                if (!li) return;
+                // Check if already expanded
+                const existing = li.querySelector('.inline-report-content');
+                if (existing) {
+                    existing.remove();
+                    return;
+                }
+                const route = this.getAttribute('data-route');
+                const htmlPath = routeMap[route];
+                if (!htmlPath) return;
+                try {
+                    const resp = await fetch(htmlPath);
+                    const html = await resp.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const reportContent = doc.querySelector('.report-content');
+                    if (!reportContent) return;
+                    const div = document.createElement('div');
+                    div.className = 'inline-report-content';
+                    div.innerHTML = reportContent.innerHTML;
+                    li.appendChild(div);
+                } catch(e) { /* silent */ }
+            });
+        });
+
+        // Inline report loading for audit reports
+        container.querySelectorAll('.audit-report-link[data-route]').forEach(link => {
+            link.addEventListener('click', async function(e) {
+                e.preventDefault();
+                const li = this.closest('.audit-report-item');
+                if (!li) return;
+                const existing = li.querySelector('.inline-report-content');
+                if (existing) {
+                    existing.remove();
+                    return;
+                }
+                const route = this.getAttribute('data-route');
+                const htmlPath = routeMap[route];
+                if (!htmlPath) return;
+                try {
+                    const resp = await fetch(htmlPath);
+                    const html = await resp.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const reportContent = doc.querySelector('.report-content');
+                    if (!reportContent) return;
+                    const div = document.createElement('div');
+                    div.className = 'inline-report-content';
+                    div.innerHTML = reportContent.innerHTML;
+                    li.appendChild(div);
+                } catch(e) { /* silent */ }
             });
         });
 
@@ -367,9 +455,33 @@
             });
     }
 
+    /* ── 深色模式切換 ── */
+    function initTheme() {
+        const saved = localStorage.getItem('deep32q-theme');
+        if (saved === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        const toggle = document.getElementById('theme-toggle');
+        if (toggle) {
+            const updateIcon = () => {
+                const theme = document.documentElement.getAttribute('data-theme') || 'light';
+                toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+            };
+            updateIcon();
+            toggle.addEventListener('click', function() {
+                const current = document.documentElement.getAttribute('data-theme') || 'light';
+                const next = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                localStorage.setItem('deep32q-theme', next);
+                updateIcon();
+            });
+        }
+    }
+
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', () => { init(); initTheme(); });
     } else {
         init();
+        initTheme();
     }
 })();

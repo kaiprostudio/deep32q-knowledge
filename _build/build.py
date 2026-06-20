@@ -53,6 +53,7 @@ INDEX_HTML_TEMPLATE = """<!DOCTYPE html>
         <a href="/" class="nav-link active" data-nav="daily">每日報告</a>
         <a href="/?p=industries" class="nav-link" data-nav="industries">產業洞察</a>
         <a href="/?p=audit" class="nav-link" data-nav="audit">審計報告</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="切換深色模式" title="切換深色模式">🌙</button>
       </div>
     </div>
   </nav>
