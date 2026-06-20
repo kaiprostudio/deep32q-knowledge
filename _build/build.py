@@ -70,6 +70,9 @@ INDEX_HTML_TEMPLATE = """<!DOCTYPE html>
 
 def md_to_html(text: str) -> str:
     """Convert minimal Markdown to HTML using Python's standard library."""
+    # Strip BOM (U+FEFF) which confuses markdown parsers
+    if text and text[0] == '\ufeff':
+        text = text[1:]
     try:
         import markdown
         return markdown.markdown(
@@ -80,6 +83,9 @@ def md_to_html(text: str) -> str:
         pass
 
     # Fallback: simple inline parser
+    # Strip BOM (U+FEFF)
+    if text and text[0] == '\ufeff':
+        text = text[1:]
     lines = text.split('\n')
     html_lines = []
     in_table = False
