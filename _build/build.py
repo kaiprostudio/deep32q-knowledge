@@ -814,11 +814,12 @@ def build_site():
 
     # json map for content.js
     route_map = {}
+    import hashlib
     for route, html in report_pages.items():
-        # Save name: replace / with _
-        safe_name = route.replace('/', '__') + '.html'
+        # Use MD5 hash filename (no Chinese chars) for GH Pages compatibility
+        safe_name = hashlib.md5(route.encode()).hexdigest()[:12] + '.html'
         (reports_dir / safe_name).write_text(html, encoding='utf-8')
-        route_map[route] = content_html
+        route_map[route] = f'/reports/{safe_name}'
 
     # Step 7: Write navigation data (for client-side routing)
     nav_data = {
