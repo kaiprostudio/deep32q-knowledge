@@ -333,22 +333,14 @@
                 return r.text();
             })
             .then(html => {
-                // Extract report content via <body>, then strip SPA wrapper elements.
+                // Parse the fetched HTML with a DOMParser to extract only the report content.
                 // The report files are wrapped in INDEX_HTML_TEMPLATE (#app, #navbar, content.js).
-                // Injecting <body> content as-is causes a second content.js init which resets
-                // the current page to home. Strip all SPA framework tags, keep only report content.
-                const bodyMatch = html.match(/<body>([\s\S]*)<\/body>/i);
-                let bodyContent = bodyMatch ? bodyMatch[1] : html;
-                // Remove SPA wrapper elements (don't inject #app, #navbar, content.js again)
-                bodyContent = bodyContent
-                    .replace(/<div\s+id="app">?/, '')
-                    .replace(/<\/div>\s*$/, '')
-                    .replace(/<nav\s+id="navbar"[^>]*>[\s\S]*?<\/nav>/g, '')
-                    .replace(/<main[^>]*>/, '')
-                    .replace(/<\/main>/, '')
-                    .replace(/<script[^>]*src="[^"]*content\.js[^>]*><\/script>/g, '')
-                    .replace(/<link[^>]*rel="stylesheet"[^>]*>/g, '')
-                    .trim();
+                // Injecting <body> as innerHTML causes the browser to re-parse script tags,
+                // which re-inits the SPA and resets the current page to home.
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const reportPage = doc.querySelector('.report-content-page');
+                let bodyContent = reportPage ? reportPage.innerHTML : '<p>無法解析報告內容。</p>';
                 container.innerHTML = `
                     <div class="page-container report-page">
                         <div class="report-back">
