@@ -9,6 +9,7 @@
 
     let routeMap = {};
     let navData = {};
+    const navMapDefault = { 'home': 'daily', 'industries': 'industries', 'audit': 'audit', 'report': 'daily' };
 
     function init() {
         Promise.all([
@@ -34,8 +35,14 @@
         if (!mainEl) return;
 
         document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
-        const navMap = { 'home': 'daily', 'industries': 'industries', 'audit': 'audit', 'report': 'daily' };
-        const activeNav = navMap[page];
+        // navMap 定義各 page 對應的 navbar active 狀態
+        // report 頁面根據路徑判斷來源，不要固定高亮每日報告
+        let activeNav = navMapDefault[page] || null;
+        if (page === 'report' && filePath) {
+            if (filePath.startsWith('審計報告庫/')) activeNav = 'audit';
+            else if (filePath.startsWith('Deep32Q知識庫/產業洞察/')) activeNav = 'industries';
+            else activeNav = 'daily';
+        }
         if (activeNav) {
             const navEl = document.querySelector(`[data-nav="${activeNav}"]`);
             if (navEl) navEl.classList.add('active');
@@ -339,8 +346,10 @@
                 // which re-inits the SPA and resets the current page to home.
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(html, 'text/html');
-                const reportPage = doc.querySelector('.report-content-page');
-                let bodyContent = reportPage ? reportPage.innerHTML : '<p>無法解析報告內容。</p>';
+                // Use .report-content (not .report-content-page) to skip breadcrumb div.
+                // Outer container already has the '← 回' link; inner breadcrumb would duplicate it.
+                const reportContent = doc.querySelector('.report-content');
+                let bodyContent = reportContent ? reportContent.innerHTML : '<p>無法解析報告內容。</p>';
                 container.innerHTML = `
                     <div class="page-container report-page">
                         <div class="report-back">
