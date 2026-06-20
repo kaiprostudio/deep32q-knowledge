@@ -20,7 +20,7 @@
   --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
   --radius: 10px;
   --radius-sm: 6px;
-  --max-width: 960px;
+  --max-width: 1200px;
   --font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto,
     'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
   --font-mono: 'SF Mono', 'Cascadia Code', 'JetBrains Mono', Consolas, monospace;
@@ -611,6 +611,67 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   .nav-link { padding: 4px 10px; font-size: 0.8rem; }
   #main-content { padding: 16px 12px 60px; }
   .audit-report-item { padding-left: 16px; flex-wrap: wrap; gap: 4px; }
+  /* 報告表格強制橫向滑動 */
+  .report-body-inner table,
+  .inline-report-content table {
+    display: block; overflow-x: auto; white-space: nowrap;
+  }
+}
+
+/* ── Tablet: ≤768px ── */
+@media (max-width: 768px) {
+  #main-content { padding: 14px 12px 56px; }
+  .report-body { max-width: 100%; }
+  .nav-inner { height: 48px; }
+  .report-body-inner { padding: 10px 12px; }
+  .inline-report-content { max-height: 400px; }
+  h1 { font-size: 1.2rem; }
+}
+
+/* ── Mobile: ≤480px ── */
+@media (max-width: 480px) {
+  #main-content { padding: 12px 8px 48px; }
+  .nav-link { font-size: 0.72rem; padding: 4px 6px; }
+  .nav-inner { gap: 4px; padding: 6px 8px; height: auto; }
+  .report-header { padding: 8px 10px; font-size: 0.82rem; }
+  .report-body-inner { padding: 8px 10px; font-size: 0.82rem; line-height: 1.55; }
+  .inline-report-content { padding: 10px 14px; max-height: 350px; font-size: 0.82rem; }
+  .audit-report-item { padding-left: 10px; flex-wrap: wrap; gap: 2px; }
+  .audit-stock-header { padding: 8px 10px; }
+  .industry-header { padding: 8px 10px; }
+  .industry-body-inner { padding: 6px 10px; }
+  .report-list { padding-left: 16px; }
+  .report-item { flex-wrap: wrap; gap: 2px; }
+  .report-date { font-size: 0.72rem; }
+  .timeline-day-toggle { font-size: 0.82rem; padding: 8px 10px; }
+  .timeline-report { margin-bottom: 4px; }
+  .timeline-reports { padding: 0 4px; }
+  .timeline-day-toggle + .timeline-reports { margin-top: 2px; }
+  .page-container { padding: 0;}
+  /* 表格強制橫向滾動 */
+  .report-body-inner table,
+  .inline-report-content table {
+    display: block; overflow-x: auto; white-space: nowrap;
+  }
+  /* 審計報告類型折疊 */
+  .audit-type-header { padding: 6px 10px; font-size: 0.8rem; }
+  .empty-state { padding: 20px 12px; }
+  h1 { font-size: 1.1rem; }
+}
+
+/* ── Small Mobile: ≤375px ── */
+@media (max-width: 375px) {
+  #main-content { padding: 8px 4px 40px; }
+  .nav-link { font-size: 0.65rem; padding: 3px 4px; }
+  .report-header { font-size: 0.75rem; padding: 6px 8px; }
+  .report-body-inner { font-size: 0.75rem; }
+  .inline-report-content { max-height: 280px; font-size: 0.75rem; }
+  .industry-header { font-size: 0.8rem; }
+  .timeline-day-toggle { font-size: 0.75rem; }
+  .report-title { max-width: 180px; white-space: normal; }
+  .report-date { font-size: 0.65rem; }
+  .industry-count { font-size: 0.7rem; }
+  h1 { font-size: 1rem; }
 
 /* ── Inline Report Section ── */
 .inline-report-content {
