@@ -125,7 +125,7 @@
                 const sortedDocs = docs.slice().sort((a, b) => b.date.localeCompare(a.date));
                 html += `<div class="industry-section">`;
                 html += `<div class="industry-header" data-toggle="industry">`;
-                html += `<span class="industry-arrow">▼</span>`;
+                html += `<span class="industry-arrow">▶</span>`;
                 html += `<span class="industry-name">${industry}</span>`;
                 html += `<span class="industry-count">${sortedDocs.length} 份報告</span>`;
                 html += `</div>`;
@@ -133,7 +133,7 @@
                 html += '<ul class="report-list">';
                 for (const doc of sortedDocs) {
                     html += `<li class="report-item">`;
-                    html += `<a href="/?p=report&f=${encodeURIComponent(doc.route)}" class="report-link">${doc.title}</a>`;
+                    html += `<a href="/?p=report&f=${encodeURIComponent(doc.route)}" class="report-link" data-route="${doc.route}">${doc.title}</a>`;
                     html += `<span class="report-date">${doc.date}</span>`;
                     html += `</li>`;
                 }
@@ -233,7 +233,7 @@
                 const searchText = `${stock.code} ${stock.company}`;
                 html += `<div class="audit-stock-item" data-search="${searchText}">`;
                 html += `<div class="audit-stock-header" data-toggle="audit">`;
-                html += `<span class="audit-arrow">▼</span>`;
+                html += `<span class="audit-arrow">▶</span>`;
                 html += `<span class="audit-stock-code">${stock.code}</span>`;
                 html += `<span class="audit-stock-name">${stock.company}</span>`;
                 html += `<span class="audit-stock-count">${total} 題</span>`;
