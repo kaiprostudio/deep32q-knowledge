@@ -495,7 +495,7 @@ def build_home_page(index: IndexBuilder) -> str:
                     <span class="report-arrow">▼</span>
                     <span class="report-title">{safe_title}</span>
                 </div>
-                <div class="report-body"><div class="report-body-inner">{content_html}</div></div>
+                <div class="report-body"><template class="report-body-template">{content_html}</template></div>
                 ''')
                 parts.append('</div>')
             parts.append('</div></div>')

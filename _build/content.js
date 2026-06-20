@@ -96,7 +96,19 @@
                 } else {
                     this.classList.add('expanded');
                 }
-            });
+                // If using <template>, extract content on first expand
+                const body = this.nextElementSibling;
+                if (body && body.classList.contains('report-body')) {
+                    const tmpl = body.querySelector('.report-body-template');
+                    if (tmpl && tmpl.content) {
+                        // Clone template content and swap
+                        const clone = document.createElement('div');
+                        clone.className = 'report-body-inner';
+                        clone.appendChild(tmpl.content.cloneNode(true));
+                        tmpl.replaceWith(clone);
+                    }
+                }
+            }, { once: true });
         });
     }
 
