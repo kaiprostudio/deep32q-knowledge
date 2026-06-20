@@ -24,7 +24,7 @@ async function whitelistApi(method, body) {
       'Content-Type': 'application/json',
       'X-Admin-Key': ADMIN_API_KEY,
     },
-    credentials: 'include',
+    credentials: 'omit',
   };
   if (body) opts.body = JSON.stringify(body);
   const res = await fetch(API_BASE + '/whitelist', opts);
