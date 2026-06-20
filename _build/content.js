@@ -333,9 +333,22 @@
                 return r.text();
             })
             .then(html => {
-                // Extract content inside <body> (skip DOCTYPE/head/full-page wrapper)
+                // Extract report content via <body>, then strip SPA wrapper elements.
+                // The report files are wrapped in INDEX_HTML_TEMPLATE (#app, #navbar, content.js).
+                // Injecting <body> content as-is causes a second content.js init which resets
+                // the current page to home. Strip all SPA framework tags, keep only report content.
                 const bodyMatch = html.match(/<body>([\s\S]*)<\/body>/i);
-                const bodyContent = bodyMatch ? bodyMatch[1] : html;
+                let bodyContent = bodyMatch ? bodyMatch[1] : html;
+                // Remove SPA wrapper elements (don't inject #app, #navbar, content.js again)
+                bodyContent = bodyContent
+                    .replace(/<div\s+id="app">?/, '')
+                    .replace(/<\/div>\s*$/, '')
+                    .replace(/<nav\s+id="navbar"[^>]*>[\s\S]*?<\/nav>/g, '')
+                    .replace(/<main[^>]*>/, '')
+                    .replace(/<\/main>/, '')
+                    .replace(/<script[^>]*src="[^"]*content\.js[^>]*><\/script>/g, '')
+                    .replace(/<link[^>]*rel="stylesheet"[^>]*>/g, '')
+                    .trim();
                 container.innerHTML = `
                     <div class="page-container report-page">
                         <div class="report-back">
