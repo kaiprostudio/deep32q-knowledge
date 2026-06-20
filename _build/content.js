@@ -333,9 +333,9 @@
                 return r.text();
             })
             .then(html => {
-                // Extract just the body content from the full HTML page
-                const match = html.match(/<div id="main-content">.*?<\/div>/s);
-                const bodyContent = match ? match[0] : '<div class="error">內容載入失敗</div>';
+                // Extract content inside <body> (skip DOCTYPE/head/full-page wrapper)
+                const bodyMatch = html.match(/<body>([\s\S]*)<\/body>/i);
+                const bodyContent = bodyMatch ? bodyMatch[1] : html;
                 container.innerHTML = `
                     <div class="page-container report-page">
                         <div class="report-back">
