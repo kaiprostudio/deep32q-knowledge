@@ -1,5 +1,5 @@
 // Deep32Q 白名單管理 — 前端邏輯
-const API_BASE = 'https://api-whitelist.kaiproapp.com';
+const API_BASE = 'https://api-whitelist.kai-prostudio.workers.dev';
 const ADMIN_EMAIL = 's902632@gmail.com';
 const ADMIN_API_KEY = '236359e75e9709b227b19343d6052db9fec5d2d5585c2e00';
 
