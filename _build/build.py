@@ -380,19 +380,18 @@ class IndexBuilder:
                 self.daily_reports[report_date] = []
             self.daily_reports[report_date].append(doc)
 
-        # 每日報告偵測（fallback）：不在每日報告/ 下但檔名是 YYYY-MM-DD 格式的追蹤日誌
-        # 涵蓋市場情緒/YYYY-MM-DD.md 和產業洞察/*/追蹤日誌/YYYY-MM-DD.md
-        if category != 'daily':
+        # 每日報告偵測（fallback）：不在每日報告/ 下但檔名 YYYY-MM-DD 的追蹤日誌
+        # 例如：市場情緒/YYYY-MM-DD.md 或產業洞察/*/追蹤日誌/YYYY-MM-DD.md
+        if category == 'general' or category == 'industry':
             filename = relative_path.split('/')[-1]
             if re.match(r'^\d{4}-\d{2}-\d{2}\.md$', filename):
-                # Check if it looks like a daily tracking report (市場情緒 or 追蹤日誌)
                 if '市場情緒' in relative_path or '追蹤日誌' in relative_path:
                     report_date = filename.replace('.md', '')
                     if report_date not in self.daily_reports:
                         self.daily_reports[report_date] = []
                     self.daily_reports[report_date].append(doc)
 
-        elif category == 'industry':
+        if category == 'industry':
             # ONLY files under Deep32Q知識庫/產業洞察/SUBDIR/... are valid industry entries
             # Files directly in 產業洞察/ (e.g. index.md) are skipped
             parts = relative_path.split('/')
