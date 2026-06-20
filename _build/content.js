@@ -327,7 +327,8 @@
             backText = '回產業洞察';
         }
         
-        fetch(htmlFile)
+        const reportUrl = htmlFile.split('/').map(seg => encodeURIComponent(seg)).join('/');
+        fetch(reportUrl)
             .then(r => {
                 if (!r.ok) throw new Error('HTTP ' + r.status);
                 return r.text();
