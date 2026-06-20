@@ -38,9 +38,9 @@
         // navMap 定義各 page 對應的 navbar active 狀態
         // report 頁面根據路徑判斷來源，不要固定高亮每日報告
         let activeNav = navMapDefault[page] || null;
-        if (page === 'report' && filePath) {
-            if (filePath.startsWith('審計報告庫/')) activeNav = 'audit';
-            else if (filePath.startsWith('Deep32Q知識庫/產業洞察/')) activeNav = 'industries';
+        if (page === 'report' && file) {
+            if (file.startsWith('審計報告庫/')) activeNav = 'audit';
+            else if (file.startsWith('Deep32Q知識庫/產業洞察/')) activeNav = 'industries';
             else activeNav = 'daily';
         }
         if (activeNav) {
