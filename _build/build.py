@@ -362,16 +362,35 @@ class IndexBuilder:
 
         if category == 'daily':
             date_part = relative_path.split('/')
-            # Daily reports are always in 每日報告/YYYY-MM-DD/ format
-            # relative_path includes KB dir prefix - find date pattern
+            # Daily report scanning: first check 每日報告/YYYY-MM-DD/ format
+            # Also scan individual files: 市場情緒/YYYY-MM-DD.md
+            # and 產業洞察/*/追蹤日誌/YYYY-MM-DD.md
             report_date = 'unknown'
             for part in date_part:
                 if re.match(r'^\d{4}-\d{2}-\d{2}$', part):
                     report_date = part
                     break
+            # Fallback: extract date from filename YYYY-MM-DD.md
+            if report_date == 'unknown':
+                filename = relative_path.split('/')[-1]
+                m = re.match(r'(\d{4}-\d{2}-\d{2})', filename)
+                if m:
+                    report_date = m.group(1)
             if report_date not in self.daily_reports:
                 self.daily_reports[report_date] = []
             self.daily_reports[report_date].append(doc)
+
+        # 每日報告偵測（fallback）：不在每日報告/ 下但檔名是 YYYY-MM-DD 格式的追蹤日誌
+        # 涵蓋市場情緒/YYYY-MM-DD.md 和產業洞察/*/追蹤日誌/YYYY-MM-DD.md
+        if category != 'daily':
+            filename = relative_path.split('/')[-1]
+            if re.match(r'^\d{4}-\d{2}-\d{2}\.md$', filename):
+                # Check if it looks like a daily tracking report (市場情緒 or 追蹤日誌)
+                if '市場情緒' in relative_path or '追蹤日誌' in relative_path:
+                    report_date = filename.replace('.md', '')
+                    if report_date not in self.daily_reports:
+                        self.daily_reports[report_date] = []
+                    self.daily_reports[report_date].append(doc)
 
         elif category == 'industry':
             # ONLY files under Deep32Q知識庫/產業洞察/SUBDIR/... are valid industry entries

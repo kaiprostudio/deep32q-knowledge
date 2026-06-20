@@ -61,6 +61,11 @@
             return;
         }
 
+        if (page === 'report') {
+            renderReport(mainEl, file);
+            return;
+        }
+
         window.location.href = '/';
     }
 
@@ -199,14 +204,14 @@
                 html += `</div>`;
                 html += `<div class="audit-stock-body">`;
 
-                // 經營組
+                // 經營組：先按題號 G01→G02→...→G11 排序，同題號再按日期最新優先
                 const mgmt = stock.management.sort((a, b) => {
-                    // First by date (newest first), then by G number (G01 < G02)
-                    const dateCmp = (b.date || '99999999').localeCompare(a.date || '99999999');
-                    if (dateCmp !== 0) return dateCmp;
                     const gA = (a.route || '').match(/G(\d+)/);
                     const gB = (b.route || '').match(/G(\d+)/);
-                    return (gA ? parseInt(gA[1]) : 0) - (gB ? parseInt(gB[1]) : 0);
+                    const numA = gA ? parseInt(gA[1]) : 999;
+                    const numB = gB ? parseInt(gB[1]) : 999;
+                    if (numA !== numB) return numA - numB;
+                    return (b.date || '99999999').localeCompare(a.date || '99999999');
                 });
                 if (mgmt.length > 0) {
                     html += `<div class="audit-type-section">`;
@@ -225,14 +230,14 @@
                     html += `</ul></div></div>`;
                 }
 
-                // 財務組
+                // 財務組：先按題號 F01→F02→...→F18 排序，同題號再按日期最新優先
                 const fin = stock.financial.sort((a, b) => {
-                    // First by date (newest first), then by G number (G01 < G02)
-                    const dateCmp = (b.date || '99999999').localeCompare(a.date || '99999999');
-                    if (dateCmp !== 0) return dateCmp;
-                    const gA = (a.route || '').match(/G(\d+)/);
-                    const gB = (b.route || '').match(/G(\d+)/);
-                    return (gA ? parseInt(gA[1]) : 0) - (gB ? parseInt(gB[1]) : 0);
+                    const fA = (a.route || '').match(/F(\d+)/);
+                    const fB = (b.route || '').match(/F(\d+)/);
+                    const numA = fA ? parseInt(fA[1]) : 999;
+                    const numB = fB ? parseInt(fB[1]) : 999;
+                    if (numA !== numB) return numA - numB;
+                    return (b.date || '99999999').localeCompare(a.date || '99999999');
                 });
                 if (fin.length > 0) {
                     html += `<div class="audit-type-section">`;
@@ -295,6 +300,57 @@
                 });
             });
         }
+    }
+
+    /* ── 報告內容頁 ── */
+    function renderReport(container, filePath) {
+        if (!filePath) {
+            window.location.href = '/';
+            return;
+        }
+        
+        const htmlFile = routeMap[filePath];
+        if (!htmlFile) {
+            container.innerHTML = '<div class="page-container"><div class="error">無法找到此報告。</div></div>';
+            container.style.opacity = '1';
+            return;
+        }
+        
+        // Determine back link based on path
+        let backLink = '/';
+        let backText = '回首頁';
+        if (filePath.startsWith('審計報告庫/')) {
+            backLink = '/?p=audit';
+            backText = '回審計報告';
+        } else if (filePath.startsWith('Deep32Q知識庫/產業洞察/')) {
+            backLink = '/?p=industries';
+            backText = '回產業洞察';
+        }
+        
+        fetch(htmlFile)
+            .then(r => {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.text();
+            })
+            .then(html => {
+                // Extract just the body content from the full HTML page
+                const match = html.match(/<div id="main-content">.*?<\/div>/s);
+                const bodyContent = match ? match[0] : '<div class="error">內容載入失敗</div>';
+                container.innerHTML = `
+                    <div class="page-container report-page">
+                        <div class="report-back">
+                            <a href="${backLink}" class="back-link">← ${backText}</a>
+                        </div>
+                        ${bodyContent}
+                    </div>
+                `;
+                container.style.opacity = '1';
+                window.scrollTo(0, 0);
+            })
+            .catch(err => {
+                container.innerHTML = `<div class="page-container"><div class="error">報告載入失敗：${err.message}</div></div>`;
+                container.style.opacity = '1';
+            });
     }
 
     if (document.readyState === 'loading') {

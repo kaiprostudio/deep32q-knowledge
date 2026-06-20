@@ -11,3 +11,6 @@ _site/
 *.bak2
 package-lock.json
 package.json
+_build/*.bak.*
+# Backup files
+_build/*.bak.*
