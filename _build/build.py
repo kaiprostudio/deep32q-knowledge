@@ -53,6 +53,7 @@ INDEX_HTML_TEMPLATE = """<!DOCTYPE html>
         <a href="/" class="nav-link active" data-nav="daily">每日報告</a>
         <a href="/?p=industries" class="nav-link" data-nav="industries">產業洞察</a>
         <a href="/?p=audit" class="nav-link" data-nav="audit">審計報告</a>
+        <a href="/admin/" class="nav-link" data-nav="admin">管理</a>
         <button id="theme-toggle" class="theme-toggle" aria-label="切換深色模式" title="切換深色模式">🌙</button>
       </div>
     </div>
@@ -852,6 +853,17 @@ def build_site():
     (SITE_ROOT / 'route_map.json').write_text(
         json.dumps(route_map, ensure_ascii=False), encoding='utf-8'
     )
+
+    # Step 10: Copy admin files (whitelist management panel)
+    admin_src = REPO_ROOT / 'admin'
+    if admin_src.is_dir():
+        for fname in ['index.html', 'whitelist.js']:
+            src = admin_src / fname
+            if src.exists():
+                dst = SITE_ROOT / 'admin' / fname
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                dst.write_bytes(src.read_bytes())
+                print(f"  Copied admin/{fname} -> _site/admin/{fname}")
 
     print(f"\n=== Build complete ===")
     print(f"Site generated: {SITE_ROOT}")
