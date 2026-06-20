@@ -12,6 +12,16 @@ body {
   display: flex; flex-direction: column; align-items: center;
 }
 .container { max-width: 640px; width: 100%; padding: 40px 20px; }
+.header-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+.header-row h1 { margin-bottom: 4px; }
+.header-row .sub { margin-bottom: 0; }
+.logout-btn {
+  display: inline-block; padding: 6px 14px; border-radius: 6px;
+  background: transparent; border: 1px solid #c62828; color: #ef5350;
+  text-decoration: none; font-size: 0.8rem; white-space: nowrap;
+  transition: background 0.2s;
+}
+.logout-btn:hover { background: #c62828; color: #fff; }
 h1 { font-size: 1.4rem; margin-bottom: 8px; color: #e0e0e0; }
 p.sub { font-size: 0.85rem; color: #888; margin-bottom: 24px; }
 .card {
@@ -55,8 +65,13 @@ td.action-col { width: 60px; text-align: center; }
 </head>
 <body>
 <div class="container">
-  <h1>🔐 白名單管理</h1>
-  <p class="sub">Email OTP 白名單 · 只有這些 email 能用 Email OTP 登入網站</p>
+  <div class="header-row">
+    <div>
+      <h1>🔐 白名單管理</h1>
+      <p class="sub">Email OTP 白名單 · 只有這些 email 能用 Email OTP 登入網站</p>
+    </div>
+    <a href="https://deep32q.kaiproapp.com/cdn-cgi/access/logout" class="logout-btn">登出</a>
+  </div>
 
   <div id="msg" class="msg"></div>
 
