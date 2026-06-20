@@ -59,8 +59,8 @@ INDEX_HTML_TEMPLATE = """<!DOCTYPE html>
   </nav>
   <main id="main-content">{body_html}</main>
 </div>
-<script src="/search.js"></script>
-<script src="/content.js"></script>
+<script src="/search.js?v=1"></script>
+<script src="/content.js?v=2"></script>
 </body>
 </html>
 """
