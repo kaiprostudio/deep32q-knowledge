@@ -617,7 +617,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   /* 報告表格強制橫向滑動 */
   .report-body-inner table,
   .inline-report-content table {
-    display: block; overflow-x: auto; white-space: nowrap;
+    display: block; overflow-x: auto; white-space: normal;
   }
 }
 
@@ -638,7 +638,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   .nav-inner { gap: 4px; padding: 6px 8px; height: auto; }
   .report-header { padding: 8px 10px; font-size: 0.82rem; }
   .report-body-inner { padding: 8px 10px; font-size: 0.82rem; line-height: 1.55; }
-  .inline-report-content { padding: 8px 10px; font-size: 0.82rem; line-height: 1.55; }
+  .inline-report-content { font-size: 0.82rem; line-height: 1.55; }
   .audit-report-item { padding-left: 10px; flex-wrap: wrap; gap: 4px; }
   .audit-report-link { flex: 1 1 auto; min-width: 0; word-break: break-word; }
   .audit-stock-header { padding: 8px 10px; }
@@ -681,7 +681,9 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 
 /* ── Inline Report Section (產業洞察/審計報告 inline 展開) ── */
 .inline-report-content {
-  padding: 0 18px 16px;
+  padding: 0 0 16px;
+  width: 100%;
+  flex-shrink: 0;
   font-size: 0.9rem;
   line-height: 1.7;
   color: var(--text);
