@@ -61,7 +61,7 @@ INDEX_HTML_TEMPLATE = """<!DOCTYPE html>
   <main id="main-content">{body_html}</main>
 </div>
 <script src="/search.js?v=1"></script>
-<script src="/content.js?v=2"></script>
+<script src="/content.js?v=3"></script>
 </body>
 </html>
 """
