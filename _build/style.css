@@ -610,7 +610,10 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   .nav-links { gap: 2px; }
   .nav-link { padding: 4px 10px; font-size: 0.8rem; }
   #main-content { padding: 16px 12px 60px; }
+  .report-item { flex-wrap: wrap; gap: 4px 10px; }
+  .report-link { flex: 1 1 auto; min-width: 0; word-break: break-word; }
   .audit-report-item { padding-left: 16px; flex-wrap: wrap; gap: 4px; }
+  .audit-report-link { flex: 1 1 auto; min-width: 0; word-break: break-word; }
   /* 報告表格強制橫向滑動 */
   .report-body-inner table,
   .inline-report-content table {
@@ -636,12 +639,14 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   .report-header { padding: 8px 10px; font-size: 0.82rem; }
   .report-body-inner { padding: 8px 10px; font-size: 0.82rem; line-height: 1.55; }
   .inline-report-content { padding: 10px 14px; max-height: 350px; font-size: 0.82rem; }
-  .audit-report-item { padding-left: 10px; flex-wrap: wrap; gap: 2px; }
+  .audit-report-item { padding-left: 10px; flex-wrap: wrap; gap: 4px; }
+  .audit-report-link { flex: 1 1 auto; min-width: 0; word-break: break-word; }
   .audit-stock-header { padding: 8px 10px; }
   .industry-header { padding: 8px 10px; }
   .industry-body-inner { padding: 6px 10px; }
   .report-list { padding-left: 16px; }
-  .report-item { flex-wrap: wrap; gap: 2px; }
+  .report-item { flex-wrap: wrap; gap: 4px 8px; }
+  .report-link { flex: 1 1 auto; min-width: 0; word-break: break-word; }
   .report-date { font-size: 0.72rem; }
   .timeline-day-toggle { font-size: 0.82rem; padding: 8px 10px; }
   .timeline-report { margin-bottom: 4px; }
