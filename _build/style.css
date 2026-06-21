@@ -627,7 +627,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   .report-body { max-width: 100%; }
   .nav-inner { height: 48px; }
   .report-body-inner { padding: 10px 12px; }
-  .inline-report-content { max-height: 400px; }
+
   h1 { font-size: 1.2rem; }
 }
 
@@ -638,7 +638,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   .nav-inner { gap: 4px; padding: 6px 8px; height: auto; }
   .report-header { padding: 8px 10px; font-size: 0.82rem; }
   .report-body-inner { padding: 8px 10px; font-size: 0.82rem; line-height: 1.55; }
-  .inline-report-content { padding: 10px 14px; max-height: 350px; font-size: 0.82rem; }
+  .inline-report-content { padding: 10px 14px; font-size: 0.82rem; }
   .audit-report-item { padding-left: 10px; flex-wrap: wrap; gap: 4px; }
   .audit-report-link { flex: 1 1 auto; min-width: 0; word-break: break-word; }
   .audit-stock-header { padding: 8px 10px; }
@@ -670,7 +670,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   .nav-link { font-size: 0.65rem; padding: 3px 4px; }
   .report-header { font-size: 0.75rem; padding: 6px 8px; }
   .report-body-inner { font-size: 0.75rem; }
-  .inline-report-content { max-height: 280px; font-size: 0.75rem; }
+  .inline-report-content { font-size: 0.75rem; }
   .industry-header { font-size: 0.8rem; }
   .timeline-day-toggle { font-size: 0.75rem; }
   .report-title { max-width: 180px; white-space: normal; }
@@ -688,8 +688,6 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border-radius: 8px;
   font-size: 0.9rem;
   line-height: 1.65;
-  max-height: 600px;
-  overflow-y: auto;
 }
 .inline-report-content h1 { font-size: 1.15rem; margin: 12px 0 6px; }
 .inline-report-content h2 { font-size: 1.05rem; margin: 10px 0 5px; }

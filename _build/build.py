@@ -29,6 +29,33 @@ SITE_TITLE  = "Deep32Q 系統化投資研究知識庫"
 SITE_DOMAIN = "deep32q.kaiproapp.com"
 
 # All HTML page templates live here as Python strings.
+# 用檔案修改時間當版本號，避免手動維護 ?v=N
+_cache_versions = {}
+def _get_cache_buster(filepath: str) -> str:
+    """Return file mtime as version string for cache busting."""
+    fp = Path(filepath)
+    if not fp.exists():
+        return '1'
+    if str(fp) not in _cache_versions:
+        try:
+            mtime = os.path.getmtime(fp)
+            _cache_versions[str(fp)] = str(int(mtime))
+        except:
+            _cache_versions[str(fp)] = '1'
+    return _cache_versions[str(fp)]
+
+def _render_template(title: str, body_html: str) -> str:
+    """Render INDEX_HTML_TEMPLATE with auto-injected cache version for assets."""
+    css_ver = _get_cache_buster(str(BUILD_DIR / 'style.css'))
+    search_ver = _get_cache_buster(str(BUILD_DIR / 'search.js'))
+    content_ver = _get_cache_buster(str(BUILD_DIR / 'content.js'))
+    return INDEX_HTML_TEMPLATE.format(
+        title=title,
+        body_html=body_html,
+        style_ver=css_ver,
+        search_ver=search_ver,
+        content_ver=content_ver,
+    )
 
 INDEX_HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="zh-TW" data-theme="light">
@@ -37,7 +64,7 @@ INDEX_HTML_TEMPLATE = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="/style.css?v=4">
+<link rel="stylesheet" href="/style.css?v={style_ver}">
 <meta name="description" content="Deep32Q 系統化投資研究知識庫 — 每日報告、產業洞察、32Q 審計報告">
 </head>
 <body>
@@ -60,8 +87,8 @@ INDEX_HTML_TEMPLATE = """<!DOCTYPE html>
   </nav>
   <main id="main-content">{body_html}</main>
 </div>
-<script src="/search.js?v=1"></script>
-<script src="/content.js?v=3"></script>
+<script src="/search.js?v={search_ver}"></script>
+<script src="/content.js?v={content_ver}"></script>
 </body>
 </html>
 """
@@ -773,7 +800,7 @@ def build_site():
 
     # Home page (daily reports)
     home_body = build_home_page(index)
-    home_html = INDEX_HTML_TEMPLATE.format(
+    home_html = _render_template(
         title=f"首頁 — {SITE_TITLE}",
         body_html=home_body
     )
@@ -787,7 +814,7 @@ def build_site():
         route = rel.replace('.md', '')
         # Create HTML page
         page_title = extract_title(full.read_text(encoding='utf-8'))
-        full_html = INDEX_HTML_TEMPLATE.format(
+        full_html = _render_template(
             title=f"{page_title} — {SITE_TITLE}",
             body_html=content_html
         )

@@ -174,14 +174,38 @@
         // 產業洞察預設全部折疊（2026-06-20 周一要求）
         // 不再自動展開第一個產業
 
-        // 產業洞察：點報告標題 → 全頁切換至報告內容頁
+        // 產業洞察：點報告標題 → inline 展開報告內容（無跳轉、一頁式向下滾動）
         container.querySelectorAll('.report-link[data-route]').forEach(link => {
-            link.addEventListener('click', function(e) {
+            // 防止多次繫結導致重複展開
+            if (link.dataset.inlineBound) return;
+            link.dataset.inlineBound = '1';
+            link.addEventListener('click', async function(e) {
                 e.preventDefault();
+                const li = this.closest('.report-item');
+                if (!li) return;
+                // 檢查是否已展開，若已展開則收合
+                const existing = li.querySelector('.inline-report-content');
+                if (existing) {
+                    existing.remove();
+                    return;
+                }
                 const route = this.getAttribute('data-route');
-                if (!route) return;
-                history.pushState(null, '', '/?p=report&f=' + encodeURIComponent(route));
-                handleRoute();
+                const htmlPath = routeMap[route];
+                if (!htmlPath) return;
+                try {
+                    const resp = await fetch(htmlPath);
+                    const html = await resp.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const reportContent = doc.querySelector('.report-content');
+                    if (!reportContent) return;
+                    const div = document.createElement('div');
+                    div.className = 'inline-report-content';
+                    div.innerHTML = reportContent.innerHTML;
+                    li.appendChild(div);
+                    // 展開後 Scroll 到報告開頭
+                    div.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } catch(e) { /* silent */ }
             });
         });
     }
@@ -317,14 +341,35 @@
             });
         });
 
-        // 審計報告：點報告標題 → 全頁切換至報告內容頁
+        // 審計報告：點報告標題 → inline 展開報告內容（無跳轉、一頁式向下滾動）
         container.querySelectorAll('.report-link[data-route], .audit-report-link[data-route]').forEach(link => {
-            link.addEventListener('click', function(e) {
+            if (link.dataset.inlineBound) return;
+            link.dataset.inlineBound = '1';
+            link.addEventListener('click', async function(e) {
                 e.preventDefault();
+                const li = this.closest('.report-item, .audit-report-item');
+                if (!li) return;
+                const existing = li.querySelector('.inline-report-content');
+                if (existing) {
+                    existing.remove();
+                    return;
+                }
                 const route = this.getAttribute('data-route');
-                if (!route) return;
-                history.pushState(null, '', '/?p=report&f=' + encodeURIComponent(route));
-                handleRoute();
+                const htmlPath = routeMap[route];
+                if (!htmlPath) return;
+                try {
+                    const resp = await fetch(htmlPath);
+                    const html = await resp.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const reportContent = doc.querySelector('.report-content');
+                    if (!reportContent) return;
+                    const div = document.createElement('div');
+                    div.className = 'inline-report-content';
+                    div.innerHTML = reportContent.innerHTML;
+                    li.appendChild(div);
+                    div.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } catch(e) { /* silent */ }
             });
         });
 
