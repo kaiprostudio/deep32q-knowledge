@@ -677,6 +677,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   .report-date { font-size: 0.65rem; }
   .industry-count { font-size: 0.7rem; }
   h1 { font-size: 1rem; }
+}
 
 /* ── Inline Report Section ── */
 .inline-report-content {
