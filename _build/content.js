@@ -174,32 +174,14 @@
         // 產業洞察預設全部折疊（2026-06-20 周一要求）
         // 不再自動展開第一個產業
 
-        // Inline report loading for industry reports
+        // 產業洞察：點報告標題 → 全頁切換至報告內容頁
         container.querySelectorAll('.report-link[data-route]').forEach(link => {
-            link.addEventListener('click', async function(e) {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
-                const li = this.closest('.report-item');
-                if (!li) return;
-                const existing = li.querySelector('.inline-report-content');
-                if (existing) {
-                    existing.remove();
-                    return;
-                }
                 const route = this.getAttribute('data-route');
-                const htmlPath = routeMap[route];
-                if (!htmlPath) return;
-                try {
-                    const resp = await fetch(htmlPath);
-                    const html = await resp.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const reportContent = doc.querySelector('.report-content');
-                    if (!reportContent) return;
-                    const div = document.createElement('div');
-                    div.className = 'inline-report-content';
-                    div.innerHTML = reportContent.innerHTML;
-                    li.appendChild(div);
-                } catch(e) { /* silent */ }
+                if (!route) return;
+                history.pushState(null, '', '/?p=report&f=' + encodeURIComponent(route));
+                handleRoute();
             });
         });
     }
@@ -335,62 +317,14 @@
             });
         });
 
-        // Inline report loading for industry reports
-        container.querySelectorAll('.report-link[data-route]').forEach(link => {
-            link.addEventListener('click', async function(e) {
+        // 審計報告：點報告標題 → 全頁切換至報告內容頁
+        container.querySelectorAll('.report-link[data-route], .audit-report-link[data-route]').forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
-                const li = this.closest('.report-item');
-                if (!li) return;
-                // Check if already expanded
-                const existing = li.querySelector('.inline-report-content');
-                if (existing) {
-                    existing.remove();
-                    return;
-                }
                 const route = this.getAttribute('data-route');
-                const htmlPath = routeMap[route];
-                if (!htmlPath) return;
-                try {
-                    const resp = await fetch(htmlPath);
-                    const html = await resp.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const reportContent = doc.querySelector('.report-content');
-                    if (!reportContent) return;
-                    const div = document.createElement('div');
-                    div.className = 'inline-report-content';
-                    div.innerHTML = reportContent.innerHTML;
-                    li.appendChild(div);
-                } catch(e) { /* silent */ }
-            });
-        });
-
-        // Inline report loading for audit reports
-        container.querySelectorAll('.audit-report-link[data-route]').forEach(link => {
-            link.addEventListener('click', async function(e) {
-                e.preventDefault();
-                const li = this.closest('.audit-report-item');
-                if (!li) return;
-                const existing = li.querySelector('.inline-report-content');
-                if (existing) {
-                    existing.remove();
-                    return;
-                }
-                const route = this.getAttribute('data-route');
-                const htmlPath = routeMap[route];
-                if (!htmlPath) return;
-                try {
-                    const resp = await fetch(htmlPath);
-                    const html = await resp.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const reportContent = doc.querySelector('.report-content');
-                    if (!reportContent) return;
-                    const div = document.createElement('div');
-                    div.className = 'inline-report-content';
-                    div.innerHTML = reportContent.innerHTML;
-                    li.appendChild(div);
-                } catch(e) { /* silent */ }
+                if (!route) return;
+                history.pushState(null, '', '/?p=report&f=' + encodeURIComponent(route));
+                handleRoute();
             });
         });
 
