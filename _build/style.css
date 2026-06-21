@@ -679,12 +679,14 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   h1 { font-size: 1rem; }
 }
 
-/* ── Inline Report Section (復刻每日報告 .report-body-inner) ── */
+/* ── Inline Report Section (產業洞察/審計報告 inline 展開) ── */
 .inline-report-content {
   padding: 0 18px 16px;
   font-size: 0.9rem;
   line-height: 1.7;
   color: var(--text);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 .inline-report-content h1,
 .inline-report-content h2,
@@ -692,9 +694,9 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .inline-report-content h1 { font-size: 1.15rem; }
 .inline-report-content h2 { font-size: 1.05rem; }
 .inline-report-content h3 { font-size: 0.95rem; }
-.inline-report-content p { margin: 6px 0; }
+.inline-report-content p { margin: 6px 0; overflow-wrap: break-word; }
 .inline-report-content ul,
-.inline-report-content ol { margin: 6px 0; padding-left: 20px; }
+.inline-report-content ol { margin: 6px 0; padding-left: 20px; max-width: 100%; }
 .inline-report-content li { margin: 3px 0; }
 .inline-report-content blockquote {
   margin: 8px 0; padding: 6px 12px;
@@ -702,6 +704,8 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   background: var(--bg-subtle);
   border-radius: 4px;
   color: var(--text-secondary);
+  max-width: 100%;
+  word-break: break-word;
 }
 .inline-report-content code {
   font-family: var(--font-mono);
@@ -709,6 +713,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   padding: 1px 5px;
   border-radius: 4px;
   font-size: 0.85em;
+  word-break: break-all;
 }
 .inline-report-content pre {
   background: var(--bg-subtle);
@@ -716,10 +721,27 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border-radius: var(--radius-sm);
   overflow-x: auto;
   border: 1px solid var(--border);
+  margin: 8px 0;
+  font-size: 0.8rem;
+  max-width: 100%;
 }
-.inline-report-content table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.85rem; }
+.inline-report-content img {
+  max-width: 100%;
+  height: auto;
+}
+.inline-report-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  margin: 8px 0;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
 .inline-report-content th,
 .inline-report-content td { padding: 6px 10px; border: 1px solid var(--border); text-align: left; }
 .inline-report-content th { background: var(--bg-subtle); font-weight: 600; }
 .inline-report-content hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
 .inline-report-content strong { font-weight: 600; }
+
