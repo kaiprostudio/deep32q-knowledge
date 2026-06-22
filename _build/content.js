@@ -133,8 +133,13 @@
 
             for (const industry of sorted) {
                 const docs = industries[industry];
-                // Sort reports in each industry by date (newest first)
-                const sortedDocs = docs.slice().sort((a, b) => b.date.localeCompare(a.date));
+                // Filter out index.md and SUMMARY.md (navigation files, not actual reports)
+                const filtered = docs.filter(d => !d.route.endsWith('/index') && !d.route.endsWith('/SUMMARY'));
+                // Sort: date descending (newest first), then filename ascending (01_ before 05_)
+                // Using stable sort: first by filename, then by date descending
+                const sortedDocs = filtered.slice()
+                    .sort((a, b) => (a.route || a.title).localeCompare(b.route || b.title))
+                    .sort((a, b) => b.date.localeCompare(a.date));
                 html += `<div class="industry-section">`;
                 html += `<div class="industry-header" data-toggle="industry">`;
                 html += `<span class="industry-arrow">▶</span>`;

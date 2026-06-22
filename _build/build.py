@@ -542,7 +542,8 @@ def build_industries_page(index: IndexBuilder) -> str:
     
     Only subdirectories under 產業洞察/ are valid industries.
     Files directly in 產業洞察/ (e.g. index.md) are already excluded in add_document.
-    Within each industry, reports are sorted by date (newest first).
+    Within each industry: date descending (newest first), then filename ascending (01_ before 05_).
+    index.md and SUMMARY.md are filtered out.
     """
     import html as html_mod
     parts = ['<div class="page-container industries-page">']
@@ -558,8 +559,14 @@ def build_industries_page(index: IndexBuilder) -> str:
 
     for industry in sorted_industries:
         docs = index.industries[industry]
-        # Sort reports within industry by date (newest first)
-        sorted_docs = sorted(docs, key=lambda d: d.get('date', ''), reverse=True)
+        # Filter out index.md and SUMMARY.md (navigation/index files, not actual reports)
+        filtered = [d for d in docs if not d['route'].endswith('/index') and not d['route'].endswith('/SUMMARY')]
+        # Sort by date descending (newest first), then by path ascending (01_ before 05_)
+        sorted_docs = sorted(filtered, key=lambda d: (-ord(d.get('date', '')[:4]) if d.get('date', '') else 0, d.get('path', d.get('route', ''))))
+        # Use date-desc then path-asc: negate the 4-char year prefix as a numeric sort trick
+        # Cleaner: two-pass sort
+        sorted_docs.sort(key=lambda d: d.get('path', d.get('route', '')))
+        sorted_docs.sort(key=lambda d: d.get('date', ''), reverse=True)
         
         safe_name = html_mod.escape(industry)
         parts.append(f'<div class="industry-section">')
