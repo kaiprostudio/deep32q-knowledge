@@ -166,14 +166,17 @@
                 html += `<span class="industry-count">${sortedDocs.length} 份報告</span>`;
                 html += `</div>`;
                 html += `<div class="industry-body"><div class="industry-body-inner">`;
-                html += '<ul class="report-list">';
                 for (const doc of sortedDocs) {
-                    html += `<li class="report-item">`;
-                    html += `<a href="/?p=report&f=${encodeURIComponent(doc.route)}" class="report-link" data-route="${doc.route}">${doc.title}</a>`;
+                    html += `<div class="timeline-report">`;
+                    html += `<div class="report-header" data-report-route="${doc.route}">`;
+                    html += `<span class="report-arrow">▸</span>`;
+                    html += `<span class="report-title">${doc.title}</span>`;
                     html += `<span class="report-date">${doc.date}</span>`;
-                    html += `</li>`;
+                    html += `</div>`;
+                    html += `<div class="report-body"><template class="report-body-template"></template></div>`;
+                    html += `</div>`;
                 }
-                html += '</ul></div></div></div>';
+                html += '</div></div></div>';
             }
         }
 
@@ -218,9 +221,9 @@
                     }
                     container.querySelectorAll('.industry-section').forEach(section => {
                         let sectionVisible = false;
-                        section.querySelectorAll('.report-item').forEach(item => {
-                            const link = item.querySelector('[data-route]');
-                            const route = link ? link.getAttribute('data-route') : '';
+                        section.querySelectorAll('.timeline-report').forEach(item => {
+                            const link = item.querySelector('.report-header[data-report-route]');
+                            const route = link ? link.getAttribute('data-report-route') : '';
                             const inTitle = (item.textContent || '').toLowerCase().includes(val);
                             const inBody = matchedRoutes.has(route);
                             const match = inTitle || inBody;
@@ -250,64 +253,52 @@
         // 產業洞察預設全部折疊（2026-06-20 周一要求）
         // 不再自動展開第一個產業
 
-        // 產業洞察：點報告標題 → inline 展開報告內容（復刻每日報告風格）
-        container.querySelectorAll('.report-link[data-route]').forEach(link => {
-            if (link.dataset.inlineBound) return;
-            link.dataset.inlineBound = '1';
-            link.addEventListener('click', async function(e) {
-                e.preventDefault();
-                const li = this.closest('.report-item');
-                if (!li) return;
-                // Toggle existing expanded content
-                const existingBody = li.querySelector('.report-body');
-                if (existingBody) {
-                    const header = li.querySelector('.report-header');
-                    if (header) header.classList.remove('expanded');
-                    existingBody.remove();
-                    return;
+        // 產業洞察：點 report-header → inline 展開/收折（與每日報告完全一致）
+        container.querySelectorAll('.report-header[data-report-route]').forEach(header => {
+            header.addEventListener('click', async function() {
+                const wasExpanded = this.classList.contains('expanded');
+                // Collapse any other expanded header in the same industry section
+                this.closest('.industry-section').querySelectorAll('.report-header.expanded').forEach(h => {
+                    if (h !== this) h.classList.remove('expanded');
+                });
+                if (wasExpanded) {
+                    this.classList.remove('expanded');
+                } else {
+                    this.classList.add('expanded');
                 }
-                const route = this.getAttribute('data-route');
-                const htmlPath = routeMap[route];
-                if (!htmlPath) return;
-                try {
-                    const resp = await fetch(htmlPath);
-                    const html = await resp.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const reportContent = doc.querySelector('.report-content');
-                    if (!reportContent) return;
-                    // Create daily-report-style expand structure
-                    const header = document.createElement('div');
-                    header.className = 'report-header expanded';
-                    header.innerHTML = '<span class="report-arrow">▼</span><span class="report-title" style="font-weight:600">' + (this.textContent || '') + '</span>';
-                    const body = document.createElement('div');
-                    body.className = 'report-body';
-                    const inner = document.createElement('template');
-                    inner.className = 'report-body-template';
-                    inner.innerHTML = reportContent.innerHTML;
-                    body.appendChild(inner);
-                    // Hide the original link and date in the li
-                    this.style.display = 'none';
-                    const dateSpan = li.querySelector('.report-date');
-                    if (dateSpan) dateSpan.style.display = 'none';
-                    // Insert header and body before the original elements
-                    li.insertBefore(header, this);
-                    li.insertBefore(body, this);
-                    // Clone template content
-                    const clone = document.createElement('div');
-                    clone.className = 'report-body-inner';
-                    clone.innerHTML = inner.innerHTML;
-                    inner.replaceWith(clone);
-                    // Bind collapse on header click
-                    header.addEventListener('click', function(ev) {
-                        ev.stopPropagation();
-                        link.style.display = '';
-                        if (dateSpan) dateSpan.style.display = '';
-                        this.nextElementSibling.remove();
-                        this.remove();
-                    });
+                // Load content via template (matched by report-header + report-body)
+                const body = this.nextElementSibling;
+                if (body && body.classList.contains('report-body')) {
+                    const tmpl = body.querySelector('.report-body-template');
+                    if (tmpl && tmpl.content && tmpl.content.children.length === 0) {
+                        // First-time expand: fetch content from HTML
+                        const route = this.getAttribute('data-report-route');
+                        const htmlPath = routeMap[route];
+                        if (htmlPath) {
+                            try {
+                                const resp = await fetch(htmlPath);
+                                const html = await resp.text();
+                                const parser = new DOMParser();
+                                const doc = parser.parseFromString(html, 'text/html');
+                                const reportContent = doc.querySelector('.report-content');
+                                if (reportContent) {
+                                    const div = document.createElement('div');
+                                    div.className = 'report-body-inner';
+                                    div.innerHTML = reportContent.innerHTML;
+                                    body.insertBefore(div, tmpl);
+                                }
+                            } catch(e) { /* silent fail */ }
+                        }
+                    }
+                    if (wasExpanded) {
+                        // Clean up body-inner generated from template on collapse
+                        const inner = body.querySelector('.report-body-inner');
+                        if (inner) inner.remove();
+                    }
+                }
+                if (this.classList.contains('expanded') && body) {
                     body.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } catch(e) { /* silent */ }
+                }
             });
         });
     }
@@ -376,14 +367,17 @@
                     html += `<span class="audit-type-label">經營組</span>`;
                     html += `<span class="audit-type-count">${mgmt.length} 份</span>`;
                     html += `</div>`;
-                    html += `<div class="audit-type-body"><ul class="audit-report-list">`;
                     for (const r of mgmt) {
-                        html += `<li class="audit-report-item">`;
-                        html += `<a href="/?p=report&f=${encodeURIComponent(r.route)}" class="audit-report-link" data-route="${r.route}">${r.title}</a>`;
-                        html += `<span class="audit-report-date">${r.date}</span>`;
-                        html += `</li>`;
+                        html += `<div class="timeline-report">`;
+                        html += `<div class="report-header" data-audit-route="${r.route}">`;
+                        html += `<span class="report-arrow">▸</span>`;
+                        html += `<span class="report-title">${r.title}</span>`;
+                        html += `<span class="report-date">${r.date}</span>`;
+                        html += `</div>`;
+                        html += `<div class="report-body"><template class="report-body-template"></template></div>`;
+                        html += `</div>`;
                     }
-                    html += `</ul></div></div>`;
+                    html += `</div>`;
                 }
 
                 // 財務組：先按題號 F01→F02→...→F18 排序，同題號再按日期最新優先
@@ -402,14 +396,17 @@
                     html += `<span class="audit-type-label">財務組</span>`;
                     html += `<span class="audit-type-count">${fin.length} 份</span>`;
                     html += `</div>`;
-                    html += `<div class="audit-type-body"><ul class="audit-report-list">`;
                     for (const r of fin) {
-                        html += `<li class="audit-report-item">`;
-                        html += `<a href="/?p=report&f=${encodeURIComponent(r.route)}" class="audit-report-link" data-route="${r.route}">${r.title}</a>`;
-                        html += `<span class="audit-report-date">${r.date}</span>`;
-                        html += `</li>`;
+                        html += `<div class="timeline-report">`;
+                        html += `<div class="report-header" data-audit-route="${r.route}">`;
+                        html += `<span class="report-arrow">▸</span>`;
+                        html += `<span class="report-title">${r.title}</span>`;
+                        html += `<span class="report-date">${r.date}</span>`;
+                        html += `</div>`;
+                        html += `<div class="report-body"><template class="report-body-template"></template></div>`;
+                        html += `</div>`;
                     }
-                    html += `</ul></div></div>`;
+                    html += `</div>`;
                 }
 
                 html += `</div></div>`;
@@ -443,64 +440,53 @@
             });
         });
 
-        // 審計報告：點報告標題 → inline 展開報告內容（復刻每日報告風格）
-        container.querySelectorAll('.report-link[data-route], .audit-report-link[data-route]').forEach(link => {
-            if (link.dataset.inlineBound) return;
-            link.dataset.inlineBound = '1';
-            link.addEventListener('click', async function(e) {
-                e.preventDefault();
-                const li = this.closest('.report-item, .audit-report-item');
-                if (!li) return;
-                // Toggle existing expanded content
-                const existingBody = li.querySelector('.report-body');
-                if (existingBody) {
-                    const header = li.querySelector('.report-header');
-                    if (header) header.classList.remove('expanded');
-                    existingBody.remove();
-                    return;
-                }
-                const route = this.getAttribute('data-route');
-                const htmlPath = routeMap[route];
-                if (!htmlPath) return;
-                try {
-                    const resp = await fetch(htmlPath);
-                    const html = await resp.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const reportContent = doc.querySelector('.report-content');
-                    if (!reportContent) return;
-                    // Create daily-report-style expand structure
-                    const header = document.createElement('div');
-                    header.className = 'report-header expanded';
-                    header.innerHTML = '<span class="report-arrow">▼</span><span class="report-title" style="font-weight:600">' + (this.textContent || '') + '</span>';
-                    const body = document.createElement('div');
-                    body.className = 'report-body';
-                    const inner = document.createElement('template');
-                    inner.className = 'report-body-template';
-                    inner.innerHTML = reportContent.innerHTML;
-                    body.appendChild(inner);
-                    // Hide the original link and date
-                    this.style.display = 'none';
-                    const dateSpan = li.querySelector('.report-date, .audit-report-date');
-                    if (dateSpan) dateSpan.style.display = 'none';
-                    // Insert before the link
-                    li.insertBefore(header, this);
-                    li.insertBefore(body, this);
-                    // Clone template content
-                    const clone = document.createElement('div');
-                    clone.className = 'report-body-inner';
-                    clone.innerHTML = inner.innerHTML;
-                    inner.replaceWith(clone);
-                    // Bind collapse on header click
-                    header.addEventListener('click', function(ev) {
-                        ev.stopPropagation();
-                        link.style.display = '';
-                        if (dateSpan) dateSpan.style.display = '';
-                        this.nextElementSibling.remove();
-                        this.remove();
+        // 審計報告：點 report-header → inline 展開/收折（與每日報告完全一致）
+        container.querySelectorAll('.report-header[data-audit-route]').forEach(header => {
+            header.addEventListener('click', async function() {
+                const wasExpanded = this.classList.contains('expanded');
+                // Close other expanded headers in same audit-type-body
+                const parentSection = this.closest('.audit-type-section');
+                if (parentSection) {
+                    parentSection.querySelectorAll('.report-header.expanded').forEach(h => {
+                        if (h !== this) h.classList.remove('expanded');
                     });
+                }
+                if (wasExpanded) {
+                    this.classList.remove('expanded');
+                } else {
+                    this.classList.add('expanded');
+                }
+                // Load content via template
+                const body = this.nextElementSibling;
+                if (body && body.classList.contains('report-body')) {
+                    const tmpl = body.querySelector('.report-body-template');
+                    if (tmpl && tmpl.content && tmpl.content.children.length === 0) {
+                        const route = this.getAttribute('data-audit-route');
+                        const htmlPath = routeMap[route];
+                        if (htmlPath) {
+                            try {
+                                const resp = await fetch(htmlPath);
+                                const html = await resp.text();
+                                const parser = new DOMParser();
+                                const doc = parser.parseFromString(html, 'text/html');
+                                const reportContent = doc.querySelector('.report-content');
+                                if (reportContent) {
+                                    const div = document.createElement('div');
+                                    div.className = 'report-body-inner';
+                                    div.innerHTML = reportContent.innerHTML;
+                                    body.insertBefore(div, tmpl);
+                                }
+                            } catch(e) { /* silent fail */ }
+                        }
+                    }
+                    if (wasExpanded) {
+                        const inner = body.querySelector('.report-body-inner');
+                        if (inner) inner.remove();
+                    }
+                }
+                if (this.classList.contains('expanded') && body) {
                     body.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } catch(e) { /* silent */ }
+                }
             });
         });
 
