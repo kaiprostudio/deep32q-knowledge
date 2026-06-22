@@ -325,14 +325,37 @@
 
                         panel.innerHTML = html;
 
-                        // Bind click — all results
+                        // Bind click — all results: inline expand in place
                         panel.querySelectorAll('.industry-search-result').forEach(el => {
                             el.addEventListener('click', function() {
                                 const route = this.getAttribute('data-route');
-                                if (route) {
-                                    panel.style.display = 'none';
+                                if (!route) return;
+                                panel.style.display = 'none';
+                                industriesFilter.value = '';
+                                // Reset industry sections visibility
+                                container.querySelectorAll('.industry-section').forEach(s => s.style.display = '');
+                                container.querySelectorAll('.timeline-report').forEach(t => t.style.display = '');
+                                // Find the matching report-header
+                                const targetHeader = container.querySelector('.report-header[data-report-route="' + route.replace(/"/g, '&quot;') + '"]');
+                                if (!targetHeader) {
+                                    // Fallback: open full page
                                     window.location.href = '/?p=report&f=' + encodeURIComponent(route);
+                                    return;
                                 }
+                                // Expand its parent industry section
+                                const section = targetHeader.closest('.industry-section');
+                                if (section) {
+                                    const secHeader = section.querySelector('[data-toggle="industry"]');
+                                    if (secHeader && !secHeader.classList.contains('expanded')) {
+                                        secHeader.click();
+                                    }
+                                }
+                                // Scroll to the target
+                                targetHeader.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                // Click to expand the report
+                                setTimeout(() => {
+                                    targetHeader.click();
+                                }, 350);
                             });
                         });
 
