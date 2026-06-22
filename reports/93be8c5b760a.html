@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MLCC 深度研究 — Deep32Q 系統化投資研究知識庫</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/style.css?v=1782120989">
+<meta name="description" content="Deep32Q 系統化投資研究知識庫 — 每日報告、產業洞察、32Q 審計報告">
+</head>
+<body>
+<div id="app">
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Deep32Q</a>
+      <div id="search-wrap" class="nav-search">
+        <input type="text" id="search-input" placeholder="搜尋知識庫（全文）" aria-label="搜尋知識庫" data-scope="all">
+        <div id="search-results" class="search-results hidden"></div>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="nav-link active" data-nav="daily">每日報告</a>
+        <a href="/?p=industries" class="nav-link" data-nav="industries">產業洞察</a>
+        <a href="/?p=audit" class="nav-link" data-nav="audit">審計報告</a>
+        <a href="/admin/" class="nav-link" data-nav="admin">管理</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="切換深色模式" title="切換深色模式">🌙</button>
+      </div>
+    </div>
+  </nav>
+  <main id="main-content"><div class="report-content-page">
+<div class="breadcrumb"><a href="/">← 回首頁</a> / Deep32Q知識庫/產業洞察/被動元件研究/MLCC深度研究.md</div>
+<div class="report-content"><h1>MLCC 深度研究</h1>
+<p><strong>更新日期：2026-05-12</strong><br />
+<strong>產出者：Dr.32 知識管家（subagent）</strong></p>
+<hr />
+<h2>1. MLCC 技術原理與結構</h2>
+<p>MLCC（Multilayer Ceramic Capacitor，積層陶瓷電容）是最廣泛使用的被動元件。</p>
+<h3>基本結構</h3>
+<div class="codehilite"><pre><span></span><code>┌─────────────────────┐
+│  外部電極（端電極）   │ ← 焊接至 PCB
+├─────────────────────┤
+│ 陶瓷介電層 (BaTiO₃) │ ← 儲存電荷
+│ 內部電極（金屬層）   │ ← Ni/Cu/AgPd
+├─────────────────────│ 重複疊層 100-3,000 層
+│ 陶瓷介電層          │
+├─────────────────────┤
+│ 內部/外部電極       │ ← 焊接至 PCB
+└─────────────────────┘
+</code></pre></div>
+
+<h3>關鍵參數</h3>
+<ul>
+<li><strong>容值</strong>：pF → μF 級別</li>
+<li><strong>電壓等級</strong>：6.3V、16V、50V、100V、200V、&gt;1kV（HVDC）</li>
+<li><strong>尺寸</strong>：1005 (402)、0603、0402、0201、01005</li>
+<li><strong>介電材質</strong>：X7R（通用）、X5R、C0G/NP0（高頻低損耗）</li>
+</ul>
+<hr />
+<h2>2. 全球市佔分布</h2>
+<h3>主要廠商市佔率（2025-2026）</h3>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>廠商</th>
+<th>國家</th>
+<th>MLCC 市佔率</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>村田製作所</strong> (Murata)</td>
+<td>🇯🇵 日本</td>
+<td>~28-30%</td>
+<td>全球最大，AI 伺服器高階 MLCC 領先</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>三星電機</strong> (SEM)</td>
+<td>🇰🇷 韓國</td>
+<td>~22-24%</td>
+<td>高容值 MLCC 技術領先，稼動率 &gt;90%</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>國巨</strong> (Yageo/KEMET)</td>
+<td>🇹🇼 台灣</td>
+<td>~7-9%</td>
+<td>全球前三，鉭電 + MLCC + 電阻整合</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>太陽誘電</strong> (TDK)</td>
+<td>🇯🇵 日本</td>
+<td>~8-10%</td>
+<td>車用 MLCC 強項，TLVR 電感</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>華新科</strong> (Walsin)</td>
+<td>🇹🇼 台灣</td>
+<td>~5-7%</td>
+<td>銅電極技術領先，AI 伺服器 MLCC 供應商</td>
+</tr>
+</tbody>
+</table>
+<h3>其他台廠</h3>
+<ul>
+<li><strong>禾伸堂</strong> (Holy Stone, 3026)：高壓 MLCC，已打入 NVIDIA A100/H100/Blackwell/Vera Rubin 供應鏈</li>
+<li><strong>國巨集團</strong>：透過 KEMET 收購整合鉭電容（全球 &gt;40% 市佔）</li>
+</ul>
+<hr />
+<h2>3. 技術趨勢</h2>
+<h3>（1）小型化</h3>
+<ul>
+<li><strong>尺寸演進</strong>：1005 (4.0×2.0mm) → 0603 → 0402 → 0201 → <strong>01005</strong> (0.4×0.2mm)</li>
+<li>01005 尺寸已量產，用於手機、可穿戴裝置</li>
+</ul>
+<h3>（2）高容值</h3>
+<ul>
+<li>單顆 MLCC 容值突破 <strong>100μF</strong>（原為 μF 級）</li>
+<li>AI 伺服器需要大容量、低 ESR 的 MLCC</li>
+</ul>
+<h3>（3）高電壓（HVDC 架構）</h3>
+<ul>
+<li><strong>&gt;1kV MLCC</strong>：800V HVDC 架構推升需求</li>
+<li>AI 伺服器電源架構從 48V 轉向 400V+，高壓 MLCC 用量大增</li>
+<li>禾伸堂已供應 NVIDIA Blackwell 平台高壓 MLCC</li>
+</ul>
+<h3>（4）高耐溫</h3>
+<ul>
+<li>AI 伺服器內部溫度可達 85°C+，需要高耐溫 MLCC</li>
+<li>X7R、X5S 材質持續優化</li>
+</ul>
+<h3>（5）銅電極技術（華新科主導）</h3>
+<ul>
+<li>傳統：AgPd 內電極 → 成本高</li>
+<li><strong>銅電極</strong>：華新科領先，成本降低 30-50%</li>
+<li>銅電極 MLCC 已量產，2026 年持續擴充</li>
+</ul>
+<hr />
+<h2>4. AI 驅動的 MLCC 需求爆發</h2>
+<h3>GB200 NVL72 案例</h3>
+<ul>
+<li><strong>單機櫃 MLCC 需求</strong>：約 <strong>441,000 顆</strong></li>
+<li>是傳統 AI 伺服器的 <strong>10-21 倍</strong></li>
+<li>是手機的約 <strong>30 倍</strong></li>
+</ul>
+<h3>需求預測</h3>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>AI 伺服器 MLCC 需求量</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025</td>
+<td>~726 億顆</td>
+<td>GB200 開始量產</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>~726 億顆（持續成長）</td>
+<td>Blackwell 全面量產</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>~1,367 億顆</td>
+<td>Vera Rubin 平台放量</td>
+</tr>
+</tbody>
+</table>
+<h3>供需分析</h3>
+<ul>
+<li><strong>村田/三星電機稼動率</strong>：&gt;90%（滿載）</li>
+<li><strong>高階 MLCC 漲價</strong>：15-35%（2025-2026 年）</li>
+<li><strong>交期延長</strong>：部分高階規格交期達 16-20 週</li>
+<li><strong>庫存水位</strong>：中國經銷商健康補貨，整體庫存正常</li>
+</ul>
+<hr />
+<h2>5. 台廠 MLCC 競爭力分析</h2>
+<h3>國巨 (Yageo)</h3>
+<ul>
+<li>全球前三，透過 KEMET 整合鉭電容優勢</li>
+<li>AI 相關營收佔比：Q4 2025 ~12% → Q1 2026 13-14% → 年底目標 &gt;15%</li>
+<li>訂單能見度延伸至 2026 H2</li>
+</ul>
+<h3>華新科 (Walsin)</h3>
+<ul>
+<li>全球前五，MLCC 佔營收 ~60%</li>
+<li><strong>銅電極技術</strong>：成本優勢，取代貴金屬內電極</li>
+<li>AI 營收佔比：2025 &gt;10% → 2026 預估翻倍</li>
+<li>X6S 型、中高壓 MLCC 供應 AI 伺服器</li>
+</ul>
+<h3>禾伸堂 (Holy Stone)</h3>
+<ul>
+<li>高壓/低損耗 NP0 MLCC 專家</li>
+<li>已打入 NVIDIA A100 → H100 → Blackwell → Vera Rubin 全世代</li>
+<li>AI 相關佔 MLCC 業務 ~18-20%（2025），2026 預估翻倍</li>
+<li>AI 產線稼動率 &gt;100%，2026-2029 資本支出 ~NT$30 億擴產</li>
+</ul>
+<hr />
+<h2>📚 資料來源</h2>
+<ol>
+<li><strong>Mordor Intelligence</strong> (2026-05): MLCC Market Report</li>
+<li><strong>Grand View Research</strong> (2026-05): MLCC Market Analysis</li>
+<li><strong>TrendForce</strong> (2025-12): 村田 AI 伺服器電源模組量產</li>
+<li><strong>Digitimes</strong> (2026-03): 國巨鉭電漲價、禾伸堂產能</li>
+<li><strong>StatementDog / StockAnalysis</strong>: 國巨 2025-2026 財務</li>
+<li><strong>Fugle / Cmoney</strong>: 華新科、禾伸堂法說會</li>
+<li><strong>Passive-Components.eu</strong>: MLCC 廠商漲價新聞</li>
+<li><strong>Samsung Electro-Mechanics</strong> (2026): 高容值 MLCC 產品新聞</li>
+<li><strong>7setronic</strong> (2026): AI MLCC 市場需求分析</li>
+<li><strong>IntelMarketResearch</strong> (2026): MLCC for AI Server/Automotive Market</li>
+</ol></div>
+</div></main>
+</div>
+<script src="/search.js?v=1782118672"></script>
+<script src="/content.js?v=1782124909"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎯 黃金追蹤指標 — Deep32Q 系統化投資研究知識庫</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/style.css?v=1782120989">
+<meta name="description" content="Deep32Q 系統化投資研究知識庫 — 每日報告、產業洞察、32Q 審計報告">
+</head>
+<body>
+<div id="app">
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Deep32Q</a>
+      <div id="search-wrap" class="nav-search">
+        <input type="text" id="search-input" placeholder="搜尋知識庫（全文）" aria-label="搜尋知識庫" data-scope="all">
+        <div id="search-results" class="search-results hidden"></div>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="nav-link active" data-nav="daily">每日報告</a>
+        <a href="/?p=industries" class="nav-link" data-nav="industries">產業洞察</a>
+        <a href="/?p=audit" class="nav-link" data-nav="audit">審計報告</a>
+        <a href="/admin/" class="nav-link" data-nav="admin">管理</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="切換深色模式" title="切換深色模式">🌙</button>
+      </div>
+    </div>
+  </nav>
+  <main id="main-content"><div class="report-content-page">
+<div class="breadcrumb"><a href="/">← 回首頁</a> / Deep32Q知識庫/追蹤指標/黃金研究.md</div>
+<div class="report-content"><h1>🎯 黃金追蹤指標</h1>
+<blockquote>
+<p>建立日期：2026-05-01<br />
+來源：從《黃金價格驅動因子分析》中提取<br />
+追蹤頻率：依指標特性</p>
+</blockquote>
+<hr />
+<h2>📋 追蹤指標清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>指標</th>
+<th style="text-align: center;">追蹤頻率</th>
+<th style="text-align: left;">數據來源</th>
+<th style="text-align: left;">為何重要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>COMEX 黃金現貨價格</td>
+<td style="text-align: center;">每日</td>
+<td style="text-align: left;">TradingEconomics、Barchart</td>
+<td style="text-align: left;">最直接的價格信號，判斷支撐/阻力位</td>
+</tr>
+<tr>
+<td>2</td>
+<td>美國 10 年期 TIPS 實質利率</td>
+<td style="text-align: center;">每日</td>
+<td style="text-align: left;">FRED、TradingEconomics</td>
+<td style="text-align: left;">金價最強驅動因子，反向關係</td>
+</tr>
+<tr>
+<td>3</td>
+<td>美元指數 DXY</td>
+<td style="text-align: center;">每日</td>
+<td style="text-align: left;">TradingEconomics、Investing.com</td>
+<td style="text-align: left;">金價反向指標，判斷國際需求</td>
+</tr>
+<tr>
+<td>4</td>
+<td>聯準會利率決策 + 點陣圖</td>
+<td style="text-align: center;">每次 FOMC</td>
+<td style="text-align: left;">Fed.gov</td>
+<td style="text-align: left;">降息/升息預期直接影響金價</td>
+</tr>
+<tr>
+<td>5</td>
+<td>央行購金數據（WGC 季報）</td>
+<td style="text-align: center;">每季</td>
+<td style="text-align: left;">World Gold Council</td>
+<td style="text-align: left;">結構性需求，反映去美元化趨勢</td>
+</tr>
+<tr>
+<td>6</td>
+<td>地緣風險事件（荷莫茲、中東）</td>
+<td style="text-align: center;">即時</td>
+<td style="text-align: left;">新聞</td>
+<td style="text-align: left;">避險需求觸發劑</td>
+</tr>
+<tr>
+<td>7</td>
+<td>通膨數據（CPI、PCE）</td>
+<td style="text-align: center;">每月</td>
+<td style="text-align: left;">BLS、BEA</td>
+<td style="text-align: left;">通膨預期影響金價</td>
+</tr>
+<tr>
+<td>8</td>
+<td>黃金 ETF 持倉量（GLD、IAU）</td>
+<td style="text-align: center;">每週</td>
+<td style="text-align: left;">ETF 發行商</td>
+<td style="text-align: left;">投資需求晴雨表</td>
+</tr>
+<tr>
+<td>9</td>
+<td>黃金礦產供應</td>
+<td style="text-align: center;">每季</td>
+<td style="text-align: left;">WGC、礦業公司</td>
+<td style="text-align: left;">供給面，影響長期均衡價格</td>
+</tr>
+<tr>
+<td>10</td>
+<td>大型投行金價預測</td>
+<td style="text-align: center;">每月/每季</td>
+<td style="text-align: left;">UBS、JPM、GS、Wells Fargo</td>
+<td style="text-align: left;">市場預期錨定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>📐 指標間關聯性</h2>
+<div class="codehilite"><pre><span></span><code>實質利率 ↓ → 美元 ↓ → 金價 ↑
+通膨 ↑ → 實質利率 ↓ → 金價 ↑
+地緣風險 ↑ → 避險需求 ↑ → 金價 ↑
+央行購金 ↑ → 需求 ↑ → 金價 ↑
+聯準會降息 → 實質利率 ↓ → 金價 ↑
+</code></pre></div>
+
+<hr />
+<h2>⚠️ 當前警戒事項（2026 年 5 月）</h2>
+<ol>
+<li><strong>荷莫茲海峽封閉</strong>：地緣風險極端高 → 金價支撐因素</li>
+<li><strong>油價推升通膨</strong>：可能迫使聯準會延後降息 → 金價逆風</li>
+<li><strong>央行購金持續</strong>：Q1 244 公噸 → 結構性支撐</li>
+<li><strong>金價從歷史高 $5,589 回落至 $4,573</strong>：通膨 vs 避險拉鋸中</li>
+</ol>
+<hr />
+<p><em>指標建立：Dr.32 知識管家</em></p></div>
+</div></main>
+</div>
+<script src="/search.js?v=1782118672"></script>
+<script src="/content.js?v=1782124909"></script>
+</body>
+</html>

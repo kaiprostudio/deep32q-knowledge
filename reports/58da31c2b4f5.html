@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>07-1 燃料成本分析 — Deep32Q 系統化投資研究知識庫</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/style.css?v=1782120989">
+<meta name="description" content="Deep32Q 系統化投資研究知識庫 — 每日報告、產業洞察、32Q 審計報告">
+</head>
+<body>
+<div id="app">
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Deep32Q</a>
+      <div id="search-wrap" class="nav-search">
+        <input type="text" id="search-input" placeholder="搜尋知識庫（全文）" aria-label="搜尋知識庫" data-scope="all">
+        <div id="search-results" class="search-results hidden"></div>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="nav-link active" data-nav="daily">每日報告</a>
+        <a href="/?p=industries" class="nav-link" data-nav="industries">產業洞察</a>
+        <a href="/?p=audit" class="nav-link" data-nav="audit">審計報告</a>
+        <a href="/admin/" class="nav-link" data-nav="admin">管理</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="切換深色模式" title="切換深色模式">🌙</button>
+      </div>
+    </div>
+  </nav>
+  <main id="main-content"><div class="report-content-page">
+<div class="breadcrumb"><a href="/">← 回首頁</a> / Deep32Q知識庫/產業洞察/航運產業/07_燃料成本與脫碳/07-1_燃料成本分析.md</div>
+<div class="report-content"><h1>07-1 燃料成本分析</h1>
+<p><strong>更新日期：2026-05-14</strong><br />
+<strong>研究範圍：燃料類型與價格、燃料佔營運成本比例、繞航成本、環保法規、替代燃料展望</strong></p>
+<hr />
+<h2>一、HSFO / VLSFO / MGO 差異與價格走勢 2023-2026</h2>
+<h3>三種主要船用燃料的差異</h3>
+<table>
+<thead>
+<tr>
+<th>燃料類型</th>
+<th>硫含量上限</th>
+<th>密度</th>
+<th>適用場景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HSFO</strong>（High Sulfur Fuel Oil, IFO380）</td>
+<td>3.5%（IMO 2020 前）/ 0.5%（經洗滌塔後）</td>
+<td>~380 cSt @ 50°C</td>
+<td>裝洗滌塔（scrubber）船舶</td>
+</tr>
+<tr>
+<td><strong>VLSFO</strong>（Very Low Sulfur Fuel Oil）</td>
+<td>0.5%</td>
+<td>~380 cSt @ 50°C</td>
+<td>無洗滌塔船舶的主流選擇</td>
+</tr>
+<tr>
+<td><strong>MGO</strong>（Marine Gas Oil, LS）</td>
+<td>0.1%</td>
+<td>~4-7 cSt @ 50°C</td>
+<td>高速船舶、ECA 區域、備用發電機</td>
+</tr>
+</tbody>
+</table>
+<h3>2025-2026 年價格走勢（新加坡/休斯敦/鹿特丹基準）</h3>
+<table>
+<thead>
+<tr>
+<th>燃料</th>
+<th>2025 Q4 均價</th>
+<th>2026 Q1 均價</th>
+<th>2026 年 5 月價格</th>
+<th>走勢說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HSFO</strong> (380 cSt)</td>
+<td>~$401/MT</td>
+<td>~$424/MT</td>
+<td><strong>~$803/MT</strong></td>
+<td>中東緊張推升，4 月曾回落至 $727</td>
+</tr>
+<tr>
+<td><strong>VLSFO</strong> (380 cSt)</td>
+<td>~$442/MT</td>
+<td>~$503/MT</td>
+<td><strong>~$963/MT</strong></td>
+<td>4 月回落至 $848，5 月反彈</td>
+</tr>
+<tr>
+<td><strong>MGO</strong> (LS)</td>
+<td>—</td>
+<td>~$777/MT</td>
+<td><strong>~$1,455/MT</strong></td>
+<td>始終最貴，Fujairah 超過 $1,500</td>
+</tr>
+</tbody>
+</table>
+<h3>關鍵價格指標</h3>
+<ul>
+<li><strong>洗滌塔價差（Scrubber Spread = VLSFO - HSFO）</strong>：2026 年 5 月達 $159/MT，使裝洗滌塔船舶使用 HSFO 的經濟性顯著提升</li>
+<li><strong>VLSFO-MGO 價差</strong>：2026 年大幅擴大，Fujairah MGO 價格接近 VLSFO 的兩倍，反映全球煉油產能無法跟上中間餾分（middle distillates）需求</li>
+<li><strong>S&amp;P Global 警告</strong>：「Peak VLSFO」可能已經出現，VLSFO 因供過於求成為「困境產品」（distressed product）</li>
+<li><strong>Brent 原油預測</strong>：2026 Q2 因中東供應中斷可能突破 $115/桶</li>
+</ul>
+<hr />
+<h2>二、燃料佔航商營運成本比例（20-50%）</h2>
+<h3>燃料成本佔比結構</h3>
+<table>
+<thead>
+<tr>
+<th>船舶類型</th>
+<th>燃料佔營運成本比例</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Container ship（常規航線）</td>
+<td><strong>40-50%</strong></td>
+<td>2025 年數據，受油價波動影響大</td>
+</tr>
+<tr>
+<td>Cargo ship（長航線）</td>
+<td><strong>50-60%</strong></td>
+<td>老舊或低效船舶可達此比例</td>
+</tr>
+<tr>
+<td>Container ship（短航線）</td>
+<td><strong>25-35%</strong></td>
+<td>正常貿易條件下燃料+潤滑油佔總成本比例</td>
+</tr>
+<tr>
+<td>Container ship（亞美線 May 2026）</td>
+<td><strong>~25%</strong></td>
+<td>燃料佔全程航價的 25%（LA Long Beach 港數據）</td>
+</tr>
+</tbody>
+</table>
+<h3>成本結構的關鍵變化</h3>
+<ul>
+<li><strong>2025 年燃料價格下跌約 15%</strong>，使海運和 container shipping 成本降低高達 20%</li>
+<li><strong>VLSFO 2025 年平均價</strong>：~$535/MT，較 2024 年下降 14.4%</li>
+<li><strong>但環保法規使燃料相關成本增加 15-20%</strong>，部分抵消了油價下跌的好處</li>
+<li><strong>整體營運成本</strong>：VLSFO 船舶的營運成本在 2025 年因脫碳法規幾乎增加近 <strong>50%</strong></li>
+</ul>
+<h3>2026 年燃料成本飆升</h3>
+<ul>
+<li><strong>2026 年 3 月</strong>：因美伊衝突和荷莫茲海峽封鎖，全球船用燃料價格飆升 30-35%</li>
+<li>IFO380 暴漲 84%（$456 → $841/MT）</li>
+<li>VLSFO 漲至 ~$963/MT，逼近 $1,000 關口</li>
+<li><strong>EU ETS 合規成本</strong>（2026 年起）：VLSFO ~$319/MT、HSFO ~$315/MT、MGO ~$324/MT（涵蓋航次），在歐洲短途航線上已與燃料成本相當</li>
+</ul>
+<hr />
+<h2>三、繞行好望角增加的燃料消耗與成本</h2>
+<h3>紅海/荷莫茲危機下的繞航影響</h3>
+<p>因胡塞武裝襲擊和中東地緣風險，大量船舶改道好望角（Cape of Good Hope），這已成為 2025-2026 年的「新常態」。</p>
+<h3>繞航成本量化</h3>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>影響幅度</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>額外航程</strong></td>
+<td>+3,000~10,000 海里</td>
+<td>取決於起訖港</td>
+</tr>
+<tr>
+<td><strong>額外航程天數</strong></td>
+<td>+10~20 天/航次</td>
+<td>有效運力減少</td>
+</tr>
+<tr>
+<td><strong>燃料消耗增加</strong></td>
+<td><strong>+18~35%/航次</strong></td>
+<td>直接影響成本</td>
+</tr>
+<tr>
+<td><strong>燃料附加費增加</strong></td>
+<td>+15~25%</td>
+<td>轉嫁至貨主</td>
+</tr>
+<tr>
+<td><strong>每 TEU 額外成本</strong></td>
+<td>+$200~$400/TEU</td>
+<td>含燃料、船員薪資、船舶定位</td>
+</tr>
+<tr>
+<td><strong>緊急附加費</strong></td>
+<td>+$1,500~$4,000/TEU</td>
+<td>主要 container 航商徵收</td>
+</tr>
+<tr>
+<td><strong>亞美線每航次額外成本</strong></td>
+<td>~$400,000（僅 EU ETS 合規）</td>
+<td>20,000 TEU 船舶繞航數據</td>
+</tr>
+<tr>
+<td><strong>亞美線運費總額增加</strong></td>
+<td>+$800~$1,500/40ft container</td>
+<td>僅運費部分（不含保險）</td>
+</tr>
+<tr>
+<td><strong>往返碳排放增加</strong></td>
+<td>+70%</td>
+<td>繞航的間接環境成本</td>
+</tr>
+<tr>
+<td><strong>戰爭險保費</strong></td>
+<td>$150,000~$500,000/航次</td>
+<td>峰值後有所下降但仍偏高</td>
+</tr>
+<tr>
+<td><strong>船體機械保險</strong></td>
+<td>+15~25%</td>
+<td>行業-wide 上漲</td>
+</tr>
+</tbody>
+</table>
+<h3>對運價的總體影響</h3>
+<ul>
+<li><strong>亞歐線運費</strong>：穩定在危機前水平的 25-35% 以上（初始飆升 40-60%）</li>
+<li><strong>受影響航線總體運費</strong>：普遍上漲 30-50%</li>
+<li><strong>全球消費者價格</strong>：預計至 2025-2026 年底上漲約 0.6%</li>
+</ul>
+<hr />
+<h2>四、IMO 2020 低硫令、EU ETS 碳稅（2024 起）、FuelEU Maritime</h2>
+<h3>三層法規架構</h3>
+<h4>1. IMO 2020 全球低硫令（已生效）</h4>
+<ul>
+<li><strong>核心要求</strong>：全球船用燃料硫含量上限從 3.50% 降至 0.50%（ECA 區域 0.10%）</li>
+<li><strong>合規方式</strong>：使用 VLSFO/MGO，或安裝洗滌塔（scrubber）後繼續使用 HSFO</li>
+<li><strong>影響</strong>：使燃料成本整體增加 15-20%（相對於舊規），但洗滌塔價差擴大部分抵消了此影響</li>
+</ul>
+<h4>2. EU ETS 碳排放交易體系（分階段實施）</h4>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>合規覆蓋率</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2024</strong></td>
+<td>監測與報告</td>
+<td>僅數據收集，無需購買配額</td>
+</tr>
+<tr>
+<td><strong>2025</strong></td>
+<td>40%</td>
+<td>需為 2024 年排放量的 40% 購買配額</td>
+</tr>
+<tr>
+<td><strong>2026</strong></td>
+<td>70% → 100%（內歐盟航線）</td>
+<td>涵蓋甲烷、氧化亞氮；跨歐航次 50%</td>
+</tr>
+<tr>
+<td><strong>2027 起</strong></td>
+<td>100%</td>
+<td>所有排放全額覆蓋</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>EU ETS 成本</strong>：2026 年起，VLSFO ~$319/MT、HSFO ~$315/MT、MGO ~$324/MT 的碳成本，在歐洲短途航線上已與燃料本身成本相當</li>
+<li><strong>2026 年關鍵變化</strong>：EU ETS 涵蓋範圍擴大至甲烷（CH₄）和氧化亞氮（N₂O）</li>
+</ul>
+<h4>3. FuelEU Maritime 法規（2025 年 1 月生效）</h4>
+<ul>
+<li><strong>核心目標</strong>：逐步減少歐盟港口船舶使用的能源溫室氣體強度，2050 年較 2020 年減少 80%</li>
+<li><strong>2025 年要求</strong>：溫室氣體強度減少 2%</li>
+<li><strong>罰則機制</strong>：未合規船舶需繳納費用（penalties）</li>
+<li><strong>岸電要求</strong>：2030 年起，客船和 container 船舶在主要歐洲港口停泊超過 2 小時需使用岸電（onshore power supply, OPS）</li>
+<li><strong>涵蓋範圍</strong>：無論船旗，凡停靠歐盟港口的船舶均適用</li>
+</ul>
+<hr />
+<h2>五、替代燃料展望：LNG、甲醇、氨</h2>
+<h3>各替代燃料比較</h3>
+<table>
+<thead>
+<tr>
+<th>燃料</th>
+<th>成熟度</th>
+<th>2026 年訂單佔比</th>
+<th>優勢</th>
+<th>挑戰</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LNG</strong>（液化天然氣）</td>
+<td>商業化成熟</td>
+<td>~15-20% 新船訂單</td>
+<td>技術成熟、基礎設施完善</td>
+<td>甲烷洩漏（methane slip）排放問題</td>
+</tr>
+<tr>
+<td><strong>甲醇</strong>（綠色甲醇）</td>
+<td>早期商業化</td>
+<td>~10-15% 新船訂單</td>
+<td>液態易儲存、馬士基等先驅推動</td>
+<td>綠色甲醇產能有限、價格高昂（~$1,200-1,500/MT）</td>
+</tr>
+<tr>
+<td><strong>氨</strong>（Ammonia）</td>
+<td>研發/示範階段</td>
+<td>~5-8% 新船訂單</td>
+<td>零碳排放、儲存便利</td>
+<td>毒性高、燃燒技術未成熟、基礎設施幾乎空白</td>
+</tr>
+<tr>
+<td><strong>生物燃料</strong></td>
+<td>混合使用階段</td>
+<td>~3-5% 掺混比例</td>
+<td>可直接替換現有燃料</td>
+<td>產能有限、成本較高</td>
+</tr>
+</tbody>
+</table>
+<h3>替代燃料的關鍵挑戰</h3>
+<ol>
+<li><strong>供應不足</strong>：綠色甲醇和氨的產能遠低於船舶訂單所需的燃料量</li>
+<li><strong>成本溢價</strong>：綠色燃料價格通常是 VLSFO 的 2-3 倍</li>
+<li><strong>基礎設施</strong>：全球加油站（bunkering）基礎設施嚴重不足，特別是氨和甲醇</li>
+<li><strong>IMO 全球稅延後</strong>：2025 年底 IMO 全球碳稅採納延遲，船公司對替代燃料投資持觀望態度</li>
+</ol>
+<hr />
+<h2>六、EEXI/CII 強制降速 → 實際運力減少效果</h2>
+<h3>降速的雙面刃效應</h3>
+<ul>
+<li><strong>正面</strong>：以設計速度 75% 營運可減少 40-50% 燃料消耗，大幅改善 CII 評分</li>
+<li><strong>負面</strong>：航程時間增加 5-10%，減少年度航行次數，實質上從市場中減少了可用運力</li>
+</ul>
+<h3>2026 年合規挑戰</h3>
+<ul>
+<li><strong>Phase 2 CII</strong>：年度減碳係數從 5% 提升至 11%，單靠降速和被動措施（EPL）已不足以維持合規</li>
+<li><strong>船東策略</strong>：部分船舶需進行主動技術改造（如安裝廢熱回收系統、空氣潤滑等）</li>
+<li><strong>UN 貿發會議估算</strong>：EEXI/CII 法規可能使海運物流成本增加 3.1-7.6%（至 2030 年），部分源於降速導致的供應鏈前置時間延長</li>
+</ul>
+<h3>對運力的淨效果</h3>
+<table>
+<thead>
+<tr>
+<th>因素</th>
+<th>影響方向</th>
+<th>2026 年預估影響</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EEXI/CII 降速</td>
+<td>減少有效運力</td>
+<td>-5~10%（各船型加權平均）</td>
+</tr>
+<tr>
+<td>新船交付</td>
+<td>增加有效運力</td>
+<td>+3.6~5%（container）</td>
+</tr>
+<tr>
+<td>紅海正常化</td>
+<td>增加有效運力</td>
+<td>+6~8%（若蘇伊士完全恢復）</td>
+</tr>
+<tr>
+<td>拆解加速</td>
+<td>減少有效運力</td>
+<td>-2~3%（預估）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>結論：環保法規的降速效应在 2026 年減少了約 5-10% 的有效運力，但不足以完全抵消新船交付和紅海正常化帶來的供給增加。然而，它確實減少了運價下跌的幅度。</strong></p>
+<hr />
+<h2>📚 資料來源</h2>
+<ol>
+<li>OPIS (2026): "IMO Carbon Tax Delay Likely to Keep VLSFO/HSFO Demand Steady"</li>
+<li>IndexBox (2026): "Weekly Bunker LNG Market Report — Prices Rise, Scrubber Spreads Narrow"</li>
+<li>S&amp;P Global (2025-12): "Shipping: 2026 Oil Bunker Trades Face Soft Demand Growth, Peak VLSFO"</li>
+<li>ICIS (2026-03): "Global Bunker Prices Surge by 30-35% Tracking Soaring Crude as US-Iran Crisis Persists"</li>
+<li>FreightAmigo (2026): "Optimizing Shipping Costs: Leveraging Fuel Price Declines"</li>
+<li>DocShipper (2026): "Red Sea Crisis Update: Route Alternatives &amp; Cost Impacts"</li>
+<li>DNV (2025): "EU Emissions Trading System for Shipping" / "FuelEU Maritime Regulation"</li>
+<li>IMO (2025): "IMO Approves Net-Zero Regulations for International Maritime Transport"</li>
+<li>GARD (2025): "Charting the 2025 Maritime Regulatory Landscape"</li>
+<li>LATimes (2026-05): "Ships Paying Millions More for Fuel at LA/Long Beach Ports"</li>
+</ol></div>
+</div></main>
+</div>
+<script src="/search.js?v=1782118672"></script>
+<script src="/content.js?v=1782124909"></script>
+</body>
+</html>

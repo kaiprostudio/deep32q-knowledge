@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💎 SiC 碳化矽深度研究 — Deep32Q 系統化投資研究知識庫</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/style.css?v=1782120989">
+<meta name="description" content="Deep32Q 系統化投資研究知識庫 — 每日報告、產業洞察、32Q 審計報告">
+</head>
+<body>
+<div id="app">
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Deep32Q</a>
+      <div id="search-wrap" class="nav-search">
+        <input type="text" id="search-input" placeholder="搜尋知識庫（全文）" aria-label="搜尋知識庫" data-scope="all">
+        <div id="search-results" class="search-results hidden"></div>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="nav-link active" data-nav="daily">每日報告</a>
+        <a href="/?p=industries" class="nav-link" data-nav="industries">產業洞察</a>
+        <a href="/?p=audit" class="nav-link" data-nav="audit">審計報告</a>
+        <a href="/admin/" class="nav-link" data-nav="admin">管理</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="切換深色模式" title="切換深色模式">🌙</button>
+      </div>
+    </div>
+  </nav>
+  <main id="main-content"><div class="report-content-page">
+<div class="breadcrumb"><a href="/">← 回首頁</a> / Deep32Q知識庫/產業洞察/功率離散元件研究/SiC_碳化矽深度研究.md</div>
+<div class="report-content"><h1>💎 SiC 碳化矽深度研究</h1>
+<p><strong>更新日期：</strong> 2026-05-12<br />
+<strong>研究範圍：</strong> SiC 材料特性、產品類型、市場展望、台廠進度、供應鏈結構</p>
+<hr />
+<h2>1. SiC 材料特性 — 第三代半導體</h2>
+<h3>寬能隙（Wide Bandgap）原理</h3>
+<p>SiC（Silicon Carbide，碳化矵）的能隙約為 <strong>3.26 eV</strong>，遠高於傳統矽（Si）的 1.12 eV。這使得 SiC 具備以下優勢：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">特性</th>
+<th style="text-align: center;">Si（矽）</th>
+<th style="text-align: center;">SiC（碳化矽）</th>
+<th style="text-align: center;">GaN（氮化鎵）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>能隙 (eV)</strong></td>
+<td style="text-align: center;">1.12</td>
+<td style="text-align: center;">3.26</td>
+<td style="text-align: center;">3.40</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>耐壓</strong></td>
+<td style="text-align: center;">基準</td>
+<td style="text-align: center;"><strong>10x Si</strong> (~1200V+)</td>
+<td style="text-align: center;">~800V+</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>耐溫</strong></td>
+<td style="text-align: center;">150°C</td>
+<td style="text-align: center;"><strong>2x Si</strong> (~600°C)</td>
+<td style="text-align: center;">~500°C</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>切換損耗</strong></td>
+<td style="text-align: center;">基準</td>
+<td style="text-align: center;"><strong>降 70%+</strong></td>
+<td style="text-align: center;">降 50-60%</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>熱導率</strong></td>
+<td style="text-align: center;">1.5 W/cm·K</td>
+<td style="text-align: center;"><strong>3-4x Si</strong> (~4.9)</td>
+<td style="text-align: center;">~1.3 W/cm·K</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>電子飽和速度</strong></td>
+<td style="text-align: center;">1.0x</td>
+<td style="text-align: center;"><strong>2x Si</strong></td>
+<td style="text-align: center;">2.5x Si</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>成本</strong></td>
+<td style="text-align: center;">低（基準）</td>
+<td style="text-align: center;"><strong>5-10x Si</strong></td>
+<td style="text-align: center;">3-5x Si</td>
+</tr>
+</tbody>
+</table>
+<h3>SiC 的核心優勢</h3>
+<ol>
+<li><strong>耐高壓</strong>：可承受 600V-3.3kV，適合 EV 800V 平台</li>
+<li><strong>高效率</strong>：切換損耗降低 70%+ → 更長續航、更小散熱器</li>
+<li><strong>耐高溫</strong>：600°C 工作溫度 → 簡化冷卻系統</li>
+<li><strong>高頻操作</strong>：開關頻率可達 MHz 級 → 縮小被動元件體積</li>
+</ol>
+<hr />
+<h2>2. SiC 產品類型</h2>
+<h3>① SiC MOSFET（主力產品）</h3>
+<ul>
+<li><strong>電壓等級</strong>：650V、1200V（主流）、1700V</li>
+<li><strong>主要應用</strong>：EV 牽引逆變器、OBC（車載充電器）、充電樁</li>
+<li><strong>市場佔比</strong>：SiC 功率裝置中 ~60-70%</li>
+<li><strong>台廠進度</strong>：</li>
+<li><strong>台半</strong>：1200V 送樣驗證中，切入 NVIDIA Rubin 平台</li>
+<li><strong>強茂</strong>：與歐、日 Tier 1 車廠合作驗證中，2026 起貢獻動能</li>
+<li><strong>茂矽</strong>：SiC MOSFET + JBS 平台 2026 H2 送樣，2027 貢獻營收</li>
+</ul>
+<h3>② SiC SBD（蕭特基二極體）</h3>
+<ul>
+<li><strong>電壓等級</strong>：650V、1200V</li>
+<li><strong>主要應用</strong>：續流二極體、PFC 整流器</li>
+<li><strong>市場佔比</strong>：SiC 功率裝置中 ~20-30%</li>
+<li><strong>台廠進度</strong>：</li>
+<li><strong>強茂</strong>：2020 年已量產第一代 SiC SBD</li>
+<li><strong>茂矽</strong>：SiC JBS（蕭特基接面二極體）平台 2026 H2 送樣</li>
+</ul>
+<h3>③ SiC Module（多顆封裝模組）</h3>
+<ul>
+<li><strong>整合方式</strong>：SiC MOSFET + SiC SBD 封裝在同一模組</li>
+<li><strong>主要應用</strong>：EV 動力總成、工業逆變器、太陽能逆變器</li>
+<li><strong>國際大廠</strong>：Infineon（全球領先）、ST、Rohm、ON Semi</li>
+<li><strong>台廠進度</strong>：目前以單顆元件為主，模組化仍在早期階段</li>
+</ul>
+<hr />
+<h2>3. SiC 市場展望（2025-2035）</h2>
+<h3>全球 SiC 功率裝置市場規模</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">年份</th>
+<th style="text-align: left;">市場規模</th>
+<th style="text-align: left;">CAGR</th>
+<th style="text-align: left;">來源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2025</td>
+<td style="text-align: left;">~$21-40 億 USD（SiC 功率元件總計）</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">DataMintelligence, Mordor, InsightAce</td>
+</tr>
+<tr>
+<td style="text-align: left;">2026</td>
+<td style="text-align: left;">~$34-53 億 USD（SiC 功率元件總計）</td>
+<td style="text-align: left;">24.7-35%</td>
+<td style="text-align: left;">各機構加總</td>
+</tr>
+<tr>
+<td style="text-align: left;">2035 預估</td>
+<td style="text-align: left;">~$242-521 億 USD</td>
+<td style="text-align: left;">15.9-30.4%</td>
+<td style="text-align: left;">Mordor, DataMintelligence</td>
+</tr>
+</tbody>
+</table>
+<h3>SiC 應用結構（2026）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">應用領域</th>
+<th style="text-align: center;">市場佔比</th>
+<th style="text-align: center;">預估規模 (2026)</th>
+<th style="text-align: left;">成長動能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>電動車 (EV)</strong></td>
+<td style="text-align: center;">~75% (~$40億/~$53億)</td>
+<td style="text-align: center;">800V 平台普及, Tesla/BYD/Hyundai/Kia 標準化</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>充電基礎設施</strong></td>
+<td style="text-align: center;">~10% (~$5億)</td>
+<td style="text-align: center;">350kW+ 超快充推動 SiC 需求</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>AI 伺服器/資料中心</strong></td>
+<td style="text-align: center;">~5% (~$3億)</td>
+<td style="text-align: center;">48V 架構, 高效率電源轉換需求</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>太陽能/儲能</strong></td>
+<td style="text-align: center;">~5% (~$3億)</td>
+<td style="text-align: center;">全 SiC 模組效率優勢</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>工業/其他</strong></td>
+<td style="text-align: center;">~5% (~$3億)</td>
+<td style="text-align: center;">變頻器、馬達驅動</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h3>汽車級 SiC 市場（單獨統計）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">年份</th>
+<th style="text-align: left;">市場規模</th>
+<th style="text-align: left;">CAGR</th>
+<th style="text-align: left;">來源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2026</td>
+<td style="text-align: left;">~$82.4 億 USD（汽車級 SiC）</td>
+<td style="text-align: left;">21.3%</td>
+<td style="text-align: left;">Fortune Business Insights</td>
+</tr>
+<tr>
+<td style="text-align: left;">2034 預估</td>
+<td style="text-align: left;">~$319.1 億 USD</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">同上</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>關鍵洞察：</strong> 汽車級 SiC 市場規模（$82.4億）遠高於整體 SiC 功率裝置（~$34-53億），因為汽車級定義包含更多周邊元件和模組化產品。</p>
+</blockquote>
+<hr />
+<h2>4. 台廠 SiC 進度盤點（2026 年最新）</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">公司</th>
+<th style="text-align: left;">產品線</th>
+<th style="text-align: left;">進度</th>
+<th style="text-align: left;">時程</th>
+<th style="text-align: left;">關鍵客戶/應用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>台半 (5425)</strong></td>
+<td style="text-align: left;">SiC MOSFET 1200V</td>
+<td style="text-align: left;">送樣驗證中，部分產品在 Tier 1 AI 伺服器 ODM 廠驗證</td>
+<td style="text-align: left;">2026 逐步放量</td>
+<td style="text-align: left;">NVIDIA Rubin 平台, AI 伺服器 ODM</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>強茂 (2481)</strong></td>
+<td style="text-align: left;">SiC MOSFET + SBD</td>
+<td style="text-align: left;">與歐、日 Tier 1 車廠合作驗證中；2020 年已量產第一代 SiC SBD</td>
+<td style="text-align: left;">2026 起貢獻動能</td>
+<td style="text-align: left;">歐洲/日本車廠, EV OBC</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>茂矽 (2342)</strong></td>
+<td style="text-align: left;">SiC MOSFET + JBS 平台</td>
+<td style="text-align: left;">平台完成，送樣中</td>
+<td style="text-align: left;">2026 H2 送樣, 2027 貢獻營收</td>
+<td style="text-align: left;">車用、充電樁</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>漢磊 (8046)</strong></td>
+<td style="text-align: left;">SiC 襯底（8 吋）</td>
+<td style="text-align: left;">8 吋產線建置中</td>
+<td style="text-align: left;">2026 H2 量產</td>
+<td style="text-align: left;">襯底供應，非終端元件廠</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>世界先進 (8926)</strong></td>
+<td style="text-align: left;">SiC 試產線</td>
+<td style="text-align: left;">試產線完成，驗證中</td>
+<td style="text-align: left;">2026 年底驗證</td>
+<td style="text-align: left;">代工模式，非終端元件廠</td>
+</tr>
+</tbody>
+</table>
+<h3>台廠 SiC 挑戰與機會</h3>
+<p><strong>挑戰：</strong><br />
+- <strong>良率問題</strong>：SiC 晶圓良率遠低於傳統 Si MOSFET（約 30-50%，vs. Si &gt;90%）<br />
+- <strong>成本問題</strong>：SiC wafer 比 Si 貴 5-10 倍<br />
+- <strong>產能限制</strong>：6 吋為主，8 吋轉換中（全球僅 Wolfspeed、Coherent 等少數廠具備規模）<br />
+- <strong>技術差距</strong>：台廠 SiC 技術落後 Wolfspeed、Infineon、ST 等國際大廠</p>
+<p><strong>機會：</strong><br />
+- <strong>AI 伺服器新需求</strong>：台半切入 NVIDIA Rubin 平台，打開 AI 伺服器 SiC 市場<br />
+- <strong>800V EV 普及</strong>：全球 EV 滲透率持續提升，SiC 成為高階 EV 標準配備<br />
+- <strong>中國轉單效應</strong>：地緣政治促使國際車廠轉向台廠</p>
+<hr />
+<h2>5. SiC 供應鏈結構</h2>
+<div class="codehilite"><pre><span></span><code>SiC 供應鏈全景：
+
+長晶（襯底） → 磊晶 → 晶圓製造 → 設計/封裝
+   │              │           │            │
+Wolfspeed      SHM (SK)    X-FAB        Infineon
+II-VI/Coherent TSMC         ON Semi      STMicro
+Coherent       漢磊(台)     茂矽(台)     Rohm
+大陸廠         聯電(台)      台半(台)     ST
+               世界先進      強茂(台)     ON Semi
+
+襯底（全球 ~60% 由海外供應）：
+- Wolfspeed: 全球最大 SiC 襯底供應商，8 吋產能領先
+- Coherent (原 II-VI): 第二大襯底供應商
+- 大陸廠（天科合達、山東天岳）：大量擴產中，低價競爭
+
+台廠定位：
+- 漢磊、世界先進：襯底/代工（非終端元件）
+- 台半、強茂、茂矽：終端 SiC 元件設計/封裝
+</code></pre></div>
+
+<hr />
+<h2>6. 關鍵限制與風險</h2>
+<h3>成本限制</h3>
+<ul>
+<li>SiC wafer 價格約為 Si wafer 的 <strong>5-10 倍</strong></li>
+<li>8 吋量產後預期成本可降至 3-4 倍，但仍高於 Si</li>
+</ul>
+<h3>產能限制</h3>
+<ul>
+<li>全球 6 吋 SiC 產能有限，8 吋轉換需要時間</li>
+<li>新 fab 建置週期長（2-3 年），短期內供需緊張</li>
+</ul>
+<h3>良率挑戰</h3>
+<ul>
+<li>SiC 晶圓缺陷密度高，良率約 30-50%</li>
+<li>台廠良率落後國際大廠（Wolfspeed、Infineon 達 60-70%）</li>
+</ul>
+<h3>中國競爭</h3>
+<ul>
+<li><strong>天科合達</strong>：SiC 襯底中國龍頭，大量擴產中</li>
+<li><strong>三安光電</strong>：IDM 模式，SiC 全鏈佈局</li>
+<li><strong>士蘭微</strong>：IGBT/SiC Module 中國領先</li>
+</ul>
+<h3>替代技術威脅</h3>
+<ul>
+<li><strong>GaN</strong>：在高頻充電領域（&lt;650V）蠶食 SiC 市場</li>
+<li><strong>先進 Si</strong>：Super Junction MOSFET 持續改進，低壓領域仍具成本優勢</li>
+</ul>
+<hr />
+<h2>📚 資料來源</h2>
+<ol>
+<li><strong>Mordor Intelligence</strong> (2026-05): SiC 功率半導體市場 ~$34億, CAGR 27.9%, 2035 ~$521億</li>
+<li><strong>DataMintelligence</strong> (2026-05): SiC 半導體市場 ~$41.4億, CAGR 21.7%, 2035 ~$242億</li>
+<li><strong>Fortune Business Insights</strong> (2026-05): 汽車級 SiC ~$82.4億→$319億, CAGR 21.3%</li>
+<li><strong>GM Insights</strong> (2026-05): SiC 市場分析, 電動車佔比最高</li>
+<li><strong>Prnewswire / Markntel Advisors</strong> (2026-05): SiC 市場 CAGR 27.1%</li>
+<li><strong>Patsnap</strong> (2026-05): SiC 技術landscape, EV 800V 平台推動</li>
+<li><strong>TrendForce</strong> (2026-05): 全球半導體市場分析</li>
+<li><strong>工商時報</strong> (2026-03): 強茂法說 — SiC 驗證中, 歐日 Tier 1 合作</li>
+<li><strong>鉅亨網</strong> (2026-05): 台半法說 — SiC 1200V 送樣, NVIDIA Rubin</li>
+<li><strong>CMoney</strong> (2026-05): 台半、力智最新動態</li>
+<li><strong>Vocus / 經濟日報</strong> (2026-05): 茂矽法說 — SiC MOS+JBS 2026 H2 送樣</li>
+</ol></div>
+</div></main>
+</div>
+<script src="/search.js?v=1782118672"></script>
+<script src="/content.js?v=1782124909"></script>
+</body>
+</html>

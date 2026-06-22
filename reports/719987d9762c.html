@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PCB 產業總覽 — Deep32Q 系統化投資研究知識庫</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/style.css?v=1782120989">
+<meta name="description" content="Deep32Q 系統化投資研究知識庫 — 每日報告、產業洞察、32Q 審計報告">
+</head>
+<body>
+<div id="app">
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Deep32Q</a>
+      <div id="search-wrap" class="nav-search">
+        <input type="text" id="search-input" placeholder="搜尋知識庫（全文）" aria-label="搜尋知識庫" data-scope="all">
+        <div id="search-results" class="search-results hidden"></div>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="nav-link active" data-nav="daily">每日報告</a>
+        <a href="/?p=industries" class="nav-link" data-nav="industries">產業洞察</a>
+        <a href="/?p=audit" class="nav-link" data-nav="audit">審計報告</a>
+        <a href="/admin/" class="nav-link" data-nav="admin">管理</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="切換深色模式" title="切換深色模式">🌙</button>
+      </div>
+    </div>
+  </nav>
+  <main id="main-content"><div class="report-content-page">
+<div class="breadcrumb"><a href="/">← 回首頁</a> / Deep32Q知識庫/產業洞察/PCB研究/PCB_產業總覽.md</div>
+<div class="report-content"><h1>PCB 產業總覽</h1>
+<p><strong>更新日期：2026-05-13</strong></p>
+<hr />
+<h2>1. 產業定義與分類</h2>
+<h3>PCB（Printed Circuit Board）基本分類</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">類別</th>
+<th style="text-align: left;">說明</th>
+<th style="text-align: left;">典型應用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>多層板</strong>（Multilayer）</td>
+<td style="text-align: left;">6 層以上，含背板、伺服器板</td>
+<td style="text-align: left;">AI 伺服器、基地台</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>HDI</strong>（高密度互連）</td>
+<td style="text-align: left;">Any-Layer 微孔、盲埋孔技術</td>
+<td style="text-align: left;">手機、AI 伺服器、衛星</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>FPC</strong>（柔性電路板）</td>
+<td style="text-align: left;">軟性基材，可彎折</td>
+<td style="text-align: left;">手機、筆電、車用</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Rigid-Flex</strong></td>
+<td style="text-align: left;">剛柔結合板</td>
+<td style="text-align: left;">醫療、航空航天</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>載板</strong>（Substrate）</td>
+<td style="text-align: left;">FC-BGA / FC-CSP，IC 封裝用</td>
+<td style="text-align: left;">CPU、GPU、AI 加速卡</td>
+</tr>
+</tbody>
+</table>
+<h3>技術層數分類</h3>
+<ul>
+<li><strong>6 層以下</strong>：消費性電子、一般網通</li>
+<li><strong>8–16 層</strong>：中階伺服器、網路交換器</li>
+<li><strong>&gt;20 層 HDI / AnyLayer</strong>：AI 伺服器、高階網通</li>
+<li><strong>載板（FC-BGA）</strong>：4–12 層 ABF/BT，AI GPU/CPU 核心</li>
+</ul>
+<hr />
+<h2>2. 全球市場規模</h2>
+<h3>關鍵數據（2025–2026）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指標</th>
+<th style="text-align: left;">數值</th>
+<th style="text-align: left;">來源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2025 全球 PCB 產值</td>
+<td style="text-align: left;">~US$98–103.6B（Prismark / TPCA-IEK）</td>
+<td style="text-align: left;">Prismark, TPCA, IEK</td>
+</tr>
+<tr>
+<td style="text-align: left;">2026 全球 PCB 產值預估</td>
+<td style="text-align: left;">~US$105.2B，年增 +13.9%</td>
+<td style="text-align: left;">TPCA-IEK (2026/05)</td>
+</tr>
+<tr>
+<td style="text-align: left;">2028 全球 PCB 產值預估</td>
+<td style="text-align: left;">~US$90.4B（Prismark 2023 預測）</td>
+<td style="text-align: left;">Prismark</td>
+</tr>
+<tr>
+<td style="text-align: left;">台灣 PCB 產值 2025 預估</td>
+<td style="text-align: left;">NT$9,157 億（+12.1% YoY）</td>
+<td style="text-align: left;">TPCA-IEK (2025/10)</td>
+</tr>
+<tr>
+<td style="text-align: left;">台灣 PCB 產值 2026 預估</td>
+<td style="text-align: left;">NT$1.38–1.5 兆（+8.7% YoY）</td>
+<td style="text-align: left;">TPCA-IEK (2026/05)</td>
+</tr>
+<tr>
+<td style="text-align: left;">台灣 PCB 全球市佔率</td>
+<td style="text-align: left;">~37.4%（PCB + 載板合計）</td>
+<td style="text-align: left;">TPCA (2025)</td>
+</tr>
+<tr>
+<td style="text-align: left;">AI 伺服器 PCB 佔比 2026</td>
+<td style="text-align: left;">&gt;25%（從 2025 年 15% 提升）</td>
+<td style="text-align: left;">digitimes (2026)</td>
+</tr>
+</tbody>
+</table>
+<h3>AI 伺服器對 PCB 產值的影響</h3>
+<ul>
+<li>單台 AI 伺服器 PCB 產值為傳統伺服器的 <strong>5–7 倍</strong></li>
+<li>GPU/ASIC 伺服器 PCB 市場規模：2025 年 ~RMB 40B → 2026 年突破 RMB 90B（~US$12.4B）</li>
+<li>AI 伺服器出貨量 2026 年預估成長 +28% YoY，其中 ASIC 系統佔比大幅提升</li>
+</ul>
+<hr />
+<h2>3. 台灣產業地位</h2>
+<h3>全球 PCB 產值第一大國</h3>
+<ul>
+<li>台灣 PCB 產值連續多年位居全球第一，超越日本、韓國、中國</li>
+<li>台廠在全球 PCB + IC 載板合計市佔率約 <strong>37.4%</strong></li>
+<li>台灣擁有完整的產業聚落：從 CCL → PCB/載板 → 組裝，快速量產能力</li>
+</ul>
+<h3>台廠在各領域的領先地位</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">領域</th>
+<th style="text-align: left;">龍頭台廠</th>
+<th style="text-align: left;">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>ABF 載板</strong></td>
+<td style="text-align: left;">欣興 (3037)、南電 (8046)、景碩 (3189)</td>
+<td style="text-align: left;">全球前三大供應商，AI 加速卡認證</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>AI 伺服器板</strong></td>
+<td style="text-align: left;">金像電 (2368)、健鼎 (3044)</td>
+<td style="text-align: left;">金像電全球伺服器 PCB 市佔 &gt;20%，AI UBB 約 40%</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LEO 衛星板</strong></td>
+<td style="text-align: left;">華通 (2313)</td>
+<td style="text-align: left;">SpaceX Starlink 天上板市佔 ~90%</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CCL</strong></td>
+<td style="text-align: left;">台光電 (2383)、聯茂 (6213)、台燿 (6274)</td>
+<td style="text-align: left;">台光電高速 CCL 全球市佔第一（~18.9%）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 核心成長驅動因子</h2>
+<h3>① AI 伺服器需求爆炸（🔴 最大驅動力）</h3>
+<ul>
+<li><strong>層數升級</strong>：從傳統 12–16 層 → AI 伺服器 20–36 層</li>
+<li><strong>板材升級</strong>：從 FR-4 → Ultra Low Loss (M7/M8/IT-988GSE)</li>
+<li><strong>價值量提升</strong>：單台 AI 伺服器 PCB 價值為傳統伺服器 3–5 倍</li>
+<li><strong>2026 AI 伺服器 PCB 市場規模</strong>：~US$12–15B（含 UBB + OAM + 背板）</li>
+<li><strong>NVIDIA 平台路線</strong>：H100 → B200/GB200 → Rubin，每一代 PCB 價值量提升 30–50%</li>
+</ul>
+<h3>② ABF 載板擴產週期</h3>
+<ul>
+<li>2025–2026 年供需轉緊，ABF 膜價格預估上漲 ~30%</li>
+<li>台廠三雄（欣興、南電、景碩）持續擴產，2026 資本支出合計超 NT$1,500 億</li>
+<li>滲透率從 AI 加速卡往邊緣運算、車用擴散</li>
+</ul>
+<h3>③ 低軌衛星 LEO HDI</h3>
+<ul>
+<li>Starlink Gen2/Gen3 終端 + 地面站 PCB 需求爆發</li>
+<li>華通 (2313) 獨家供應 SpaceX，市佔 ~90%</li>
+<li>亞馬遜 Project Kuiper 訂單挹注，2026 年 LEO 板營收挑戰 NT$200B</li>
+</ul>
+<h3>④ 車用電子提升</h3>
+<ul>
+<li>EV PCB 用量為燃油車的 <strong>2–3 倍</strong>（~$100–150/台 vs $50–80/台）</li>
+<li>ADAS 高層數 HDI、功率電子厚銅 PCB 需求上升</li>
+</ul>
+<hr />
+<h2>5. 風險因素</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">風險</th>
+<th style="text-align: left;">說明</th>
+<th style="text-align: left;">影響程度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>中國產能擴張</strong></td>
+<td style="text-align: left;">大陸 PCB 廠以低價競爭，中低階市場壓力大</td>
+<td style="text-align: left;">⚠️ 中高</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ABF 載板供需波動</strong></td>
+<td style="text-align: left;">2023–2024 供過於求已修正，但新產能開出後可能再轉鬆</td>
+<td style="text-align: left;">⚠️ 中</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>總體經濟放緩</strong></td>
+<td style="text-align: left;">消費性電子復甦不確定，影響部分 PCB 產能利用率</td>
+<td style="text-align: left;">⚠️ 中</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>玻璃基板替代</strong></td>
+<td style="text-align: left;">Intel/Samsung 2026 年開始量產玻璃基板，長期可能取代 ABF</td>
+<td style="text-align: left;">⚠️ 高（2027+）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>原物料價格波動</strong></td>
+<td style="text-align: left;">銅箔、環氧樹脂、玻纖布價格波動影響毛利率</td>
+<td style="text-align: left;">⚠️ 低–中</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>📚 資料來源</h2>
+<ol>
+<li><strong>Prismark</strong> (2025/2026): 全球 PCB 產值預測 US$103.6B (2025), +12.8% YoY</li>
+<li><strong>TPCA-IEK</strong> (2025/10, 2026/05): 台灣 PCB 產值 NT$9,157B (2025), +12.1%; 2026 預估 NT$1.38–1.5T</li>
+<li><strong>digitimes</strong> (2026/05): AI 伺服器 PCB 市場 RMB 90B (2026), +28% YoY</li>
+<li><strong>CTEE 經濟日報</strong> (2026/04): 金像電 AI UBB 市佔 ~40%, 2026 年預估營收 NT$1,671B</li>
+<li><strong>Fugle / sinotrade</strong> (2026/03): 台光電 2025 營收 NT$943B, 2026 預估 NT$1,609B</li>
+<li><strong>CTEE / cnyes</strong> (2026/05): 華通 LEO 衛星板 2026 年營收挑戰 NT$200B</li>
+<li><strong>CTEE</strong> (2026/05): 健鼎 2025 營收 NT$734B, 2026 預估 NT$840B</li>
+<li><strong>360iResearch / MarketGrowthReports</strong> (2025): ABF 載板市場 US$4.89B (2024) → US$9.55B (2032)</li>
+<li><strong>Ventec Group</strong> (2025): CCL 市場 US$7.5B (AI, 2025) → US$11.3B (2032), CAGR 6.8%</li>
+<li><strong>PCMag / PCB Directory</strong> (2025): Starlink Bastrop 廠年產 8M → 16M kits (2026)</li>
+</ol></div>
+</div></main>
+</div>
+<script src="/search.js?v=1782118672"></script>
+<script src="/content.js?v=1782124909"></script>
+</body>
+</html>

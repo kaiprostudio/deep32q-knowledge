@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCL 銅箔基板深度研究 — Deep32Q 系統化投資研究知識庫</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/style.css?v=1782120989">
+<meta name="description" content="Deep32Q 系統化投資研究知識庫 — 每日報告、產業洞察、32Q 審計報告">
+</head>
+<body>
+<div id="app">
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Deep32Q</a>
+      <div id="search-wrap" class="nav-search">
+        <input type="text" id="search-input" placeholder="搜尋知識庫（全文）" aria-label="搜尋知識庫" data-scope="all">
+        <div id="search-results" class="search-results hidden"></div>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="nav-link active" data-nav="daily">每日報告</a>
+        <a href="/?p=industries" class="nav-link" data-nav="industries">產業洞察</a>
+        <a href="/?p=audit" class="nav-link" data-nav="audit">審計報告</a>
+        <a href="/admin/" class="nav-link" data-nav="admin">管理</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="切換深色模式" title="切換深色模式">🌙</button>
+      </div>
+    </div>
+  </nav>
+  <main id="main-content"><div class="report-content-page">
+<div class="breadcrumb"><a href="/">← 回首頁</a> / Deep32Q知識庫/產業洞察/PCB研究/CCL銅箔基板深度研究.md</div>
+<div class="report-content"><h1>CCL 銅箔基板深度研究</h1>
+<p><strong>更新日期：2026-05-13</strong></p>
+<hr />
+<h2>1. CCL 產業介紹</h2>
+<h3>CCL（Copper Clad Laminate）— PCB 上游關鍵材料</h3>
+<ul>
+<li><strong>佔 PCB 成本</strong>：30–50%</li>
+<li><strong>供應鏈位置</strong>：銅箔 + 玻纖布 + 環氧樹脂 → CCL → PCB → 終端產品</li>
+<li><strong>全球 CCL 市場</strong>：2025 年 ~US$20.3B → 2033 年預估 US$31.7B（CAGR 5.7%）</li>
+<li><strong>AI CCL 市場</strong>：2025 年 ~US$7.5B → 2032 年預估 US$11.3B（CAGR 6.8%）</li>
+</ul>
+<h3>CCL 分級與損耗等級</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">等級</th>
+<th style="text-align: left;">名稱</th>
+<th style="text-align: left;">Df（損耗因子）</th>
+<th style="text-align: left;">典型應用</th>
+<th style="text-align: left;">單價倍數</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>FR-4</strong></td>
+<td style="text-align: left;">一般標準</td>
+<td style="text-align: left;">~0.008–0.015</td>
+<td style="text-align: left;">消費性電子、一般網通</td>
+<td style="text-align: left;">1x（基準）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Mid Loss</strong></td>
+<td style="text-align: left;">中低損耗</td>
+<td style="text-align: left;">~0.004–0.008</td>
+<td style="text-align: left;">中階網通、一般伺服器</td>
+<td style="text-align: left;">2–3x</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Low Loss</strong></td>
+<td style="text-align: left;">低損耗</td>
+<td style="text-align: left;">~0.002–0.004</td>
+<td style="text-align: left;">800G 交換器、中階 AI</td>
+<td style="text-align: left;">3–5x</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ultra Low Loss</strong></td>
+<td style="text-align: left;">極低損耗 (M7)</td>
+<td style="text-align: left;">&lt;0.002</td>
+<td style="text-align: left;">AI 伺服器、1.6T 交換器</td>
+<td style="text-align: left;">5–10x</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>M8</strong></td>
+<td style="text-align: left;">下一代極低損耗</td>
+<td style="text-align: left;">&lt;0.0015</td>
+<td style="text-align: left;">GB200/Rubin 平台</td>
+<td style="text-align: left;">10x+</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>M9</strong></td>
+<td style="text-align: left;">次世代極低損耗</td>
+<td style="text-align: left;">&lt;0.001</td>
+<td style="text-align: left;">1.6T+、224Gbps SerDes</td>
+<td style="text-align: left;">待驗證</td>
+</tr>
+</tbody>
+</table>
+<h3>AI 伺服器帶動 Ultra Low Loss CCL 滲透率快速提升</h3>
+<ul>
+<li><strong>M7 (Ultra Low Loss)</strong>：2025 年已成為 AI 伺服器標配</li>
+<li><strong>M8</strong>：Google TPU、Meta ASIC 2025–2026 年採用</li>
+<li><strong>M9</strong>：台光電已完成客戶驗證，2026–2027 年關鍵成長引擎</li>
+<li><strong>HVLP 銅箔</strong>：極低表面粗糙度，降低高頻訊號的集膚效應損耗</li>
+</ul>
+<hr />
+<h2>2. 全球市場與技術趨勢</h2>
+<h3>關鍵數據</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指標</th>
+<th style="text-align: left;">數值</th>
+<th style="text-align: left;">來源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2025 全球 CCL 市場</td>
+<td style="text-align: left;">~US$20.3B</td>
+<td style="text-align: left;">Skyquestt (2025)</td>
+</tr>
+<tr>
+<td style="text-align: left;">2025 AI CCL 市場</td>
+<td style="text-align: left;">~US$7.5B</td>
+<td style="text-align: left;">OpenPR (2025)</td>
+</tr>
+<tr>
+<td style="text-align: left;">2032 AI CCL 市場預估</td>
+<td style="text-align: left;">~US$11.3B（CAGR 6.8%）</td>
+<td style="text-align: left;">OpenPR (2025)</td>
+</tr>
+<tr>
+<td style="text-align: left;">台廠全球 CCL 市佔率</td>
+<td style="text-align: left;">~37.4%（2025）</td>
+<td style="text-align: left;">TPCA (2025)</td>
+</tr>
+<tr>
+<td style="text-align: left;">台光電全球 CCL 市佔率</td>
+<td style="text-align: left;">~18.9%（2025）</td>
+<td style="text-align: left;">fugle.tw (2026/03)</td>
+</tr>
+<tr>
+<td style="text-align: left;">台光電高速 CCL 市佔率</td>
+<td style="text-align: left;">~40.1%（2024）→ &gt;50%（2025 內部預估）</td>
+<td style="text-align: left;">fugle.tw (2026/03)</td>
+</tr>
+</tbody>
+</table>
+<h3>M8 材料進度（2027 量產預估）</h3>
+<ul>
+<li><strong>台光電</strong>：M8 已打入美系大廠供應鏈，M9 完成客戶驗證</li>
+<li><strong>Google TPU</strong>：22 層 PCB 使用 M7–M8 CCL</li>
+<li><strong>Meta ASIC</strong>：30–40 層 PCB 使用 M8 材料</li>
+<li><strong>AWS Trainium</strong>：26 層 PCB 使用 M8 材料</li>
+</ul>
+<hr />
+<h2>3. 台股三雄深度分析</h2>
+<h3>🔥 台光電 (2383) — 全球高速 CCL 龍頭</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>2025 全年營收</strong></td>
+<td style="text-align: left;">NT$943B（創歷史新高）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2026 Q1 單季</strong></td>
+<td style="text-align: left;">NT$330.6B（稅後淨利 NT$53.4B，EPS $14.9）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2026 全年預估</strong></td>
+<td style="text-align: left;">NT$1,609B（FactSet 調查，17 位分析師）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>全球 CCL 市佔率</strong></td>
+<td style="text-align: left;">~18.9%（2025，全球第一）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>高速 CCL 市佔率</strong></td>
+<td style="text-align: left;">~40.1%（2024）→ &gt;50%（2025 內部預估，全球第一）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>AI 伺服器市佔率</strong></td>
+<td style="text-align: left;">~33%（全球）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>NVIDIA H100 OAM/UBB</strong></td>
+<td style="text-align: left;">市佔率 &gt;80%（核心供應商）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>M9 進度</strong></td>
+<td style="text-align: left;">已完成客戶驗證，2026–2027 關鍵成長引擎</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>擴產計畫</strong></td>
+<td style="text-align: left;">中國黃石廠 + 台灣新竹廠，2026 Q1 泰國新廠運營</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2025–2027 CAGR</strong></td>
+<td style="text-align: left;">預估 ~50%（美系外資分析）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>來源：fugle.tw (2026/03), sinotrade.com, cnyes.com</strong></p>
+<h3>聯茂 (6213) — 高速 CCL 供應商</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>產品定位</strong></td>
+<td style="text-align: left;">高速 CCL，AI 伺服器 + 車用雙動能</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2026 展望</strong></td>
+<td style="text-align: left;">營運復甦，高速 CCL 滲透率提升受惠</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>技術能力</strong></td>
+<td style="text-align: left;">Mid Loss 至 Low Loss 等級，部分 Ultra Low Loss 產品開發中</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>客戶群</strong></td>
+<td style="text-align: left;">網通設備商、部分 AI 伺服器供應商</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2026 亮點</strong></td>
+<td style="text-align: left;">車用電子 + AI 伺服器雙軌發展，分散風險</td>
+</tr>
+</tbody>
+</table>
+<h3>台燿 (6274) — 高速 CCL 利基型供應商</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>產品定位</strong></td>
+<td style="text-align: left;">高速 CCL 利基型供應商，低損耗材料</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2026 展望</strong></td>
+<td style="text-align: left;">AI 伺服器 Ultra Low Loss 滲透率提升，受惠明顯</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>技術能力</strong></td>
+<td style="text-align: left;">Low Loss 至 Ultra Low Loss 等級產品線完整</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>客戶群</strong></td>
+<td style="text-align: left;">網通交換器、部分 AI 伺服器供應商</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2026 亮點</strong></td>
+<td style="text-align: left;">利基優勢，高階產品佔比提升</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 產業結構與供應鏈關係</h2>
+<h3>完整供應鏈圖譜</h3>
+<div class="codehilite"><pre><span></span><code>原物料（銅箔/玻纖布/環氧樹脂）
+    ↓
+CCL 廠（台光電/聯茂/台燿）
+    ↓
+PCB 廠（金像電/健鼎/欣興/華通等）
+    ↓
+終端應用（AI 伺服器/網通/車用/消費性電子）
+</code></pre></div>
+
+<h3>CCL 廠與 PCB 廠的供需關係</h3>
+<ul>
+<li><strong>台光電</strong>：直接供應金像電、健鼎等 AI 伺服器板大廠</li>
+<li><strong>聯茂/台燿</strong>：供應中階網通和利基型 AI 伺服器板</li>
+<li><strong>原物料價格波動</strong>：銅箔、玻纖布、環氧樹脂價格影響 CCL 毛利率</li>
+</ul>
+<h3>原物料價格趨勢（2025–2026）</h3>
+<ul>
+<li><strong>銅箔</strong>：LME 銅價波動，HVLP 銅箔（AI 專用）溢價較高</li>
+<li><strong>玻纖布</strong>：建榮 (5340)、長興供應，AI 高規格玻纖布需求上升</li>
+<li><strong>環氧樹脂</strong>：南亞塑膠供應，AI 低損耗專用樹脂需求增加</li>
+</ul>
+<hr />
+<h2>📚 資料來源</h2>
+<ol>
+<li><strong>fugle.tw</strong> (2026/03): 台光電 2025 營收 NT$943B, 2026 預估 NT$1,609B</li>
+<li><strong>sinotrade.com</strong> (2026/03): 台光電高速 CCL 市佔 &gt;50%, AI 伺服器 ~33%</li>
+<li><strong>CTEE</strong> (2026/04): 台光電 NVIDIA H100 OAM/UBB 市佔 &gt;80%</li>
+<li><strong>OpenPR</strong> (2025): AI CCL 市場 US$7.5B (2025) → US$11.3B (2032), CAGR 6.8%</li>
+<li><strong>Skyquestt</strong> (2025): 全球 CCL 市場 US$20.3B (2025) → US$31.7B (2033), CAGR 5.7%</li>
+<li><strong>TPCA</strong> (2025): 台廠全球 CCL 市佔 ~37.4%</li>
+<li><strong>Ventec Group</strong> (2025): 泰國新廠 Q2 2026 運營，China+Taiwan Plus One 策略</li>
+</ol></div>
+</div></main>
+</div>
+<script src="/search.js?v=1782118672"></script>
+<script src="/content.js?v=1782124909"></script>
+</body>
+</html>
