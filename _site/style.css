@@ -1,0 +1,756 @@
+/* ── Deep32Q 知識庫網站 — 主樣式表 v2 ──────────── */
+/* 亮色/深色模式，質感優先，閱讀舒適               */
+
+/* ── Design Tokens ─────────────────────────── */
+:root {
+  --bg: #ffffff;
+  --bg-subtle: #f8f9fb;
+  --bg-elevated: #ffffff;
+  --text: #1a1a2e;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+  --border: #e5e7eb;
+  --border-light: #f3f4f6;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-subtle: #eff6ff;
+  --accent-rgb: 37, 99, 235;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
+  --radius: 10px;
+  --radius-sm: 6px;
+  --max-width: 1200px;
+  --font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto,
+    'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  --font-mono: 'SF Mono', 'Cascadia Code', 'JetBrains Mono', Consolas, monospace;
+  --line-height: 1.7;
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --bg-subtle: #1a2332;
+  --bg-elevated: #1e293b;
+  --text: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+  --border: #334155;
+  --border-light: #1e293b;
+  --accent: #60a5fa;
+  --accent-hover: #93c5fd;
+  --accent-subtle: #1e3a5f;
+  --accent-rgb: 96, 165, 250;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* ── Reset ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: var(--line-height);
+  min-height: 100vh;
+}
+a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
+a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+/* ── Navigation ────────────────────────────── */
+#navbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+[data-theme="dark"] #navbar {
+  background: rgba(15,23,42,0.85);
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-logo:hover { text-decoration: none; opacity: 0.8; }
+
+.nav-search {
+  flex: 1;
+  max-width: 320px;
+  position: relative;
+}
+
+#search-input {
+  width: 100%;
+  padding: 8px 14px 8px 36px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--bg-subtle);
+  color: var(--text);
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 12px center;
+}
+#search-input:focus {
+  border-color: var(--accent);
+  background: var(--bg);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.12);
+}
+
+.search-results {
+  position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  max-height: 420px;
+  overflow-y: auto;
+  z-index: 200;
+}
+.search-results.hidden { display: none; }
+
+.search-result-item {
+  display: block;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-light);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.search-result-item:last-child { border-bottom: none; }
+.search-result-item:hover { background: var(--accent-subtle); }
+
+.search-result-title { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+.search-result-category {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  display: inline-block;
+  background: var(--bg-subtle);
+  padding: 1px 8px;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+.search-result-summary {
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-links { display: flex; gap: 4px; align-items: center; }
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--text-tertiary);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  transition: all 0.2s;
+  background: var(--bg-subtle);
+}
+.theme-toggle:hover {
+  border-color: var(--text);
+  background: var(--bg-elevated);
+}
+
+.nav-link {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+.nav-link:hover { text-decoration: none; color: var(--text); background: var(--bg-subtle); }
+.nav-link.active {
+  background: rgba(var(--accent-rgb), 0.1);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── Main Content ──────────────────────────── */
+#main-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 28px 20px 80px;
+}
+
+.page-container { animation: fadeIn 0.25s ease; }
+
+/* ── Timeline (Daily Reports Home) ─────────── */
+.timeline-day {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+  overflow: hidden;
+  background: var(--bg);
+  transition: box-shadow var(--transition);
+}
+.timeline-day:hover { box-shadow: var(--shadow-sm); }
+
+.timeline-day-toggle {
+  padding: 14px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-subtle);
+  transition: background 0.15s;
+}
+.timeline-day-toggle:hover { background: var(--border-light); }
+
+.timeline-arrow {
+  display: inline-block;
+  transition: transform var(--transition);
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+.timeline-day.expanded .timeline-arrow { transform: rotate(90deg); }
+
+.timeline-reports { display: none; }
+.timeline-day.expanded .timeline-reports { display: block; }
+
+/* Daily report item — inline accordion style (問題 4 修復) */
+.timeline-report {
+  border-bottom: 1px solid var(--border-light);
+}
+.timeline-report:last-child { border-bottom: none; }
+
+.report-header {
+  padding: 10px 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s;
+  user-select: none;
+}
+.report-header:hover { background: var(--bg-subtle); }
+.report-header.expanded { background: var(--accent-subtle); }
+
+.report-title {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--text);
+  flex: 1;
+}
+
+.report-arrow {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  transition: transform var(--transition);
+}
+.report-header.expanded .report-arrow { transform: rotate(180deg); }
+
+.report-body { display: none; }
+.report-header.expanded + .report-body { display: block; }
+
+.report-body-inner {
+  padding: 0 18px 16px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.report-body-inner h1,
+.report-body-inner h2,
+.report-body-inner h3 { margin: 16px 0 8px; font-weight: 600; }
+.report-body-inner h1 { font-size: 1.15rem; }
+.report-body-inner h2 { font-size: 1.05rem; }
+.report-body-inner h3 { font-size: 0.95rem; }
+.report-body-inner p { margin: 6px 0; }
+.report-body-inner ul, .report-body-inner ol { margin: 6px 0; padding-left: 20px; }
+.report-body-inner li { margin: 3px 0; }
+.report-body-inner blockquote {
+  margin: 8px 0; padding: 6px 12px;
+  border-left: 3px solid var(--accent);
+  background: var(--bg-subtle);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+.report-body-inner code {
+  font-family: var(--font-mono);
+  background: var(--bg-subtle);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+.report-body-inner pre {
+  background: var(--bg-subtle);
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  margin: 8px 0;
+  font-size: 0.8rem;
+}
+.report-body-inner table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.85rem; }
+.report-body-inner th,
+.report-body-inner td { padding: 6px 10px; border: 1px solid var(--border); text-align: left; }
+.report-body-inner th { background: var(--bg-subtle); font-weight: 600; }
+.report-body-inner hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+.report-body-inner strong { font-weight: 600; }
+
+/* ── Industry Insights (問題 2 修復 — 收折) ─── */
+.industries-page h1 { font-size: 1.5rem; margin-bottom: 20px; font-weight: 700; }
+
+.industry-section {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.industry-header {
+  padding: 14px 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-subtle);
+  user-select: none;
+  transition: background 0.15s;
+}
+.industry-header:hover { background: var(--border-light); }
+.industry-header.expanded { background: var(--accent-subtle); }
+
+.industry-name { font-size: 1rem; font-weight: 600; flex: 1; }
+.industry-count {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  background: var(--bg);
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+.industry-arrow {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  transition: transform var(--transition);
+}
+.industry-header.expanded .industry-arrow { transform: rotate(180deg); }
+
+.industry-body { display: none; }
+.industry-header.expanded + .industry-body { display: block; }
+
+.industry-body-inner {
+  padding: 0;
+}
+
+.report-list { list-style: none; }
+
+.report-item {
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.report-item:last-child { border-bottom: none; }
+
+.report-link {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.report-link:hover { color: var(--accent); }
+
+.report-date {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+/* ── Audit Reports (問題 3 修復 — 可點擊、展開) ─── */
+.audit-page h1 { font-size: 1.5rem; margin-bottom: 12px; font-weight: 700; }
+
+.audit-filter-wrap,
+.industries-filter-wrap {
+  margin-bottom: 16px;
+}
+#audit-filter, #industries-filter {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  background: var(--bg-subtle);
+  color: var(--text);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+#audit-filter:focus {
+  border-color: var(--accent);
+  background: var(--bg);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.12);
+}
+
+.audit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.audit-stock-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.audit-stock-header {
+  padding: 12px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.15s;
+  user-select: none;
+}
+.audit-stock-header:hover { background: var(--bg-subtle); }
+.audit-stock-header.expanded { background: var(--accent-subtle); }
+
+.audit-stock-code {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--accent);
+  min-width: 50px;
+}
+.audit-stock-name {
+  font-weight: 500;
+  font-size: 0.95rem;
+  flex: 1;
+}
+.audit-stock-count {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  background: var(--bg);
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+.audit-arrow {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  transition: transform var(--transition);
+}
+/* .audit-stock-body display rules moved below to the audit-type section */
+
+.audit-report-list {
+  list-style: none;
+  padding: 0;
+}
+.audit-report-item {
+  padding: 8px 16px 8px 60px;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.audit-report-item:first-child { border-top: none; }
+
+.audit-report-link {
+  font-size: 0.85rem;
+  color: var(--text);
+}
+.audit-report-link:hover { color: var(--accent); }
+
+.audit-report-dir {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+/* ── 審計報告：經營組 / 財務組 accordion ────── */
+.audit-stock-body {
+  display: none;
+  padding: 0;
+}
+.audit-stock-header.expanded + .audit-stock-body {
+  display: block;
+}
+
+.audit-type-section {
+  border-bottom: 1px solid var(--border);
+}
+.audit-type-section:last-child {
+  border-bottom: none;
+}
+
+.audit-type-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px 10px 24px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+.audit-type-header:hover {
+  background: var(--bg-subtle);
+}
+
+.audit-type-arrow {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+  width: 12px;
+  text-align: center;
+}
+.audit-type-header.expanded .audit-type-arrow {
+  transform: rotate(90deg);
+}
+
+.audit-type-label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+.audit-type-count {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  background: var(--bg-subtle);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.audit-type-body {
+  display: none;
+}
+.audit-type-header.expanded + .audit-type-body {
+  display: block;
+}
+
+.audit-report-date {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+.audit-stock-header.expanded .audit-arrow {
+  transform: rotate(180deg);
+}
+
+/* ── Breadcrumb ───────────────────────────── */
+.breadcrumb {
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.breadcrumb a { color: var(--text-secondary); }
+.breadcrumb a:hover { color: var(--accent); }
+
+/* ── Empty State ───────────────────────────── */
+.empty-state {
+  text-align: center;
+  color: var(--text-tertiary);
+  padding: 80px 20px;
+}
+.empty-state p { font-size: 1rem; }
+
+/* ── Error ─────────────────────────────────── */
+.error {
+  color: #dc2626;
+  padding: 40px;
+  text-align: center;
+}
+
+/* ── Animations ────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 640px) {
+  .nav-inner {
+    gap: 8px; flex-wrap: wrap; height: auto;
+    padding: 8px 12px;
+  }
+  .nav-search { max-width: 100%; order: 3; min-width: 100%; }
+  .nav-links { gap: 2px; }
+  .nav-link { padding: 4px 10px; font-size: 0.8rem; }
+  #main-content { padding: 16px 12px 60px; }
+  .report-item { flex-wrap: wrap; gap: 4px 10px; }
+  .report-link { flex: 1 1 auto; min-width: 0; word-break: break-word; }
+  .audit-report-item { padding-left: 16px; flex-wrap: wrap; gap: 4px; }
+  .audit-report-link { flex: 1 1 auto; min-width: 0; word-break: break-word; }
+  /* 報告表格強制橫向滑動 */
+  .report-body-inner table,
+  .inline-report-content table {
+    display: block; overflow-x: auto; white-space: normal;
+  }
+}
+
+/* ── Tablet: ≤768px ── */
+@media (max-width: 768px) {
+  #main-content { padding: 14px 12px 56px; }
+  .report-body { max-width: 100%; }
+  .nav-inner { height: 48px; }
+  .report-body-inner { padding: 10px 12px; }
+
+  h1 { font-size: 1.2rem; }
+}
+
+/* ── Mobile: ≤480px ── */
+@media (max-width: 480px) {
+  #main-content { padding: 12px 8px 48px; }
+  .nav-link { font-size: 0.72rem; padding: 4px 6px; }
+  .nav-inner { gap: 4px; padding: 6px 8px; height: auto; }
+  .report-header { padding: 8px 10px; font-size: 0.82rem; }
+  .report-body-inner { padding: 8px 10px; font-size: 0.82rem; line-height: 1.55; }
+  .inline-report-content { font-size: 0.82rem; line-height: 1.55; }
+  .audit-report-item { padding-left: 10px; flex-wrap: wrap; gap: 4px; }
+  .audit-report-link { flex: 1 1 auto; min-width: 0; word-break: break-word; }
+  .audit-stock-header { padding: 8px 10px; }
+  .industry-header { padding: 8px 10px; }
+  .industry-body-inner { padding: 6px 10px; }
+  .report-list { padding-left: 16px; }
+  .report-item { flex-wrap: wrap; gap: 4px 8px; }
+  .report-link { flex: 1 1 auto; min-width: 0; word-break: break-word; }
+  .report-date { font-size: 0.72rem; }
+  .timeline-day-toggle { font-size: 0.82rem; padding: 8px 10px; }
+  .timeline-report { margin-bottom: 4px; }
+  .timeline-reports { padding: 0 4px; }
+  .timeline-day-toggle + .timeline-reports { margin-top: 2px; }
+  .page-container { padding: 0;}
+  /* 表格強制橫向滾動 */
+  .report-body-inner table,
+  .inline-report-content table {
+    display: block; overflow-x: auto; white-space: nowrap;
+  }
+  /* 審計報告類型折疊 */
+  .audit-type-header { padding: 6px 10px; font-size: 0.8rem; }
+  .empty-state { padding: 20px 12px; }
+  h1 { font-size: 1.1rem; }
+}
+
+/* ── Small Mobile: ≤375px ── */
+@media (max-width: 375px) {
+  #main-content { padding: 8px 4px 40px; }
+  .nav-link { font-size: 0.65rem; padding: 3px 4px; }
+  .report-header { font-size: 0.75rem; padding: 6px 8px; }
+  .report-body-inner { font-size: 0.75rem; }
+  .inline-report-content { font-size: 0.75rem; line-height: 1.55; }
+  .industry-header { font-size: 0.8rem; }
+  .timeline-day-toggle { font-size: 0.75rem; }
+  .report-title { max-width: 180px; white-space: normal; }
+  .report-date { font-size: 0.65rem; }
+  .industry-count { font-size: 0.7rem; }
+  h1 { font-size: 1rem; }
+}
+
+/* ── Inline Report Section (產業洞察/審計報告 inline 展開) ── */
+.inline-report-content {
+  padding: 0 0 16px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  overflow-x: auto;
+}
+.inline-report-content h1,
+.inline-report-content h2,
+.inline-report-content h3 { margin: 16px 0 8px; font-weight: 600; }
+.inline-report-content h1 { font-size: 1.15rem; }
+.inline-report-content h2 { font-size: 1.05rem; }
+.inline-report-content h3 { font-size: 0.95rem; }
+.inline-report-content p { margin: 6px 0; overflow-wrap: break-word; }
+.inline-report-content ul,
+.inline-report-content ol { margin: 6px 0; padding-left: 20px; max-width: 100%; }
+.inline-report-content li { margin: 3px 0; }
+.inline-report-content blockquote {
+  margin: 8px 0; padding: 6px 12px;
+  border-left: 3px solid var(--accent);
+  background: var(--bg-subtle);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  max-width: 100%;
+  word-break: break-word;
+}
+.inline-report-content code {
+  font-family: var(--font-mono);
+  background: var(--bg-subtle);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  word-break: break-all;
+}
+.inline-report-content pre {
+  background: var(--bg-subtle);
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  margin: 8px 0;
+  font-size: 0.8rem;
+  max-width: 100%;
+}
+.inline-report-content img {
+  max-width: 100%;
+  height: auto;
+}
+.inline-report-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  margin: 8px 0;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+.inline-report-content th,
+.inline-report-content td { padding: 6px 10px; border: 1px solid var(--border); text-align: left; }
+.inline-report-content th { background: var(--bg-subtle); font-weight: 600; }
+.inline-report-content hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+.inline-report-content strong { font-weight: 600; }
+

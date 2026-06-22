@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>記憶體 — 台股相關個股深度整理 — Deep32Q 系統化投資研究知識庫</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/style.css?v=1782120989">
+<meta name="description" content="Deep32Q 系統化投資研究知識庫 — 每日報告、產業洞察、32Q 審計報告">
+</head>
+<body>
+<div id="app">
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Deep32Q</a>
+      <div id="search-wrap" class="nav-search">
+        <input type="text" id="search-input" placeholder="搜尋知識庫（全文）" aria-label="搜尋知識庫" data-scope="all">
+        <div id="search-results" class="search-results hidden"></div>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="nav-link active" data-nav="daily">每日報告</a>
+        <a href="/?p=industries" class="nav-link" data-nav="industries">產業洞察</a>
+        <a href="/?p=audit" class="nav-link" data-nav="audit">審計報告</a>
+        <a href="/admin/" class="nav-link" data-nav="admin">管理</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="切換深色模式" title="切換深色模式">🌙</button>
+      </div>
+    </div>
+  </nav>
+  <main id="main-content"><div class="report-content-page">
+<div class="breadcrumb"><a href="/">← 回首頁</a> / Deep32Q知識庫/產業洞察/記憶體研究/記憶體研究_台股相關個股深度整理.md</div>
+<div class="report-content"><h1>記憶體 — 台股相關個股深度整理</h1>
+<p><strong>分類</strong>：產業洞察／記憶體研究／台股供應鏈<br />
+<strong>日期</strong>：2026-05-07<br />
+<strong>作者</strong>：Gale 分析<br />
+<strong>狀態</strong>：✅ 完成<br />
+<strong>關聯報告</strong>：記憶體供應鏈圖譜.md、記憶體市場研究.md、記憶體追蹤日誌.md</p>
+<hr />
+<h2>摘要</h2>
+<p>2026 年記憶體產業處於<strong>史上最大超級週期</strong>：DRAM 市場規模從 ~$86B（2025）暴增至 $300~440B（+85~192%），NAND 合約價 Q2 單季 +70~75%，HBM 定價權完全在三大原廠手中。台股記憶體相關公司全面受惠，但<strong>不同環節肥瘦懸殊</strong>。</p>
+<div class="codehilite"><pre><span></span><code>台股記憶體光譜（依受惠程度排列）：
+
+最大受惠 ← ─ ─ ─ ─ ─ ─ ─ ─ → 次級受惠
+
+DRAM廠     NAND/控制器    IC設計      模組通路    低毛利封測
+南亞科2408  旺宏2337      晶豪科3006  威剛3260    力成/南茂
+華邦電2344  群聯8299      鈺創5351    十銓4967    (間接受惠)
+            愛普6531*      宜鼎5289*    創見2451
+                                  宇瞻8271
+*註：宜鼎(5289)=工控SSD主業，愛普(6531)=AI記憶體IP，分類較複雜
+</code></pre></div>
+
+<hr />
+<h2>一、台股記憶體光譜全覽</h2>
+<h3>① DRAM 晶圓製造（南亞科 2408 / 華邦電 2344）</h3>
+<p><strong>超級循環的最大受惠者</strong>。結構性因素（HBM 排擠 DDR4 產能）使這輪跟以往景氣循環完全不同。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指標</th>
+<th style="text-align: right;">南亞科 (2408)</th>
+<th style="text-align: right;">華邦電 (2344)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">股價 (5/7)</td>
+<td style="text-align: right;">~254 元</td>
+<td style="text-align: right;">~116.5 元</td>
+</tr>
+<tr>
+<td style="text-align: left;">2026 Q1 EPS</td>
+<td style="text-align: right;"><strong>8.41 元</strong>（歷史新高）</td>
+<td style="text-align: right;"><strong>2.25 元</strong>（歷史新高）</td>
+</tr>
+<tr>
+<td style="text-align: left;">Q1 毛利率</td>
+<td style="text-align: right;"><strong>67.9%</strong>（破紀錄）</td>
+<td style="text-align: right;"><strong>53.4%</strong>（破紀錄）</td>
+</tr>
+<tr>
+<td style="text-align: left;">Q1 營收</td>
+<td style="text-align: right;">490.87 億（+63% QoQ）</td>
+<td style="text-align: right;">382.53 億（+91% YoY）</td>
+</tr>
+<tr>
+<td style="text-align: left;">2026 資本支出</td>
+<td style="text-align: right;">520 億（+2.5x）</td>
+<td style="text-align: right;">405 億</td>
+</tr>
+<tr>
+<td style="text-align: left;">本益比 (Q1 年化)</td>
+<td style="text-align: right;">~7.6x</td>
+<td style="text-align: right;">~13x</td>
+</tr>
+</tbody>
+</table>
+<p><strong>🔥 DRAM 結構性紅利 — 核心論述</strong>：</p>
+<div class="codehilite"><pre><span></span><code>HBM 吃產能 → DDR4 供給短缺 → 價格漲 → 南亞科/華邦電利差暴增
+       ↕（這個是關鍵）
+DDR4 短缺預計持續至 2028+
+    跟以往 2-3 年循環不同，是結構性的
+</code></pre></div>
+
+<p><strong>南亞科 — 最大受惠者</strong>：<br />
+- EPS 8.41，年化 ~33.6 元，本益比僅 ~7.6x<br />
+- <strong>但注意</strong>：Q1 有低價庫存利益（DRAM 均價季增 +70%），Q2 以後邊際增幅會放緩<br />
+- 私募 787.2 億（四大客戶認購），新廠 2027 裝機<br />
+- 已打入 NVIDIA Vera Rubin LPDDR5X 供應鏈<br />
+- 法人目標價 365-400 元</p>
+<p><strong>華邦電 — 小而美 + CUBE 題材</strong>：<br />
+- EPS 2.25 年化 ~9 元，PE ~13x<br />
+- 高雄廠 5-6 月裝機，DDR4/LPDDR4 產能將翻倍<br />
+- CUBE（客製化超高頻寬元件）2026 年部分產出<br />
+- 訂單已售罄至 2026-2027</p>
+<hr />
+<h3>② NAND / 記憶體元件（旺宏 2337 / 群聯 8299 / 愛普 6531）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指標</th>
+<th style="text-align: right;">旺宏 (2337)</th>
+<th style="text-align: right;">群聯 (8299)</th>
+<th style="text-align: right;">愛普 (6531)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">股價 (5/6)</td>
+<td style="text-align: right;">~172 元</td>
+<td style="text-align: right;">~2,325 元</td>
+<td style="text-align: right;">~925-935 元</td>
+</tr>
+<tr>
+<td style="text-align: left;">2026 Q1 EPS</td>
+<td style="text-align: right;"><strong>0.90 元</strong></td>
+<td style="text-align: right;"><strong>4.52 元</strong></td>
+<td style="text-align: right;">0.92 元（Q2）</td>
+</tr>
+<tr>
+<td style="text-align: left;">Q1 毛利率</td>
+<td style="text-align: right;">40.8%</td>
+<td style="text-align: right;">41-53%（估）</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;">2026E EPS</td>
+<td style="text-align: right;">~11.61（法人估）</td>
+<td style="text-align: right;">~27-40（估）</td>
+<td style="text-align: right;">~13-16 元</td>
+</tr>
+<tr>
+<td style="text-align: left;">主要題材</td>
+<td style="text-align: right;">MLC 供給缺口</td>
+<td style="text-align: right;">NAND 控制器龍頭</td>
+<td style="text-align: right;">AI 記憶體 IP</td>
+</tr>
+</tbody>
+</table>
+<p><strong>旺宏 — MLC NAND 停產紅利</strong>：<br />
+- 三星退出 MLC NAND → 旺宏 MLC 佔比暴增<br />
+- 終止連續 10 季虧損，轉虧為盈<br />
+- 12 吋廠擴產（2 萬 → 3 萬片），3D NAND 192 層研發中<br />
+- 本益比 ~15-17x，成長動能來自出貨量而非價格<br />
+- <strong>風險</strong>：MLC 屬利基市場，爆發力不如 DRAM</p>
+<p><strong>群聯 — NAND 控制器龍頭</strong>：<br />
+- CEO 警告 NAND 短缺「可能持續十年」<br />
+- 2026 年產能已售罄，部分客戶需預付款<br />
+- aiDAPTIV 混合 AI SSD 為長期成長引擎<br />
+- 股價 2,325 元，PE 偏高（年化~58-86x）</p>
+<p><strong>愛普 — AI 記憶體 IP 玩家</strong>：<br />
+- 主攻 AI 邊緣運算的異質整合記憶體<br />
+- 本益比極高（年化~72x），市場已反映未來<br />
+- 若 AI 邊緣運算不如預期，下修風險大</p>
+<hr />
+<h3>③ 記憶體 IC 設計（晶豪科 3006 / 鈺創 5351 / 宜鼎 5289）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指標</th>
+<th style="text-align: right;">晶豪科 (3006)</th>
+<th style="text-align: right;">鈺創 (5351)</th>
+<th style="text-align: right;">宜鼎 (5289)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">股價 (5/7)</td>
+<td style="text-align: right;">~198.5-200 元</td>
+<td style="text-align: right;">~77-78 元</td>
+<td style="text-align: right;">~1,550-1,600 元</td>
+</tr>
+<tr>
+<td style="text-align: left;">2026 Q1 EPS</td>
+<td style="text-align: right;"><strong>7.22 元</strong></td>
+<td style="text-align: right;">0.06 元</td>
+<td style="text-align: right;">3 月單月 28.10 元</td>
+</tr>
+<tr>
+<td style="text-align: left;">2026E EPS</td>
+<td style="text-align: right;">~24-37 元</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">~120-198 元</td>
+</tr>
+<tr>
+<td style="text-align: left;">本益比 (年化)</td>
+<td style="text-align: right;">~5.4-8x</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">~9-13x</td>
+</tr>
+<tr>
+<td style="text-align: left;">主要業務</td>
+<td style="text-align: right;">DRAM/Flash 設計+模組</td>
+<td style="text-align: right;">利基型 DRAM + CPO</td>
+<td style="text-align: right;">工控 SSD / 嵌入式</td>
+</tr>
+</tbody>
+</table>
+<p><strong>晶豪科 — 被市場低估的暴利股？</strong><br />
+- Q1 EPS 7.22，年化 ~29 元 → PE 僅 ~6.9x<br />
+- 同時做 DRAM 設計 + 模組通路，雙重受惠<br />
+- 若超級週期持續到年底，全年 EPS 可能超預期<br />
+- <strong>法人預估區間 24-37 元</strong>，取決於價格持續性<br />
+- 股價 200 元以下、PE &lt;10x，若記憶體景氣不變，是嚴重低估</p>
+<p><strong>鈺創 — CPO 題材加持但本業薄弱</strong>：<br />
+- Q1 EPS 僅 0.06 元（邊際獲利）<br />
+- CPO（Co-packaged Optics）光通訊題材<br />
+- 利基型 DDR3/DDR2 仍佔主業<br />
+- <strong>價值低但盈利能力弱</strong>，非記憶體循環中的優先選擇</p>
+<p><strong>宜鼎 — 工控 SSD 千金股</strong>：<br />
+- 股價 1,550+，是記憶體族群中極少數的千金股<br />
+- EPS 暴衝至年化 &gt;120 元<br />
+- 工控 SSD 屬高利潤定製化市場，非標準品<br />
+- 需注意：月 EPS 推年化可能有誤差（3 月含一次性認列？）<br />
+- <strong>PE 9-13x 以千金股而言很便宜，但絕對股價高</strong></p>
+<hr />
+<h3>④ 記憶體模組通路（威剛 3260 / 十銓 4967 / 創見 2451 / 宇瞻 8271）</h3>
+<p><strong>這組的關鍵</strong>：模組廠賺的是<strong>庫存利差</strong>——在 DRAM 漲價週期中，低價庫存創造暴利。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指標</th>
+<th style="text-align: right;">威剛 (3260)</th>
+<th style="text-align: right;">十銓 (4967)</th>
+<th style="text-align: right;">創見 (2451)</th>
+<th style="text-align: right;">宇瞻 (8271)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">股價</td>
+<td style="text-align: right;">~461.5 元</td>
+<td style="text-align: right;">~298 元</td>
+<td style="text-align: right;">~297 元</td>
+<td style="text-align: right;">~248 元</td>
+</tr>
+<tr>
+<td style="text-align: left;">2026 Q1 EPS</td>
+<td style="text-align: right;"><strong>30.05 元</strong></td>
+<td style="text-align: right;"><strong>27.0 元</strong></td>
+<td style="text-align: right;"><strong>18.93 元</strong></td>
+<td style="text-align: right;"><strong>14.54 元</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">年化 EPS</td>
+<td style="text-align: right;">~120 元</td>
+<td style="text-align: right;">~108 元</td>
+<td style="text-align: right;">~75.7 元</td>
+<td style="text-align: right;">~58 元</td>
+</tr>
+<tr>
+<td style="text-align: left;">本益比</td>
+<td style="text-align: right;">~3.8x</td>
+<td style="text-align: right;">~2.8x</td>
+<td style="text-align: right;">~3.9x</td>
+<td style="text-align: right;">~4.3x</td>
+</tr>
+<tr>
+<td style="text-align: left;">品牌</td>
+<td style="text-align: right;">XPG（電競）</td>
+<td style="text-align: right;">自有品牌</td>
+<td style="text-align: right;">JetRam/Transcend</td>
+<td style="text-align: right;">Apacer</td>
+</tr>
+</tbody>
+</table>
+<p><strong>🔥 核心問題：這些 PE 是真便宜還是陷阱？</strong></p>
+<div class="codehilite"><pre><span></span><code>看多派：記憶體超級週期持續到 2027 → 高 EPS 可持續 → PE 3-4x 極度便宜
+看空派：Q1 含一次性低價庫存利益（DRAM 均價+70%）→ 下半年增幅放緩 → 全年 EPS 遠低於年化
+
+結論：年化 PE 偏低是真，但 Q1 有庫存一次性效應，需保守看待
+</code></pre></div>
+
+<p><strong>威剛 — 模組龍頭 + XPG 電競品牌</strong>：<br />
+- Q1 EPS 30.05，年化 120 → PE 3.8x<br />
+- 即使全年只賺 60 元，PE 也僅 ~7.7x<br />
+- XPG 電競品牌在歐美有能見度，長期價值大於純模組<br />
+- 風險：高庫存，若 DRAM 反轉會受傷</p>
+<p><strong>十銓 — 純度最高的模組股</strong>：<br />
+- Q1 EPS 27，年化 108 → PE 2.8x（最低！）<br />
+- 但業務最純 = 景氣反轉時跌最深<br />
+- 工業級產品佔比提升，增加穩定性</p>
+<p><strong>創見 — 具有品牌護城河的模組廠</strong>：<br />
+- Q1 EPS 18.93，年化 ~75.7 → PE 3.9x<br />
+- 自有品牌（Transcend/JetRam）溢價能力<br />
+- 品牌價值在下跌時提供緩衝<br />
+- EPS 成長不如威剛/十銓凌厲但較穩</p>
+<p><strong>宇瞻 — 邊緣 AI + 企業級 SSD 布局</strong>：<br />
+- Q1 EPS 14.54，年化 ~58 → PE 4.3x<br />
+- 嵌入式產品 + 企業級 SSD 有差異化<br />
+- PE 在模組族群中相對合理</p>
+<hr />
+<h2>二、綜合比較：誰是記憶體超循環的最大贏家？</h2>
+<h3>2.1 絕對 EPS 成長（Q1 年化）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">排名</th>
+<th style="text-align: left;">公司</th>
+<th style="text-align: right;">年化 EPS</th>
+<th style="text-align: right;">股價</th>
+<th style="text-align: right;">PE</th>
+<th style="text-align: left;">特點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">十銓 4967</td>
+<td style="text-align: right;">~108 元</td>
+<td style="text-align: right;">298</td>
+<td style="text-align: right;"><strong>2.8x</strong></td>
+<td style="text-align: left;">最純，也最危險</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">威剛 3260</td>
+<td style="text-align: right;">~120 元</td>
+<td style="text-align: right;">461.5</td>
+<td style="text-align: right;">3.8x</td>
+<td style="text-align: left;">品牌加持</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: left;">創見 2451</td>
+<td style="text-align: right;">~75.7 元</td>
+<td style="text-align: right;">297</td>
+<td style="text-align: right;">3.9x</td>
+<td style="text-align: left;">品牌護城河</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">宇瞻 8271</td>
+<td style="text-align: right;">~58 元</td>
+<td style="text-align: right;">248</td>
+<td style="text-align: right;">4.3x</td>
+<td style="text-align: left;">差異化產品</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;">南亞科 2408</td>
+<td style="text-align: right;">~33.6 元</td>
+<td style="text-align: right;">254</td>
+<td style="text-align: right;">7.6x</td>
+<td style="text-align: left;">結構性紅利最強</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: left;">華邦電 2344</td>
+<td style="text-align: right;">~9 元</td>
+<td style="text-align: right;">116.5</td>
+<td style="text-align: right;">13x</td>
+<td style="text-align: left;">CUBE 題材</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: left;">晶豪科 3006</td>
+<td style="text-align: right;">~29 元</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">6.9x</td>
+<td style="text-align: left;">IC設計+模組</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: left;">旺宏 2337</td>
+<td style="text-align: right;">~3.6 元</td>
+<td style="text-align: right;">172</td>
+<td style="text-align: right;">47x (高估)</td>
+<td style="text-align: left;">轉型初期</td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 風險調整後排名</h3>
+<div class="codehilite"><pre><span></span><code>考量：超級週期可持續性 + 結構性因素 + 估值
+
+1️⃣ 南亞科 (2408)：結構性紅利最穩，PE 7.6x 合理偏低
+    缺點：資本支出高（520億），折舊壓力大
+
+2️⃣ 威剛 (3260)：XPG 品牌+低 PE，即使修正也還有品牌價值
+    缺點：高庫存是雙面刃
+
+3️⃣ 華邦電 (2344)：CUBE 題材 + DDR4 缺口 + PE 13x 尚可
+    缺點：資本支出高，產能擴張需要時間
+
+4️⃣ 晶豪科 (3006)：IC設計+模組雙重，PE ~7x 被低估
+    缺點：市值小，流動性較差
+
+5️⃣ 創見 (2451)：品牌安全邊際最高
+    缺點：EPS 成長不如同業
+
+6️⃣ 十銓 (4967)：PE 最低但波動最大
+    缺點：景氣反轉時會受傷最重
+</code></pre></div>
+
+<hr />
+<h2>三、投資架構</h2>
+<h3>3.1 不同情境下的最佳選擇</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">情境</th>
+<th style="text-align: left;">最佳標的</th>
+<th style="text-align: right;">理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">🔵 超級週期持續到 2027</td>
+<td style="text-align: left;">南亞科 2408</td>
+<td style="text-align: right;">結構性紅利、DRAM 廠 PE 最低</td>
+</tr>
+<tr>
+<td style="text-align: left;">🟢 只想撿便宜PE</td>
+<td style="text-align: left;">十銓 4967</td>
+<td style="text-align: right;">PE 2.8x，誇張低</td>
+</tr>
+<tr>
+<td style="text-align: left;">🟡 想兼顧品牌安全邊際</td>
+<td style="text-align: left;">創見 2451 or 威剛 3260</td>
+<td style="text-align: right;">品牌溢價跌時有保護</td>
+</tr>
+<tr>
+<td style="text-align: left;">🟠 賭 HBM 排擠效應最大化</td>
+<td style="text-align: left;">南亞科 2408</td>
+<td style="text-align: right;">DDR4 缺口最純受惠</td>
+</tr>
+<tr>
+<td style="text-align: left;">🔴 高風險高回報</td>
+<td style="text-align: left;">晶豪科 3006</td>
+<td style="text-align: right;">PE ~7x 若市場重新評價</td>
+</tr>
+<tr>
+<td style="text-align: left;">⚪ 長期持有（5-10年）</td>
+<td style="text-align: left;">南亞科 2408 + 群聯 8299</td>
+<td style="text-align: right;">DRAM 製程領先 + NAND 控制器護城河</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 必須關注的風險</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">風險</th>
+<th style="text-align: right;">影響</th>
+<th style="text-align: left;">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">HBM 供需平衡提前（2026 底-2027 初）</td>
+<td style="text-align: right;">🔴 致命</td>
+<td style="text-align: left;">DRAM 價格可能反轉，模組廠庫存損失</td>
+</tr>
+<tr>
+<td style="text-align: left;">長鞭效應 + 重複下單</td>
+<td style="text-align: right;">🟡 中等</td>
+<td style="text-align: left;">終端需求可能被誇大</td>
+</tr>
+<tr>
+<td style="text-align: left;">中國長鑫存儲技術突破</td>
+<td style="text-align: right;">🟠 結構性</td>
+<td style="text-align: left;">壓低 DRAM 定價</td>
+</tr>
+<tr>
+<td style="text-align: left;">美中晶片戰升級</td>
+<td style="text-align: right;">🟡 中等</td>
+<td style="text-align: left;">台廠地位可能受影響</td>
+</tr>
+<tr>
+<td style="text-align: left;">模組廠庫存風險</td>
+<td style="text-align: right;">🔴 致命</td>
+<td style="text-align: left;">若價格反轉，威剛/十銓受傷最重</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 關鍵觀察指標</h3>
+<div class="codehilite"><pre><span></span><code>價格指標：
+├─ DRAM 合約價（DDR4 8Gb / DDR5 16Gb）→ TrendForce 每月公布
+├─ NAND Flash 合約價（256Gb TLC）        → TrendForce 每季報告
+├─ HBM 價格（非公開，但可從三大原廠營收推）
+└─ 現貨-合約價差（DDR4 現貨 vs 合約價）
+
+供需指標：
+├─ 三大原廠資本支出指引 → 法說會時機
+├─ 南亞科/華邦電庫存天數
+├─ NVIDIA Rubin 出貨量（HBM 需求驗證）
+└─ PC/手機出貨量（傳統需求）
+
+台廠關鍵事件：
+├─ 5/12 WASDE（美國農業部報告—間接影響記憶體？不直接）
+├─ 5/14 川習會（中美關係影響半導體供應鏈）
+├─ Q1 財報季（4-5月各公司法說 + 全年指引）
+└─ CUBE / HBM 新產品認證時程
+</code></pre></div>
+
+<hr />
+<h2>四、結論 &amp; 個人看法</h2>
+<h3>認同的論述</h3>
+<ul>
+<li>✅ <strong>超級週期是真實的</strong>：HBM 排擠效應非週期性，是結構性的</li>
+<li>✅ <strong>台廠 DRAM 廠（南亞科/華邦電）是純粹的結構性受惠者</strong></li>
+<li>✅ <strong>模組廠 PE 確實偏低</strong>，但需區分庫存利益 vs 本業獲利</li>
+</ul>
+<h3>保持懷疑的點</h3>
+<ul>
+<li>⚠️ <strong>模組廠 Q1 EPS 包含一次性低價庫存利益</strong>，下半年邊際增幅必然放緩</li>
+<li>⚠️ <strong>華邦電股價已從 98.8 漲到 116.5（+18% 在兩天內）</strong>，短線追高風險大</li>
+<li>⚠️ <strong>群聯 PE &gt; 50x</strong>，市場已把未來 2-3 年預期完整定價</li>
+<li>⚠️ <strong>愛普 925 元但年化 EPS 僅 ~13-16 元</strong>，AI 記憶體 IP 故事需要業績驗證</li>
+<li>⚠️ <strong>鈺創本業仍然虧損</strong>，CPO 題材只是故事</li>
+</ul>
+<h3>核心風險提醒</h3>
+<blockquote>
+<p><strong>記憶體超級週期最危險的一句話：「這次不一樣（This time is different）」</strong></p>
+<p>結構性因素是真的（HBM 排擠），但長鞭效應也是真的。當客戶為了搶貨而重複下單，一旦需求放緩，修正也會非常猛烈。</p>
+<p><strong>南亞科/華邦電的結構性紅利最可靠（即使價格修正，DDR4 短缺仍會持續），但模組廠的高庫存是最大風險。</strong></p>
+</blockquote>
+<hr />
+<h2>更新日誌</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">日期</th>
+<th style="text-align: right;">更新內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2026-05-07</td>
+<td style="text-align: right;">初始發布：台股記憶體全面分析（DRAM/NAND/模組/IC設計）</td>
+</tr>
+</tbody>
+</table>
+<p>**</p>
+<p>文件資訊**：<br />
+- 路徑：<code>/Users/kaipro/.openclaw/skills/NEW_Deep32Q/Deep32Q知識庫/產業洞察/記憶體研究/記憶體研究_台股相關個股深度整理.md</code><br />
+- 更新：2026-05-07</p></div>
+</div></main>
+</div>
+<script src="/search.js?v=1782118672"></script>
+<script src="/content.js?v=1782124909"></script>
+</body>
+</html>

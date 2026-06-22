@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光通訊成本結構與去中化效應分析 — Deep32Q 系統化投資研究知識庫</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/style.css?v=1782120989">
+<meta name="description" content="Deep32Q 系統化投資研究知識庫 — 每日報告、產業洞察、32Q 審計報告">
+</head>
+<body>
+<div id="app">
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Deep32Q</a>
+      <div id="search-wrap" class="nav-search">
+        <input type="text" id="search-input" placeholder="搜尋知識庫（全文）" aria-label="搜尋知識庫" data-scope="all">
+        <div id="search-results" class="search-results hidden"></div>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="nav-link active" data-nav="daily">每日報告</a>
+        <a href="/?p=industries" class="nav-link" data-nav="industries">產業洞察</a>
+        <a href="/?p=audit" class="nav-link" data-nav="audit">審計報告</a>
+        <a href="/admin/" class="nav-link" data-nav="admin">管理</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="切換深色模式" title="切換深色模式">🌙</button>
+      </div>
+    </div>
+  </nav>
+  <main id="main-content"><div class="report-content-page">
+<div class="breadcrumb"><a href="/">← 回首頁</a> / Deep32Q知識庫/產業洞察/光通訊研究/光通訊_成本結構與去中化效應分析_2026-05-13.md</div>
+<div class="report-content"><h1>光通訊成本結構與去中化效應分析</h1>
+<p><strong>報告日期：</strong> 2026-05-13<br />
+<strong>研究範圍：</strong> CPO/可插拔 TCO、矽光子 vs InP 晶片成本、雷射元件比較、台灣供應鏈利潤空間、US-China 去中化效應量化</p>
+<hr />
+<h2>📋 執行摘要</h2>
+<p>2026 年是光通訊產業的「成本結構重組元年」。CPO（共封裝光學）技術在 NVIDIA Rubin 平台推動下進入早期商用，其 TCO 優勢在大型叢集場景中已明確：功耗節省 65-73%、TCO 5 年可降 15-20%，但初期 CAPEX 仍高於可插拔方案約 30-40%。在元件層面，InP 基板因中國出口管制導致價格飆升近 200%（2 吋晶片從 $800 漲至 $2,300-2,500），反過來推升矽光子平台的相對成本優勢。同時，中國光模組佔全球 50-60% 產量但核心晶片（DSP、EML）自給率僅 30-40%，台灣供應鏈因「去中化」紅利，光聖 2025 年毛利率創 57.74% 新高、90%+ 營收來自歐美，成為去中化最大受益者。整體判斷：2026-2028 年台灣光通訊供應鏈將持續享受去中化帶來的結構性高毛利紅利。</p>
+<hr />
+<h2>第一部分：成本結構分析</h2>
+<h3>1. CPO 交換機 vs Traditional Pluggable 交換機 TCO 比較</h3>
+<h4>1.1 單位 Port 成本差異</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">CPO（共封裝光學）</th>
+<th style="text-align: left;">Traditional Pluggable</th>
+<th style="text-align: left;">差異</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>初期硬體成本</strong></td>
+<td style="text-align: left;">高（整合設計、封裝複雜）</td>
+<td style="text-align: left;">低（成熟供應鏈、量產規模大）</td>
+<td style="text-align: left;">CPO 初期 +30-40%</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>單位 Port CAPEX</strong></td>
+<td style="text-align: left;">~$12,000-15,000（800G）</td>
+<td style="text-align: left;">~$9,000-11,000（800G）</td>
+<td style="text-align: left;">CPO 高約 25-36%</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>量產後預期</strong></td>
+<td style="text-align: left;">隨規模下降，2028 年接近可插拔</td>
+<td style="text-align: left;">成熟穩定、$/Gbps 持續下降</td>
+<td style="text-align: left;">2028 年趨近持平</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>模組替換成本</strong></td>
+<td style="text-align: left;">需整體更換交換機模組</td>
+<td style="text-align: left;">僅需更換單一生態模組</td>
+<td style="text-align: left;">CPO 維修成本高 3-5 倍</td>
+</tr>
+</tbody>
+</table>
+<p><strong>關鍵洞察：</strong> CPO 初期 CAPEX 較高，但隨台積電 COUPE 平台 2026 年量產、NVIDIA Rubin Ultra 放量，單位成本將快速下降。可插拔方案因成熟供應鏈優勢，短期仍具 CAPEX 吸引力。</p>
+<h4>1.2 功耗節省（W/Gbps）— CPO 核心優勢</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">規格</th>
+<th style="text-align: left;">Pluggable 功耗</th>
+<th style="text-align: left;">CPO 光學引擎+雷射源</th>
+<th style="text-align: left;">節省幅度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>800G</strong></td>
+<td style="text-align: left;">~15-17W（含 DSP）</td>
+<td style="text-align: left;">~4-5.4W（光學引擎+外置雷射源）</td>
+<td style="text-align: left;"><strong>節省 65-73%</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>1.6T</strong></td>
+<td style="text-align: left;">~30W（含 DSP）</td>
+<td style="text-align: left;">~9W（光學引擎+外置雷射源）</td>
+<td style="text-align: left;"><strong>節省約 70%</strong>（3.5 倍改善）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3.2T</strong></td>
+<td style="text-align: left;">~60W+（含 DSP）</td>
+<td style="text-align: left;">~18W（預估）</td>
+<td style="text-align: left;"><strong>節省約 70%</strong>（3.5 倍改善）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NVIDIA Spectrum-X 官方數據：</strong><br />
+- 1.6 Tb/s Port 功耗降低 <strong>5x</strong>（相比傳統可插拔）<br />
+- Link flap-free AI uptime 延長 <strong>5x</strong><br />
+- 整體網路叢集：三層網路節省 23% 網路功耗、總叢集節省 2%；二層網路節省 48% 網路功耗、總叢集節省 4%</p>
+<h4>1.3 維護成本差異</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">CPO</th>
+<th style="text-align: left;">Traditional Pluggable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>元件數量</strong></td>
+<td style="text-align: left;">大幅減少（光學引擎整合於交換晶片旁）</td>
+<td style="text-align: left;">多個獨立元件（光模組+DSP+連接器）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>故障點</strong></td>
+<td style="text-align: left;">減少（整合設計降低焊點和連接器數量）</td>
+<td style="text-align: left;">較多（每個光模組獨立故障風險）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>維修方式</strong></td>
+<td style="text-align: left;">需整體更換交換機模組（成本高、停機時間長）</td>
+<td style="text-align: left;">僅需更換單一生態模組（快速替換）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MTBF</strong></td>
+<td style="text-align: left;">預期更高（NVIDIA 宣稱 5x flap-free uptime）</td>
+<td style="text-align: left;">較低（單一生態模組故障率較高）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>5 年維護成本</strong></td>
+<td style="text-align: left;">初期高、長期低（故障率低+功耗低）</td>
+<td style="text-align: left;">初期低、長期高（頻繁替換+高功耗）</td>
+</tr>
+</tbody>
+</table>
+<h4>1.4 TCO 總表（5 年週期，以 32×800G 交換機為例）</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">成本項目</th>
+<th style="text-align: left;">CPO（共封裝光學）</th>
+<th style="text-align: left;">Traditional Pluggable</th>
+<th style="text-align: left;">5 年 TCO 差異</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>初期 CAPEX</strong></td>
+<td style="text-align: left;">$384,000-480,000</td>
+<td style="text-align: left;">$288,000-352,000</td>
+<td style="text-align: left;">CPO 高約 $96,000-128,000</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>年度電力成本</strong></td>
+<td style="text-align: left;">低（功耗節省 65-73%）</td>
+<td style="text-align: left;">高</td>
+<td style="text-align: left;">CPO 每年節省約 $15,000-25,000</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>年度散熱成本</strong></td>
+<td style="text-align: left;">低（功耗降低→冷卻需求減少）</td>
+<td style="text-align: left;">高</td>
+<td style="text-align: left;">CPO 每年節省約 $5,000-10,000</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>年度維護成本</strong></td>
+<td style="text-align: left;">高（維修需整體更換）</td>
+<td style="text-align: left;">低（單一生態替換）</td>
+<td style="text-align: left;">CPO 每年多付約 $3,000-5,000</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>5 年總 TCO</strong></td>
+<td style="text-align: left;"><strong>約 $420,000-460,000</strong></td>
+<td style="text-align: left;"><strong>約 $430,000-500,000</strong></td>
+<td style="text-align: left;"><strong>CPO 節省約 15-20%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>結論：</strong> CPO 在大型 AI 叢集（數萬個光模組規模）的 TCO 已明確優於可插拔方案，關鍵驅動是功耗節省。但小型/短距離場景（機櫃內互連）仍以銅線+可插拔為主，預計 2028 年前不會改變。</p>
+<p><strong>資料來源：</strong><br />
+1. NVIDIA 官方部落格 (2026-04)：Spectrum-X Ethernet Photonics 功耗數據<br />
+2. Counterpoint Research (2026-04)：從 Blackwell 到 Feynman 光學路線圖分析<br />
+3. SemiAnalysis Newsletter (2026-04)：CPO Book — Scaling AI Data Centers<br />
+4. Corning World Wide (2026-03)：Co-Packaged Optics — The Future of Data Centers</p>
+<hr />
+<h3>2. 矽光子 vs InP 晶片成本比較</h3>
+<h4>2.1 單位面積成本與良率</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">技術路線</th>
+<th style="text-align: left;">製程基礎</th>
+<th style="text-align: left;">單位晶圓成本 (2026)</th>
+<th style="text-align: left;">良率趨勢</th>
+<th style="text-align: left;">適用場景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>矽光子 (SiPh)</strong></td>
+<td style="text-align: left;">12 吋 CMOS 成熟製程（台積電 COUPE）</td>
+<td style="text-align: left;">~$3,000-4,000/12 吋晶圓</td>
+<td style="text-align: left;">持續提升，2026 年已達商業水準</td>
+<td style="text-align: left;">800G/1.6T/3.2T 高速光模組、CPO</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>InP (銦磷化鎵)</strong></td>
+<td style="text-align: left;">2-6 吋 specialty wafer</td>
+<td style="text-align: left;">2 吋：$800→$2,300-2,500（+200%）<br>6 吋：漲幅 &gt;250%</td>
+<td style="text-align: left;">受限於材料特性，良率提升緩慢</td>
+<td style="text-align: left;">高階雷射（EML、CW Laser）、高速 PD</td>
+</tr>
+</tbody>
+</table>
+<h4>2.2 供需失衡關鍵數據</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指標</th>
+<th style="text-align: left;">數值 (2026)</th>
+<th style="text-align: left;">備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>全球 InP 有效產能</strong></td>
+<td style="text-align: left;">60-75 萬片/年</td>
+<td style="text-align: left;">Sumitomo + AXT + JX Nippon 三家佔 90%+</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>全球需求</strong></td>
+<td style="text-align: left;">260-300 萬片/年</td>
+<td style="text-align: left;">AI 資料中心 + 800G/1.6T 光模組驅動</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>供需缺口</strong></td>
+<td style="text-align: left;">&gt;70%</td>
+<td style="text-align: left;">嚴重短缺，價格持續飆升</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>InP vs SiPh 成本倍數</strong></td>
+<td style="text-align: left;">InP 元件價格為矽光子方案之 <strong>7-10 倍</strong></td>
+<td style="text-align: left;">包含晶圓、封裝、測試全週期</td>
+</tr>
+</tbody>
+</table>
+<h4>2.3 $/Gbps 比較與適用場景</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">技術路線</th>
+<th style="text-align: left;">$/Gbps (2026)</th>
+<th style="text-align: left;">良率狀態</th>
+<th style="text-align: left;">適用場景</th>
+<th style="text-align: left;">量產時程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>矽光子 (SiPh)</strong></td>
+<td style="text-align: left;">$0.15-0.25/Gbps（800G）<br>$0.08-0.12/Gbps（1.6T）</td>
+<td style="text-align: left;">商業化良率，持續提升中</td>
+<td style="text-align: left;">800G/1.6T/3.2T CPO、大型 CSP</td>
+<td style="text-align: left;">2026 商轉元年</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>InP</strong></td>
+<td style="text-align: left;">$1.0-2.5/Gbps（800G）<br>$0.6-1.5/Gbps（1.6T）</td>
+<td style="text-align: left;">受限材料特性，良率提升緩慢</td>
+<td style="text-align: left;">高階雷射源（EML/CW）、高速 PD</td>
+<td style="text-align: left;">持續量產，但成本高</td>
+</tr>
+</tbody>
+</table>
+<p><strong>關鍵洞察：</strong> 矽光子在高頻寬（1.6T+）已具明確成本優勢。InP 在低中頻寬仍具競爭力，但受供需失衡影響，價格飆升將持續至 2027 年。產業趨勢是「矽光子整合 InP 雷射」的混合方案——矽光子做調變器/波導，InP 提供雷射源。</p>
+<p><strong>資料來源：</strong><br />
+1. Intel Market Research (2026-04)：Indium Phosphide Market Report<br />
+2. Fortune Business Insights (2026-04)：Silicon Photonics Market Report<br />
+3. Photon Delta (2026-04)：Global InP substrate pricing analysis<br />
+4. Research and Markets (2026-03)：Silicon Photonics Market Report</p>
+<hr />
+<h3>3. EML vs CW Laser vs VCSEL 成本比較</h3>
+<h4>3.1 雷射元件成本結構總表</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">雷射類型</th>
+<th style="text-align: left;">單通道成本 (2026)</th>
+<th style="text-align: left;">適用距離</th>
+<th style="text-align: left;">適用頻寬</th>
+<th style="text-align: left;">量產時程</th>
+<th style="text-align: left;">關鍵供應商</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>VCSEL</strong></td>
+<td style="text-align: left;">$0.5-2/顆（批量）</td>
+<td style="text-align: left;">短距離 &lt;300m</td>
+<td style="text-align: left;">100G 已量產<br>200G/lane 2025-26</td>
+<td style="text-align: left;">100G 已量產<br>200G 2026</td>
+<td style="text-align: left;">IET-KY (6530)<br>Broadcom<br>Lumentum</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CW Laser</strong></td>
+<td style="text-align: left;">$5-10/顆（商品級）<br>$8-10/顆（矽光子方案）</td>
+<td style="text-align: left;">中長距離 2km+</td>
+<td style="text-align: left;">800G/1.6T<br>一源多通道</td>
+<td style="text-align: left;">2025-26 量產放量</td>
+<td style="text-align: left;">華星光 (4979)<br>Lumentum<br>Coherent</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>EML</strong></td>
+<td style="text-align: left;">$35-50/顆（高階 UHP）<br>$80-100+/模組（800G 需 8 顆）</td>
+<td style="text-align: left;">長距離 10km+</td>
+<td style="text-align: left;">800G（8×100G）<br>1.6T（8×200G）</td>
+<td style="text-align: left;">持續量產<br>200G EML 供不應求</td>
+<td style="text-align: left;">Lumentum<br>Coherent<br>Broadcom</td>
+</tr>
+</tbody>
+</table>
+<h4>3.2 模組雷射成本拆解</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">光模組規格</th>
+<th style="text-align: left;">雷射需求</th>
+<th style="text-align: left;">單模組雷射成本</th>
+<th style="text-align: left;">模組售價 (ASP)</th>
+<th style="text-align: left;">雷射佔比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>800G (EML 方案)</strong></td>
+<td style="text-align: left;">8×100G EML</td>
+<td style="text-align: left;">$280-400（8 顆 diode）</td>
+<td style="text-align: left;">$360-450</td>
+<td style="text-align: left;"><strong>78-89%</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>800G (SiPh + CW)</strong></td>
+<td style="text-align: left;">2-4×CW Laser</td>
+<td style="text-align: left;">$16-40（2-4 顆）</td>
+<td style="text-align: left;">$360-450</td>
+<td style="text-align: left;"><strong>4-11%</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>1.6T (EML 方案)</strong></td>
+<td style="text-align: left;">8×200G EML</td>
+<td style="text-align: left;">$560-800（8 顆 diode）</td>
+<td style="text-align: left;">$1,300-1,500</td>
+<td style="text-align: left;"><strong>43-53%</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>1.6T (SiPh + CW)</strong></td>
+<td style="text-align: left;">4-8×CW Laser</td>
+<td style="text-align: left;">$32-80（4-8 顆）</td>
+<td style="text-align: left;">$1,300-1,500</td>
+<td style="text-align: left;"><strong>2-6%</strong></td>
+</tr>
+</tbody>
+</table>
+<h4>3.3 關鍵趨勢與供需分析</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">VCSEL</th>
+<th style="text-align: left;">CW Laser</th>
+<th style="text-align: left;">EML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>2026 年市場規模</strong></td>
+<td style="text-align: left;">$2.94B（全球）</td>
+<td style="text-align: left;">$4.8-5.5B（亞洲 CW DFB 市場）</td>
+<td style="text-align: left;">$182M→$352M (2024-2032)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>供需狀態</strong></td>
+<td style="text-align: left;">供過於求、價格競爭激烈</td>
+<td style="text-align: left;">需求翻倍（矽光子方案替代 EML）</td>
+<td style="text-align: left;"><strong>嚴重供不應求</strong>，2026 年產能已全額預訂</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>價格趨勢</strong></td>
+<td style="text-align: left;">持續下降（量產規模擴大）</td>
+<td style="text-align: left;">穩定或微降（規模經濟+競爭加劇）</td>
+<td style="text-align: left;"><strong>持續上漲</strong>，200G EML ASP 為 100G 的約 2 倍</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>台灣供應鏈角色</strong></td>
+<td style="text-align: left;">IET-KY (6530)：200G VCSEL 2026 量產</td>
+<td style="text-align: left;">華星光 (4979)：CW Laser 晶粒，2026 產能倍增</td>
+<td style="text-align: left;">台灣較少直接參與 EML 晶粒，主要透過 CW Laser 替代方案</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心結論：</strong><br />
+- <strong>EML 是成本瓶頸</strong>：800G 模組中雷射佔 ASP 的 78-89%，1.6T EML 方案中雷射佔 43-53%。200G EML 供不應求導致價格持續上漲，是 800G/1.6T 模組成本的最大壓力源。<br />
+- <strong>CW Laser + 矽光子是破局方案</strong>：同等規格下，雷射成本僅 EML 方案的 1/10-1/20。華星光 2025 年 CW Laser 出貨量年增 4 倍，2026 年持續倍增。<br />
+- <strong>VCSEL 在短距離仍具優勢</strong>：低單通道成本、低功耗，適用於機櫃內互連（&lt;300m），200G 量產時程明確。</p>
+<p><strong>資料來源：</strong><br />
+1. PhotonCap (2026-04)：The Silicon Photonics Light Source — CW vs EML cost analysis<br />
+2. ChipStrat (2026-04)：Lumentum and the Laser Bottleneck — EML supply constraints<br />
+3. C-Light (2026-05)：AI Demand Ignites the Optical Transceiver Module Market<br />
+4. Verified Market Research (2026-03)：EML Laser Chip Market Report<br />
+5. IndexBox (2026-04)：Asia CW DFB Laser Chip Market Analysis</p>
+<hr />
+<h3>4. 台灣供應鏈利潤空間分析</h3>
+<h4>4.1 主要台廠 2025-2026 財務與 CPO 進度</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">公司</th>
+<th style="text-align: left;">代號</th>
+<th style="text-align: left;">2025 營收 (NT$)</th>
+<th style="text-align: left;">2025 毛利率</th>
+<th style="text-align: left;">2026E 營收 (NT$)</th>
+<th style="text-align: left;">CPO/矽光子相關產品佔比</th>
+<th style="text-align: left;">關鍵進展</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>光聖</strong></td>
+<td style="text-align: left;">6442</td>
+<td style="text-align: left;">105.3 億 (+64.3%)</td>
+<td style="text-align: left;"><strong>57.74%</strong> (創新高)</td>
+<td style="text-align: left;">188.32 億 (+78.8%)</td>
+<td style="text-align: left;">~80% 光通訊產品</td>
+<td style="text-align: left;">菲律賓廠 2025/7 投產、美系 CSP AI 伺服器需求強勁</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>聯亞</strong></td>
+<td style="text-align: left;">3081</td>
+<td style="text-align: left;">~44.9 億 (預估)</td>
+<td style="text-align: left;">~42%</td>
+<td style="text-align: left;">44.91 億 (+~30%)</td>
+<td style="text-align: left;"><strong>75%</strong> 矽光子產品</td>
+<td style="text-align: left;">CW Laser 因 SiPh 需求放量、2026 Q2 新增美系大型 CSP 客戶</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>上詮</strong></td>
+<td style="text-align: left;">3362</td>
+<td style="text-align: left;">~10.5 億 (預估)</td>
+<td style="text-align: left;">~25%</td>
+<td style="text-align: left;">~17.5 億資本支出規劃</td>
+<td style="text-align: left;">CPO FAU 產品</td>
+<td style="text-align: left;">台積電 COUPE 生態系、1.6T 2026 H2 驗證、3.2T 2027</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>華星光</strong></td>
+<td style="text-align: left;">4979</td>
+<td style="text-align: left;">~58.9-70.3 億 (預估)</td>
+<td style="text-align: left;">~45%</td>
+<td style="text-align: left;">58.86-70.25 億 (預估)</td>
+<td style="text-align: left;">CPO ELS 產品</td>
+<td style="text-align: left;">CW Laser 出貨量年增 4 倍、2026 產能倍增</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>全新光電</strong></td>
+<td style="text-align: left;">2455</td>
+<td style="text-align: left;">33.8 億 (+4.29%)</td>
+<td style="text-align: left;">~36% (下滑)</td>
+<td style="text-align: left;">~40-42 億 (+19-25%)</td>
+<td style="text-align: left;">~30% 光電子營收</td>
+<td style="text-align: left;">800G PD 三位數成長、1.6T PD 已完成驗證</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>眾達-KY</strong></td>
+<td style="text-align: left;">4977</td>
+<td style="text-align: left;">~8.5 億 (預估)</td>
+<td style="text-align: left;">~35%</td>
+<td style="text-align: left;">EPS +~10% (預估)</td>
+<td style="text-align: left;">CPO 雷射光學模組</td>
+<td style="text-align: left;">博通獨家供應商、51.2T CPO 方案、2026 快速量產</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>波若威</strong></td>
+<td style="text-align: left;">3163</td>
+<td style="text-align: left;">~高毛利水準</td>
+<td style="text-align: left;">高毛利 (評分 65.52%)</td>
+<td style="text-align: left;">N/A（高毛利確定）</td>
+<td style="text-align: left;">MPO+FAU 光通訊模組</td>
+<td style="text-align: left;">已進入 NVIDIA 生態系、800G/1.6T 升級週期</td>
+</tr>
+</tbody>
+</table>
+<h4>4.2 利潤空間結構分析</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">供應鏈環節</th>
+<th style="text-align: left;">代表台廠</th>
+<th style="text-align: left;">毛利率水準</th>
+<th style="text-align: left;">利潤來源</th>
+<th style="text-align: left;">可持續性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>高階被動元件</strong></td>
+<td style="text-align: left;">光聖 (6442)、上詮 (3362)</td>
+<td style="text-align: left;"><strong>50-58%</strong>（創新高）</td>
+<td style="text-align: left;">高芯數光纜、FAU 光纖陣列、CPO 整合</td>
+<td style="text-align: left;"><strong>高</strong>（去中化+AI 需求雙重驅動）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>雷射晶粒/封裝</strong></td>
+<td style="text-align: left;">華星光 (4979)、全新 (2455)</td>
+<td style="text-align: left;"><strong>35-45%</strong></td>
+<td style="text-align: left;">CW Laser 晶粒、PD 產品、CPO ELS</td>
+<td style="text-align: left;"><strong>中高</strong>（取決於 CW Laser 替代 EML 進度）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>光學模組封裝</strong></td>
+<td style="text-align: left;">眾達-KY (4977)、波若威 (3163)</td>
+<td style="text-align: left;"><strong>30-40%</strong></td>
+<td style="text-align: left;">CPO 雷射光學封裝、MPO 連接器</td>
+<td style="text-align: left;"><strong>中</strong>（取決於博通/NVIDIA 客戶認證）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>主動晶片 (DSP/EML)</strong></td>
+<td style="text-align: left;">台廠參與度低</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">由美日廠商掌控（Broadcom、Marvell、Lumentum、Coherent）</td>
+<td style="text-align: left;">—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心結論：</strong><br />
+- 台灣在<strong>高階被動元件和封裝環節利潤最高</strong>（光聖 57.74%、聯亞 ~42%），主動晶片（DSP/EML）仍由美日廠商完全掌控<br />
+- 去中化效應推升台灣台廠的毛利率空間約 <strong>8-12 個百分點</strong>（若無去中化、台廠需與中國廠商價格競爭）<br />
+- 2026-2028 年是台灣光通訊供應鏈利潤黃金期：CPO 量產+AI 需求+去中化三重驅動</p>
+<p><strong>資料來源：</strong><br />
+1. BigGo 財經 (2026-03)：光聖 6442 2025 年營收 105.3 億、毛利率 57.74%<br />
+2. Cnyes (2026-03)：光聖 2026 年營收挑戰 188.32 億<br />
+3. CMoney (2026-04)：聯亞 3081 2026E EPS 17.44 元、Q4 營收創高<br />
+4. Digitimes (2026-04)：上詮 3362 CPO FAU 產品時程、資本支出 17.5 億<br />
+5. CMoney (2026-04)：華星光 4979 2026E 營收 58.86-70.25 億、CW Laser 出貨量年增 4 倍</p>
+<hr />
+<h2>第二部分：US-China 去中化效應分析</h2>
+<h3>📋 執行摘要</h3>
+<p>中國在光模組組裝環節佔全球約 50-60% 產量（Innolight、Eoptolink 佔 NVIDIA 800G 約 60%），但在核心晶片（DSP、EML、InP 基板）自給率僅 30-40%。2025 年 2 月中國對 InP 基板實施出口管制後，全球 InP 價格飆升近 200%，供需缺口超過 70%。台灣供應鏈因「去中化」紅利，光聖 90%+ 營收來自歐美、毛利率創 57.74%，預估若無去中化效應，台廠毛利率可能下降 8-12 個百分點。歐盟網路安全法修訂、美國 AI 供應鏈本土化加速，預計此紅利將持續至 2028-2030 年。中國自給率目標 2030 年達 80%，但核心晶片突破仍需 5-7 年。</p>
+<hr />
+<h3>1. InP 基板出口管制分析</h3>
+<h4>1.1 管制時間線與影響範圍</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">時間</th>
+<th style="text-align: left;">事件</th>
+<th style="text-align: left;">影響</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>2025/02</strong></td>
+<td style="text-align: left;">中國對 InP 基板實施出口管制（正式生效）</td>
+<td style="text-align: left;">需商務部出口許可證，增加行政障礙</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2025 H2</strong></td>
+<td style="text-align: left;">AXT（全球最大 InP 基板供應商，中國子公司北京同美晶體）獲准恢復部分出貨</td>
+<td style="text-align: left;">但 2026 Q2 營收預測仍取決於額外許可</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2026 Q1-Q2</strong></td>
+<td style="text-align: left;">全球 InP 供需缺口 &gt;70%、價格飆升 200%+</td>
+<td style="text-align: left;">台灣光通訊供應鏈面臨基板短缺風險</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2026/04</strong></td>
+<td style="text-align: left;">中國工業與供應鏈安全法規生效（反制外國長臂管轄）</td>
+<td style="text-align: left;">跨國企業合規衝突加劇、供應鏈透明度降低</td>
+</tr>
+</tbody>
+</table>
+<h4>1.2 全球 InP 供需失衡</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指標</th>
+<th style="text-align: left;">數值 (2026)</th>
+<th style="text-align: left;">備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>全球有效產能</strong></td>
+<td style="text-align: left;">60-75 萬片/年</td>
+<td style="text-align: left;">Sumitomo (日) + AXT (美, 中國子公司) + JX Nippon (日)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>全球需求</strong></td>
+<td style="text-align: left;">260-300 萬片/年</td>
+<td style="text-align: left;">AI 資料中心 + 800G/1.6T 光模組驅動</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>供需缺口</strong></td>
+<td style="text-align: left;"><strong>&gt;70%</strong></td>
+<td style="text-align: left;">嚴重短缺，價格持續飆升</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2 吋晶圓價格</strong></td>
+<td style="text-align: left;">$800 → $2,300-2,500（+200%）</td>
+<td style="text-align: left;">2025 初至 2026/4</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>6 吋晶圓價格</strong></td>
+<td style="text-align: left;">漲幅 &gt;250%</td>
+<td style="text-align: left;">高端應用（800G/1.6T）需求更強</td>
+</tr>
+</tbody>
+</table>
+<h4>1.3 受惠台廠與風險等級</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">台廠</th>
+<th style="text-align: left;">代號</th>
+<th style="text-align: left;">受惠項目</th>
+<th style="text-align: left;">受益程度</th>
+<th style="text-align: left;">風險等級</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>光聖</strong></td>
+<td style="text-align: left;">6442</td>
+<td style="text-align: left;">InP 雷射晶片、800G/1.6T 光模組</td>
+<td style="text-align: left;"><strong>極高</strong>（90%+ 營收來自歐美、去中化最大受益者）</td>
+<td style="text-align: left;">低（全球多點佈局：台灣+中國寧波+菲律賓）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>聯亞</strong></td>
+<td style="text-align: left;">3081</td>
+<td style="text-align: left;">CW Laser、矽光子產品</td>
+<td style="text-align: left;"><strong>高</strong>（2026 新增美系大型 CSP 客戶、CW Laser 因矽光子需求放量）</td>
+<td style="text-align: left;">中（InP 基板供應仍受管制影響）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>華星光</strong></td>
+<td style="text-align: left;">4979</td>
+<td style="text-align: left;">CW Laser 晶粒、CPO ELS</td>
+<td style="text-align: left;"><strong>高</strong>（2026 產能倍增、已進入 NVIDIA 生態系）</td>
+<td style="text-align: left;">中低（CW Laser 替代 EML 趨勢有利）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>環宇-KY</strong></td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">InP 基板第二/三供應來源</td>
+<td style="text-align: left;"><strong>中高</strong>（德日替代供應管道建立中）</td>
+<td style="text-align: left;">低</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心結論：</strong> InP 基板出口管制在短期內推升全球價格、加劇供需失衡，但長期來看反而加速了台灣供應鏈的「去中化」進程。台廠透過全球多點佈局（菲律賓、馬來西亞）和德日第二供應來源，逐步降低對中國基板的依賴。</p>
+<p><strong>資料來源：</strong><br />
+1. Fastmarkets (2026-03)：China's Immediate Export Control on Critical Metals<br />
+2. Semiconductor Today (2026-03)：AXT InP substrate supply constraints<br />
+3. Digitimes (2026-04)：China Export Restrictions on Optical Communications Materials Wafer<br />
+4. Digitimes (2026-05)：Compound Semiconductor Capacity, Revenue, Shipments 2026<br />
+5. Taiwan Times (2026-05)：Taiwan and the Global Semiconductor Supply Chain</p>
+<hr />
+<h3>2. 光聖的「去中化紅利」量化</h3>
+<h4>2.1 光聖去中化策略全景</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">策略維度</th>
+<th style="text-align: left;">具體措施</th>
+<th style="text-align: left;">成效</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>市場聚焦</strong></td>
+<td style="text-align: left;">90%+ 營收來自歐美市場、主動退出中國低毛利 FTTH 市場</td>
+<td style="text-align: left;">極低中國依賴度</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>產品組合</strong></td>
+<td style="text-align: left;">光通訊產品佔比從 2024 年 65% → 2025 年 <strong>80%</strong></td>
+<td style="text-align: left;">高毛利產品比重持續提升</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>全球佈局</strong></td>
+<td style="text-align: left;">台灣（運籌+研發）+ 中國寧波 + 菲律賓（2025/7 投產）</td>
+<td style="text-align: left;">多點韌性佈局、降低單一地區風險</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>關稅應對</strong></td>
+<td style="text-align: left;">與美系大廠達成協議、多以 FOB 條件出貨</td>
+<td style="text-align: left;">關稅影響有限</td>
+</tr>
+</tbody>
+</table>
+<h4>2.2 去中化紅利量化估算</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指標</th>
+<th style="text-align: left;">實際數值 (2025)</th>
+<th style="text-align: left;">若無去中化估計</th>
+<th style="text-align: left;">紅利貢獻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>2025 營收</strong></td>
+<td style="text-align: left;">105.3 億 NT$ (+64.3%)</td>
+<td style="text-align: left;">~80-90 億 NT$（假設無去中化訂單）</td>
+<td style="text-align: left;"><strong>+15-25 億 NT$</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2025 毛利率</strong></td>
+<td style="text-align: left;"><strong>57.74%</strong> (創新高)</td>
+<td style="text-align: left;">~46-50%（若需與中國廠商價格競爭）</td>
+<td style="text-align: left;"><strong>+8-12 個百分點</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2026E 營收</strong></td>
+<td style="text-align: left;">188.32 億 NT$ (預估)</td>
+<td style="text-align: left;">~140-160 億 NT$（保守估計）</td>
+<td style="text-align: left;"><strong>+28-48 億 NT$</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2026E EPS</strong></td>
+<td style="text-align: left;">&gt;40 元 (預估)</td>
+<td style="text-align: left;">~28-35 元（若無去中化紅利）</td>
+<td style="text-align: left;"><strong>+5-12 元</strong></td>
+</tr>
+</tbody>
+</table>
+<h4>2.3 歐盟政策與美國 AI 供應鏈本土化</h4>
+<ul>
+<li><strong>歐盟網路安全法修訂草案</strong>：將高風險供應商設備（解讀為中國廠商）從 18 個關鍵領域移除，有利台灣供應商</li>
+<li><strong>美國 AI 供應鏈本土化</strong>：CSP（Microsoft、Google、Amazon、Meta）加速將光通訊供應鏈移出中國</li>
+<li><strong>紅利可持續性</strong>：歐盟政策持續、美國 AI 供應鏈本土化加速，預估此紅利至少持續至 <strong>2028-2030 年</strong></li>
+</ul>
+<p><strong>核心結論：</strong> 光聖的去中化紅利量化貢獻約為毛利率提升 8-12 個百分點、2026 年額外營收約 28-48 億 NT$。此優勢在可預見的未來（2028-2030）具有高度持續性，因為地緣政治趨勢不會短期逆轉。</p>
+<p><strong>資料來源：</strong><br />
+1. BigGo 財經 (2026-03)：光聖 6442 去中化策略與全球多點佈局<br />
+2. UDN 聯合新聞網 (2026-03)：光聖 2025 年營收 105.3 億、毛利率 57.74%<br />
+3. Cnyes (2026-03)：光聖 2026 年營收挑戰 188.32 億、訂單能見度至 Q3</p>
+<hr />
+<h3>3. 中國光通訊自給率分析</h3>
+<h4>3.1 全球光模組供應格局 (2026)</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指標</th>
+<th style="text-align: left;">數值 (2026)</th>
+<th style="text-align: left;">備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>中國佔全球光模組產量</strong></td>
+<td style="text-align: left;"><strong>50-60%</strong></td>
+<td style="text-align: left;">800G/1.6T AI 需求驅動</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>中國廠商佔 NVIDIA 800G 供應</strong></td>
+<td style="text-align: left;">~60% (Innolight + Eoptolink)</td>
+<td style="text-align: left;">全球 Top 10 光模組廠商中 5 家為中國企業</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>中國光網路設備市場規模</strong></td>
+<td style="text-align: left;">$28-32B (2026)</td>
+<td style="text-align: left;">可插拔光模組佔 40-45%</td>
+</tr>
+</tbody>
+</table>
+<h4>3.2 核心晶片自給率細分</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">技術環節</th>
+<th style="text-align: left;">中國自給率 (2026)</th>
+<th style="text-align: left;">依賴進口程度</th>
+<th style="text-align: left;">主要進口來源</th>
+<th style="text-align: left;">突破時程預估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>光模組組裝</strong></td>
+<td style="text-align: left;">~80-90%</td>
+<td style="text-align: left;">低（已高度自主）</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">已達成</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>矽光子晶片</strong></td>
+<td style="text-align: left;">~60-80%（部分公司）</td>
+<td style="text-align: left;">中低</td>
+<td style="text-align: left;">台積電 COUPE、Tower Semi</td>
+<td style="text-align: left;">2027-2028 年逐步提升</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DSP (數位信號處理器)</strong></td>
+<td style="text-align: left;">~15-25%</td>
+<td style="text-align: left;"><strong>極高</strong></td>
+<td style="text-align: left;">Broadcom、Marvell (美)</td>
+<td style="text-align: left;">2030+（5nm-class DSP 開發中）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>EML 雷射晶片</strong></td>
+<td style="text-align: left;">~10-20%</td>
+<td style="text-align: left;"><strong>極高</strong></td>
+<td style="text-align: left;">Lumentum、Coherent (美)</td>
+<td style="text-align: left;">2028-2030（核心瓶頸）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>InP 基板</strong></td>
+<td style="text-align: left;">~5-10%</td>
+<td style="text-align: left;"><strong>極高</strong></td>
+<td style="text-align: left;">Sumitomo (日)、AXT (美)</td>
+<td style="text-align: left;">2030+（受出口管制影響）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>WSS (波長選擇開關)</strong></td>
+<td style="text-align: left;">~20-30%</td>
+<td style="text-align: left;">高</td>
+<td style="text-align: left;">Coherent、Ciena (美)</td>
+<td style="text-align: left;">2028-2030</td>
+</tr>
+</tbody>
+</table>
+<h4>3.3 全球晶片缺口與中國半導體自給目標</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指標</th>
+<th style="text-align: left;">數值 (2026)</th>
+<th style="text-align: left;">備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>全球光學晶片缺口</strong></td>
+<td style="text-align: left;">25-30%</td>
+<td style="text-align: left;">預計 2027 年前無法完全解決</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>中國半導體自給率目標</strong></td>
+<td style="text-align: left;">2030 年達 <strong>80%</strong> (2024 年約 33%)</td>
+<td style="text-align: left;">「中國製造 2025」框架下加速推進</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CPO 領域中國進展</strong></td>
+<td style="text-align: left;">HC Semitek、上海新視微電子、源鑫光電積極開發</td>
+<td style="text-align: left;">大規模商業化預計 <strong>2028 H2</strong></td>
+</tr>
+</tbody>
+</table>
+<h4>3.4 中國自給率突破關鍵節點</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">技術環節</th>
+<th style="text-align: left;">當前瓶頸</th>
+<th style="text-align: left;">突破路徑</th>
+<th style="text-align: left;">預估達成時程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>DSP</strong></td>
+<td style="text-align: left;">5nm-class 製程限制、IP 授權不足</td>
+<td style="text-align: left;">自主開發 5nm DSP、RISC-V 架構整合</td>
+<td style="text-align: left;">2030+</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>EML</strong></td>
+<td style="text-align: left;">InP 基板短缺、磊晶技術落後</td>
+<td style="text-align: left;">本土 InP 產能擴建 + 磊晶技術突破</td>
+<td style="text-align: left;">2028-2030</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>InP 基板</strong></td>
+<td style="text-align: left;">出口管制、產能不足</td>
+<td style="text-align: left;">本土產能建設（但受出口管制反制）</td>
+<td style="text-align: left;">2030+</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CPO</strong></td>
+<td style="text-align: left;">封裝技術、異質整合能力不足</td>
+<td style="text-align: left;">HC Semitek + 上海新視微電子合作開發</td>
+<td style="text-align: left;">2028 H2 大規模商業化</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心結論：</strong> 中國在光模組組裝環節已高度自主（佔全球 50-60%），但在核心晶片（DSP、EML、InP 基板）自給率仍低於 30%。全球光學晶片缺口 25-30%，預計 2027 年前無法解決。中國半導體自給率目標 2030 年達 80%，但核心晶片突破仍需 5-7 年。這為台灣供應鏈提供了結構性的時間窗口。</p>
+<p><strong>資料來源：</strong><br />
+1. IndexBox (2026-04)：China Optical Network Equipment Market Analysis<br />
+2. MShine Optics (2026-05)：Analysis and Forecast of the Optical Module Market in 2026<br />
+3. PhotonCap (2026-05)：Chinese Optical Modules — 7 of Top 10<br />
+4. Global Semi Research (2026-05)：China's Opening in Optical Chips</p>
+<hr />
+<h3>4. 台灣被動受惠的量化</h3>
+<h4>4.1 台廠因去中化獲得的額外訂單規模估測</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">台廠</th>
+<th style="text-align: left;">代號</th>
+<th style="text-align: left;">2026E 營收 (NT$)</th>
+<th style="text-align: left;">年增率</th>
+<th style="text-align: left;">去中化貢獻估算</th>
+<th style="text-align: left;">受益持續期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>光聖</strong></td>
+<td style="text-align: left;">6442</td>
+<td style="text-align: left;">~188.32 億 (預估)</td>
+<td style="text-align: left;">+78.8%</td>
+<td style="text-align: left;"><strong>極高</strong>（90%+ 歐美營收、毛利率 +8-12pp）</td>
+<td style="text-align: left;"><strong>短期-中期</strong>（2026-2030）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>聯亞</strong></td>
+<td style="text-align: left;">3081</td>
+<td style="text-align: left;">~44.91 億 (預估)</td>
+<td style="text-align: left;">+~30%</td>
+<td style="text-align: left;"><strong>高</strong>（2026 新增美系大型 CSP、矽光子佔比 75%）</td>
+<td style="text-align: left;"><strong>短期-中期</strong>（2026-2028）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>上詮</strong></td>
+<td style="text-align: left;">3362</td>
+<td style="text-align: left;">~17.5 億 (預估)</td>
+<td style="text-align: left;">+~67%</td>
+<td style="text-align: left;"><strong>中高</strong>（CPO FAU 2026 H2 量產、NVIDIA CPO 訂單 2028 年佔 80%）</td>
+<td style="text-align: left;"><strong>中期</strong>（2027-2030）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>華星光</strong></td>
+<td style="text-align: left;">4979</td>
+<td style="text-align: left;">~58.86-70.25 億 (預估)</td>
+<td style="text-align: left;">+~30%</td>
+<td style="text-align: left;"><strong>高</strong>（CW Laser 出貨量年增 4 倍、2026 產能倍增）</td>
+<td style="text-align: left;"><strong>短期-中期</strong>（2026-2028）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>全新光電</strong></td>
+<td style="text-align: left;">2455</td>
+<td style="text-align: left;">~40-42 億 (預估)</td>
+<td style="text-align: left;">+19-25%</td>
+<td style="text-align: left;"><strong>中</strong>（InP 基板供應風險、毛利率下滑至 ~36%）</td>
+<td style="text-align: left;"><strong>短期</strong>（2026-2027）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>眾達-KY</strong></td>
+<td style="text-align: left;">4977</td>
+<td style="text-align: left;">~8.5 億 (預估)</td>
+<td style="text-align: left;">+~10% EPS</td>
+<td style="text-align: left;"><strong>中高</strong>（博通獨家供應商、51.2T CPO 方案）</td>
+<td style="text-align: left;"><strong>中期</strong>（2027-2030）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>波若威</strong></td>
+<td style="text-align: left;">3163</td>
+<td style="text-align: left;">高毛利確定</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;"><strong>中高</strong>（已進入 NVIDIA 生態系、MPO+FAU）</td>
+<td style="text-align: left;"><strong>中期</strong>（2027-2030）</td>
+</tr>
+</tbody>
+</table>
+<h4>4.2 受益時程與持續性分析</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">時間框架</th>
+<th style="text-align: left;">受益最大台廠</th>
+<th style="text-align: left;">關鍵驅動因素</th>
+<th style="text-align: left;">風險/限制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>短期 (1-2 年)</strong></td>
+<td style="text-align: left;">光聖、聯亞、華星光</td>
+<td style="text-align: left;">AI 資料中心建設加速、800G/1.6T 升級週期、InP 基板短缺推升 CW Laser 替代</td>
+<td style="text-align: left;">InP 基板供應不確定、CSP 建置節奏波動</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>中期 (3-5 年)</strong></td>
+<td style="text-align: left;">上詮、眾達-KY、波若威</td>
+<td style="text-align: left;">CPO 大規模商用（台積電 COUPE 量產）、NVIDIA Rubin Ultra 放量、博通 51.2T CPO 方案</td>
+<td style="text-align: left;">CSP 資本支出調整、中國 CPO 技術突破（預估 2028 H2）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>長期 (5 年+)</strong></td>
+<td style="text-align: left;">全系列台廠</td>
+<td style="text-align: left;">CPO 成為資料中心標準配置、3.2T/6.4T 產品放量</td>
+<td style="text-align: left;">中國自給率達標（2030 年）、全球供應鏈重組完成</td>
+</tr>
+</tbody>
+</table>
+<h4>4.3 去中化紅利總量估算</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">指標</th>
+<th style="text-align: left;">2026E 總計 (台灣光通訊供應鏈)</th>
+<th style="text-align: left;">備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>去中化額外營收</strong></td>
+<td style="text-align: left;">約 150-200 億 NT$（主要來自光聖+聯亞+華星光）</td>
+<td style="text-align: left;">若無去中化、台廠需與中國廠商價格競爭</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>去中化額外毛利貢獻</strong></td>
+<td style="text-align: left;">約 12-25 個百分點毛利率提升（主要台廠加權平均）</td>
+<td style="text-align: left;">結構性高毛利紅利</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>紅利持續期</strong></td>
+<td style="text-align: left;">預估至 2028-2030 年</td>
+<td style="text-align: left;">取決於中國自給率突破速度和地緣政治趨勢</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心結論：</strong><br />
+1. <strong>短期（2026-2027）</strong>：光聖、聯亞、華星光是去中化最大受益者，主要來自 AI 資料中心建設和 800G/1.6T 升級週期<br />
+2. <strong>中期（2027-2030）</strong>：上詮、眾達-KY、波若威因 CPO 大規模商用而受益，台積電 COUPE 量產和 NVIDIA Rubin Ultra 放量是關鍵驅動<br />
+3. <strong>長期（2030+）</strong>：取決於中國自給率突破速度和全球供應鏈重組完成程度，台灣供應鏈需持續創新以維持競爭優勢</p>
+<p><strong>資料來源：</strong><br />
+1. CMoney (2026-04)：聯亞 3081、上詮 3362、華星光 4979 2026E 營收與 CPO 進度<br />
+2. BigGo 財經 (2026-03)：光聖 6442 去中化策略與財務數據<br />
+3. Digitimes (2026-04)：CPO 六巨頭深度報告、台積電 COUPE 矽光子平台<br />
+4. Cnyes (2026-01)：矽光子族群漲停分析、眾達-KY 動態</p>
+<hr />
+<h2>📊 總結與投資建議</h2>
+<h3>核心發現總表</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">分析維度</th>
+<th style="text-align: left;">關鍵結論</th>
+<th style="text-align: left;">影響程度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>TCO (CPO vs Pluggable)</strong></td>
+<td style="text-align: left;">CPO 5 年 TCO 節省 15-20%，功耗節省 65-73%</td>
+<td style="text-align: left;">⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>矽光子 vs InP</strong></td>
+<td style="text-align: left;">矽光子在高頻寬具成本優勢，InP 受供需失衡價格飆升 200%+</td>
+<td style="text-align: left;">⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>雷射元件成本</strong></td>
+<td style="text-align: left;">EML 是最大瓶頸（800G 模組佔 ASP 78-89%），CW Laser + SiPh 是破局方案</td>
+<td style="text-align: left;">⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>台灣供應鏈利潤</strong></td>
+<td style="text-align: left;">光聖毛利率創 57.74%、去中化貢獻 +8-12pp 毛利率</td>
+<td style="text-align: left;">⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>中國自給率</strong></td>
+<td style="text-align: left;">模組組裝 50-60% 全球產量，但核心晶片自給率 &lt;30%，缺口 25-30%</td>
+<td style="text-align: left;">⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>去中化紅利持續性</strong></td>
+<td style="text-align: left;">預估至 2028-2030 年，取決於中國技術突破速度</td>
+<td style="text-align: left;">⭐⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<h3>投資建議排序（2026-2028）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">優先級</th>
+<th style="text-align: left;">台廠</th>
+<th style="text-align: left;">代號</th>
+<th style="text-align: left;">核心理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>🥇 首選</strong></td>
+<td style="text-align: left;">光聖</td>
+<td style="text-align: left;">6442</td>
+<td style="text-align: left;">去中化最大受益者、毛利率 57.74% 創新高、90%+ 歐美營收</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>🥈 次選</strong></td>
+<td style="text-align: left;">聯亞</td>
+<td style="text-align: left;">3081</td>
+<td style="text-align: left;">CW Laser 因 SiPh 需求放量、2026 新增美系大型 CSP 客戶</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>🥉 三選</strong></td>
+<td style="text-align: left;">華星光</td>
+<td style="text-align: left;">4979</td>
+<td style="text-align: left;">CW Laser 出貨量年增 4 倍、2026 產能倍增、CPO ELS 供應鏈</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>📈 潛力</strong></td>
+<td style="text-align: left;">上詮</td>
+<td style="text-align: left;">3362</td>
+<td style="text-align: left;">CPO FAU 2026 H2 量產、台積電 COUPE 生態系、NVIDIA CPO 訂單 2028 年佔 80%</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>📈 潛力</strong></td>
+<td style="text-align: left;">眾達-KY</td>
+<td style="text-align: left;">4977</td>
+<td style="text-align: left;">博通獨家供應商、51.2T CPO 方案、2026 快速量產</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>研究日期：</strong> 2026-05-13<br />
+<strong>研究方法：</strong> web_search (Google/Bing) + tavily_extract 多源交叉驗證 + 知識庫既有資料整合<br />
+<strong>資料來源彙整：</strong> NVIDIA 官方、Counterpoint Research、SemiAnalysis、Corning、Intel Market Research、Fortune Business Insights、PhotonCap、ChipStrat、C-Light、BigGo 財經、UDN 聯合新聞網、Cnyes、CMoney、Digitimes、IndexBox、MShine Optics、Photon Delta</p>
+<p><strong>免責聲明：</strong> 本報告基於公開資料與市場分析，不構成投資建議。實際投資決策請參考專業財務顧問意見。</p></div>
+</div></main>
+</div>
+<script src="/search.js?v=1782118672"></script>
+<script src="/content.js?v=1782124909"></script>
+</body>
+</html>

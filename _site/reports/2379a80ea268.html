@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>玻璃基板產業總覽 — Deep32Q 系統化投資研究知識庫</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/style.css?v=1782120989">
+<meta name="description" content="Deep32Q 系統化投資研究知識庫 — 每日報告、產業洞察、32Q 審計報告">
+</head>
+<body>
+<div id="app">
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Deep32Q</a>
+      <div id="search-wrap" class="nav-search">
+        <input type="text" id="search-input" placeholder="搜尋知識庫（全文）" aria-label="搜尋知識庫" data-scope="all">
+        <div id="search-results" class="search-results hidden"></div>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="nav-link active" data-nav="daily">每日報告</a>
+        <a href="/?p=industries" class="nav-link" data-nav="industries">產業洞察</a>
+        <a href="/?p=audit" class="nav-link" data-nav="audit">審計報告</a>
+        <a href="/admin/" class="nav-link" data-nav="admin">管理</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="切換深色模式" title="切換深色模式">🌙</button>
+      </div>
+    </div>
+  </nav>
+  <main id="main-content"><div class="report-content-page">
+<div class="breadcrumb"><a href="/">← 回首頁</a> / Deep32Q知識庫/產業洞察/玻璃基板研究/玻璃基板_產業總覽.md</div>
+<div class="report-content"><h1>玻璃基板產業總覽</h1>
+<p><strong>研究日期</strong>：2026-05-05<br />
+<strong>研究範圍</strong>：技術原理、市場規模、競爭格局</p>
+<hr />
+<h2>一、GCS（Glass Core Substrate）與 TGV（Through Glass Via）技術原理</h2>
+<h3>1.1 什麼是玻璃基板？</h3>
+<p>玻璃基板（Glass Core Substrate / GCS）是以無鹼玻璃（Alkali-Free Glass）為基材的先進封裝載板。與傳統有機基板（如 ABF、BT 樹脂）不同，玻璃基板利用玻璃本身的物理特性——低熱膨脹係數（CTE）、超高平坦度、低介電常數（Dk）與低損耗角正切（Df）——來解決 AI/HPC 晶片日益嚴苛的封裝需求。</p>
+<h3>1.2 TGV（Through Glass Via）製程步驟</h3>
+<p>TGV 是玻璃基板的關鍵技術，透過玻璃基板建立垂直導電通道。製程分為以下步驟：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">步驟</th>
+<th>說明</th>
+<th>關鍵技術</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1. 鑽孔（Via Formation）</strong></td>
+<td>在玻璃上鑽出微孔</td>
+<td>超快雷射（飛秒雷射）、LIDE（雷射誘導深蝕刻）、乾式蝕刻（DRIE）</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2. 清潔與表面處理</strong></td>
+<td>去除碎屑、準備金屬化</td>
+<td>濕式清洗、等離子清潔</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3. 種子層沉積</strong></td>
+<td>在孔壁沉積導電種子層（銅）</td>
+<td>PVD 濺鍍，需翻面確保孔壁完整覆蓋</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4. 金屬化填充</strong></td>
+<td>電鍍銅填充孔洞</td>
+<td>電解電鍍，要求無空洞、低電阻</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5. 平坦化</strong></td>
+<td>CMP 拋光使表面平整</td>
+<td>化學機械拋光，暴露導電核心</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>6. RDL 圖案化</strong></td>
+<td>redistribution layer 光刻蝕刻</td>
+<td>半導體級光刻，支援 sub-2µm 線寬</td>
+</tr>
+</tbody>
+</table>
+<h3>1.3 玻璃基板的六大優勢</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>玻璃基板</th>
+<th>傳統有機基板（ABF/BT）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>平坦度</strong></td>
+<td>超高（nm 級），適合薄膜沉積</td>
+<td>較低，需額外拋光</td>
+</tr>
+<tr>
+<td><strong>耐熱性</strong></td>
+<td>250-400°C 低翹曲</td>
+<td>高溫下易變形、翹曲</td>
+</tr>
+<tr>
+<td><strong>CTE（熱膨脹係數）</strong></td>
+<td>3-7 ppm/°C（接近矽）</td>
+<td>15-17 ppm（與矽不匹配）</td>
+</tr>
+<tr>
+<td><strong>訊號損耗</strong></td>
+<td>極低 Dk（~5.5）、Df（~0.005）</td>
+<td>較高 Dk、Df，高頻損耗大</td>
+</tr>
+<tr>
+<td><strong>線寬能力</strong></td>
+<td>sub-2µm（1.5µm 以下）</td>
+<td>~2/2µm 為限</td>
+</tr>
+<tr>
+<td><strong>散熱</strong></td>
+<td>低（1-2 W/mK），需額外方案</td>
+<td>較佳，但高功率仍受限</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>二、全球市場規模預測</h2>
+<h3>2.1 各機構預測彙整</h3>
+<table>
+<thead>
+<tr>
+<th>研究機構</th>
+<th>市場定義</th>
+<th>2025 年規模</th>
+<th>預測年份/目標值</th>
+<th>CAGR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QY Research</td>
+<td>TGV 技術市場</td>
+<td>$159M（2025）</td>
+<td>$821M（2032）</td>
+<td>25.0%</td>
+</tr>
+<tr>
+<td>Intel Market Research</td>
+<td>TGV 玻璃基板市場</td>
+<td>$930M（2025）</td>
+<td>$1,554M（2034）</td>
+<td>8.9%</td>
+</tr>
+<tr>
+<td>Yole Group</td>
+<td>玻璃核心基板市場</td>
+<td>$218M（2025）</td>
+<td>$572M（2031）</td>
+<td>17.0%</td>
+</tr>
+<tr>
+<td>Mordor Intelligence</td>
+<td>玻璃基板整體市場</td>
+<td>$7,140M（2025）</td>
+<td>$9,010M（2031）</td>
+<td>4.0%</td>
+</tr>
+<tr>
+<td>Future Markets Inc.</td>
+<td>半導體用玻璃基板</td>
+<td>$1,227M（2025）</td>
+<td>$2,487M（2033）</td>
+<td>9.2%</td>
+</tr>
+<tr>
+<td>IDTechEx</td>
+<td>半導體用玻璃</td>
+<td>—</td>
+<td>$4,400M（2036）</td>
+<td>14.2%</td>
+</tr>
+<tr>
+<td>SNS Insider</td>
+<td>玻璃中介層市場</td>
+<td>$1,360M（2025）</td>
+<td>$2,700M（2033）</td>
+<td>9.0%</td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 關鍵市場洞察</h3>
+<ul>
+<li><strong>AI/HPC 為最大驅動力</strong>：玻璃基板在 AI 加速器與 HPC 晶片封裝中，可帶來約 <strong>40% 速度提升</strong>及 <strong>50% 功耗降低</strong>。</li>
+<li><strong>2036 年佔比</strong>：玻璃基板預計將佔先進封裝市場 <strong>20-30%</strong>。</li>
+<li><strong>商業化時程</strong>：2025-2026 年開始小量出貨，2027-2028 年進入大規模量產。</li>
+</ul>
+<hr />
+<h2>三、全球競爭格局</h2>
+<h3>3.1 國際大廠進度比較</h3>
+<table>
+<thead>
+<tr>
+<th>公司</th>
+<th>角色</th>
+<th>最新進展（2026年5月）</th>
+<th>量產目標</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Intel</strong></td>
+<td>領導者</td>
+<td>CES 2026 發布 Xeon 6+ Clearwater Forest，首款大規模量產玻璃基板處理器；NEPCON Japan 2026 展示厚芯玻璃基板 + EMIB</td>
+<td>2026-2030 廣泛應用；目標 2030 年每封裝一兆晶粒</td>
+</tr>
+<tr>
+<td><strong>TSMC</strong></td>
+<td>積極推進</td>
+<td>2026 年計畫建成迷你產線（CoPoS）；加速玻璃基板與 FOPLP 融合</td>
+<td>2028 年大規模量產</td>
+</tr>
+<tr>
+<td><strong>Samsung</strong></td>
+<td>試產階段</td>
+<td>Samsung Electro-Mechanics 2025 年建立試產線，11 月交付樣品；Samsung Display 專注玻璃中介層</td>
+<td>2027-2028 年量產；已向 Apple、Broadcom 供樣</td>
+</tr>
+<tr>
+<td><strong>AMD</strong></td>
+<td>加速採用</td>
+<td>已獲玻璃基板專利；計劃 2025-2026 年整合至高性能 SiP，與 NVIDIA 競爭</td>
+<td>2025-2026 年整合</td>
+</tr>
+<tr>
+<td><strong>NVIDIA</strong></td>
+<td>評估採用</td>
+<td>與 TSMC 合作開發 GPU 玻璃基板解決方案；目前優先使用現有 2.5D 封裝中的玻璃中介層</td>
+<td>待 TSMC 2025-2026 年供應</td>
+</tr>
+<tr>
+<td><strong>SKC / Absolics</strong></td>
+<td>材料供應商</td>
+<td>2025 年初量產；月產能從 5,000 張擴至 2026 年 20,000 張</td>
+<td>已量產，持續擴產</td>
+</tr>
+<tr>
+<td><strong>LG Innotek</strong></td>
+<td>封裝/模組</td>
+<td>玻璃基板工作組升級為獨立事業部；2026 年重新評估時程</td>
+<td>原目標 2027-2028，現延至 2030</td>
+</tr>
+<tr>
+<td><strong>AMD + AWS</strong></td>
+<td>聯合開發</td>
+<td>加速玻璃基板時程以競爭 NVIDIA</td>
+<td>2025-2026 整合</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 中國勢力</h3>
+<table>
+<thead>
+<tr>
+<th>公司</th>
+<th>進展</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>長電科技（JCET）</strong></td>
+<td>已成功整合玻璃核心基板至 1.6T 光模組和 CPO 方案</td>
+</tr>
+<tr>
+<td><strong>京東方（BOE）</strong></td>
+<td>8 吋試產線已轉向全尺寸面板生產，2026 年後量產</td>
+</tr>
+<tr>
+<td><strong>Visionox</strong></td>
+<td>投入 50 億人民幣（約 $700M）加速玻璃基板商業化，2025 下半年建立供應鏈</td>
+</tr>
+<tr>
+<td><strong>Rapidus</strong></td>
+<td>與 IBM/DNP 合作，計劃 2028 年量產</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>四、T-Glass（T-Type 玻纖布）供應短缺分析</h2>
+<h3>4.1 現況</h3>
+<ul>
+<li><strong>日東紡（Nittobo）壟斷</strong>：佔全球 T-Glass 約 <strong>90%</strong> 市場份額，NER-glass 佔 60-70%。</li>
+<li><strong>2026 年供需缺口</strong>：預估 T-Glass 供應缺口達 <strong>10%+</strong>，比 2025 年更嚴重。</li>
+<li><strong>價格上漲</strong>：日東紡 2025 年 8 月漲價 20%，預計 2026 年 4 月再漲 20-30%。</li>
+<li><strong>新產能時程</strong>：大量新增產能最早 2027 年中才能上線。</li>
+</ul>
+<h3>4.2 對載板產業的影響</h3>
+<ul>
+<li><strong>ABF 載板漲價</strong>：Goldman Sachs 預估從 2025 Q4 到 2026 Q4，非 NVIDIA 的 ABF 載板價格將上漲 5-10%。</li>
+<li><strong>BT 載板受衝擊</strong>：BT 基板用 T-Glass 可能面臨「雙位數百分比」的供應短缺。</li>
+<li><strong>優先權問題</strong>：AI 基礎設施客戶（NVIDIA、Microsoft、Google、Amazon）獲得優先配額，消費電子、手機、汽車電子受到排擠。</li>
+</ul>
+<h3>4.3 替代方案</h3>
+<table>
+<thead>
+<tr>
+<th>供應商</th>
+<th>狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>台玻（1802）</strong></td>
+<td>低 DK、低 CTE 電子級玻纖布已切入 NVIDIA GB200 供應鏈，2026 年高階產線擴產 40-50%</td>
+</tr>
+<tr>
+<td><strong>南亞塑膠</strong></td>
+<td>與日東紡合作 T-Type 玻纖布，目標 2027 年達到日東紡產能的 20%</td>
+</tr>
+<tr>
+<td><strong>菲利華（PhiChem）</strong></td>
+<td>2025 年推出 M9 級石英電子布，已通過 NVIDIA 認證</td>
+</tr>
+<tr>
+<td><strong>中國廠商</strong></td>
+<td>宏和科技、河南廣源等已量產低介電布，但高階 T-Glass 仍待突破</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>五、FOPLP 與玻璃基板的關聯</h2>
+<h3>5.1 FOPLP（Fan-Out Panel Level Packaging）</h3>
+<p>FOPLP 利用面板級封裝技術，以矩形玻璃面板取代傳統圓形矽晶圓，實現更高的整合密度和更低的單顆成本。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>FOPLP + 玻璃基板</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>面板尺寸</strong></td>
+<td>G3.5 級（620mm × 750mm），約為 300mm 晶圓的 7 倍</td>
+</tr>
+<tr>
+<td><strong>全球 FOPLP 市場</strong></td>
+<td>$3.8B（2025）→ $11.2B（2034）</td>
+</tr>
+<tr>
+<td><strong>台灣角色</strong></td>
+<td>日月光投控、景碩、群創、友達積極布局；經濟部推動 FOPLP 生態系</td>
+</tr>
+<tr>
+<td><strong>TSMC</strong></td>
+<td>CoPoS（Chip-on-Panel-on-Substrate）技術，2026 年建迷你產線</td>
+</tr>
+<tr>
+<td><strong>群創（Innolux）</strong></td>
+<td>全球最大 G3.5 FOPLP 面板，2025 年開始量產出貨</td>
+</tr>
+<tr>
+<td><strong>友達</strong></td>
+<td>利用面板製造經驗切入 FOPLP，與玻璃基板技術融合</td>
+</tr>
+</tbody>
+</table>
+<h3>5.2 中國面板廠轉型</h3>
+<ul>
+<li><strong>京東方（BOE）</strong>：8 吋試產線 → 全尺寸面板生產，2026 年後量產</li>
+<li><strong>Visionox</strong>：投入 50 億人民幣，2025 下半年建立材料與設備供應鏈</li>
+</ul>
+<hr />
+<h2>六、主要風險因素</h2>
+<table>
+<thead>
+<tr>
+<th>風險</th>
+<th>說明</th>
+<th>嚴重度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>量產延遲</strong></td>
+<td>多數廠商量產時程從 2027-2028 延至 2030（如 LG Innotek）</td>
+<td>⚠️⚠️⚠️</td>
+</tr>
+<tr>
+<td><strong>良率瓶頸</strong></td>
+<td>目前良率約 75-85%，成熟有機基板超過 95%；成本高出 30-50%</td>
+<td>⚠️⚠️⚠️</td>
+</tr>
+<tr>
+<td><strong>玻璃脆性</strong></td>
+<td>薄化至 100µm 以下極易破裂，製造線需特殊設備處理碎玻璃</td>
+<td>⚠️⚠️</td>
+</tr>
+<tr>
+<td><strong>散熱問題</strong></td>
+<td>玻璃導熱率僅 1-2 W/mK，高功率 (&gt;50W/封裝) 散熱困難</td>
+<td>⚠️⚠️</td>
+</tr>
+<tr>
+<td><strong>中國競爭</strong></td>
+<td>京東方、Visionox 以國家補貼加速商業化，可能壓低價格</td>
+<td>⚠️⚠️</td>
+</tr>
+<tr>
+<td><strong>ABF 反撲</strong></td>
+<td>ABF-GX 等新一代有機基板持續改進，可能延緩玻璃替代時程</td>
+<td>⚠️</td>
+</tr>
+<tr>
+<td><strong>T-Glass 短缺</strong></td>
+<td>2026 年供需缺口 10%+，影響所有載板產能</td>
+<td>⚠️⚠️</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>📚 資料來源</h2>
+<ol>
+<li>Yole Group (2026-05): Glass Core Substrates and Glass Interposers Market Report</li>
+<li>QY Research (2026-05): Through Glass Via (TGV) Technology Market Report</li>
+<li>Intel Market Research (2026-05): Glass Substrate TGV Market 2025-2034</li>
+<li>Mordor Intelligence (2026-05): Glass Substrate Market Report</li>
+<li>Future Markets Inc. (2026-05): Glass Substrates for Semiconductors Report</li>
+<li>IDTechEx (2026-05): Glass in Semiconductors Report</li>
+<li>SNS Insider (2026-05): Glass Interposers Market Report 8022</li>
+<li>TrendForce (2026-01~04): 多則產業新聞彙整</li>
+<li>Digitimes (2026-04): 玻璃基板供應鏈相關報導</li>
+<li>TechNews (2026-03): 群翊 2025 Q4 財報分析</li>
+<li>Cheetah News / China Times (2026-04): 台股玻璃基板概念股報導</li>
+<li>Tom's Hardware (2025-2026): T-Glass 短缺與玻璃基板技術分析</li>
+<li>FinancialContent / TokenRing (2026-01~02): 玻璃基板產業分析系列</li>
+<li>SemiEngineering (2025-2026): 玻璃基板技術進展</li>
+</ol></div>
+</div></main>
+</div>
+<script src="/search.js?v=1782118672"></script>
+<script src="/content.js?v=1782124909"></script>
+</body>
+</html>

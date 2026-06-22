@@ -1,0 +1,305 @@
+/**
+ * Deep32Q 內容路由器 v3
+ * SPA 路由 + 手風琴式展開
+ * 審計：股票 → 經營組/財務組 兩層 accordion
+ * 產業：預設摺疊，按最新報告日期排序
+ */
+(function() {
+    'use strict';
+
+    let routeMap = {};
+    let navData = {};
+
+    function init() {
+        Promise.all([
+            fetch('/route_map.json').then(r => r.json()),
+            fetch('/nav.json').then(r => r.json())
+        ]).then(([routes, nav]) => {
+            routeMap = routes;
+            navData = nav;
+            handleRoute();
+        }).catch(err => {
+            console.error('Failed to load navigation data:', err);
+        });
+
+        window.addEventListener('popstate', handleRoute);
+    }
+
+    function handleRoute() {
+        const params = new URLSearchParams(window.location.search);
+        const page = params.get('p') || 'home';
+        const file = params.get('f');
+
+        const mainEl = document.getElementById('main-content');
+        if (!mainEl) return;
+
+        document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+        const navMap = { 'home': 'daily', 'industries': 'industries', 'audit': 'audit', 'report': 'daily' };
+        const activeNav = navMap[page];
+        if (activeNav) {
+            const navEl = document.querySelector(`[data-nav="${activeNav}"]`);
+            if (navEl) navEl.classList.add('active');
+        }
+
+        mainEl.style.opacity = '0.4';
+        mainEl.style.transition = 'opacity 0.15s';
+
+        if (page === 'home') {
+            window.scrollTo(0, 0);
+            mainEl.style.opacity = '1';
+            bindDailyToggles();
+            return;
+        }
+
+        if (page === 'industries') {
+            renderIndustries(mainEl);
+            return;
+        }
+
+        if (page === 'audit') {
+            renderAudit(mainEl);
+            return;
+        }
+
+        window.location.href = '/';
+    }
+
+    /* ── 每日報告 ── */
+    function bindDailyToggles() {
+        document.querySelectorAll('.timeline-day-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const day = this.closest('.timeline-day');
+                if (day) day.classList.toggle('expanded');
+            });
+        });
+
+        document.querySelectorAll('.report-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const wasExpanded = this.classList.contains('expanded');
+                this.closest('.timeline-day').querySelectorAll('.report-header.expanded').forEach(h => {
+                    if (h !== this) h.classList.remove('expanded');
+                });
+                if (wasExpanded) {
+                    this.classList.remove('expanded');
+                } else {
+                    this.classList.add('expanded');
+                }
+            });
+        });
+    }
+
+    /* ── 產業洞察（從 navData 渲染 + 手風琴） ── */
+    function renderIndustries(container) {
+        let html = '<div class="page-container industries-page"><h1>產業洞察</h1>';
+
+        const industries = navData.industries || {};
+        const keys = Object.keys(industries);
+
+        if (keys.length === 0) {
+            html += '<div class="empty-state"><p>尚無產業洞察內容。</p></div>';
+        } else {
+            // Sort by latest report date (newest first)
+            const sorted = keys.sort((a, b) => {
+                const docsA = industries[a];
+                const docsB = industries[b];
+                const dateA = docsA.reduce((max, d) => d.date > max ? d.date : max, '');
+                const dateB = docsB.reduce((max, d) => d.date > max ? d.date : max, '');
+                return dateB.localeCompare(dateA);
+            });
+
+            for (const industry of sorted) {
+                const docs = industries[industry];
+                // Sort reports in each industry by date (newest first)
+                const sortedDocs = docs.slice().sort((a, b) => b.date.localeCompare(a.date));
+                html += `<div class="industry-section">`;
+                html += `<div class="industry-header" data-toggle="industry">`;
+                html += `<span class="industry-arrow">▼</span>`;
+                html += `<span class="industry-name">${industry}</span>`;
+                html += `<span class="industry-count">${sortedDocs.length} 份報告</span>`;
+                html += `</div>`;
+                html += `<div class="industry-body"><div class="industry-body-inner">`;
+                html += '<ul class="report-list">';
+                for (const doc of sortedDocs) {
+                    html += `<li class="report-item">`;
+                    html += `<a href="/?p=report&f=${encodeURIComponent(doc.route)}" class="report-link">${doc.title}</a>`;
+                    html += `<span class="report-date">${doc.date}</span>`;
+                    html += `</li>`;
+                }
+                html += '</ul></div></div></div>';
+            }
+        }
+
+        html += '</div>';
+        container.innerHTML = html;
+        container.style.opacity = '1';
+
+        // Bind toggles
+        container.querySelectorAll('[data-toggle="industry"]').forEach(header => {
+            header.addEventListener('click', function() {
+                const wasExpanded = this.classList.contains('expanded');
+                container.querySelectorAll('[data-toggle="industry"].expanded').forEach(h => {
+                    if (h !== this) h.classList.remove('expanded');
+                });
+                if (wasExpanded) {
+                    this.classList.remove('expanded');
+                } else {
+                    this.classList.add('expanded');
+                }
+            });
+        });
+        const first = container.querySelector('[data-toggle="industry"]');
+        if (first) first.classList.add('expanded');
+    }
+
+    /* ── 審計報告（從 navData 渲染 + 經營/財務兩層 accordion） ── */
+    function renderAudit(container) {
+        let html = '<div class="page-container audit-page"><h1>審計報告</h1>';
+        html += '<div class="audit-filter-wrap"><input type="text" id="audit-filter" placeholder="搜尋股票代碼或名稱…"></div>';
+        html += '<div class="audit-list" id="audit-list">';
+
+        const auditData = navData.audit || {};
+        const keys = Object.keys(auditData);
+
+        if (keys.length === 0) {
+            html += '<div class="empty-state"><p>尚無審計報告。</p></div>';
+        } else {
+            // Build stock groups: each stock has management & financial report arrays
+            const stocks = {};
+            for (const key of keys) {
+                const info = auditData[key];
+                const code = info.stock_code || '';
+                const company = key.replace(code, '').replace(/^[-_\s]+/, '').trim();
+                if (!stocks[code]) {
+                    stocks[code] = { code, company, latest_date: '00000000', management: [], financial: [] };
+                }
+                const reports = info.reports || [];
+                for (const r of reports) {
+                    const rDate = r.date || '99999999';
+                    if (rDate !== '99999999' && rDate > stocks[code].latest_date) stocks[code].latest_date = rDate;
+                    if (r.audit_type === '經營審計') {
+                        stocks[code].management.push(r);
+                    } else if (r.audit_type === '財務審計') {
+                        stocks[code].financial.push(r);
+                    }
+                }
+            }
+
+            // Sort stocks by latest report date (newest first)
+            const sortedStocks = Object.values(stocks).sort((a, b) => b.latest_date.localeCompare(a.latest_date));
+
+            for (const stock of sortedStocks) {
+                const total = stock.management.length + stock.financial.length;
+                const searchText = `${stock.code} ${stock.company}`;
+                html += `<div class="audit-stock-item" data-search="${searchText}">`;
+                html += `<div class="audit-stock-header" data-toggle="audit">`;
+                html += `<span class="audit-arrow">▼</span>`;
+                html += `<span class="audit-stock-code">${stock.code}</span>`;
+                html += `<span class="audit-stock-name">${stock.company}</span>`;
+                html += `<span class="audit-stock-count">${total} 題</span>`;
+                html += `</div>`;
+                html += `<div class="audit-stock-body">`;
+
+                // 經營組
+                const mgmt = stock.management.sort((a, b) => {
+                    // First by date (newest first), then by G number (G01 < G02)
+                    const dateCmp = (b.date || '99999999').localeCompare(a.date || '99999999');
+                    if (dateCmp !== 0) return dateCmp;
+                    const gA = (a.route || '').match(/G(\d+)/);
+                    const gB = (b.route || '').match(/G(\d+)/);
+                    return (gA ? parseInt(gA[1]) : 0) - (gB ? parseInt(gB[1]) : 0);
+                });
+                if (mgmt.length > 0) {
+                    html += `<div class="audit-type-section">`;
+                    html += `<div class="audit-type-header" data-toggle="audit-type">`;
+                    html += `<span class="audit-type-arrow">▶</span>`;
+                    html += `<span class="audit-type-label">經營組</span>`;
+                    html += `<span class="audit-type-count">${mgmt.length} 份</span>`;
+                    html += `</div>`;
+                    html += `<div class="audit-type-body"><ul class="audit-report-list">`;
+                    for (const r of mgmt) {
+                        html += `<li class="audit-report-item">`;
+                        html += `<a href="/?p=report&f=${encodeURIComponent(r.route)}" class="audit-report-link">${r.title}</a>`;
+                        html += `<span class="audit-report-date">${r.date}</span>`;
+                        html += `</li>`;
+                    }
+                    html += `</ul></div></div>`;
+                }
+
+                // 財務組
+                const fin = stock.financial.sort((a, b) => {
+                    // First by date (newest first), then by G number (G01 < G02)
+                    const dateCmp = (b.date || '99999999').localeCompare(a.date || '99999999');
+                    if (dateCmp !== 0) return dateCmp;
+                    const gA = (a.route || '').match(/G(\d+)/);
+                    const gB = (b.route || '').match(/G(\d+)/);
+                    return (gA ? parseInt(gA[1]) : 0) - (gB ? parseInt(gB[1]) : 0);
+                });
+                if (fin.length > 0) {
+                    html += `<div class="audit-type-section">`;
+                    html += `<div class="audit-type-header" data-toggle="audit-type">`;
+                    html += `<span class="audit-type-arrow">▶</span>`;
+                    html += `<span class="audit-type-label">財務組</span>`;
+                    html += `<span class="audit-type-count">${fin.length} 份</span>`;
+                    html += `</div>`;
+                    html += `<div class="audit-type-body"><ul class="audit-report-list">`;
+                    for (const r of fin) {
+                        html += `<li class="audit-report-item">`;
+                        html += `<a href="/?p=report&f=${encodeURIComponent(r.route)}" class="audit-report-link">${r.title}</a>`;
+                        html += `<span class="audit-report-date">${r.date}</span>`;
+                        html += `</li>`;
+                    }
+                    html += `</ul></div></div>`;
+                }
+
+                html += `</div></div>`;
+            }
+        }
+
+        html += '</div></div>';
+        container.innerHTML = html;
+        container.style.opacity = '1';
+
+        // 第一層：股票 toggle
+        container.querySelectorAll('[data-toggle="audit"]').forEach(header => {
+            header.addEventListener('click', function() {
+                const wasExpanded = this.classList.contains('expanded');
+                container.querySelectorAll('[data-toggle="audit"].expanded').forEach(h => {
+                    if (h !== this) h.classList.remove('expanded');
+                });
+                if (wasExpanded) {
+                    this.classList.remove('expanded');
+                } else {
+                    this.classList.add('expanded');
+                }
+            });
+        });
+
+        // 第二層：經營/財務組 toggle（獨立，不互相影響）
+        container.querySelectorAll('[data-toggle="audit-type"]').forEach(header => {
+            header.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.toggle('expanded');
+            });
+        });
+
+        // 搜尋過濾
+        const filter = document.getElementById('audit-filter');
+        if (filter) {
+            filter.addEventListener('input', function() {
+                const val = this.value.toLowerCase().trim();
+                const list = document.getElementById('audit-list');
+                if (!list) return;
+                list.querySelectorAll('.audit-stock-item').forEach(item => {
+                    const searchText = (item.getAttribute('data-search') || item.textContent).toLowerCase();
+                    item.style.display = val === '' || searchText.includes(val) ? '' : 'none';
+                });
+            });
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();

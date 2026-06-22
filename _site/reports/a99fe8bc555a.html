@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>玻璃基板技術路線圖 — Deep32Q 系統化投資研究知識庫</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/style.css?v=1782120989">
+<meta name="description" content="Deep32Q 系統化投資研究知識庫 — 每日報告、產業洞察、32Q 審計報告">
+</head>
+<body>
+<div id="app">
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Deep32Q</a>
+      <div id="search-wrap" class="nav-search">
+        <input type="text" id="search-input" placeholder="搜尋知識庫（全文）" aria-label="搜尋知識庫" data-scope="all">
+        <div id="search-results" class="search-results hidden"></div>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="nav-link active" data-nav="daily">每日報告</a>
+        <a href="/?p=industries" class="nav-link" data-nav="industries">產業洞察</a>
+        <a href="/?p=audit" class="nav-link" data-nav="audit">審計報告</a>
+        <a href="/admin/" class="nav-link" data-nav="admin">管理</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="切換深色模式" title="切換深色模式">🌙</button>
+      </div>
+    </div>
+  </nav>
+  <main id="main-content"><div class="report-content-page">
+<div class="breadcrumb"><a href="/">← 回首頁</a> / Deep32Q知識庫/產業洞察/玻璃基板研究/玻璃基板_技術路線圖.md</div>
+<div class="report-content"><h1>玻璃基板技術路線圖</h1>
+<p><strong>研究日期</strong>：2026-05-05<br />
+<strong>分析範圍</strong>：量產時程、技術瓶頸、各廠家進度對比</p>
+<hr />
+<h2>一、全球量產時間軸（2025-2036）</h2>
+<h3>1.1 各廠商量產時程總覽</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">時間區間</th>
+<th>階段</th>
+<th>主要參與者</th>
+<th>關鍵事件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>2025</strong></td>
+<td>技術驗證期</td>
+<td>Absolics、Intel、TSMC、Samsung</td>
+<td>樣品交付、試產線建立</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2026</strong></td>
+<td>小量出貨期</td>
+<td>Intel、TSMC、Samsung、AMD、Absolics</td>
+<td>Xeon 6+ 量產、CoPoS 迷你產線、AMD 整合</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2027-2028</strong></td>
+<td>大規模量產期</td>
+<td>Intel、TSMC、Samsung、AMD、LG Innotek</td>
+<td>各廠量產目標集中在此區間</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2028-2030</strong></td>
+<td>快速成長期</td>
+<td>全產業</td>
+<td>玻璃基板逐步取代有機基板在高端 HPC 的地位</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2030+</strong></td>
+<td>標準配置期</td>
+<td>全產業</td>
+<td>每封裝一兆晶粒成為常態，玻璃基板為標準配置</td>
+</tr>
+</tbody>
+</table>
+<h3>1.2 各廠家詳細時程</h3>
+<table>
+<thead>
+<tr>
+<th>公司</th>
+<th>2025</th>
+<th>2026</th>
+<th>2027-2028</th>
+<th>2028-2030</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Intel</strong></td>
+<td>技術驗證、EMIB 整合測試</td>
+<td><strong>CES 2026 Xeon 6+ 量產</strong>、NEPCON 厚芯展示</td>
+<td>廣泛應用於資料中心處理器</td>
+<td>每封裝一兆晶粒目標</td>
+</tr>
+<tr>
+<td><strong>TSMC</strong></td>
+<td>技術研發、CoPoS 設計</td>
+<td><strong>2026 年建迷你產線</strong>、AI/HPC 驗證</td>
+<td><strong>2028 年大規模量產</strong></td>
+<td>標準配置</td>
+</tr>
+<tr>
+<td><strong>Samsung</strong></td>
+<td>2025 試產線、11月交付樣品</td>
+<td>Apple/Broadcom 供樣持續</td>
+<td><strong>2027-2028 年量產</strong></td>
+<td>高階 AI 晶片標準配置</td>
+</tr>
+<tr>
+<td><strong>AMD</strong></td>
+<td>專利申請、技術評估</td>
+<td><strong>2025-2026 整合至高性能 SiP</strong></td>
+<td>全面採用玻璃基板處理器</td>
+<td>與 NVIDIA 競爭主力</td>
+</tr>
+<tr>
+<td><strong>NVIDIA</strong></td>
+<td>技術評估、2.5D 玻璃中介層應用</td>
+<td>TSMC 供應玻璃基板方案驗證中</td>
+<td>下一代 GPU 全面採用</td>
+<td>AI 加速器標準配置</td>
+</tr>
+<tr>
+<td><strong>SKC/Absolics</strong></td>
+<td><strong>2025 年初量產</strong>、樣品出貨</td>
+<td>月產能擴至 20,000 張（4倍）</td>
+<td>十倍擴產計畫執行中</td>
+<td>全球主要玻璃基板供應商</td>
+</tr>
+<tr>
+<td><strong>LG Innotek</strong></td>
+<td>工作組階段、技術驗證</td>
+<td>重新評估時程（原 2027-2028）</td>
+<td><strong>延至 2030</strong>（需求不確定）</td>
+<td>待確認</td>
+</tr>
+<tr>
+<td><strong>BOE（京東方）</strong></td>
+<td>8吋試產線、技術驗證</td>
+<td>全尺寸面板生產啟動</td>
+<td><strong>2026 年後量產</strong></td>
+<td>中國市場主力</td>
+</tr>
+<tr>
+<td><strong>Visionox</strong></td>
+<td>50億人民幣投入、供應鏈建立</td>
+<td>加速商業化推進</td>
+<td><strong>2026 年後量產</strong></td>
+<td>中國市場主力</td>
+</tr>
+<tr>
+<td><strong>Rapidus（日本）</strong></td>
+<td>與 IBM/DNP 合作研發</td>
+<td>技術整合、設備採購</td>
+<td><strong>2028 年量產</strong></td>
+<td>日本半導體自主戰略核心</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>二、技術瓶頸深度分析</h2>
+<h3>2.1 六大技術挑戰</h3>
+<h4>挑戰一：良率（Yield Rate）— ⚠️⚠️⚠️</h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>玻璃基板</th>
+<th>有機基板（ABF/BT）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>當前良率</strong></td>
+<td>75-85%（部分報告低至 65%）</td>
+<td>&gt;95%（成熟製程）</td>
+</tr>
+<tr>
+<td><strong>近三年改善</strong></td>
+<td>65% → ~82%（持續改進中）</td>
+<td>穩定維持 95%+</td>
+</tr>
+<tr>
+<td><strong>成本影響</strong></td>
+<td>單位成本高出 30-50%</td>
+<td>基準參考</td>
+</tr>
+<tr>
+<td><strong>關鍵瓶頸</strong></td>
+<td>TGV 雷射鑽孔、銅電鍍填充、透明玻璃檢測</td>
+<td>製程成熟穩定</td>
+</tr>
+</tbody>
+</table>
+<p><strong>解決方案方向</strong>：<br />
+- 飛秒雷射精度提升，減少熱影響區（HAZ）<br />
+- PVD 翻面技術確保孔壁完整覆蓋<br />
+- 自動化檢測系統替代人工目檢</p>
+<h4>挑戰二：玻璃脆性（Brittleness）— ⚠️⚠️⚠️</h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>核心問題</strong></td>
+<td>玻璃薄化至 100µm 以下極易破裂，微裂紋在製造過程中難以控制</td>
+</tr>
+<tr>
+<td><strong>處理難度</strong></td>
+<td>現有製造線未適應玻璃碎屑處理，需特殊設備和流程</td>
+</tr>
+<tr>
+<td><strong>影響範圍</strong></td>
+<td>所有製程階段（鑽孔、蝕刻、電�裝、測試）</td>
+</tr>
+<tr>
+<td><strong>解決方案</strong></td>
+<td>混合基板方案（玻璃核心 + CCL 邊框）、強化邊緣處理、自動化搬運系統</td>
+</tr>
+</tbody>
+</table>
+<h4>挑戰三：散熱管理（Thermal Management）— ⚠️⚠️</h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>玻璃基板</th>
+<th>矽/陶瓷</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>導熱係數</strong></td>
+<td>1-2 W/mK</td>
+<td>矽：150 W/mK、陶瓷：170-200 W/mK</td>
+</tr>
+<tr>
+<td><strong>CTE 匹配問題</strong></td>
+<td>玻璃 3-4 ppm/°C vs 銅 17 ppm/°C → 熱循環應力</td>
+<td>較好匹配</td>
+</tr>
+<tr>
+<td><strong>高功率限制</strong></td>
+<td>&gt;50W/封裝散熱困難</td>
+<td>較佳</td>
+</tr>
+<tr>
+<td><strong>解決方案</strong></td>
+<td>嵌入式散熱孔、直接液冷、混合冷卻方案（增加設計複雜度和成本）</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>挑戰四：金屬化填充難度 — ⚠️⚠️</h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>孔壁覆蓋</strong></td>
+<td>PVD 沉積需翻面確保底部完整覆蓋，增加製程步驟和成本</td>
+</tr>
+<tr>
+<td><strong>銅電鍍填充</strong></td>
+<td>高深寬比孔洞易產生空洞，影響導電性和可靠性</td>
+</tr>
+<tr>
+<td><strong>解決方案</strong></td>
+<td>優化電鍍配方、脈衝電鍍技術、預填充工藝</td>
+</tr>
+</tbody>
+</table>
+<h4>挑戰五：供應鏈成熟度 — ⚠️⚠️</h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>現況</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>高階玻璃材料</strong></td>
+<td>2026 年預估有 10-20% 供應缺口，供應商集中度高</td>
+</tr>
+<tr>
+<td><strong>設備生態</strong></td>
+<td>僅少數專業設備商（鈦昇、群翊等）可提供完整解決方案</td>
+</tr>
+<tr>
+<td><strong>基礎設施</strong></td>
+<td>缺乏完整的玻璃基板製造生態系，供應鏈碎片化</td>
+</tr>
+</tbody>
+</table>
+<h4>挑戰六：標準化缺失 — ⚠️</h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>尺寸標準</strong></td>
+<td>各廠面板尺寸不統一（620×750mm、700×700mm 等）</td>
+</tr>
+<tr>
+<td><strong>測試標準</strong></td>
+<td>缺乏統一的可靠性測試規範和認證流程</td>
+</tr>
+<tr>
+<td><strong>設計規則</strong></td>
+<td>EDA 工具尚未完全支援玻璃基板設計規範</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>三、技術成熟度曲線（Technology Readiness Level）</h2>
+<table>
+<thead>
+<tr>
+<th>技術環節</th>
+<th style="text-align: center;">TRL (1-9)</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>玻璃材料配方</strong></td>
+<td style="text-align: center;">7-8</td>
+<td>無鹼玻璃已商業化，低 DK/CTE 版本持續改進中</td>
+</tr>
+<tr>
+<td><strong>TGV 雷射鑽孔</strong></td>
+<td style="text-align: center;">7-8</td>
+<td>飛秒雷射技術成熟，Intel/鈦昇已驗證</td>
+</tr>
+<tr>
+<td><strong>銅電鍍填充</strong></td>
+<td style="text-align: center;">6-7</td>
+<td>高深寬比孔洞填充仍有挑戰，良率待提升</td>
+</tr>
+<tr>
+<td><strong>RDL 圖案化</strong></td>
+<td style="text-align: center;">7-8</td>
+<td>半導體級光刻技術可支援 sub-2µm</td>
+</tr>
+<tr>
+<td><strong>封裝整合</strong></td>
+<td style="text-align: center;">5-6</td>
+<td>CoPoS、2.5D/3D 封裝整合仍在驗證階段</td>
+</tr>
+<tr>
+<td><strong>大規模量產</strong></td>
+<td style="text-align: center;">4-5</td>
+<td>多數廠家處於試產/小量出貨階段</td>
+</tr>
+<tr>
+<td><strong>供應鏈生態</strong></td>
+<td style="text-align: center;">4-5</td>
+<td>材料、設備、設計工具生態系仍在建立中</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>四、關鍵里程碑時間軸（2025-2036）</h2>
+<div class="codehilite"><pre><span></span><code><span class="mf">2025</span><span class="w"> </span><span class="err">──┬──</span><span class="w"> </span><span class="n">技術驗證期開始</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nb">Abs</span><span class="n">olics</span><span class="w"> </span><span class="mf">2025</span><span class="n">年初量產</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nb">Int</span><span class="n">el</span><span class="w"> </span><span class="n">Xeon</span><span class="w"> </span><span class="mf">6</span><span class="o">+</span><span class="w"> </span><span class="n">技術驗證</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">TSMC</span><span class="w"> </span><span class="n">CoPoS</span><span class="w"> </span><span class="n">設計啟動</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">Samsung</span><span class="w"> </span><span class="n">試產線建立</span><span class="err">、</span><span class="n">樣品交付</span>
+<span class="w">       </span><span class="err">│</span>
+<span class="mf">2026</span><span class="w"> </span><span class="err">──┬──</span><span class="w"> </span><span class="n">小量出貨期</span><span class="err">（</span><span class="n">關鍵轉折年</span><span class="err">）</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">CES</span><span class="w"> </span><span class="mf">2026</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="n">el</span><span class="w"> </span><span class="n">Xeon</span><span class="w"> </span><span class="mf">6</span><span class="o">+</span><span class="w"> </span><span class="n">Clearwater</span><span class="w"> </span><span class="kr">For</span><span class="n">est</span><span class="err">（</span><span class="n">首款玻璃基板商用處理器</span><span class="err">）</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">TSMC</span><span class="w"> </span><span class="n">迷你產線建成</span><span class="err">、</span><span class="n">CoPoS</span><span class="w"> </span><span class="n">驗證啟動</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">AMD</span><span class="w"> </span><span class="mf">2025</span><span class="o">-</span><span class="mf">2026</span><span class="w"> </span><span class="n">整合至高性能</span><span class="w"> </span><span class="n">SiP</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">鈦昇橋科新廠</span><span class="w"> </span><span class="n">Q3</span><span class="w"> </span><span class="n">啟用</span><span class="err">、</span><span class="n">產能</span><span class="w"> </span><span class="o">+</span><span class="mf">80</span><span class="err">%</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">群翊訂單能見度達年底</span><span class="err">、</span><span class="n">楊梅二廠擴建啟動</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">台玻高階產線擴產</span><span class="w"> </span><span class="mf">40</span><span class="o">-</span><span class="mf">50</span><span class="err">%</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">SKC</span><span class="w"> </span><span class="n">月產能擴至</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="mf">000</span><span class="w"> </span><span class="n">張</span>
+<span class="w">       </span><span class="err">│</span>
+<span class="mf">2027</span><span class="w"> </span><span class="err">──┬──</span><span class="w"> </span><span class="n">大規模量產過渡期</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nb">Int</span><span class="n">el</span><span class="err">、</span><span class="n">Samsung</span><span class="w"> </span><span class="n">量產目標集中區間</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">欣興</span><span class="err">、</span><span class="n">南電</span><span class="err">、</span><span class="n">景碩量產準備</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">T</span><span class="o">-</span><span class="n">Glass</span><span class="w"> </span><span class="n">新產能開始上線</span><span class="err">（</span><span class="n">緩解短缺</span><span class="err">）</span>
+<span class="w">       </span><span class="err">│</span>
+<span class="mf">2028</span><span class="w"> </span><span class="err">──┬──</span><span class="w"> </span><span class="n">大規模量產期</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">TSMC</span><span class="err">、</span><span class="n">Samsung</span><span class="w"> </span><span class="n">正式量產</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">玻璃基板佔先進封裝市場</span><span class="w"> </span><span class="mf">10</span><span class="o">-</span><span class="mf">15</span><span class="err">%</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">成本開始接近有機基板</span><span class="err">（</span><span class="n">差距縮小至</span><span class="w"> </span><span class="mf">10</span><span class="o">-</span><span class="mf">20</span><span class="err">%）</span>
+<span class="w">       </span><span class="err">│</span>
+<span class="mf">2030</span><span class="w"> </span><span class="err">──┬──</span><span class="w"> </span><span class="n">快速成長期</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nb">Int</span><span class="n">el</span><span class="w"> </span><span class="n">每封裝一兆晶粒目標</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">玻璃基板佔先進封裝市場</span><span class="w"> </span><span class="mf">20</span><span class="o">-</span><span class="mf">30</span><span class="err">%</span>
+<span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">高端</span><span class="w"> </span><span class="n">HPC</span><span class="w"> </span><span class="n">市場玻璃基板成為標準配置</span>
+<span class="w">       </span><span class="err">│</span>
+<span class="mf">2036</span><span class="w"> </span><span class="err">──┬──</span><span class="w"> </span><span class="n">成熟期</span>
+<span class="w">        </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">玻璃基板佔先進封裝市場</span><span class="w"> </span><span class="mf">20</span><span class="o">-</span><span class="mf">30</span><span class="err">%（</span><span class="n">IDTechEx</span><span class="w"> </span><span class="n">預測</span><span class="err">）</span>
+<span class="w">        </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">半導體用玻璃市場達</span><span class="w"> </span><span class="err">$</span><span class="mf">4.4</span><span class="n">B</span><span class="err">（</span><span class="n">IDTechEx</span><span class="err">）</span>
+<span class="w">        </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">成為</span><span class="w"> </span><span class="n">AI</span><span class="o">/</span><span class="n">HPC</span><span class="w"> </span><span class="n">晶片封裝的基礎設施級技術</span>
+</code></pre></div>
+
+<hr />
+<h2>五、投資時程建議</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">階段</th>
+<th>時間</th>
+<th>推薦關注標的</th>
+<th>策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>設備先行</strong></td>
+<td>2026-2027</td>
+<td>鈦昇、群翊</td>
+<td>設備商最先受益，訂單能見度高</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>材料跟進</strong></td>
+<td>2026-2027</td>
+<td>台玻、南亞塑膠</td>
+<td>T-Glass 短缺期間材料價漲</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>載板量產</strong></td>
+<td>2027-2028</td>
+<td>欣興、南電、景碩</td>
+<td>量產後營收貢獻大幅提升</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>封測放量</strong></td>
+<td>2028+</td>
+<td>日月光投控、群創</td>
+<td>量產後封測需求爆發</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>生態系成熟</strong></td>
+<td>2030+</td>
+<td>全產業鏈</td>
+<td>玻璃基板成為標準配置，長期持有</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>📚 資料來源</h2>
+<ol>
+<li>Yole Group (2026-05): Glass Core Substrates and Glass Interposers — Technology Roadmap</li>
+<li>TrendForce (2026-01~04): 多則產業新聞彙整（Intel、Samsung、TSMC 進度）</li>
+<li>Digitimes (2026-04): 玻璃基板供應鏈與量產時程報導</li>
+<li>FinancialContent / TokenRing (2026-01~02): 玻璃基板產業分析系列</li>
+<li>SemiEngineering (2025-2026): Through Glass Vias to HVM 技術進展</li>
+<li>Tom's Hardware (2025-2026): 玻璃基板技術瓶頸分析</li>
+<li>TechNews (2026-03): 群翊 2025 Q4 財報分析</li>
+<li>Cheetah News / China Times (2026-04): 台股玻璃基板概念股報導</li>
+</ol></div>
+</div></main>
+</div>
+<script src="/search.js?v=1782118672"></script>
+<script src="/content.js?v=1782124909"></script>
+</body>
+</html>
