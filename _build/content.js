@@ -26,6 +26,36 @@
         window.addEventListener('popstate', handleRoute);
     }
 
+    function updateSearchScope(page, file) {
+        // Control search scope via data-search-scope on <html>
+        // 'all' = no filter, 'industry' = only industry, 'audit' = only audit
+        // Display/hide search wrap accordingly
+        const wrap = document.getElementById('search-wrap');
+        const input = document.getElementById('search-input');
+        
+        let scope = 'all';
+        let showSearch = false;
+
+        if (page === 'industries') {
+            scope = 'industry';
+            showSearch = true;
+        } else if (page === 'audit') {
+            scope = 'audit';
+            showSearch = true;
+        }
+        // home and report: hide search, keep scope at 'all'
+
+        document.documentElement.setAttribute('data-search-scope', scope);
+        if (wrap) {
+            wrap.style.display = showSearch ? '' : 'none';
+        }
+        // Clear previous results when hiding
+        if (!showSearch && input) {
+            const results = document.getElementById('search-results');
+            if (results) results.classList.add('hidden');
+        }
+    }
+
     function handleRoute() {
         const params = new URLSearchParams(window.location.search);
         const page = params.get('p') || 'home';
@@ -33,6 +63,9 @@
 
         const mainEl = document.getElementById('main-content');
         if (!mainEl) return;
+
+        // Update search scope before rendering (so placeholder text is ready)
+        updateSearchScope(page, file);
 
         document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
         // navMap 定義各 page 對應的 navbar active 狀態

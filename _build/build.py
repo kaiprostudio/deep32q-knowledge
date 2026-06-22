@@ -72,8 +72,8 @@ INDEX_HTML_TEMPLATE = """<!DOCTYPE html>
   <nav id="navbar">
     <div class="nav-inner">
       <a href="/" class="nav-logo">Deep32Q</a>
-      <div class="nav-search">
-        <input type="text" id="search-input" placeholder="搜尋知識庫（全文）" aria-label="搜尋知識庫">
+      <div id="search-wrap" class="nav-search">
+        <input type="text" id="search-input" placeholder="搜尋知識庫（全文）" aria-label="搜尋知識庫" data-scope="all">
         <div id="search-results" class="search-results hidden"></div>
       </div>
       <div class="nav-links">
@@ -481,19 +481,27 @@ class IndexBuilder:
                     })
 
     def build_search_index(self) -> list:
-        """Build searchable index (title and content)."""
+        """Build searchable index (title and content), tagged with page scope."""
         index = []
         for doc in self.documents:
-            # Store first 500 chars of content for snippet
             snippet = doc['content'][:500]
+            # Determine which page this doc belongs to
+            route = doc['route']
+            if route.startswith('審計報告庫/'):
+                page_scope = 'audit'
+            elif route.startswith('Deep32Q知識庫/產業洞察/'):
+                page_scope = 'industry'
+            else:
+                page_scope = 'general'
             index.append({
                 'id': doc['id'],
                 'title': doc['title'],
-                'route': doc['route'],
+                'route': route,
                 'category': doc['category'],
                 'summary': doc['summary'],
                 'date': doc['date'],
                 'words': doc['title'] + ' ' + doc['summary'],
+                'page_scope': page_scope,
             })
         return index
 

@@ -16,6 +16,20 @@
         'general': '📄 其他'
     };
 
+    /**
+     * Get the current page scope for search filtering.
+     * 'all' = no filter, 'industry' = only industry reports, 'audit' = only audit reports.
+     * Controlled by content.js via data-search-scope on <html>.
+     */
+    function getSearchScope() {
+        return document.documentElement.getAttribute('data-search-scope') || 'all';
+    }
+
+    function getScopeLabel(scope) {
+        const labels = { 'industry': '產業洞察', 'audit': '審計報告', 'all': '全文' };
+        return labels[scope] || '全文';
+    }
+
     function init() {
         searchInput = document.getElementById('search-input');
         searchResults = document.getElementById('search-results');
@@ -56,13 +70,18 @@
     }
 
     function onSearchInput() {
+        const scope = getSearchScope();
         const query = searchInput.value.trim().toLowerCase();
         if (query.length < 1) {
             searchResults.classList.add('hidden');
             return;
         }
 
-        const results = search(query);
+        // Update placeholder to reflect current scope
+        const label = getScopeLabel(scope);
+        searchInput.placeholder = label === '全文' ? '搜尋知識庫（全文）' : '搜尋' + label + '…';
+
+        const results = search(query, scope);
 
         if (results.length === 0) {
             searchResults.innerHTML = '<div class="search-result-item" style="color:var(--text-secondary);cursor:default;">無結果</div>';
@@ -114,13 +133,16 @@
         searchResults.classList.remove('hidden');
     }
 
-    function search(query) {
+    function search(query, scope) {
         const terms = query.split(/\s+/).filter(t => t.length > 0);
         if (terms.length === 0) return [];
 
         const scored = [];
 
         for (const doc of searchIndex) {
+            // Filter by page scope
+            if (scope !== 'all' && doc.page_scope !== scope) continue;
+
             let score = 0;
             const searchText = (doc.title + ' ' + doc.summary + ' ' + doc.id).toLowerCase();
 
