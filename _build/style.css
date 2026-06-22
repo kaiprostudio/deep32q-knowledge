@@ -684,12 +684,15 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .inline-report-content {
   padding: 0 0 16px;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   flex-shrink: 0;
   font-size: 0.9rem;
   line-height: 1.7;
   color: var(--text);
   overflow-wrap: break-word;
   word-wrap: break-word;
+  overflow-x: auto;
 }
 .inline-report-content h1,
 .inline-report-content h2,
