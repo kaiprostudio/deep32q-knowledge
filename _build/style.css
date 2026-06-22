@@ -283,6 +283,9 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   font-size: 0.9rem;
   line-height: 1.7;
   color: var(--text);
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
 }
 
 .report-body-inner h1,

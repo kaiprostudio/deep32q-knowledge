@@ -181,21 +181,54 @@
         container.innerHTML = html;
         container.style.opacity = '1';
 
-        // 產業洞察內嵌搜尋框 — 過濾顯示的產業區塊與報告
+        // 產業洞察內嵌搜尋框 — 全文檢索（透過 search_index 加載產業範圍）
         const industriesFilter = document.getElementById('industries-filter');
         if (industriesFilter) {
+            // Cache the industry search index on first use
+            let industryIndex = null;
+            function loadIndustryIndex() {
+                if (industryIndex) return Promise.resolve(industryIndex);
+                return fetch('/search_index.json')
+                    .then(r => r.json())
+                    .then(data => {
+                        industryIndex = data.filter(d => d.page_scope === 'industry');
+                        return industryIndex;
+                    })
+                    .catch(() => { industryIndex = []; return []; });
+            }
+            // Preload on first focus
+            industriesFilter.addEventListener('focus', loadIndustryIndex);
             industriesFilter.addEventListener('input', function() {
                 const val = this.value.toLowerCase().trim();
-                container.querySelectorAll('.industry-section').forEach(section => {
-                    let sectionVisible = false;
-                    section.querySelectorAll('.report-item').forEach(item => {
-                        const text = (item.textContent || '').toLowerCase();
-                        const match = val === '' || text.includes(val);
-                        item.style.display = match ? '' : 'none';
-                        if (match) sectionVisible = true;
+                if (val.length < 1) {
+                    container.querySelectorAll('.industry-section').forEach(s => s.style.display = '');
+                    container.querySelectorAll('.report-item').forEach(item => item.style.display = '');
+                    return;
+                }
+                loadIndustryIndex().then(industryDocs => {
+                    const terms = val.split(/\s+/).filter(t => t.length > 0);
+                    const matchedRoutes = new Set();
+                    for (const doc of industryDocs) {
+                        const searchText = (doc.title + ' ' + doc.summary + ' ' + (doc.words || '')).toLowerCase();
+                        let allMatch = true;
+                        for (const term of terms) {
+                            if (!searchText.includes(term)) { allMatch = false; break; }
+                        }
+                        if (allMatch) matchedRoutes.add(doc.route);
+                    }
+                    container.querySelectorAll('.industry-section').forEach(section => {
+                        let sectionVisible = false;
+                        section.querySelectorAll('.report-item').forEach(item => {
+                            const link = item.querySelector('[data-route]');
+                            const route = link ? link.getAttribute('data-route') : '';
+                            const inTitle = (item.textContent || '').toLowerCase().includes(val);
+                            const inBody = matchedRoutes.has(route);
+                            const match = inTitle || inBody;
+                            item.style.display = match ? '' : 'none';
+                            if (match) sectionVisible = true;
+                        });
+                        section.style.display = (val === '' || sectionVisible) ? '' : 'none';
                     });
-                    // Hide whole section if no reports match, show header otherwise
-                    section.style.display = (val === '' || sectionVisible) ? '' : 'none';
                 });
             });
         }
@@ -217,19 +250,20 @@
         // 產業洞察預設全部折疊（2026-06-20 周一要求）
         // 不再自動展開第一個產業
 
-        // 產業洞察：點報告標題 → inline 展開報告內容（無跳轉、一頁式向下滾動）
+        // 產業洞察：點報告標題 → inline 展開報告內容（復刻每日報告風格）
         container.querySelectorAll('.report-link[data-route]').forEach(link => {
-            // 防止多次繫結導致重複展開
             if (link.dataset.inlineBound) return;
             link.dataset.inlineBound = '1';
             link.addEventListener('click', async function(e) {
                 e.preventDefault();
                 const li = this.closest('.report-item');
                 if (!li) return;
-                // 檢查是否已展開，若已展開則收合
-                const existing = li.querySelector('.inline-report-content');
-                if (existing) {
-                    existing.remove();
+                // Toggle existing expanded content
+                const existingBody = li.querySelector('.report-body');
+                if (existingBody) {
+                    const header = li.querySelector('.report-header');
+                    if (header) header.classList.remove('expanded');
+                    existingBody.remove();
                     return;
                 }
                 const route = this.getAttribute('data-route');
@@ -242,12 +276,37 @@
                     const doc = parser.parseFromString(html, 'text/html');
                     const reportContent = doc.querySelector('.report-content');
                     if (!reportContent) return;
-                    const div = document.createElement('div');
-                    div.className = 'inline-report-content';
-                    div.innerHTML = reportContent.innerHTML;
-                    li.appendChild(div);
-                    // 展開後 Scroll 到報告開頭
-                    div.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Create daily-report-style expand structure
+                    const header = document.createElement('div');
+                    header.className = 'report-header expanded';
+                    header.innerHTML = '<span class="report-arrow">▼</span><span class="report-title" style="font-weight:600">' + (this.textContent || '') + '</span>';
+                    const body = document.createElement('div');
+                    body.className = 'report-body';
+                    const inner = document.createElement('template');
+                    inner.className = 'report-body-template';
+                    inner.innerHTML = reportContent.innerHTML;
+                    body.appendChild(inner);
+                    // Hide the original link and date in the li
+                    this.style.display = 'none';
+                    const dateSpan = li.querySelector('.report-date');
+                    if (dateSpan) dateSpan.style.display = 'none';
+                    // Insert header and body before the original elements
+                    li.insertBefore(header, this);
+                    li.insertBefore(body, this);
+                    // Clone template content
+                    const clone = document.createElement('div');
+                    clone.className = 'report-body-inner';
+                    clone.innerHTML = inner.innerHTML;
+                    inner.replaceWith(clone);
+                    // Bind collapse on header click
+                    header.addEventListener('click', function(ev) {
+                        ev.stopPropagation();
+                        link.style.display = '';
+                        if (dateSpan) dateSpan.style.display = '';
+                        this.nextElementSibling.remove();
+                        this.remove();
+                    });
+                    body.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 } catch(e) { /* silent */ }
             });
         });
@@ -384,7 +443,7 @@
             });
         });
 
-        // 審計報告：點報告標題 → inline 展開報告內容（無跳轉、一頁式向下滾動）
+        // 審計報告：點報告標題 → inline 展開報告內容（復刻每日報告風格）
         container.querySelectorAll('.report-link[data-route], .audit-report-link[data-route]').forEach(link => {
             if (link.dataset.inlineBound) return;
             link.dataset.inlineBound = '1';
@@ -392,9 +451,12 @@
                 e.preventDefault();
                 const li = this.closest('.report-item, .audit-report-item');
                 if (!li) return;
-                const existing = li.querySelector('.inline-report-content');
-                if (existing) {
-                    existing.remove();
+                // Toggle existing expanded content
+                const existingBody = li.querySelector('.report-body');
+                if (existingBody) {
+                    const header = li.querySelector('.report-header');
+                    if (header) header.classList.remove('expanded');
+                    existingBody.remove();
                     return;
                 }
                 const route = this.getAttribute('data-route');
@@ -407,11 +469,37 @@
                     const doc = parser.parseFromString(html, 'text/html');
                     const reportContent = doc.querySelector('.report-content');
                     if (!reportContent) return;
-                    const div = document.createElement('div');
-                    div.className = 'inline-report-content';
-                    div.innerHTML = reportContent.innerHTML;
-                    li.appendChild(div);
-                    div.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Create daily-report-style expand structure
+                    const header = document.createElement('div');
+                    header.className = 'report-header expanded';
+                    header.innerHTML = '<span class="report-arrow">▼</span><span class="report-title" style="font-weight:600">' + (this.textContent || '') + '</span>';
+                    const body = document.createElement('div');
+                    body.className = 'report-body';
+                    const inner = document.createElement('template');
+                    inner.className = 'report-body-template';
+                    inner.innerHTML = reportContent.innerHTML;
+                    body.appendChild(inner);
+                    // Hide the original link and date
+                    this.style.display = 'none';
+                    const dateSpan = li.querySelector('.report-date, .audit-report-date');
+                    if (dateSpan) dateSpan.style.display = 'none';
+                    // Insert before the link
+                    li.insertBefore(header, this);
+                    li.insertBefore(body, this);
+                    // Clone template content
+                    const clone = document.createElement('div');
+                    clone.className = 'report-body-inner';
+                    clone.innerHTML = inner.innerHTML;
+                    inner.replaceWith(clone);
+                    // Bind collapse on header click
+                    header.addEventListener('click', function(ev) {
+                        ev.stopPropagation();
+                        link.style.display = '';
+                        if (dateSpan) dateSpan.style.display = '';
+                        this.nextElementSibling.remove();
+                        this.remove();
+                    });
+                    body.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 } catch(e) { /* silent */ }
             });
         });
