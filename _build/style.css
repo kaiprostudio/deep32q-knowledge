@@ -399,10 +399,11 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 /* ── Audit Reports (問題 3 修復 — 可點擊、展開) ─── */
 .audit-page h1 { font-size: 1.5rem; margin-bottom: 12px; font-weight: 700; }
 
-.audit-filter-wrap {
+.audit-filter-wrap,
+.industries-filter-wrap {
   margin-bottom: 16px;
 }
-#audit-filter {
+#audit-filter, #industries-filter {
   width: 100%;
   max-width: 400px;
   padding: 10px 14px;

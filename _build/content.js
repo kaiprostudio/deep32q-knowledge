@@ -147,7 +147,7 @@
 
     /* ── 產業洞察（從 navData 渲染 + 手風琴） ── */
     function renderIndustries(container) {
-        let html = '<div class="page-container industries-page"><h1>產業洞察</h1>';
+        let html = '<div class="page-container industries-page"><h1>產業洞察</h1><div class="industries-filter-wrap"><input type="text" id="industries-filter" placeholder="搜尋產業洞察報告…"></div>';
 
         const industries = navData.industries || {};
         const keys = Object.keys(industries);
@@ -194,6 +194,25 @@
         html += '</div>';
         container.innerHTML = html;
         container.style.opacity = '1';
+
+        // 產業洞察內嵌搜尋框 — 過濾顯示的產業區塊與報告
+        const industriesFilter = document.getElementById('industries-filter');
+        if (industriesFilter) {
+            industriesFilter.addEventListener('input', function() {
+                const val = this.value.toLowerCase().trim();
+                container.querySelectorAll('.industry-section').forEach(section => {
+                    let sectionVisible = false;
+                    section.querySelectorAll('.report-item').forEach(item => {
+                        const text = (item.textContent || '').toLowerCase();
+                        const match = val === '' || text.includes(val);
+                        item.style.display = match ? '' : 'none';
+                        if (match) sectionVisible = true;
+                    });
+                    // Hide whole section if no reports match, show header otherwise
+                    section.style.display = (val === '' || sectionVisible) ? '' : 'none';
+                });
+            });
+        }
 
         // Bind toggles
         container.querySelectorAll('[data-toggle="industry"]').forEach(header => {

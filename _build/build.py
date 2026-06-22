@@ -556,6 +556,7 @@ def build_industries_page(index: IndexBuilder) -> str:
     import html as html_mod
     parts = ['<div class="page-container industries-page">']
     parts.append('<h1>產業洞察</h1>')
+    parts.append('<div class="industries-filter-wrap"><input type="text" id="industries-filter" placeholder="搜尋產業洞察報告…"></div>')
 
     # Sort industries by their latest report date (newest first)
     def _latest_date(industry_name: str) -> str:
