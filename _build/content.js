@@ -27,33 +27,19 @@
     }
 
     function updateSearchScope(page, file) {
-        // Control search scope via data-search-scope on <html>
-        // 'all' = no filter, 'industry' = only industry, 'audit' = only audit
-        // Display/hide search wrap accordingly
+        // Hide navbar search box on all SPA pages.
+        // Industries and Audit have their own embed search boxes.
         const wrap = document.getElementById('search-wrap');
         const input = document.getElementById('search-input');
-        
-        let scope = 'all';
-        let showSearch = false;
 
-        if (page === 'industries') {
-            scope = 'industry';
-            showSearch = true;
-        } else if (page === 'audit') {
-            scope = 'audit';
-            showSearch = true;
-        }
-        // home and report: hide search, keep scope at 'all'
-
-        document.documentElement.setAttribute('data-search-scope', scope);
         if (wrap) {
-            wrap.style.display = showSearch ? '' : 'none';
+            wrap.style.display = 'none';
         }
-        // Clear previous results when hiding
-        if (!showSearch && input) {
+        if (input) {
             const results = document.getElementById('search-results');
             if (results) results.classList.add('hidden');
         }
+        document.documentElement.setAttribute('data-search-scope', 'all');
     }
 
     function handleRoute() {
