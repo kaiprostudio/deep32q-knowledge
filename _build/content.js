@@ -184,10 +184,9 @@
         container.innerHTML = html;
         container.style.opacity = '1';
 
-        // 產業洞察內嵌搜尋框 — 全文檢索（透過 search_index 加載產業範圍）
+        // 產業洞察內嵌搜尋框 — 全文檢索 + 浮動面板（含高亮關鍵字片段）
         const industriesFilter = document.getElementById('industries-filter');
         if (industriesFilter) {
-            // Cache the industry search index on first use
             let industryIndex = null;
             function loadIndustryIndex() {
                 if (industryIndex) return Promise.resolve(industryIndex);
@@ -199,40 +198,205 @@
                     })
                     .catch(() => { industryIndex = []; return []; });
             }
-            // Preload on first focus
-            industriesFilter.addEventListener('focus', loadIndustryIndex);
+
+            // Create floating panel
+            let panel = document.createElement('div');
+            panel.className = 'industry-search-panel';
+            panel.style.cssText = 'display:none;position:absolute;top:100%;left:0;right:0;z-index:100;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-sm);max-height:420px;overflow-y:auto;box-shadow:var(--shadow-lg);margin-top:4px;';
+            industriesFilter.parentElement.style.position = 'relative';
+            industriesFilter.parentElement.appendChild(panel);
+
+            function highlightText(text, keyword) {
+                if (!keyword) return text;
+                const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const re = new RegExp('(' + escaped + ')', 'gi');
+                return text.replace(re, '<mark style="background:#fbbf24;color:#1a1a2e;padding:0 2px;border-radius:2px">$1</mark>');
+            }
+
+            function extractSnippet(text, keyword, maxLen) {
+                maxLen = maxLen || 120;
+                const idx = text.toLowerCase().indexOf(keyword.toLowerCase());
+                if (idx < 0) return text.substring(0, maxLen);
+                const start = Math.max(0, idx - Math.floor((maxLen - keyword.length) / 2));
+                let end = start + maxLen;
+                if (end > text.length) {
+                    end = text.length;
+                }
+                let snippet = text.substring(start, end);
+                if (start > 0) snippet = '…' + snippet;
+                if (end < text.length) snippet = snippet + '…';
+                return snippet;
+            }
+
+            // Cache: route -> fetched body text (to avoid re-fetch on repeated searches)
+            const bodyCache = {};
+
+            async function fetchBodyText(route) {
+                if (bodyCache[route]) return bodyCache[route];
+                const htmlPath = routeMap[route];
+                if (!htmlPath) return '';
+                try {
+                    const resp = await fetch(htmlPath);
+                    const html = await resp.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const content = doc.querySelector('.report-content');
+                    if (content) {
+                        // Get plain text from body for snippet extraction
+                        const text = content.textContent.replace(/\s+/g, ' ').trim();
+                        bodyCache[route] = text;
+                        return text;
+                    }
+                    bodyCache[route] = '';
+                    return '';
+                } catch(e) {
+                    bodyCache[route] = '';
+                    return '';
+                }
+            }
+
+            function buildPanelEntry(doc, query, bodyText) {
+                const hasBody = bodyText && bodyText.length > 50;
+                const snippet = hasBody
+                    ? extractSnippet(bodyText, query, 100)
+                    : (doc.summary || doc.title);
+                const highlightedSnippet = highlightText(snippet, query);
+                const highlightedTitle = highlightText(doc.title || '', query);
+
+                return '<div class="industry-search-result" data-route="' + doc.route + '" style="padding:10px 16px;cursor:pointer;border-bottom:1px solid var(--border-light);transition:background 0.15s">'
+                    + '<div style="font-size:0.85rem;font-weight:500;color:var(--text);margin-bottom:3px">' + highlightedTitle + '</div>'
+                    + '<div style="font-size:0.75rem;color:var(--text-secondary);line-height:1.4">' + highlightedSnippet + '</div>'
+                    + '</div>';
+            }
+
+            let debounceTimer = null;
             industriesFilter.addEventListener('input', function() {
-                const val = this.value.toLowerCase().trim();
+                clearTimeout(debounceTimer);
+                const val = this.value.trim();
                 if (val.length < 1) {
+                    panel.style.display = 'none';
                     container.querySelectorAll('.industry-section').forEach(s => s.style.display = '');
-                    container.querySelectorAll('.report-item').forEach(item => item.style.display = '');
                     return;
                 }
-                loadIndustryIndex().then(industryDocs => {
-                    const terms = val.split(/\s+/).filter(t => t.length > 0);
-                    const matchedRoutes = new Set();
-                    for (const doc of industryDocs) {
-                        const searchText = (doc.title + ' ' + doc.summary + ' ' + (doc.words || '')).toLowerCase();
-                        let allMatch = true;
-                        for (const term of terms) {
-                            if (!searchText.includes(term)) { allMatch = false; break; }
+                debounceTimer = setTimeout(() => {
+                    loadIndustryIndex().then(async (industryDocs) => {
+                        const query = val;
+                        const queryLCWords = query.toLowerCase().split(/\s+/).filter(t => t.length > 0);
+
+                        // Filter using index (lightweight)
+                        const matched = [];
+                        for (const doc of industryDocs) {
+                            const searchText = ((doc.title||'') + ' ' + (doc.summary||'') + ' ' + (doc.words||'')).toLowerCase();
+                            let allMatch = true;
+                            for (const term of queryLCWords) {
+                                if (!searchText.includes(term)) { allMatch = false; break; }
+                            }
+                            if (allMatch) matched.push(doc);
                         }
-                        if (allMatch) matchedRoutes.add(doc.route);
-                    }
-                    container.querySelectorAll('.industry-section').forEach(section => {
-                        let sectionVisible = false;
-                        section.querySelectorAll('.timeline-report').forEach(item => {
-                            const link = item.querySelector('.report-header[data-report-route]');
-                            const route = link ? link.getAttribute('data-report-route') : '';
-                            const inTitle = (item.textContent || '').toLowerCase().includes(val);
-                            const inBody = matchedRoutes.has(route);
-                            const match = inTitle || inBody;
-                            item.style.display = match ? '' : 'none';
-                            if (match) sectionVisible = true;
+
+                        if (matched.length === 0) {
+                            panel.innerHTML = '<div style="padding:12px 16px;color:var(--text-secondary);font-size:0.85rem">找不到符合「' + query + '」的報告</div>';
+                            panel.style.display = '';
+                            return;
+                        }
+
+                        // Build header
+                        let html = '<div style="padding:8px 12px;font-size:0.78rem;color:var(--text-tertiary);border-bottom:1px solid var(--border)">找到 ' + matched.length + ' 份相關報告</div>';
+
+                        // First 3: fetch full body for rich snippet
+                        const top3 = matched.slice(0, 3);
+                        for (const doc of top3) {
+                            const bodyText = await fetchBodyText(doc.route);
+                            html += buildPanelEntry(doc, query, bodyText);
+                        }
+
+                        // Rest: show title-only with lazy-load indicator
+                        const rest = matched.slice(3);
+                        if (rest.length > 0) {
+                            html += '<div id="industry-search-more" style="padding:8px 12px;font-size:0.78rem;color:var(--text-tertiary);text-align:center;cursor:pointer;border-bottom:1px solid var(--border-light)">還有 ' + rest.length + ' 筆結果</div>';
+                            for (const doc of rest) {
+                                const title = highlightText(doc.title || '', query);
+                                html += '<div class="industry-search-result industry-search-lazy" data-route="' + doc.route + '" style="display:none;padding:10px 16px;cursor:pointer;border-bottom:1px solid var(--border-light);transition:background 0.15s">'
+                                    + '<div style="font-size:0.85rem;font-weight:500;color:var(--text)">' + title + '</div>'
+                                    + '<div class="industry-search-snippet" style="font-size:0.75rem;color:var(--text-secondary);line-height:1.4">載入中…</div>'
+                                    + '</div>';
+                            }
+                        }
+
+                        panel.innerHTML = html;
+
+                        // Bind click — all results
+                        panel.querySelectorAll('.industry-search-result').forEach(el => {
+                            el.addEventListener('click', function() {
+                                const route = this.getAttribute('data-route');
+                                if (route) {
+                                    panel.style.display = 'none';
+                                    window.location.href = '/?p=report&f=' + encodeURIComponent(route);
+                                }
+                            });
                         });
-                        section.style.display = (val === '' || sectionVisible) ? '' : 'none';
+
+                        // Bind lazy load trigger: click "還有 N 筆" or scroll to bottom
+                        const moreTrigger = document.getElementById('industry-search-more');
+                        if (moreTrigger) {
+                            let loadedLazy = false;
+                            const loadLazy = async () => {
+                                if (loadedLazy) return;
+                                loadedLazy = true;
+                                moreTrigger.style.display = 'none';
+                                const lazyItems = panel.querySelectorAll('.industry-search-lazy');
+                                for (let i = 0; i < lazyItems.length; i++) {
+                                    const item = lazyItems[i];
+                                    const route = item.getAttribute('data-route');
+                                    const doc = matched.find(d => d.route === route);
+                                    if (doc) {
+                                        const bodyText = await fetchBodyText(route);
+                                        const snippetEl = item.querySelector('.industry-search-snippet');
+                                        if (snippetEl) {
+                                            const hasBody = bodyText && bodyText.length > 50;
+                                            const snippet = hasBody
+                                                ? extractSnippet(bodyText, query, 100)
+                                                : (doc.summary || doc.title);
+                                            snippetEl.innerHTML = highlightText(snippet, query);
+                                        }
+                                    }
+                                    item.style.display = '';
+                                    // Small delay to avoid hammering
+                                    await new Promise(r => setTimeout(r, 100));
+                                }
+                            };
+                            moreTrigger.addEventListener('click', loadLazy);
+                            // Also trigger lazy load when scrolling near bottom
+                            panel.addEventListener('scroll', function() {
+                                if (panel.scrollTop + panel.clientHeight >= panel.scrollHeight - 60) {
+                                    loadLazy();
+                                }
+                            });
+                        }
+
+                        panel.style.display = '';
                     });
-                });
+                }, 300); // debounce 300ms
+            });
+
+            // Close panel when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!industriesFilter.parentElement.contains(e.target)) {
+                    panel.style.display = 'none';
+                }
+            });
+
+            // Close on Escape
+            industriesFilter.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    panel.style.display = 'none';
+                    this.blur();
+                }
+            });
+
+            // Keep open when clicking inside panel
+            panel.addEventListener('click', function(e) {
+                e.stopPropagation();
             });
         }
 
