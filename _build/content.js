@@ -130,7 +130,7 @@
                         tmpl.replaceWith(clone);
                     }
                 }
-            }, { once: true });
+            });
         });
     }
 
