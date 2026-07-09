@@ -97,6 +97,9 @@
 
     /* ── 每日報告 ── */
     function bindDailyToggles() {
+        // 防重複綁定：只綁定一次，避免展開後立刻收合
+        if (window._dailyTogglesBound) return;
+        window._dailyTogglesBound = true;
         document.querySelectorAll('.timeline-day-toggle').forEach(toggle => {
             toggle.addEventListener('click', function() {
                 const day = this.closest('.timeline-day');
