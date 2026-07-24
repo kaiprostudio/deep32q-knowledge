@@ -1,4 +1,4 @@
-# SCFI / CCFI 運價指數
+﻿# SCFI / CCFI 運價指數
 
 ## 📊 計算方法
 

@@ -1,4 +1,4 @@
-# 通用分析模式指引 (Generic Analysis Mode)
+﻿# 通用分析模式指引 (Generic Analysis Mode)
 
 > 本目錄包含跨產業、跨公司通用的財務審核與投資分析模式。
 

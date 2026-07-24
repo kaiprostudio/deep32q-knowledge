@@ -1,4 +1,4 @@
-# COSCO Shipping 中遠海運
+﻿# COSCO Shipping 中遠海運
 
 ## 基本資訊
 - **全球排名**：第4名（2025-2026年維持）

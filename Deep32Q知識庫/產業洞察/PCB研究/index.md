@@ -1,4 +1,4 @@
-# PCB研究
+﻿# PCB研究
 
 - [ABF 載板深度研究](./ABF載板深度研究.html)
 - [AI 伺服器 PCB 深度研究](./AI伺服器PCB深度研究.html)

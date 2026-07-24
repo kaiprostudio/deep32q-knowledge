@@ -1,4 +1,4 @@
-# Hapag-Lloyd 赫伯羅特（Hapag-Lloyd AG）
+﻿# Hapag-Lloyd 赫伯羅特（Hapag-Lloyd AG）
 
 ## 基本資訊
 - **全球排名**：第5名（THE Alliance/Premier Alliance核心成員）

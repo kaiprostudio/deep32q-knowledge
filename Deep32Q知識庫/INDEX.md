@@ -1,4 +1,4 @@
-﻿# 🧠 Deep32Q知識庫 — INDEX.md
+﻿﻿# 🧠 Deep32Q知識庫 — INDEX.md
 
 > 知識庫的統一目錄。查詢前先讀 INDEX，貢獻後更新 INDEX。
 
