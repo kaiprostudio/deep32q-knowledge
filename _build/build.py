@@ -646,6 +646,16 @@ def build_audit_page(index: IndexBuilder) -> str:
             elif audit_type == '財務審計':
                 stock_groups[code]['financial'].append(report_doc)
 
+    # Helper: group reports by date within an audit type
+    def _group_reports_by_date(reports: list) -> list:
+        """Group reports by date, return list of (date, [reports]) sorted newest first."""
+        from collections import OrderedDict
+        by_date = OrderedDict()
+        for r in reports:
+            d = r.get('date', '99999999')
+            by_date.setdefault(d, []).append(r)
+        return sorted(by_date.items(), key=lambda x: x[0], reverse=True)
+
     # Sort stocks by latest report date (newest first)
     sorted_stocks = sorted(
         stock_groups.values(),
@@ -659,10 +669,6 @@ def build_audit_page(index: IndexBuilder) -> str:
         total_count = len(group['management']) + len(group['financial'])
         search_text = f'{code} {group["company"]}'
         
-        # Sort reports within each type by date (newest first)
-        group['management'].sort(key=lambda r: r.get('date', '99999999'), reverse=True)
-        group['financial'].sort(key=lambda r: r.get('date', '99999999'), reverse=True)
-        
         parts.append(f'<div class="audit-stock-item" data-search="{search_text}">')
         parts.append(f'''
         <div class="audit-stock-header" data-toggle="audit">
@@ -674,7 +680,7 @@ def build_audit_page(index: IndexBuilder) -> str:
         ''')
         parts.append('<div class="audit-stock-body">')
         
-        # 經營組
+        # ── 經營組 (grouped by date) ──
         mgmt_count = len(group['management'])
         if mgmt_count > 0:
             parts.append(f'<div class="audit-type-section">')
@@ -685,18 +691,37 @@ def build_audit_page(index: IndexBuilder) -> str:
                 <span class="audit-type-count">{mgmt_count} 份</span>
             </div>
             ''')
-            parts.append('<div class="audit-type-body"><ul class="audit-report-list">')
-            for report in group['management']:
-                safe_r_title = html_mod.escape(report.get('title', '未命名'))
+            parts.append('<div class="audit-type-body">')
+            # Group by date within this type
+            date_groups = _group_reports_by_date(group['management'])
+            for date_str, reports_in_date in date_groups:
+                formatted_date = f'{date_str[:4]}/{date_str[4:6]}/{date_str[6:8]}'
                 parts.append(f'''
-                <li class="audit-report-item">
-                    <a href="/?p=report&f={report['route']}" class="audit-report-link">{safe_r_title}</a>
-                    <span class="audit-report-date">{report.get('date', '')}</span>
-                </li>
+                <div class="audit-date-section">
+                    <div class="audit-date-header" data-toggle="audit-date">
+                        <span class="audit-date-arrow">▶</span>
+                        <span class="audit-date-label">{formatted_date}</span>
+                        <span class="audit-date-count">{len(reports_in_date)} 份</span>
+                    </div>
+                    <div class="audit-date-body">
+                        <ul class="audit-report-list">
                 ''')
-            parts.append('</ul></div></div>')
+                for report in reports_in_date:
+                    safe_r_title = html_mod.escape(report.get('title', '未命名'))
+                    parts.append(f'''
+                            <li class="audit-report-item">
+                                <a href="/?p=report&f={report['route']}" class="audit-report-link">{safe_r_title}</a>
+                            </li>
+                    ''')
+                parts.append('''
+
+                        </ul>
+                    </div>
+                </div>
+                ''')
+            parts.append('</div></div>')
         
-        # 財務組
+        # ── 財務組 (grouped by date) ──
         fin_count = len(group['financial'])
         if fin_count > 0:
             parts.append(f'<div class="audit-type-section">')
@@ -707,16 +732,35 @@ def build_audit_page(index: IndexBuilder) -> str:
                 <span class="audit-type-count">{fin_count} 份</span>
             </div>
             ''')
-            parts.append('<div class="audit-type-body"><ul class="audit-report-list">')
-            for report in group['financial']:
-                safe_r_title = html_mod.escape(report.get('title', '未命名'))
+            parts.append('<div class="audit-type-body">')
+            # Group by date within this type
+            date_groups = _group_reports_by_date(group['financial'])
+            for date_str, reports_in_date in date_groups:
+                formatted_date = f'{date_str[:4]}/{date_str[4:6]}/{date_str[6:8]}'
                 parts.append(f'''
-                <li class="audit-report-item">
-                    <a href="/?p=report&f={report['route']}" class="audit-report-link">{safe_r_title}</a>
-                    <span class="audit-report-date">{report.get('date', '')}</span>
-                </li>
+                <div class="audit-date-section">
+                    <div class="audit-date-header" data-toggle="audit-date">
+                        <span class="audit-date-arrow">▶</span>
+                        <span class="audit-date-label">{formatted_date}</span>
+                        <span class="audit-date-count">{len(reports_in_date)} 份</span>
+                    </div>
+                    <div class="audit-date-body">
+                        <ul class="audit-report-list">
                 ''')
-            parts.append('</ul></div></div>')
+                for report in reports_in_date:
+                    safe_r_title = html_mod.escape(report.get('title', '未命名'))
+                    parts.append(f'''
+                            <li class="audit-report-item">
+                                <a href="/?p=report&f={report['route']}" class="audit-report-link">{safe_r_title}</a>
+                            </li>
+                    ''')
+                parts.append('''
+
+                        </ul>
+                    </div>
+                </div>
+                ''')
+            parts.append('</div></div>')
         
         parts.append('</div></div>')
 

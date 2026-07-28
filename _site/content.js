@@ -630,6 +630,14 @@
             });
         });
 
+        // 第三層：日期分組 toggle（獨立，不互相影響）
+        container.querySelectorAll('[data-toggle="audit-date"]').forEach(header => {
+            header.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.toggle('expanded');
+            });
+        });
+
         // 審計報告：點 report-header → inline 展開/收折（與每日報告完全一致）
         container.querySelectorAll('.report-header[data-audit-route]').forEach(header => {
             header.addEventListener('click', async function() {
