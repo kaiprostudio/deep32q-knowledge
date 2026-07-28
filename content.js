@@ -549,7 +549,15 @@
                         if (!groups[d]) groups[d] = [];
                         groups[d].push(r);
                     }
-                    return Object.keys(groups).sort().reverse().map(d => ({ date: d, reports: groups[d] }));
+                    // 每個日期群組內按題號 (F01→F18, G01→G11) 排序
+                    function sortByQuestion(a, b) {
+                        const qA = (a.route || '').match(/[FG](\d+)/);
+                        const qB = (b.route || '').match(/[FG](\d+)/);
+                        const numA = qA ? parseInt(qA[1], 10) : 999;
+                        const numB = qB ? parseInt(qB[1], 10) : 999;
+                        return numA - numB;
+                    }
+                    return Object.keys(groups).sort().reverse().map(d => ({ date: d, reports: groups[d].sort(sortByQuestion) }));
                 }
 
                 // ── 經營組 (grouped by date) ──
