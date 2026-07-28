@@ -541,15 +541,19 @@
                 html += `</div>`;
                 html += `<div class="audit-stock-body">`;
 
-                // 經營組：先按題號 G01→G02→...→G11 排序，同題號再按日期最新優先
-                const mgmt = stock.management.sort((a, b) => {
-                    const gA = (a.route || '').match(/G(\d+)/);
-                    const gB = (b.route || '').match(/G(\d+)/);
-                    const numA = gA ? parseInt(gA[1]) : 999;
-                    const numB = gB ? parseInt(gB[1]) : 999;
-                    if (numA !== numB) return numA - numB;
-                    return (b.date || '99999999').localeCompare(a.date || '99999999');
-                });
+                // Helper: group reports by date
+                function groupByDate(reports) {
+                    const groups = {};
+                    for (const r of reports) {
+                        const d = r.date || '99999999';
+                        if (!groups[d]) groups[d] = [];
+                        groups[d].push(r);
+                    }
+                    return Object.keys(groups).sort().reverse().map(d => ({ date: d, reports: groups[d] }));
+                }
+
+                // ── 經營組 (grouped by date) ──
+                const mgmt = stock.management;
                 if (mgmt.length > 0) {
                     html += `<div class="audit-type-section">`;
                     html += `<div class="audit-type-header" data-toggle="audit-type">`;
@@ -557,28 +561,33 @@
                     html += `<span class="audit-type-label">經營組</span>`;
                     html += `<span class="audit-type-count">${mgmt.length} 份</span>`;
                     html += `</div>`;
-                    for (const r of mgmt) {
-                        html += `<div class="timeline-report">`;
-                        html += `<div class="report-header" data-audit-route="${r.route}">`;
-                        html += `<span class="report-arrow">▸</span>`;
-                        html += `<span class="report-title">${r.title}</span>`;
-                        html += `<span class="report-date">${r.date}</span>`;
+                    html += `<div class="audit-type-body">`;
+                    const mgmtDateGroups = groupByDate(mgmt);
+                    for (const group of mgmtDateGroups) {
+                        const formattedDate = group.date.slice(0,4) + '/' + group.date.slice(4,6) + '/' + group.date.slice(6,8);
+                        html += `<div class="audit-date-section">`;
+                        html += `<div class="audit-date-header" data-toggle="audit-date">`;
+                        html += `<span class="audit-date-arrow">▶</span>`;
+                        html += `<span class="audit-date-label">${formattedDate}</span>`;
+                        html += `<span class="audit-date-count">${group.reports.length} 份</span>`;
                         html += `</div>`;
-                        html += `<div class="report-body"><template class="report-body-template"></template></div>`;
-                        html += `</div>`;
+                        html += `<div class="audit-date-body">`;
+                        for (const r of group.reports) {
+                            html += `<div class="timeline-report">`;
+                            html += `<div class="report-header" data-audit-route="${r.route}">`;
+                            html += `<span class="report-arrow">▸</span>`;
+                            html += `<span class="report-title">${r.title}</span>`;
+                            html += `</div>`;
+                            html += `<div class="report-body"><template class="report-body-template"></template></div>`;
+                            html += `</div>`;
+                        }
+                        html += `</div></div>`;
                     }
-                    html += `</div>`;
+                    html += `</div></div>`;
                 }
 
-                // 財務組：先按題號 F01→F02→...→F18 排序，同題號再按日期最新優先
-                const fin = stock.financial.sort((a, b) => {
-                    const fA = (a.route || '').match(/F(\d+)/);
-                    const fB = (b.route || '').match(/F(\d+)/);
-                    const numA = fA ? parseInt(fA[1]) : 999;
-                    const numB = fB ? parseInt(fB[1]) : 999;
-                    if (numA !== numB) return numA - numB;
-                    return (b.date || '99999999').localeCompare(a.date || '99999999');
-                });
+                // ── 財務組 (grouped by date) ──
+                const fin = stock.financial;
                 if (fin.length > 0) {
                     html += `<div class="audit-type-section">`;
                     html += `<div class="audit-type-header" data-toggle="audit-type">`;
@@ -586,17 +595,29 @@
                     html += `<span class="audit-type-label">財務組</span>`;
                     html += `<span class="audit-type-count">${fin.length} 份</span>`;
                     html += `</div>`;
-                    for (const r of fin) {
-                        html += `<div class="timeline-report">`;
-                        html += `<div class="report-header" data-audit-route="${r.route}">`;
-                        html += `<span class="report-arrow">▸</span>`;
-                        html += `<span class="report-title">${r.title}</span>`;
-                        html += `<span class="report-date">${r.date}</span>`;
+                    html += `<div class="audit-type-body">`;
+                    const finDateGroups = groupByDate(fin);
+                    for (const group of finDateGroups) {
+                        const formattedDate = group.date.slice(0,4) + '/' + group.date.slice(4,6) + '/' + group.date.slice(6,8);
+                        html += `<div class="audit-date-section">`;
+                        html += `<div class="audit-date-header" data-toggle="audit-date">`;
+                        html += `<span class="audit-date-arrow">▶</span>`;
+                        html += `<span class="audit-date-label">${formattedDate}</span>`;
+                        html += `<span class="audit-date-count">${group.reports.length} 份</span>`;
                         html += `</div>`;
-                        html += `<div class="report-body"><template class="report-body-template"></template></div>`;
-                        html += `</div>`;
+                        html += `<div class="audit-date-body">`;
+                        for (const r of group.reports) {
+                            html += `<div class="timeline-report">`;
+                            html += `<div class="report-header" data-audit-route="${r.route}">`;
+                            html += `<span class="report-arrow">▸</span>`;
+                            html += `<span class="report-title">${r.title}</span>`;
+                            html += `</div>`;
+                            html += `<div class="report-body"><template class="report-body-template"></template></div>`;
+                            html += `</div>`;
+                        }
+                        html += `</div></div>`;
                     }
-                    html += `</div>`;
+                    html += `</div></div>`;
                 }
 
                 html += `</div></div>`;
