@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>首頁 — Deep32Q 系統化投資研究知識庫</title>
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="/style.css?v=1785224997">
+<link rel="stylesheet" href="/style.css?v=1790830780">
 <meta name="description" content="Deep32Q 系統化投資研究知識庫 — 每日報告、產業洞察、32Q 審計報告">
 </head>
 <body>
@@ -41,11 +41,11 @@
 基準數據：9/30 (三) 美股收盤、9/30 商品期貨（期貨）電子盤、9/30 亞歐收盤、10/1 早段現貨<br />
 數據來源：金十數據現貨與財經日曆 (9/28–10/3)、Yahoo Finance chart API 期貨與指數序列 (9/30)、前一期交叉比對<br />
 前一期：2026-09-30 (三)<br />
-⚠️ 來源說明：本期 Yahoo Finance 端點持續回 <code>429 Too Many Requests</code>，期貨序列僅成功取得 GC=F／SI=F；其餘指數與商品以金十數據與前一期序列交叉標註，未能驗證者一律標註「數據暫缺」，嚴禁編造。<br />
+⚠️ 來源說明：本期 Yahoo Finance 端點持續回 <code>429 Too Many Requests</code>，期貨序列僅成功取得 GC=F／SI=F。<strong>指數改由金十數據補齊（10/1）</strong>；金十無 NASDAQ／VIX／美元指數／美債殖利率之對應代碼，該四項仍標註「數據暫缺」，嚴禁編造。<br />
 ⚠️ 時點說明：現貨為 10/1 早段金十報價；商品期貨為 9/30 電子盤最新成交（期貨，逐項標註）。</p>
 </blockquote>
 <h2>📊 全球主要指數概覽</h2>
-<h3>美股 (9/30 收盤)</h3>
+<h3>美股 (9/30 收盤，金十補齊)</h3>
 <table>
 <thead>
 <tr>
@@ -58,32 +58,93 @@
 <tbody>
 <tr>
 <td>S&amp;P 500</td>
-<td>數據暫缺</td>
-<td>數據暫缺</td>
-<td>Yahoo 端點 429，無法驗證</td>
+<td>7,651.54</td>
+<td>-19.30 (-0.25%)</td>
+<td>金十 10/1 09:29</td>
 </tr>
 <tr>
 <td>道瓊工業</td>
-<td>數據暫缺</td>
-<td>數據暫缺</td>
-<td>Yahoo 端點 429，無法驗證</td>
+<td>50,906.05</td>
+<td>-443.87 (-0.86%)</td>
+<td>金十 10/1 09:29</td>
 </tr>
 <tr>
 <td>NASDAQ Composite</td>
 <td>數據暫缺</td>
 <td>數據暫缺</td>
-<td>Yahoo 端點 429，無法驗證</td>
+<td>金十無此代碼，Yahoo 429</td>
 </tr>
 <tr>
 <td>VIX 恐慌指數</td>
 <td>數據暫缺</td>
 <td>數據暫缺</td>
-<td>Yahoo 端點 429，無法驗證</td>
+<td>金十無此代碼，Yahoo 429</td>
+</tr>
+</tbody>
+</table>
+<h3>亞歐主要指數 (10/1)</h3>
+<table>
+<thead>
+<tr>
+<th>指數</th>
+<th>收盤價</th>
+<th>日變幅</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>日經 225</td>
+<td>68,682.80</td>
+<td>+1,929.08 (+2.89%)</td>
+<td>金十 10/1 12:59</td>
+</tr>
+<tr>
+<td>香港恆生</td>
+<td>24,613.27</td>
+<td>+89.70 (+0.37%)</td>
+<td>金十 10/1 08:00</td>
+</tr>
+<tr>
+<td>英國富時100</td>
+<td>10,606.00</td>
+<td>-30.71 (-0.29%)</td>
+<td>金十 10/1 08:00</td>
+</tr>
+<tr>
+<td>德國 DAX30</td>
+<td>25,199.19</td>
+<td>-200.02 (-0.79%)</td>
+<td>金十 10/1 08:00</td>
+</tr>
+<tr>
+<td>上證指數</td>
+<td>3,842.19</td>
+<td>+11.74 (+0.31%)</td>
+<td>金十 9/30 14:59 收盤</td>
+</tr>
+<tr>
+<td>滬深300</td>
+<td>4,357.62</td>
+<td>+12.41 (+0.29%)</td>
+<td>金十 9/30 14:59 收盤</td>
+</tr>
+<tr>
+<td>創業板指</td>
+<td>3,135.28</td>
+<td>-7.29 (-0.23%)</td>
+<td>金十 9/30 14:59 收盤</td>
+</tr>
+<tr>
+<td>韓國 KOSPI</td>
+<td>6,916.24</td>
+<td>+78.20 (+1.14%)</td>
+<td>金十 10/1 12:59</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>⚠️ <strong>指數序列本期暫缺</strong>：Yahoo Finance ^GSPC／^DJI／^IXIC／^VIX 端點於本次執行期間持續回 429，經多次退避重試（逾 20 次、累計冷卻逾 60 分鐘）仍無法取得。依實證原則標註「數據暫缺」，不以推估填補。<br />
+<p>✅ <strong>指數已由金十補齊</strong>：本期 Yahoo Finance 指數端點（^GSPC／^DJI／^IXIC／^VIX）持續回 429，改以金十數據補位；NASDAQ 與 VIX 金十無對應代碼，仍標註「數據暫缺」。<br />
 📌 延續觀察（前一期 9/30）：三大指數 9/29 收黑（S&amp;P -0.17%、道瓊 -0.26%、Nasdaq -0.09%），10Y／30Y 殖利率雙創多年新高（5.255%／5.594%），為壓制貴金屬之主要因素。</p>
 </blockquote>
 <h3>殖利率與美元 (9/30)</h3>
@@ -216,11 +277,12 @@
 <ol>
 <li>📉 <strong>貴金屬高檔承壓</strong>：美元與長端殖利率續揚（前一期），壓制無息資產；ETF 持倉同步減少（SPDR -1.711 噸、iShares -43.54 噸）</li>
 <li>📈 <strong>原油為區內強項</strong>：中東供應風險 + 9 月連續第三月上漲，布蘭特重返 97 上方</li>
-<li>⚠️ <strong>市場廣度數據本期暫缺</strong>：Yahoo 指數端點全面 429，建議下期優先補齊美股與殖利率序列</li>
+<li>✅ <strong>指數已補齊（金十）</strong>：美股 S&amp;P／道瓊及亞歐主要指數由金十補位；NASDAQ／VIX／殖利率／DXY 金十無對應，仍暫缺，建議下期優先補齊</li>
 </ol>
 <hr />
 <blockquote>
-<p>編製：Storm 總監 (自動化報告管線)｜查詢時間：2026-10-01 07:06 台灣時間<br />
+<p>編製：Storm 總監 (自動化報告管線)｜原始查詢：2026-10-01 07:06｜<strong>指數補齊：2026-10-01 13:00 台灣時間</strong><br />
+🔧 補註：指數段落於 2026-10-01 13:00 由金十數據回填（原 Yahoo 429 導致暫缺）。<br />
 數據來源：金十數據 (2026-10-01)、Yahoo Finance chart API (2026-09-30)</p>
 </blockquote></template></div>
                 
@@ -62445,7 +62507,7 @@ Dr.32 註記<br />
 </div>
 </div></div></main>
 </div>
-<script src="/search.js?v=1784760979"></script>
-<script src="/content.js?v=1785225728"></script>
+<script src="/search.js?v=1790830780"></script>
+<script src="/content.js?v=1790830780"></script>
 </body>
 </html>
