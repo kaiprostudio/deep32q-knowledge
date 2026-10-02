@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>市場情緒報告 — 2026-10-03 (六) — Deep32Q 系統化投資研究知識庫</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/style.css?v=1790830780">
+<meta name="description" content="Deep32Q 系統化投資研究知識庫 — 每日報告、產業洞察、32Q 審計報告">
+</head>
+<body>
+<div id="app">
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Deep32Q</a>
+      <div id="search-wrap" class="nav-search">
+        <input type="text" id="search-input" placeholder="搜尋知識庫（全文）" aria-label="搜尋知識庫" data-scope="all">
+        <div id="search-results" class="search-results hidden"></div>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="nav-link active" data-nav="daily">每日報告</a>
+        <a href="/?p=industries" class="nav-link" data-nav="industries">產業洞察</a>
+        <a href="/?p=audit" class="nav-link" data-nav="audit">審計報告</a>
+        <a href="/admin/" class="nav-link" data-nav="admin">管理</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="切換深色模式" title="切換深色模式">🌙</button>
+      </div>
+    </div>
+  </nav>
+  <main id="main-content"><div class="report-content-page">
+<div class="breadcrumb"><a href="/">← 回首頁</a> / Deep32Q知識庫/每日報告/2026-10-03/市場情緒_2026-10-03.md</div>
+<div class="report-content"><h1>市場情緒報告 — 2026-10-03 (六)</h1>
+<blockquote>
+<p>查詢時間：2026-10-03 07:16 台灣時間 (2026-10-02 23:16 UTC)<br />
+基準數據：10/2 (五) 美股收盤、10/2 商品期貨（期貨）收盤、10/1 亞歐收盤、金十現貨報價<br />
+數據來源：金十數據現貨/指數/日曆/快訊、Yahoo Finance chart API 期貨與指數序列 (10/2)<br />
+前一期：2026-10-02 (五)<br />
+✅ 來源說明：本期 Yahoo Finance 端點（query1）正常，GC=F／SI=F／ZS=F 期貨序列與 ^GSPC／^DJI／^IXIC／^VIX／DX-Y.NYB／^TNX／^TYX 指數序列全數取得。<br />
+⚠️ 時點說明：商品期貨與美股為 10/2 (五) 收盤（期貨，逐項標註）；現貨為金十最新報價（10/2 早段）；亞股多為 10/1 收盤（因時區）。</p>
+</blockquote>
+<h2>📊 全球主要指數概覽</h2>
+<h3>美股 (10/2 收盤，Yahoo)</h3>
+<table>
+<thead>
+<tr>
+<th>指數</th>
+<th>收盤價</th>
+<th>日變幅</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S&amp;P 500</td>
+<td>7,722.72</td>
+<td>+56.27 (+0.73%)</td>
+<td>Yahoo ^GSPC 10/2 收盤 📈</td>
+</tr>
+<tr>
+<td>道瓊工業</td>
+<td>51,176.96</td>
+<td>+250.40 (+0.49%)</td>
+<td>Yahoo ^DJI 10/2 收盤 📈</td>
+</tr>
+<tr>
+<td>NASDAQ Composite</td>
+<td>27,190.86</td>
+<td>+319.26 (+1.19%)</td>
+<td>Yahoo ^IXIC 10/2 收盤 📈</td>
+</tr>
+<tr>
+<td>VIX 恐慌指數</td>
+<td>15.31</td>
+<td>-1.08 (-6.59%)</td>
+<td>Yahoo ^VIX 10/2 收盤 📉</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📈 <strong>美股三大指數同步收紅、科技領漲</strong>：NASDAQ +1.19% 領漲，S&amp;P 500 +0.73% 創波段新高，道瓊 +0.49%。VIX 回落至 15.31（-6.59%），風險偏好明顯回升。</p>
+</blockquote>
+<h3>亞歐主要指數 (金十)</h3>
+<table>
+<thead>
+<tr>
+<th>指數</th>
+<th>收盤價</th>
+<th>日變幅</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>日經 225</td>
+<td>68,954.74</td>
+<td>+2,201.02 (+3.30%)</td>
+<td>金十 10/1 14:05</td>
+</tr>
+<tr>
+<td>香港恆生</td>
+<td>24,613.27</td>
+<td>+89.70 (+0.37%)</td>
+<td>金十 10/1 08:00</td>
+</tr>
+<tr>
+<td>英國富時100</td>
+<td>10,428.27</td>
+<td>-177.73 (-1.68%)</td>
+<td>金十 10/2 00:08</td>
+</tr>
+<tr>
+<td>德國 DAX30</td>
+<td>24,980.82</td>
+<td>-218.37 (-0.87%)</td>
+<td>金十 10/1 23:59</td>
+</tr>
+<tr>
+<td>上證指數</td>
+<td>3,842.19</td>
+<td>+11.74 (+0.31%)</td>
+<td>金十 9/30 14:59 收盤</td>
+</tr>
+<tr>
+<td>滬深300</td>
+<td>4,357.62</td>
+<td>+12.41 (+0.29%)</td>
+<td>金十 9/30 14:59 收盤</td>
+</tr>
+<tr>
+<td>創業板指</td>
+<td>3,135.28</td>
+<td>-7.29 (-0.23%)</td>
+<td>金十 9/30 14:59 收盤</td>
+</tr>
+<tr>
+<td>韓國 KOSPI</td>
+<td>6,971.35</td>
+<td>+133.31 (+1.95%)</td>
+<td>金十 10/1 14:32</td>
+</tr>
+<tr>
+<td>標普500（金十交叉）</td>
+<td>7,666.71</td>
+<td>+15.17 (+0.20%)</td>
+<td>金十 10/2 04:23（10/1 收盤）</td>
+</tr>
+<tr>
+<td>道瓊（金十交叉）</td>
+<td>50,926.56</td>
+<td>+20.51 (+0.04%)</td>
+<td>金十 10/2 04:37（10/1 收盤）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📌 <strong>亞歐為前一交易日數據</strong>：亞股（日經／恆生／KOSPI）與上證為 10/1–9/30 收盤；歐股（富時／DAX）為 10/1 收盤。美股 10/2 已更新，領先反映隔夜風險偏好回升。</p>
+</blockquote>
+<h3>殖利率與美元 (10/2 收盤，Yahoo)</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>報價</th>
+<th>日變</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10Y 殖利率</td>
+<td>5.277%</td>
+<td>+0.040 (+0.76%)</td>
+<td>Yahoo ^TNX 10/2 收盤 📈</td>
+</tr>
+<tr>
+<td>30Y 殖利率</td>
+<td>5.630%</td>
+<td>+0.027 (+0.48%)</td>
+<td>Yahoo ^TYX 10/2 收盤 📈</td>
+</tr>
+<tr>
+<td>美元指數 DXY</td>
+<td>101.924</td>
+<td>-0.176 (-0.17%)</td>
+<td>Yahoo DX-Y.NYB 10/2 收盤 📉</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📌 <strong>殖利率回升、美元回落</strong>：10Y 由 5.237% 回升至 5.277%、30Y 由 5.603% 升至 5.630%，長端殖利率自前日回落後再度揚升；惟美元指數回落至 101.924（-0.17%），為貴金屬提供部分支撐。</p>
+</blockquote>
+<h2>💰 商品與現貨市場 (金十最新報價)</h2>
+<table>
+<thead>
+<tr>
+<th>商品</th>
+<th>報價</th>
+<th>日變</th>
+<th>來源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>現貨黃金 XAUUSD</td>
+<td>$4,178.73/盎司</td>
+<td>+1.78 (+0.04%)</td>
+<td>金十 10/2 06:59</td>
+</tr>
+<tr>
+<td>現貨白銀 XAGUSD</td>
+<td>$61.008/盎司</td>
+<td>+0.025 (+0.04%)</td>
+<td>金十 10/2 07:00</td>
+</tr>
+<tr>
+<td>現貨鉑金 XPTUSD</td>
+<td>$1,720.97/盎司</td>
+<td>-3.56 (-0.21%)</td>
+<td>金十 10/2 07:00</td>
+</tr>
+<tr>
+<td>現貨鈀金 XPDUSD</td>
+<td>$1,181.87/盎司</td>
+<td>+1.29 (+0.11%)</td>
+<td>金十 10/2 07:00</td>
+</tr>
+<tr>
+<td>現貨銅 COPPER</td>
+<td>$6.4747/磅</td>
+<td>+0.0003 (+0.005%)</td>
+<td>金十 10/2 07:00</td>
+</tr>
+<tr>
+<td>WTI 原油</td>
+<td>$91.956/桶</td>
+<td>+0.059 (+0.06%)</td>
+<td>金十 10/2 06:59</td>
+</tr>
+<tr>
+<td>布蘭特原油</td>
+<td>$101.43/桶</td>
+<td>+3.94 (+4.04%)</td>
+<td>金十 10/2 04:54</td>
+</tr>
+<tr>
+<td>COMEX 黃金期貨 GC=F（期貨）</td>
+<td>$4,172.10/盎司</td>
+<td>-30.20 (-0.72%)</td>
+<td>Yahoo 10/2 收盤</td>
+</tr>
+<tr>
+<td>COMEX 白銀期貨 SI=F（期貨）</td>
+<td>$60.710/盎司</td>
+<td>-0.015 (-0.02%)</td>
+<td>Yahoo 10/2 收盤</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📉 <strong>貴金屬期貨自高檔回落</strong>：期貨黃金 GC=F 收 4,172.10（-0.72%），10/2 區間高 4,259.0／低 4,153.8，日內自波段高點大幅回落；期貨白銀 SI=F 收 60.710（-0.02%），10/2 劇烈震盪（高 62.455／低 59.985）。<br />
+📈 <strong>原油續揚重返 100</strong>：布蘭特現貨 101.43（+4.04%），紐約 11 月輕質原油期貨結算 92.87（+2.71%），布蘭特期貨結算 102.31（+4.37%）。主因美國國防部可能向波斯灣增派航母、中東衝突升級跡象加劇供應擔憂（金十 10/2 06:25、04:29）。</p>
+</blockquote>
+<h2>📰 市場情緒與新聞面 (金十數據)</h2>
+<h3>快訊摘要</h3>
+<ul>
+<li>⚔️ <strong>中東供應風險飆升</strong>：美國國防部可能向波斯灣增派一艘航母；美國財長貝森特稱伊朗 9 月未向油輪裝載原油，特朗普政府正切斷伊朗政權主要收入來源（金十 10/2 06:25、04:29）</li>
+<li>📈 <strong>油價連續第三日上漲</strong>：中東衝突升級跡象加劇，市場憂供應恢復受阻</li>
+<li>🥇 <strong>SPDR Gold Trust</strong>：持倉較上日<strong>增加</strong> 0.855 噸，當前 1,056.551 噸（金十 10/2 06:30）</li>
+<li>🏦 <strong>匯豐下調金價預測</strong>：將 2026 年黃金平均價格預測下調至 4,490 美元/盎司（原 4,560），認為短期仍有下行壓力但可能接近底部（金十 10/1 20:02–20:03）</li>
+<li>🇷🇺 <strong>俄羅斯黃金外匯儲備</strong>：至 9/25 當週 7,427 億美元，前值 7,482 億美元（金十 10/1 21:00）</li>
+</ul>
+<h3>本週已公布重要數據（金十財經日曆，9/28–10/3 窗口，★≥3）</h3>
+<ul>
+<li>9/28 美國 9 月達拉斯聯儲商業活動指數：預期 8.2，實際 9.8（好於預期）</li>
+<li>9/29 美國 9 月諮商會消費者信心指數：預期 89.2，實際 81.9（遜於預期）</li>
+<li>9/29 美國 8 月 JOLTs 職位空缺：預期 722.5 萬，實際 707.9 萬（低於預期）</li>
+<li>9/29 歐元區 9 月經濟景氣指數：預期 99，實際 97.9（遜於預期）</li>
+<li>9/29 瑞士 9 月 KOF 經濟領先指標：預期 106.1，實際 109.1（超預期）</li>
+<li>9/30 中國 9 月官方製造業 PMI：預期 50.1，實際 50.1（符合預期）</li>
+<li>9/30 英國 Q2 GDP 年率終值：預期 1.2%，實際 1.4%（超預期）</li>
+<li>9/30 德國 9 月季調後失業人數：預期 +0.1 萬，實際 +1.2 萬（遜於預期）</li>
+</ul>
+<h3>待公布重要數據（10/1–10/3 窗口）</h3>
+<ul>
+<li>📅 金十日曆僅涵蓋當週窗口（9/28–10/3）；跨週事件無法自金十驗證，標註「數據暫缺」</li>
+</ul>
+<h2>🧭 綜合情緒判讀</h2>
+<ol>
+<li>📈 <strong>美股風險偏好回升</strong>：三大指數同步收紅，NASDAQ +1.19% 領漲，VIX 回落至 15.31（-6.59%）</li>
+<li>📉 <strong>貴金屬期貨回落</strong>：GC=F -0.72% 自 4,259 高點回落，SI=F 日內震盪（59.99–62.46）收平</li>
+<li>📉 <strong>美元回落為貴金屬減壓</strong>：DXY 101.924（-0.17%），惟 10Y／30Y 殖利率同步回升形成對沖</li>
+<li>📈 <strong>原油為區內最強</strong>：布蘭特重返 100 上方（+4.04%），中東增兵與伊朗制裁推升供應溢價</li>
+</ol>
+<hr />
+<blockquote>
+<p>編製：Storm 總監 (自動化報告管線)｜查詢時間：2026-10-03 07:16 台灣時間<br />
+數據來源：金十數據 (2026-10-02)、Yahoo Finance chart API (2026-10-02)</p>
+</blockquote></div>
+</div></main>
+</div>
+<script src="/search.js?v=1790830780"></script>
+<script src="/content.js?v=1790830780"></script>
+</body>
+</html>
